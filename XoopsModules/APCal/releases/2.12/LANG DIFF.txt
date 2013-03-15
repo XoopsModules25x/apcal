@@ -1,0 +1,244 @@
+Module Name : APCal
+Version Number : 2.1.2
+Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
+
+Feel free to translate to your own language and send us your changes. 
+
+Done for:
+up to v2.1.0:  English, French, German
+up to v2.0.4:  English, French, German, Spanish
+before v1.0.0: English, French, German, Spanish, Japanese, Dutch, Russian, Tchinese, Swedish, Portuguese, BrasilPortuguese
+
+
+Version 2.1.0
+- modinfo.php
+    - added _MI_APCAL_ENABLEREGISTRATION
+- apcal_constants.php
+    - added _APCAL_RO_CANCEL
+    - added _APCAL_RO_RADIO_YES
+    - added _APCAL_RO_RADIO_NO
+    - added _APCAL_RO_ONLINE_POSS
+    - added _APCAL_RO_ONLINE_POSS_2
+    - added _APCAL_RO_ONLY_MEMBERS
+    - added _APCAL_RO_ONLINE_NO
+    - added _APCAL_RO_ONLINE_YES
+    - added _APCAL_RO_ONLINE_ACTIVATE
+    - added _APCAL_RO_ONLINE_DEACTIVATE
+    - added _APCAL_RO_ONLINE
+    - added _APCAL_RO_BTN_ADD
+    - added _APCAL_RO_BTN_ADDMORE
+    - added _APCAL_RO_BTN_REMOVE
+    - added _APCAL_RO_ENABLE_ONLINE
+    - added _APCAL_RO_NOMEMBERS
+    - added _APCAL_RO_BTN_LISTMEMBERS
+    - added _APCAL_RO_SUCCESS_ADD
+    - added _APCAL_RO_SUCCESS_REMOVE
+    - added _APCAL_RO_UNAME
+    - added _APCAL_RO_FIRSTNAME
+    - added _APCAL_RO_LASTNAME
+    - added _APCAL_RO_EMAIL
+    - added _APCAL_RO_EXTRAINFO1
+    - added _APCAL_RO_EXTRAINFO2
+    - added _APCAL_RO_EXTRAINFO3
+    - added _APCAL_RO_EXTRAINFO4
+    - added _APCAL_RO_EXTRAINFO5
+    - added _APCAL_RO_BTN_CONF_ADD
+    - added _APCAL_RO_BTN_CONF_ADD_MORE
+    - added _APCAL_RO_BTN_CONF_REMOVE
+    - added _APCAL_RO_BTN_CANCEL
+    - added _APCAL_RO_EVENT
+    - added _APCAL_RO_TITLE1
+    - added _APCAL_RO_OBLIGATORY
+    - added _APCAL_RO_ERROR_REMOVE
+    - added _APCAL_RO_ERROR_ADD
+    - added _APCAL_RO_BTN_BACK
+    - added _APCAL_RO_BACK
+    - added _APCAL_RO_ONLINE2
+    - added _APCAL_RO_ACTION
+    - added _APCAL_RO_TITLE2
+    - added _APCAL_RO_BTN_RO_EDIT
+    - added _APCAL_RO_BTN_RO_DEACTIVATE
+    - added _APCAL_RO_BTN_RO_ACTIVATE
+    - added _APCAL_RO_QUANTITY
+    - added _APCAL_RO_QUANTITY2
+    - added _APCAL_RO_DATELIMIT
+    - added _APCAL_RO_EMAIL_NOTIFY
+    - added _APCAL_RO_BTN_CONF_ACTIVATE
+    - added _APCAL_RO_ERROR_RO_ACTIVATE
+    - added _APCAL_RO_SUCCESS_RO_ACTIVATE
+    - added _APCAL_RO_ERROR_RO_DEACTIVATE
+    - added _APCAL_RO_SUCCESS_RO_DEACTIVATE
+    - added _APCAL_RO_ERROR_FULL
+    - added _APCAL_RO_ERROR_TIMEOUT
+    - added _APCAL_RO_ERROR_OBLIGATORY
+    - added _APCAL_RO_BTN_CONF_SAVE
+    - added _APCAL_RO_BTN_CONF_EDIT
+    - added _APCAL_RO_MAIL_SUBJ_ADD
+    - added _APCAL_RO_MAIL_SUBJ_REMOVE
+    - added _APCAL_RO_MAIL_SUBJ_TEXT
+    - added _APCAL_RO_DATE
+    - added _APCAL_RO_LOCATION
+    - added _APCAL_RO_LINK
+    - added _APCAL_RO_TITLE3
+    - added _APCAL_RO_TITLE4
+    - added _APCAL_RO_MAIL_SENDER
+    - added _APCAL_RO_MAIL_SUBJ
+    - added _APCAL_RO_MAIL_BODY1
+    - added _APCAL_RO_MAIL_BODY2
+    - added _APCAL_RO_BTN_SEND
+    - added _APCAL_RO_MAILSENT
+    - added _APCAL_RO_TITLE5
+    - added _APCAL_RO_BTN_EDIT
+    - added _APCAL_RO_SUCCESS_EDIT
+    - added _APCAL_RO_ERROR_EDIT
+    - added _APCAL_RO_SEND_CONF1
+    - added _APCAL_RO_SEND_CONF2
+    - added _APCAL_RO_SEND_CONF3
+    - added _APCAL_RO_REDIRECT
+    - added _APCAL_RO_SUCCESS_NEW_EVENT
+    - added _APCAL_RO_SUCCESS_DELETE_EVENT
+    - added _APCAL_RO_SUCCESS_UPDATE_EVENT
+    - added _APCAL_RO_SUCCESS_COPY_EVENT
+
+Version 2.0.4
+- main.php
+    - added _APCAL_FB_LNG
+    - added _APCAL_GPLUS_LNG
+
+Version 2.0.0
+- modinfo.php
+    - updated _MI_APCAL_DISPLAYCATTITLE
+    - added _MI_APCAL_ENABLESOCIAL
+    - added _MI_APCAL_NBPICS
+    - added _MI_APCAL_PICSWIDTH
+    - added _MI_APCAL_PICSHEIGHT
+    - added _MI_APCAL_SHOWPICMONTHLY
+    - added _MI_APCAL_SHOWPICWEEKLY
+    - added _MI_APCAL_SHOWPICDAILY
+    - added _MI_APCAL_SHOWPICLIST
+    - added _MI_APCAL_EVENTBGCOLOR
+    - added _MI_APCAL_EVENTCOLOR
+    - added _MI_APCAL_ALLCATSCOLOR
+    - added _MI_APCAL_DISPLAYTIMEZONE
+    - added _MI_APCAL_USERS
+    - added _MI_APCAL_COLORS
+    - added _MI_APCAL_SETTINGS
+    - added _MI_APCAL_CALSETTINGS
+    - added _MI_APCAL_CALDISPLAY
+    - added _MI_APCAL_EVENTS
+    - added _MI_APCAL_PICTURES
+    - added _MI_APCAL_MAP
+    - added _MI_APCAL_COMMENTSNOT
+    - updated _MI_APCAL_THMORDEFAULTDESC
+    - added _MI_APCAL_OPT_DEFAULT
+    - added _MI_APCAL_OPT_NONE
+    - added _MI_APCAL_SUNDAY
+    - added _MI_APCAL_MONDAY
+    - added _MI_APCAL_TUESDAY
+    - added _MI_APCAL_WEDNESDAY
+    - added _MI_APCAL_THURSDAY
+    - added _MI_APCAL_FRIDAY
+    - added _MI_APCAL_SATURDAY
+- main.php
+    - added _APCAL_TH_EMAIL
+    - added _APCAL_TH_URL
+    - added _APCAL_MAINPICTURE
+    - added _APCAL_PICTURES
+    - added _APCAL_TH_MAINCATEGORY
+    - added _APCAL_NONE
+    - added _APCAL_DAY
+    - added _APCAL_DIFFERENTHOURS
+    - added _APCAL_SAMEHOURS
+    - added _APCAL_CLICKFORDETAILS
+    - added _APCAL_BEGIN
+    - added _APCAL_END
+    - added _APCAL_LOCATION
+    - added _APCAL_TELLAFRIEND
+    - added _APCAL_FROM
+    - added _APCAL_TO
+    - added _APCAL_SUBJECT
+    - added _APCAL_MESSAGE
+    - added _APCAL_TELLAFRIENDTEXT
+- admin.php
+    - added _AM_PREFS
+    - added _AM_UPDATE
+    - added _AM_BLOCKS
+    - added _AM_GOTOMODULE
+    - added _AM_APCAL_CANBEMAIN
+    - added _AM_APCAL_COLOR
+
+
+Version 1.0.5
+- modinfo.php
+    - added _MI_APCAL_BNAME_MAP
+    - added _MI_APCAL_BNAME_MAP_DESC
+    - added _APCAL_TH_GETCOORDS
+    - added _APCAL_TH_LATITUDE
+    - added _APCAL_TH_LONGITUDE
+    - added _APCAL_TH_ZOOM
+    - added _APCAL_PROVIDEDBY
+    - added _APCAL_X
+    - added _APCAL_AP
+    - added _APCAL_CALENDAROF
+    - added _APCAL_SHARECALENDARFORM
+    - added _APCAL_SHOWALLCAT
+    - added _APCAL_GENERATE
+    - added _AP_GENERATEHINT
+    - added _APCAL_CATEGORIES
+    - added _APCAL_NBEVENTS
+    - added _APCAL_WIDTH
+    - added _APCAL_STYLE
+    - added _APCAL_IFCUSTOM
+    - added _APCAL_BORDER
+    - added _APCAL_TITLE
+    - added _APCAL_TEXT
+    - added _APCAL_LINK
+    - added _APCAL_EVEN
+    - added _APCAL_ODD
+    - added _APCAL_DEFAULT
+    - added _APCAL_CUSTOM
+    - added _APCAL_THEME
+    - added _APCAL_SHAREINFO
+    - added _APCAL_SHARECALENDAR
+    - added _APCAL_PREVEVENT
+    - added _APCAL_NEXTEVENT
+    - added _APCAL_BACKTOCAL
+    - added _MI_APCAL_INDEX
+- main.php
+    - added _APCAL_APURL
+    - added _APCAL_APURL2
+    - added _MI_APCAL_GMLAT
+    - added _MI_APCAL_GMLNG
+    - added _MI_APCAL_GMZOOM
+    - added _MI_APCAL_GMHEIGHT
+    - added _MI_APCAL_USEURLREWRITE
+    - added _MI_APCAL_DESCUSEURLREWRITE
+    - added _MI_APCAL_WIDERWEEKEND
+    - added _MI_APCAL_WIDERWEEKENDDESC
+    - added _MI_APCAL_GETTHMCOLOR
+    - added _MI_APCAL_OPT_THM
+    - added _MI_APCAL_OPT_CUSTOM
+    - added _MI_APCAL_THMORDEFAULT
+    - added _MI_APCAL_THMORDEFAULTDESC
+    - added _MI_APCAL_ENABLECALMAP
+    - added _MI_APCAL_ENABLEEVENTMAP
+    - added _MI_APCAL_ENABLESHARING
+    - added _MI_APCAL_EVENTNAVENABLED
+    - added _MI_APCAL_DISPLAYCATTITLE
+- admin.php
+    - added _AM_APCAL_TIMEZONE
+    - added _AM_MODULEADMIN_CONFIG
+    - added _AM_APCAL_NBWAITINGEVENTS
+    - added _AM_APCAL_NBEVENTS
+    - added _AM_APCAL_NBCATS
+    - added _AM_MODULEADMIN_CONFIG_PHP
+    - added _AM_MODULEADMIN_CONFIG_XOOPS
+    - added _AM_TITLE
+    - added _AM_SIDE
+    - added _AM_WEIGHT
+    - added _AM_VISIBLEIN
+    - added _AM_BCACHETIME
+    - added _AM_ACTION
+    - added _AM_ACTIVERIGHTS
+    - added _AM_ACCESSRIGHTS
+    - added _AM_BADMIN
