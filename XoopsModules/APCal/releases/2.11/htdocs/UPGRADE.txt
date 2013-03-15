@@ -1,0 +1,20 @@
+Module Name : APCal
+Version Number : 2.1.1
+Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
+
+UPGRADE FROM PICAL MODULE
+1. Upload all files in this package to XOOPS_URL/modules/APCal/
+2. Log in to your site as administrator.
+3. Install the module using the XOOPS module administration panel at 'System Admin Modules'.
+   All your piCal categories and events will be transfered to APCal module.
+
+P.S.: Before upgrading, we recommend you to backup your database.
+
+==================================================================================
+
+UPGRADE INSTRUCTIONS
+1. Upload all files in this package to XOOPS_URL/modules/APCal/, overwriting the existing files.
+2. Log in to your site as administrator.
+3. Update the module using the XOOPS module administration panel at 'System Admin Modules'.
+
+P.S.: Before upgrading, we recommend you to backup your database, customized templates and module files.
