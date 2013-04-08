@@ -1,0 +1,55 @@
+<pattemplate:tmpl name="WholeBoard">
+  <table border='0' cellspacing='0' cellpadding='0' width='100%'>
+    <tr>
+      <td width='100%' class='calframe'>
+        <!-- header -->
+        <table border='0' cellspacing='0' cellpadding='0' style='width:100%;border-collapse:collapse;'>
+         <tr>
+           <td nowrap='nowrap' colspan='8' align='center' bgcolor='{CALHEAD_BGCOLOR}'>
+             <table border='0' cellspacing='0' cellpadding='0' width='100%' class='apcal-categoryform'>
+             <tr>
+               <td align='center' valign='middle' style='vertical-align:middle;' class='apcal-categoryform'>{CATEGORIES_SELFORM}</td>
+               <td width='18'><img src='{SKINPATH}/spacer.gif' alt='' width='18' height='4' /></td>
+               <td width='18' valign='middle' style='vertical-align:middle;'><a href='{PREVIOUSMONTHLINK}'><img src='{SKINPATH}/arrowleftleft.gif' width='18' height='14' border='0' alt='{MB_PREV_MONTH}' title='{MB_PREV_MONTH}' /></a></td>
+               <td width='18' valign='middle' style='vertical-align:middle;'><a href='{PREVIOUSWEEKLINK}'><img src='{SKINPATH}/arrowleft.gif' width='18' height='14' border='0' alt='{MB_PREV_WEEK}' title='{MB_PREV_WEEK}' /></a></td>
+               <td width='180' align='center' valign='middle' nowrap='nowrap' style='vertical-align:middle;'><img src='{SKINPATH}/spacer.gif' alt='' width='180' height='4' /><br /><font size='4' color='{CALHEAD_COLOR}'><b><span class='calhead'>{YMW_TITLE}</span></b></font><br /><img src='{SKINPATH}/spacer.gif' alt='' width='180' height='4' /></td>
+               <td width='18' valign='middle' style='vertical-align:middle;'><a href='{NEXTWEEKLINK}'><img src='{SKINPATH}/arrowright.gif' width='18' height='14' border='0' alt='{MB_NEXT_WEEK}' title='{MB_NEXT_WEEK}' /></a></td>
+               <td width='18' valign='middle' style='vertical-align:middle;'><a href='{NEXTMONTHLINK}'><img src='{SKINPATH}/arrowrightright.gif' width='18' height='14' border='0' alt='{MB_NEXT_MONTH}' title='{MB_NEXT_MONTH}' /></a></td>
+               <td align='right' valign='middle' style='vertical-align:middle;'>
+                 <font size='1'><a href='{YEARLYVIEW}'><img src='{SKINPATH}/year_on.gif' border='0' width='30' height='24' alt='{ICON_YEARLY}' title='{ICON_YEARLY}' /></a></font>
+                 <font size='1'><a href='{MONTHLYVIEW}'><img src='{SKINPATH}/month_on.gif' border='0' width='30' height='24' alt='{ICON_MONTHLY}' title='{ICON_MONTHLY}' /></a></font>
+                 <font size='1'><a href='{DAILYVIEW}'><img src='{SKINPATH}/day_on.gif' border='0' width='30' height='24' alt='{ICON_DAILY}' title='{ICON_DAILY}' /></a></font>
+                 <font size='1'><a href='{LISTVIEW}'><img src='{SKINPATH}/list_on.gif' border='0' width='30' height='24' alt='{ICON_LIST}' title='{ICON_LIST}' /></a></font>
+               </td>
+             </tr>
+             </table>
+           </td>
+         </tr>
+        </table>
+
+        {CALENDAR_BODY}
+
+      </td>
+    </tr>
+  </table>
+  <br />
+  <table border='0' cellspacing='0' cellpadding='0' width='100%'>
+    <tr>
+      <td width='10'><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='10' /></td>
+      <td width='100%' align='center'>
+        <form action='{GET_TARGET}?cid={CID}&amp;smode=Weekly&amp;{QUERY_STRING}' method='post'>
+          {YMD_SELECTS}
+          <input type='submit' name='apcal_jumpcaldate' value='{LANG_JUMP}'>
+          &nbsp; 
+          <a href='{TODAYLINK}'>{MB_LINKTODAY}</a>
+        </form>
+      </td>
+    </tr>
+  </table>
+  <table border='0' cellspacing='0' cellpadding='0' width='100%'>
+    <tr>
+      <td width='10'><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='10' /></td>
+      <td width='100%' align='right'>{COPYRIGHT}</td>
+    </tr>
+  </table>
+</pattemplate:tmpl>
