@@ -1,0 +1,179 @@
+<?php
+
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_CNST_LOADED' ) ) {
+
+define( 'APCAL_CNST_LOADED' , 1 ) ;
+
+// the language file for jscalendar "DHTML Date/Time Selector"
+define('_APCAL_JS_CALENDAR','calendar-en.js');
+
+// format for jscalendar. see common/jscalendar/doc/html/reference.html
+define('_APCAL_JSFMT_YMDN','%d %B %Y (%A)');
+
+// format for date()  see http://jp.php.net/date
+define('_APCAL_DTFMT_MINUTE','i');
+
+// definition of orders     Y:year  M:month  W:week  D:day  N:dayname  O:operand
+define('_APCAL_FMT_MD','%1$s %2$s') ;
+define('_APCAL_FMT_YMD','%1$s %2$s %3$s') ;
+define('_APCAL_FMT_YMDN','%3$s %2$s %1$s %4$s');
+define('_APCAL_FMT_YMDO','%4$s%3$s%2$s%1$s');
+define('_APCAL_FMT_YMW','%1$s %2$s %3$s') ;
+define('_APCAL_FMT_YW','SEMAINE%2$s %1$s');
+define('_APCAL_FMT_DHI','%1$s %2$s:%3$s');
+define('_APCAL_FMT_HI','%1$s:%2$s');
+
+// formats for sprintf()
+define('_APCAL_FMT_YEAR_MONTH','%1$s %2$s') ;
+define('_APCAL_FMT_YEAR','<font size="-1">ANNEE </font>%s') ;
+define('_APCAL_FMT_WEEKNO','SEMAINE %s');
+
+define('_APCAL_ICON_LIST','Vue Liste');
+define('_APCAL_ICON_DAILY','Vue Journali&egrave;re') ;
+define('_APCAL_ICON_WEEKLY','Vue Hebdomadaire') ;
+define('_APCAL_ICON_MONTHLY','Vue Mensuelle') ;
+define('_APCAL_ICON_YEARLY','Vue Annuelle') ;
+
+define('_APCAL_MB_SHOWALLCAT','Toutes les cat&eacute;gories');
+
+define("_APCAL_MB_LINKTODAY","Aujourd'hui") ;
+define('_APCAL_MB_NOSUBJECT','(Pas de Sujet)') ;
+define('_APCAL_MB_PREV_DATE','Hier') ;
+define('_APCAL_MB_NEXT_DATE','Demain') ;
+define('_APCAL_MB_PREV_WEEK','Semaine pr&eacute;c&eacute;dente') ;
+define('_APCAL_MB_NEXT_WEEK','Semaine suivante') ;
+define('_APCAL_MB_PREV_MONTH','Mois pr&eacute;c&eacute;dent') ;
+define('_APCAL_MB_NEXT_MONTH','Mois suivant') ;
+define('_APCAL_MB_PREV_YEAR','Ann&eacute;e pr&eacute;c&eacute;dente') ;
+define('_APCAL_MB_NEXT_YEAR','Ann&eacute;e suivante') ;
+
+define("_APCAL_MB_NOEVENT","Pas d'&eacute;v&egrave;nements") ;
+define('_APCAL_MB_ADDEVENT','Ajouter un &eacute;v&egrave;nement') ;
+define('_APCAL_MB_CONTINUING','(continuer)') ;
+define('_APCAL_MB_RESTEVENT_PRE','plus') ;
+define('_APCAL_MB_RESTEVENT_SUF','plus d\'&eacute;l&eacute;ment(s)') ;
+define('_APCAL_MB_TIMESEPARATOR','--') ;
+
+define('_APCAL_MB_ALLDAY_EVENT','Journ&eacute;e Enti&egrave;re') ;
+define('_APCAL_MB_LONG_EVENT','Afficher via une barre') ;
+define('_APCAL_MB_LONG_SPECIALDAY','Afficher comme un Jour Sp&eacute;cial (Anniv. par exemple)') ;
+
+define('_APCAL_MB_PUBLIC','Public') ;
+define('_APCAL_MB_PRIVATE','Priv&eacute;') ;
+define('_APCAL_MB_PRIVATETARGET',' parmi %s') ;
+
+define("_APCAL_MB_LINK_TO_RRULE1ST","Sauter jusqu'au premier &eacute;v&egrave;nement ") ;
+define("_APCAL_MB_RRULE1ST","C'est le premier &eacute;v&egrave;nement") ;
+
+define('_APCAL_MB_EVENT_NOTREGISTER','Non enregistr&eacute;') ;
+define('_APCAL_MB_EVENT_ADMITTED','Approuv&eacute;') ;
+define("_APCAL_MB_EVENT_NEEDADMIT","En attente d'approbation") ;
+
+define('_APCAL_MB_TITLE_EVENTINFO',"Informations sur l'&eacute;v&egrave;nement") ;
+define('_APCAL_MB_SUBTITLE_EVENTDETAIL',"D&eacute;tails de l'&eacute;v&egrave;nement") ;
+define('_APCAL_MB_SUBTITLE_EVENTEDIT',"Editer l'&eacute;v&egrave;nement") ;
+
+define('_APCAL_MB_HOUR_SUF',':') ;
+define('_APCAL_MB_MINUTE_SUF','') ;
+
+define('_APCAL_MB_ORDER_ASC','Croissant');
+define('_APCAL_MB_ORDER_DESC','D&eacute;croissant');
+define('_APCAL_MB_SORTBY','Tri&eacute; par:');
+define('_APCAL_MB_CURSORTEDBY','Ev&egrave;nements actuellement tri&eacute;s par:');
+
+define('_APCAL_MB_LABEL_CHECKEDITEMS','Les &eacute;v&eacute;nements coch&eacute;s sont:');
+define('_APCAL_MB_LABEL_OUTPUTICS','Exporter dans iCalendar');
+
+define('_APCAL_MB_ICALSELECTPLATFORM','S&eacute;lectionner la plateforme');
+
+
+define('_APCAL_TH_SUMMARY','Intitul&eacute;') ;
+define('_APCAL_TH_TIMEZONE','Fuseau Horaire') ;
+define('_APCAL_TH_STARTDATETIME','Date/Heure de d&eacute;but') ;
+define('_APCAL_TH_ENDDATETIME','Date/Heure de fin') ;
+define('_APCAL_TH_ALLDAYOPTIONS','Option Journ&eacute;e Enti&egrave;re') ;
+define('_APCAL_TH_LOCATION','Lieu') ;
+define('_APCAL_TH_CONTACT','Contact') ;
+define('_APCAL_TH_CATEGORIES','Cat&eacute;gories');
+define('_APCAL_TH_SUBMITTER','Auteur');
+define('_APCAL_TH_CLASS','Type') ;
+define('_APCAL_TH_DESCRIPTION','Description') ;
+define('_APCAL_TH_RRULE','P&eacute;riodicit&eacute;') ;
+define('_APCAL_TH_ADMISSIONSTATUS','Statut') ;
+define('_APCAL_TH_LASTMODIFIED','Derni&egrave;re modification');
+
+define("_APCAL_NTC_MONTHLYBYMONTHDAY","(Num&eacute;ro d'entr&eacute;e)") ;
+define('_APCAL_NTC_EXTRACTLIMIT','** Seulement %s &eacute;v&egrave;nements au maximum sont g&eacute;n&eacute;r&eacute;s.') ;
+define("_APCAL_NTC_NUMBEROFNEEDADMIT","(%s &eacute;l&eacute;ments n&eacute;cessitent une approbation)") ;
+
+define('_APCAL_OPT_PRIVATEMYSELF','seulement moi') ;
+define('_APCAL_OPT_PRIVATEGROUP','groupe %s') ;
+define('_APCAL_OPT_PRIVATEINVALID','(groupe invalide)') ;
+
+define('_APCAL_MB_OP_AFTER','Apr&egrave;s');
+define('_APCAL_MB_OP_BEFORE','Avant');
+define('_APCAL_MB_OP_ON','Sur');
+define('_APCAL_MB_OP_ALL','Tout');
+
+define("_APCAL_CNFM_SAVEAS_YN","Etes-vous d'accord pour sauvegarder ceci comme nouvel enregistrement ?") ;
+define("_APCAL_CNFM_DELETE_YN","Etes-vous d'accord pour supprimer cet enregistrement ?") ;
+
+define('_APCAL_ERR_INVALID_EVENT_ID','Erreur: EventID non trouv&eacute;') ;
+define('_APCAL_ERR_NOPERM_TO_SHOW',"Erreur: Vous n'avez pas la permission de voir") ;
+define('_APCAL_ERR_NOPERM_TO_OUTPUTICS',"Erreur: Vous n'avez pas la permission d'extraire iCalendar") ;
+define("_APCAL_ERR_LACKINDISPITEM","L'&eacute;l&eacute;ment %s est vide.<br />Retournez en cliquant sur le bouton Pr&eacute;c&eacute;dent de notre navigateur web") ;
+
+define('_APCAL_BTN_JUMP','Saut') ;
+define('_APCAL_BTN_NEWINSERTED','Nouvelle insertion') ;
+define('_APCAL_BTN_SUBMITCHANGES',' Modifier! ') ;
+define('_APCAL_BTN_SAVEAS','Sauvegarder sous') ;
+define('_APCAL_BTN_DELETE','Effacer') ;
+define('_APCAL_BTN_DELETE_ONE','Supprimer seulement un seul enregistrement');
+define('_APCAL_BTN_EDITEVENT','Editer') ;
+define('_APCAL_BTN_RESET','R&eacute;initialiser') ;
+define('_APCAL_BTN_OUTPUTICS_WIN','iCalendar(Win)') ;
+define('_APCAL_BTN_OUTPUTICS_MAC','iCalendar(Mac)') ;
+define('_APCAL_BTN_PRINT','Imprimer');
+define('_APCAL_BTN_IMPORT','Importer!');
+define('_APCAL_BTN_UPLOAD','Uploader!');
+define('_APCAL_BTN_EXPORT','Exporter!');
+define('_APCAL_BTN_EXTRACT','Extraire');
+define('_APCAL_BTN_ADMIT','Accepter');
+define('_APCAL_BTN_MOVE','D&eacute;placer');
+define('_APCAL_BTN_COPY','Copier');
+
+define('_APCAL_RR_EVERYDAY','Chaque jour') ;
+define('_APCAL_RR_EVERYWEEK','Chaque semaine') ;
+define('_APCAL_RR_EVERYMONTH','Chaque mois') ;
+define('_APCAL_RR_EVERYYEAR','Chaque ann&eacute;e') ;
+define('_APCAL_RR_FREQDAILY','Journalier') ;
+define('_APCAL_RR_FREQWEEKLY','Hebdomadaire') ;
+define('_APCAL_RR_FREQMONTHLY','Mensuel') ;
+define('_APCAL_RR_FREQYEARLY','Annuel') ;
+define('_APCAL_RR_FREQDAILY_PRE','Pendant ') ;
+define('_APCAL_RR_FREQWEEKLY_PRE','Pendant ') ;
+define('_APCAL_RR_FREQMONTHLY_PRE','Pendant ') ;
+define('_APCAL_RR_FREQYEARLY_PRE','Pendant ') ;
+define('_APCAL_RR_FREQDAILY_SUF','jour(s)') ;
+define('_APCAL_RR_FREQWEEKLY_SUF','semaine(s)') ;
+define('_APCAL_RR_FREQMONTHLY_SUF','mois') ;
+define('_APCAL_RR_FREQYEARLY_SUF','ann&eacute;e(s)') ;
+define('_APCAL_RR_PERDAY','tous les %s jours') ;
+define('_APCAL_RR_PERWEEK','toutes les %s semaines') ;
+define('_APCAL_RR_PERMONTH','tous les %s mois') ;
+define('_APCAL_RR_PERYEAR','tous les %s ans') ;
+define('_APCAL_RR_COUNT','<br />%s fois') ;
+define("_APCAL_RR_UNTIL","<br />jusqu'&agrave; %s") ;
+define('_APCAL_RR_R_NORRULE','R&eacute;currence Non') ;
+define('_APCAL_RR_R_YESRRULE','R&eacute;currence Oui') ;
+define('_APCAL_RR_OR','ou') ;
+define('_APCAL_RR_S_NOTSELECTED','- non s&eacute;lectionn&eacute; -') ;
+define('_APCAL_RR_S_SAMEASBDATE','Identique &agrave; la date de d&eacute;but') ;
+define('_APCAL_RR_R_NOCOUNTUNTIL','Pas de conditions de fin') ;
+define('_APCAL_RR_R_USECOUNT_PRE','r&eacute;p&eacute;ter') ;
+define('_APCAL_RR_R_USECOUNT_SUF','fois') ;
+define("_APCAL_RR_R_USEUNTIL","jusqu'&agrave;") ;
+
+}
+
+?>
