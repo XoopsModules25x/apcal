@@ -1239,6 +1239,9 @@ function get_monthly_html($get_target='', $query_string='', $for_print = false)
     
     // Where clause - Class
 	$whr_class = $this->get_where_about_class();
+    
+    // WHERE clause - Admittance
+    $whr_admit = $this->isadmin ? '' : 'AND admission=1';
 
     // ???
 	$rs = mysql_query("SELECT DISTINCT unique_id FROM $this->table WHERE ($whr_term) AND ($whr_categories) AND ($whr_class) AND (allday & 2) LIMIT 4", $this->conn);
@@ -1258,7 +1261,7 @@ function get_monthly_html($get_target='', $query_string='', $for_print = false)
     }
 
     // Get all events in the month in the category with the class
-	$yrs = mysql_query("SELECT id,start,end,summary,location,contact,id,allday,admission,uid,unique_id,mainCategory,categories,gmlat,gmlong,extkey0 FROM $this->table WHERE ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start", $this->conn);
+	$yrs = mysql_query("SELECT id,start,end,summary,location,contact,id,allday,admission,uid,unique_id,mainCategory,categories,gmlat,gmlong,extkey0 FROM $this->table WHERE ({$whr_term}) AND ({$whr_categories}) AND ({$whr_class}) {$whr_admit} ORDER BY start", $this->conn);
 	$numrows_yrs = mysql_num_rows($yrs);
     $events = array();
     $eventsids = array();
@@ -2880,6 +2883,7 @@ function update_schedule( $set_sql_append = '' , $whr_sql_append = '' , $notify_
         $start += $_POST[ 'StartHour' ] * 3600 + $_POST[ 'StartMin' ] * 60 + $tzoffset_e2s ;
 		$end += $_POST[ 'EndHour' ] * 3600 + $_POST[ 'EndMin' ] * 60 + $tzoffset_e2s ;
 		if( $start > $end ) list( $start , $end ) = array( $end , $start ) ;
+        elseif($start == $end) {$start += 60; $end += (23 * 3600) + (59 * 60);}
 		//$end += 86400 ;
 		$set_sql_date = "start='$start', end='$end', allday='$allday', start_date=null, end_date=null" ;
 		$allday_flag = true ;

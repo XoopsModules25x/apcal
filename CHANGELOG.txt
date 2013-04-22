@@ -1,6 +1,10 @@
 Module Name : APCal
-Version Number : 2.1.2
+Version Number : 2.1.3
 Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
+
+Version 2.1.3
+- Fixed   Events which need to be admitted don't create doubles of active events and an error message when clicked..
+- Fixed   All day events set on the first day of a month don't appear on everyday of the previous month.
 
 Version 2.1.2
 - Fixed   When inserting a new event, pictures are saved.
