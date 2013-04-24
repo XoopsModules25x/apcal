@@ -7,12 +7,12 @@ define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="C
 
 // Index
 define('_AM_APCAL_TIMEZONE', 'Timezones');
-define('_AM_MODULEADMIN_CONFIG', 'Configurations');
+define('_AM_APCAL_MODULEADMIN_CONFIG', 'Configurations');
 define('_AM_APCAL_NBWAITINGEVENTS', 'There are %s events waiting for approval.');
 define('_AM_APCAL_NBEVENTS', 'There are %s upcomming events.');
 define('_AM_APCAL_NBCATS', 'There are %s categories.');
-define('_AM_MODULEADMIN_CONFIG_PHP', 'You must have at least php version %s (your current version is %s)');
-define('_AM_MODULEADMIN_CONFIG_XOOPS', 'You must have at least xoops version %s (your current version is %s)');
+define('_AM_APCAL_MODULEADMIN_CONFIG_PHP', 'You must have at least php version %s (your current version is %s)');
+define('_AM_APCAL_MODULEADMIN_CONFIG_XOOPS', 'You must have at least xoops version %s (your current version is %s)');
 define('_AM_PREFS', 'Preferences');
 define('_AM_UPDATE', 'Update');
 define('_AM_BLOCKS', 'Blocks');

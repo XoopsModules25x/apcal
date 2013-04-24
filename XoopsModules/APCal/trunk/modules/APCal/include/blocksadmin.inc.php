@@ -330,7 +330,7 @@ if ( $op == 'edit' ) {
   // edit_block($bid); GIJ imported from blocksadmin.php
 		$myblock = new XoopsBlock($bid);
 
-		$db =& Database::getInstance();
+		$db =& XoopsDatabaseFactory::getDatabaseConnection();
 		$sql = 'SELECT module_id FROM '.$db->prefix('block_module_link').' WHERE block_id='.intval($bid);
 		$result = $db->query($sql);
 		$modules = array();
@@ -354,7 +354,7 @@ if ($op == 'clone') {
 	xoops_cp_header();
 	$myblock = new XoopsBlock($bid);
 
-	$db =& Database::getInstance();
+	$db =& XoopsDatabaseFactory::getDatabaseConnection();
 	$sql = 'SELECT module_id FROM '.$db->prefix('block_module_link').' WHERE block_id='.intval($bid);
 	$result = $db->query($sql);
 	$modules = array();
@@ -430,7 +430,7 @@ if ($op == 'clone_ok') {
 			$tplman->insert($tplclone);
 		}
 	} */
-	$db =& Database::getInstance();
+	$db =& XoopsDatabaseFactory::getDatabaseConnection();
 	$bmodule = (isset($_POST['bmodule']) && is_array($_POST['bmodule'])) ? $_POST['bmodule'] : array(-1) ; // GIJ +
 	foreach( $bmodule as $bmid ) {
 		$sql = 'INSERT INTO '.$db->prefix('block_module_link').' (block_id, module_id) VALUES ('.$newid.', '.$bmid.')';
@@ -498,7 +498,7 @@ if ($op == 'clone_ok') {
 		}
 		$msg = _AM_DBUPDATED;
 		if ($myblock->store() != false) {
-			$db =& Database::getInstance();
+			$db =& XoopsDatabaseFactory::getDatabaseConnection();
 			$sql = sprintf("DELETE FROM %s WHERE block_id = %u", $db->prefix('block_module_link'), $bid);
 			$db->query($sql);
 			foreach ($bmodule as $bmid) {

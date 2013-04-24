@@ -43,7 +43,7 @@ include_once dirname(dirname(__FILE__)).'/include/Text_Diff_Renderer_unified.php
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system' ;
 
 // initials
-$db =& Database::getInstance();
+$db =& XoopsDatabaseFactory::getDatabaseConnection();
 $myts =& MyTextSanitizer::getInstance() ;
 
 // determine language

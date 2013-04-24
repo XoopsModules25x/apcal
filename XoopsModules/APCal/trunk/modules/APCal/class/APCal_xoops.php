@@ -904,7 +904,7 @@ function import_ics_via_fopen( $uri , $force_http = true , $user_uri = '' )
 // returns assigned array for extensible mini calendar block
 function get_minical_ex( $gifaday = 2 , $just1gif = 0 , $plugins = array() )
 {
-	$db =& Database::getInstance() ;
+	$db =& XoopsDatabaseFactory::getDatabaseConnection() ;
 	$myts =& MyTextSanitizer::getInstance() ;
 
 	$tzoffset_s2u = intval( ( $this->user_TZ - $this->server_TZ ) * 3600 ) ;

@@ -48,7 +48,7 @@ if( ! function_exists( 'b_waiting_APCal_base' ) ) {
 
 function b_waiting_APCal_base( $mydirname )
 {
-	$xoopsDB =& Database::getInstance();
+	$xoopsDB =& XoopsDatabaseFactory::getDatabaseConnection();
 	$block = array();
 
 	// get $mydirnumber

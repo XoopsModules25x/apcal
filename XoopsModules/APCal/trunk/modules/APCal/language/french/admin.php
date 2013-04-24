@@ -7,12 +7,12 @@ define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquepromotion.com" title="C
 
 // Index
 define('_AM_APCAL_TIMEZONE', 'D&eacute;calage horaire');
-define('_AM_MODULEADMIN_CONFIG', 'Configurations');
+define('_AM_APCAL_MODULEADMIN_CONFIG', 'Configurations');
 define('_AM_APCAL_NBWAITINGEVENTS', 'Il y a %s &eacute;v&egrave;nements qui doivent &ecirc;tre approuv&eacute;.');
 define('_AM_APCAL_NBEVENTS', 'Il y a %s &eacute;v&egrave;nements &agrave; venir.');
 define('_AM_APCAL_NBCATS', 'Il y a %s cat&eacute;gories.');
-define('_AM_MODULEADMIN_CONFIG_PHP', 'Votre version de PHP doit &ecirc;tre sup&eacute;rieur ou &eacute;gale &agrave; %s (Votre version actuelle est %s)');
-define('_AM_MODULEADMIN_CONFIG_XOOPS', 'Votre version de XOOPS doit &ecirc;tre sup&eacute;rieur ou &eacute;gale &agrave; %s (Votre version actuelle est %s)');
+define('_AM_APCAL_MODULEADMIN_CONFIG_PHP', 'Votre version de PHP doit &ecirc;tre sup&eacute;rieur ou &eacute;gale &agrave; %s (Votre version actuelle est %s)');
+define('_AM_APCAL_MODULEADMIN_CONFIG_XOOPS', 'Votre version de XOOPS doit &ecirc;tre sup&eacute;rieur ou &eacute;gale &agrave; %s (Votre version actuelle est %s)');
 define('_AM_PREFS', 'Preferences');
 define('_AM_UPDATE', 'Mise &agrave; jour');
 define('_AM_BLOCKS', 'Blocs');
