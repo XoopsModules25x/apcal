@@ -41,22 +41,22 @@
         <td colspan="2">
             <fieldset>
                 <legend class="label">
-                    <{$smarty.const._AM_MODULEADMIN_CONFIG}>
+                    <{$smarty.const._AM_APCAL_MODULEADMIN_CONFIG}>
                 </legend>
                 <br/>
     <{if $minphp}>
         <{if $phpversion < $minphp}>
-                <span style="color : red; font-weight : bold;"><img src="<{$imgURL}>/off.png" /><{$smarty.const._AM_MODULEADMIN_CONFIG_PHP|sprintf:$minphp:$phpversion}></span>
+                <span style="color : red; font-weight : bold;"><img src="<{$imgURL}>/off.png" /><{$smarty.const._AM_APCAL_MODULEADMIN_CONFIG_PHP|sprintf:$minphp:$phpversion}></span>
         <{else}>
-                <span style="color : green;"><img src="<{$imgURL}>/on.png" /><{$smarty.const._AM_MODULEADMIN_CONFIG_PHP|sprintf:$minphp:$phpversion}></span>
+                <span style="color : green;"><img src="<{$imgURL}>/on.png" /><{$smarty.const._AM_APCAL_MODULEADMIN_CONFIG_PHP|sprintf:$minphp:$phpversion}></span>
         <{/if}>
                 <br />
     <{/if}>
     <{if $minxoops}>
         <{if $xoopsversion < $minxoops}>
-                <span style="color : red; font-weight : bold;"><img src="<{$imgURL}>/off.png" /><{$smarty.const._AM_MODULEADMIN_CONFIG_XOOPS|sprintf:$minxoops:$xoopsversion}></span>
+                <span style="color : red; font-weight : bold;"><img src="<{$imgURL}>/off.png" /><{$smarty.const._AM_APCAL_MODULEADMIN_CONFIG_XOOPS|sprintf:$minxoops:$xoopsversion}></span>
         <{else}>
-                <span style="color : green;"><img src="<{$imgURL}>/on.png" /><{$smarty.const._AM_MODULEADMIN_CONFIG_XOOPS|sprintf:$minxoops:$xoopsversion}></span>
+                <span style="color : green;"><img src="<{$imgURL}>/on.png" /><{$smarty.const._AM_APCAL_MODULEADMIN_CONFIG_XOOPS|sprintf:$minxoops:$xoopsversion}></span>
         <{/if}>
                 <br />
     <{/if}>

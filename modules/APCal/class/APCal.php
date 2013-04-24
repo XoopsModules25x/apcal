@@ -1441,7 +1441,7 @@ function get_weekly_html($get_target='')
 	// get the result of plugins
 	$plugin_returns = array() ;
 	if( strtolower( get_class( $this ) ) == 'apcal_xoops' ) {
-		$db =& Database::getInstance() ;
+		$db =& XoopsDatabaseFactory::getDatabaseConnection() ;
 		$myts =& MyTextSanitizer::getInstance() ;
 		$now = time() ;
 		$just1gif = 0 ;
@@ -1682,7 +1682,7 @@ function get_daily_html($get_target='')
     // get the result of plugins
 	$plugin_returns = array() ;
 	if( strtolower( get_class( $this ) ) == 'apcal_xoops' ) {
-		$db =& Database::getInstance() ;
+		$db =& XoopsDatabaseFactory::getDatabaseConnection() ;
 		$myts =& MyTextSanitizer::getInstance() ;
 		$now = time() ;
 		$just1gif = 0 ;

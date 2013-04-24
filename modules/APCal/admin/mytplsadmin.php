@@ -39,7 +39,7 @@ include_once XOOPS_ROOT_PATH.'/class/template.php';
 
 // initials
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system' ;
-$db =& Database::getInstance();
+$db =& XoopsDatabaseFactory::getDatabaseConnection();
 $myts =& MyTextSanitizer::getInstance() ;
 
 
