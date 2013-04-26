@@ -128,13 +128,13 @@ $form->addElement($button_tray);
 function check_browser_can_use_spaw() {
 	$browser = $_SERVER['HTTP_USER_AGENT'] ;
 	// check if msie
-	if( eregi( "MSIE[^;]*" , $browser , $msie ) ) {
+	if( preg_match( "/MSIE[^;]*/i" , $browser , $msie ) ) {
 		// get version 
-		if( eregi( "[0-9]+\.[0-9]+" , $msie[0] , $version ) ) {
+		if( preg_match( "/[0-9]+\.[0-9]+/i" , $msie[0] , $version ) ) {
 			// check version
 			if( (float)$version[0] >= 5.5 ) {
 				// finally check if it's not opera impersonating ie
-				if( ! eregi( "opera" , $browser ) ) {
+				if( ! preg_match( "/opera/i" , $browser ) ) {
 					return true ;
 				}
 			}
