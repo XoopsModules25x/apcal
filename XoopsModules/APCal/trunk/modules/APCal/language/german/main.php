@@ -1,14 +1,14 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MB_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MB_APCALLOADED' ) ) {
 
-define( 'APCAL_MB_LOADED' , 1 ) ;
+define( 'APCAL_MB_APCALLOADED' , 1 ) ;
 
 // index.php
 define('_MB_APCAL_ERR_NOPERMTOUPDATE',"Keine Berechtigung vorhanden, um Termine zu ändern");
 define('_APCAL_APURL', 'http://xoops.antiquespromotion.ca');
 define('_APCAL_APURL2', 'http://www.antiquespromotion.ca');
-define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="Calendar for Xoops" target="_blank">APCal</a> by <a href="http://www.antiquespromotion.ca" title="Antiques Promotion Canada" target="_blank">AP</a>');
+define('_AM_APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="Calendar for Xoops" target="_blank">APCal</a> by <a href="http://www.antiquespromotion.ca" title="Antiques Promotion Canada" target="_blank">AP</a>');
 define('_MB_APCAL_ERR_NOPERMTOINSERT',"Keine Berechtigung vorhanden, um Termine hinzuzufügen");
 define('_MB_APCAL_ERR_NOPERMTODELETE',"Keine Berechtigung vorhanden, um Termine zu löschen");
 define('_MB_APCAL_ALT_PRINTTHISEVENT',"Diesen Termin drucken");
@@ -42,7 +42,7 @@ define('_APCAL_CALENDAROF', 'Kalender von');
 define('_APCAL_SHARECALENDARFORM', 'Dieses Formular ausfüllen, wenn Sie den Kalender auf Ihrer Webseite verwenden möchten.');
 define('_APCAL_SHOWALLCAT', 'Alle Kategorien');
 define('_APCAL_GENERATE', 'Erzeugen');
-define('_AP_GENERATEHINT', 'Bei manchen Browsern kann es sein, dass Sie zwei mal auf Erzeugen klicken müssen.');
+define('_APCAL_GENERATEHINT', 'Bei manchen Browsern kann es sein, dass Sie zwei mal auf Erzeugen klicken müssen.');
 define('_APCAL_CATEGORIES', 'Kategorien');
 define('_APCAL_NBEVENTS', 'Anzahl der angezeigten Events');
 define('_APCAL_WIDTH', 'Blockbreite');

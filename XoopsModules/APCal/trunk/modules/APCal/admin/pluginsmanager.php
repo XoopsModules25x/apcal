@@ -149,7 +149,7 @@ if( ! empty( $_POST['update'] ) ) {
 		}
 	}
 
-	$mes = urlencode( sprintf( _AM_PI_UPDATED ) ) ;
+	$mes = urlencode( sprintf( _AM_APCAL_PI_UPDATED ) ) ;
 	$redirect_str4header = strtr( "Location: $cal->connection://{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}?mes=$mes&limit_type=$limit_type&limit_dirname=$limit_dirname&limit_file=$limit_file" , "\r\n\0" , "   " ) ;
 
 	header( $redirect_str4header ) ;
@@ -166,9 +166,9 @@ xoops_cp_header();
 	if( ! empty( $_GET['mes'] ) ) echo "<p><font color='blue'>".htmlspecialchars($_GET['mes'],ENT_QUOTES)."</font></p>" ;
 
 	// mains (monthly, weekly, daily)
-	$type_options = "<option value='monthly'>"._AM_PI_VIEWMONTHLY."</option>\n" ;
-	$type_options .= "<option value='weekly'>"._AM_PI_VIEWWEEKLY."</option>\n" ;
-	$type_options .= "<option value='daily'>"._AM_PI_VIEWDAILY."</option>\n" ;
+	$type_options = "<option value='monthly'>"._AM_APCAL_PI_VIEWMONTHLY."</option>\n" ;
+	$type_options .= "<option value='weekly'>"._AM_APCAL_PI_VIEWWEEKLY."</option>\n" ;
+	$type_options .= "<option value='daily'>"._AM_APCAL_PI_VIEWDAILY."</option>\n" ;
 	// blocks - minicalex (mcx . $bid)
 	foreach( $mcx_blocks as $bid => $title ) {
 		$type_options .= "<option value='mcx{$bid}'>".$myts->htmlSpecialChars($title)."</option>\n" ;
@@ -251,7 +251,7 @@ xoops_cp_header();
 		<select name='limit_type'>".make_selected($type_options,$limit_type)."</select>
 		<select name='limit_dirname'>".make_selected($dirname_options,$limit_dirname)."</select>
 		<select name='limit_file'>".make_selected($file_options,$limit_file)."</select>
-		<input type='submit' value='"._AM_BUTTON_EXTRACT."' />
+		<input type='submit' value='"._AM_APCAL_BUTTON_EXTRACT."' />
 	</form>
 	" ;
 
@@ -265,15 +265,15 @@ xoops_cp_header();
 	".$xoopsGTicket->getTicketHtml( __LINE__ )."
 	<table width='100%' class='outer' cellpadding='4' cellspacing='1'>
 	  <tr valign='middle'>
-	    <th><a href='?order=pi_type' style='color:white;'>"._AM_PI_TH_TYPE."</a></th>
-	    <th><a href='?order=pi_dirname' style='color:white;'>"._AM_PI_TH_DIRNAME."</a></th>
-	    <th><a href='?order=pi_file' style='color:white;'>"._AM_PI_TH_FILE."</a></th>
-	    <th><a href='?order=pi_title' style='color:white;'>"._AM_PI_TH_TITLE."</a></th>
-	    <th><a href='?order=pi_dotgif' style='color:white;'>"._AM_PI_TH_DOTGIF."</a></th>
-	    <th><a href='?order=pi_options' style='color:white;'>"._AM_PI_TH_OPTIONS."</a></th>
+	    <th><a href='?order=pi_type' style='color:white;'>"._AM_APCAL_PI_TH_TYPE."</a></th>
+	    <th><a href='?order=pi_dirname' style='color:white;'>"._AM_APCAL_PI_TH_DIRNAME."</a></th>
+	    <th><a href='?order=pi_file' style='color:white;'>"._AM_APCAL_PI_TH_FILE."</a></th>
+	    <th><a href='?order=pi_title' style='color:white;'>"._AM_APCAL_PI_TH_TITLE."</a></th>
+	    <th><a href='?order=pi_dotgif' style='color:white;'>"._AM_APCAL_PI_TH_DOTGIF."</a></th>
+	    <th><a href='?order=pi_options' style='color:white;'>"._AM_APCAL_PI_TH_OPTIONS."</a></th>
 	    <th>&lt;-&gt;</th>
-	    <th>"._AM_PI_ENABLED."</th>
-	    <th>"._AM_PI_DELETE."</th>
+	    <th>"._AM_APCAL_PI_ENABLED."</th>
+	    <th>"._AM_APCAL_PI_DELETE."</th>
 	  </tr>
 	" ;
 
@@ -285,7 +285,7 @@ xoops_cp_header();
 		$pi_id = intval( $plugin->pi_id ) ;
 		$enable_checked = $plugin->pi_enabled ? "checked='checked'" : "" ;
 		$pi_title = $myts->makeTBoxData4Edit( $plugin->pi_title ) ;
-		$del_confirm = 'confirm("' . sprintf( _AM_FMT_CATDELCONFIRM , $pi_title ) . '")' ;
+		$del_confirm = 'confirm("' . sprintf( _AM_APCAL_FMT_CATDELCONFIRM , $pi_title ) . '")' ;
 		$pi_options4disp = htmlspecialchars( $plugin->pi_options , ENT_QUOTES ) ;
 		echo "
 	  <tr>
@@ -360,7 +360,7 @@ xoops_cp_header();
 	      <input type='text' name='pi_weight[0]' value='0' size='2' style='text-align:right;' />
 	    </td>
 	    <td class='$oddeven' colspan='2' style='background-color:#FFCCCC;'>
-	      "._AM_PI_NEW."
+	      "._AM_APCAL_PI_NEW."
 	    </td>
 	  </tr>
 		\n" ;
@@ -368,10 +368,10 @@ xoops_cp_header();
 	// テーブルフッタ部
 	echo "
 	  <tr>
-	    <td colspan='9' align='right' class='head'><input type='submit' name='update' value='"._AM_BTN_UPDATE."' /></td>
+	    <td colspan='9' align='right' class='head'><input type='submit' name='update' value='"._AM_APCAL_BTN_UPDATE."' /></td>
 	  </tr>
 	  <tr>
-	    <td colspan='9' align='right' valign='bottom' height='50'>".APCAL_COPYRIGHT."</td>
+	    <td colspan='9' align='right' valign='bottom' height='50'>"._AM_APCAL_COPYRIGHT."</td>
 	  </tr>
 	</table>
 	</form>

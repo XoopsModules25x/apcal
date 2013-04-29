@@ -1,12 +1,12 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MI_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_MI_APCAL_APCALLOADED' ) ) {
 
 
 // Appended by Xoops Language Checker -GIJOE- in 2006-02-15 05:31:20
 define('_MI_APCAL_ADMENU_MYTPLSADMIN','Templates');
 
-define( 'APCAL_MI_LOADED' , 1 ) ;
+define( '_MI_APCAL_APCALLOADED' , 1 ) ;
 
 // Module Info
 
@@ -43,60 +43,60 @@ define("_MI_APCAL_SM_SUBMIT","Добавить");
 //define("_MI_APCAL_ADMENU1","");
 
 // Title of config items
-define("_MI_USERS_AUTHORITY", "Права пользователя");
-define("_MI_GUESTS_AUTHORITY", "Права гостя");
-define("_MI_DEFAULT_VIEW", "Вид по умолчанию в центре");
-define("_MI_MINICAL_TARGET", "Вид по умолчанию по ссылке из МиниКалендаря");
-define("_MI_COMING_NUMROWS", "Количество событий в блоке ближайших событий");
-define("_MI_SKINFOLDER", "Скин (имя директории в images)");
+define("_MI_APCALUSERS_AUTHORITY", "Права пользователя");
+define("_MI_APCALGUESTS_AUTHORITY", "Права гостя");
+define("_MI_APCALDEFAULT_VIEW", "Вид по умолчанию в центре");
+define("_MI_APCALMINICAL_TARGET", "Вид по умолчанию по ссылке из МиниКалендаря");
+define("_MI_APCALCOMING_NUMROWS", "Количество событий в блоке ближайших событий");
+define("_MI_APCALSKINFOLDER", "Скин (имя директории в images)");
 define("_MI_APCAL_LOCALE", "Локаль (проверьте файлы в locales/*.php)");
-define("_MI_SUNDAYCOLOR", "Цвет воскресенья");
-define("_MI_WEEKDAYCOLOR", "Цвет дня недели");
-define("_MI_SATURDAYCOLOR", "Цвет субботы");
-define("_MI_HOLIDAYCOLOR", "Цвет праздника");
-define("_MI_TARGETDAYCOLOR", "Цвет выбранного дня");
-define("_MI_SUNDAYBGCOLOR", "Фон воскресенья");
-define("_MI_WEEKDAYBGCOLOR", "Фон дня недели");
-define("_MI_SATURDAYBGCOLOR", "Фон субботы");
-define("_MI_HOLIDAYBGCOLOR", "Фон праздника");
-define("_MI_TARGETDAYBGCOLOR", "Фон выбранного дня");
-define("_MI_CALHEADCOLOR", "Цвет заголовка календаря");
-define("_MI_CALHEADBGCOLOR", "Фон заголовка календаря");
-define("_MI_CALFRAMECSS", "Стиль рамки календаря");
-define("_MI_CANOUTPUTICS", "Экспорт в ics-файлы");
-define("_MI_MAXRRULEEXTRACT", "Максимальное кол-во событий, создаваемых по правилу повтора");
-define("_MI_WEEKSTARTFROM", "День начала недели");
-define("_MI_WEEKNUMBERING", "Правило нумерации недель");
-define("_MI_DAYSTARTFROM", "Граница для разделения дней");
-define("_MI_TIMEZONE_USING", "Часовой пояс сервера");
-define("_MI_USE24HOUR", "24 часовая система (Нет - 12 часовая система)");
-define("_MI_NAMEORUNAME" , "Отображать имя" ) ;
-define("_MI_DESCNAMEORUNAME" , "Выберите, какое имя отображать" ) ;
+define("_MI_APCALSUNDAYCOLOR", "Цвет воскресенья");
+define("_MI_APCALWEEKDAYCOLOR", "Цвет дня недели");
+define("_MI_APCALSATURDAYCOLOR", "Цвет субботы");
+define("_MI_APCALHOLIDAYCOLOR", "Цвет праздника");
+define("_MI_APCALTARGETDAYCOLOR", "Цвет выбранного дня");
+define("_MI_APCALSUNDAYBGCOLOR", "Фон воскресенья");
+define("_MI_APCALWEEKDAYBGCOLOR", "Фон дня недели");
+define("_MI_APCALSATURDAYBGCOLOR", "Фон субботы");
+define("_MI_APCALHOLIDAYBGCOLOR", "Фон праздника");
+define("_MI_APCALTARGETDAYBGCOLOR", "Фон выбранного дня");
+define("_MI_APCALCALHEADCOLOR", "Цвет заголовка календаря");
+define("_MI_APCALCALHEADBGCOLOR", "Фон заголовка календаря");
+define("_MI_APCALCALFRAMECSS", "Стиль рамки календаря");
+define("_MI_APCALCANOUTPUTICS", "Экспорт в ics-файлы");
+define("_MI_APCALMAXRRULEEXTRACT", "Максимальное кол-во событий, создаваемых по правилу повтора");
+define("_MI_APCALWEEKSTARTFROM", "День начала недели");
+define("_MI_APCALWEEKNUMBERING", "Правило нумерации недель");
+define("_MI_APCALDAYSTARTFROM", "Граница для разделения дней");
+define("_MI_APCALTIMEZONE_USING", "Часовой пояс сервера");
+define("_MI_APCALUSE24HOUR", "24 часовая система (Нет - 12 часовая система)");
+define("_MI_APCALNAMEORUNAME" , "Отображать имя" ) ;
+define("_MI_APCALDESCNAMEORUNAME" , "Выберите, какое имя отображать" ) ;
 
 // Description of each config items
-define("_MI_EDITBYGUESTDSC", "Разрешить создавать события гостям");
+define("_MI_APCALEDITBYGUESTDSC", "Разрешить создавать события гостям");
 
 // Options of each config items
-define("_MI_OPT_AUTH_NONE", "Не может создавать события");
-define("_MI_OPT_AUTH_WAIT", "Может создавать события, требуется подтверждение");
-define("_MI_OPT_AUTH_POST", "Может создавать события, подтверждается автоматически");
-define("_MI_OPT_AUTH_BYGROUP", "Расписано в правах для групп");
-define("_MI_OPT_MINI_PHPSELF", "Текущая страница");
-define("_MI_OPT_MINI_MONTHLY", "Календарь по месяцам");
-define("_MI_OPT_MINI_WEEKLY", "Календарь по неделям");
-define("_MI_OPT_MINI_DAILY", "Календарь по дням");
-define("_MI_OPT_MINI_LIST", "Список событий");
-define("_MI_OPT_CANOUTPUTICS", "Да (можно экспортировать)");
-define("_MI_OPT_CANNOTOUTPUTICS", "Нет (нельзя экспортировать)");
-define("_MI_OPT_STARTFROMSUN", "Воскресенье");
-define("_MI_OPT_STARTFROMMON", "Понедельник");
-define("_MI_OPT_WEEKNOEACHMONTH", "Недели месяца");
-define("_MI_OPT_WEEKNOWHOLEYEAR", "Недели года");
-define("_MI_OPT_USENAME" , "Настоящее имя" ) ;
-define("_MI_OPT_USEUNAME" , "Имя пользователя" ) ;
-define("_MI_OPT_TZ_USEXOOPS" , "Из конфигурации XOOPS" ) ;
-define("_MI_OPT_TZ_USEWINTER" , "Зимнее время, сообщённое сервером (рекомендуется)" ) ;
-define("_MI_OPT_TZ_USESUMMER" , "Летнее время, сообщённое сервером" ) ;
+define("_MI_APCALOPT_AUTH_NONE", "Не может создавать события");
+define("_MI_APCALOPT_AUTH_WAIT", "Может создавать события, требуется подтверждение");
+define("_MI_APCALOPT_AUTH_POST", "Может создавать события, подтверждается автоматически");
+define("_MI_APCALOPT_AUTH_BYGROUP", "Расписано в правах для групп");
+define("_MI_APCALOPT_MINI_PHPSELF", "Текущая страница");
+define("_MI_APCALOPT_MINI_MONTHLY", "Календарь по месяцам");
+define("_MI_APCALOPT_MINI_WEEKLY", "Календарь по неделям");
+define("_MI_APCALOPT_MINI_DAILY", "Календарь по дням");
+define("_MI_APCALOPT_MINI_LIST", "Список событий");
+define("_MI_APCALOPT_CANOUTPUTICS", "Да (можно экспортировать)");
+define("_MI_APCALOPT_CANNOTOUTPUTICS", "Нет (нельзя экспортировать)");
+define("_MI_APCALOPT_STARTFROMSUN", "Воскресенье");
+define("_MI_APCALOPT_STARTFROMMON", "Понедельник");
+define("_MI_APCALOPT_WEEKNOEACHMONTH", "Недели месяца");
+define("_MI_APCALOPT_WEEKNOWHOLEYEAR", "Недели года");
+define("_MI_APCALOPT_USENAME" , "Настоящее имя" ) ;
+define("_MI_APCALOPT_USEUNAME" , "Имя пользователя" ) ;
+define("_MI_APCALOPT_TZ_USEXOOPS" , "Из конфигурации XOOPS" ) ;
+define("_MI_APCALOPT_TZ_USEWINTER" , "Зимнее время, сообщённое сервером (рекомендуется)" ) ;
+define("_MI_APCALOPT_TZ_USESUMMER" , "Летнее время, сообщённое сервером" ) ;
 
 // Admin Menus
 define("_MI_APCAL_ADMENU0","Подтверждение событий");

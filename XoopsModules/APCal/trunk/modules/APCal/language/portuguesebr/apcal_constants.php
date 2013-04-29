@@ -1,6 +1,6 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_CNST_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_APCAL_CNST_LOADED' ) ) {
 
 
 
@@ -16,7 +16,7 @@ define('_APCAL_FMT_DHI','%1$s %2$s:%3$s');
 define('_APCAL_FMT_HI','%1$s:%2$s');
 define('_APCAL_TH_TIMEZONE','Time Zone');
 
-define( 'APCAL_CNST_LOADED' , 1 ) ;
+define( '_APCAL_CNST_LOADED' , 1 ) ;
  //* Brazilian Portuguese Translation by Marcelo Yuji Himoro <www.yuji.eu.org> *//
 
 // format for date()  see http://jp.php.net/date
@@ -45,58 +45,58 @@ define('_APCAL_ICON_WEEKLY','Mostrar semanalmente') ;
 define('_APCAL_ICON_MONTHLY','Mostrar mensalmente') ;
 define('_APCAL_ICON_YEARLY','Mostrar anualmente') ;
 
-define('_APCAL_MB_SHOWALLCAT','Mostrar todas as categorias') ;
+define('_APCAL_MB_APCALSHOWALLCAT','Mostrar todas as categorias') ;
 
-define('_APCAL_MB_LINKTODAY','[Hoje]') ;
-define('_APCAL_MB_NOSUBJECT','(Sem assunto)') ;
+define('_APCAL_MB_APCALLINKTODAY','[Hoje]') ;
+define('_APCAL_MB_APCALNOSUBJECT','(Sem assunto)') ;
 
-define('_APCAL_MB_PREV_DATE','Ontem') ;
-define('_APCAL_MB_NEXT_DATE','Amanhã') ;
-define('_APCAL_MB_PREV_WEEK','Semana anterior') ;
-define('_APCAL_MB_NEXT_WEEK','Semana seguinte') ;
-define('_APCAL_MB_PREV_MONTH','MóÔ anterior') ;
-define('_APCAL_MB_NEXT_MONTH','MóÔ seguinte') ;
-define('_APCAL_MB_PREV_YEAR','Ano anterior') ;
-define('_APCAL_MB_NEXT_YEAR','Ano seguinte') ;
+define('_APCAL_MB_APCALPREV_DATE','Ontem') ;
+define('_APCAL_MB_APCALNEXT_DATE','Amanhã') ;
+define('_APCAL_MB_APCALPREV_WEEK','Semana anterior') ;
+define('_APCAL_MB_APCALNEXT_WEEK','Semana seguinte') ;
+define('_APCAL_MB_APCALPREV_MONTH','MóÔ anterior') ;
+define('_APCAL_MB_APCALNEXT_MONTH','MóÔ seguinte') ;
+define('_APCAL_MB_APCALPREV_YEAR','Ano anterior') ;
+define('_APCAL_MB_APCALNEXT_YEAR','Ano seguinte') ;
 
-define('_APCAL_MB_NOEVENT','NåÐ há eventos') ;
-define('_APCAL_MB_ADDEVENT','Adicionar um evento') ;
-define('_APCAL_MB_CONTINUING','(Continua)') ;
-define('_APCAL_MB_RESTEVENT_PRE','mais') ;
-define('_APCAL_MB_RESTEVENT_SUF','item(ns)') ;
-define('_APCAL_MB_TIMESEPARATOR','~') ;
+define('_APCAL_MB_APCALNOEVENT','NåÐ há eventos') ;
+define('_APCAL_MB_APCALADDEVENT','Adicionar um evento') ;
+define('_APCAL_MB_APCALCONTINUING','(Continua)') ;
+define('_APCAL_MB_APCALRESTEVENT_PRE','mais') ;
+define('_APCAL_MB_APCALRESTEVENT_SUF','item(ns)') ;
+define('_APCAL_MB_APCALTIMESEPARATOR','~') ;
 
-define('_APCAL_MB_ALLDAY_EVENT','Evento para o dia inteiro') ;
-define('_APCAL_MB_LONG_EVENT','Mostrar como barra') ;
-define('_APCAL_MB_LONG_SPECIALDAY','Datas importantes e feriados') ;
+define('_APCAL_MB_APCALALLDAY_EVENT','Evento para o dia inteiro') ;
+define('_APCAL_MB_APCALLONG_EVENT','Mostrar como barra') ;
+define('_APCAL_MB_APCALLONG_SPECIALDAY','Datas importantes e feriados') ;
 
-define('_APCAL_MB_PUBLIC','P“Ãlico') ;
-define('_APCAL_MB_PRIVATE','Particular') ;
-define('_APCAL_MB_PRIVATETARGET',' entre %s') ;
+define('_APCAL_MB_APCALPUBLIC','P“Ãlico') ;
+define('_APCAL_MB_APCALPRIVATE','Particular') ;
+define('_APCAL_MB_APCALPRIVATETARGET',' entre %s') ;
 
-define('_APCAL_MB_LINK_TO_RRULE1ST','Ir para o 1Žº evento ') ;
-define('_APCAL_MB_RRULE1ST','1Žº evento') ;
+define('_APCAL_MB_APCALLINK_TO_RRULE1ST','Ir para o 1Žº evento ') ;
+define('_APCAL_MB_APCALRRULE1ST','1Žº evento') ;
 
-define('_APCAL_MB_EVENT_NOTREGISTER','NåÐ registrado') ;
-define('_APCAL_MB_EVENT_ADMITTED','Aprovado') ;
-define('_APCAL_MB_EVENT_NEEDADMIT','Pendente de aprovaîåo') ;
+define('_APCAL_MB_APCALEVENT_NOTREGISTER','NåÐ registrado') ;
+define('_APCAL_MB_APCALEVENT_ADMITTED','Aprovado') ;
+define('_APCAL_MB_APCALEVENT_NEEDADMIT','Pendente de aprovaîåo') ;
 
-define('_APCAL_MB_TITLE_EVENTINFO','Agenda') ;
-define('_APCAL_MB_SUBTITLE_EVENTDETAIL','Mais detalhes') ;
-define('_APCAL_MB_SUBTITLE_EVENTEDIT','Editar') ;
+define('_APCAL_MB_APCALTITLE_EVENTINFO','Agenda') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTDETAIL','Mais detalhes') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTEDIT','Editar') ;
 
-define('_APCAL_MB_HOUR_SUF',':') ;
-define('_APCAL_MB_MINUTE_SUF','') ;
+define('_APCAL_MB_APCALHOUR_SUF',':') ;
+define('_APCAL_MB_APCALMINUTE_SUF','') ;
 
-define('_APCAL_MB_ORDER_ASC','Crescente') ;
-define('_APCAL_MB_ORDER_DESC','Decrescente') ;
-define('_APCAL_MB_SORTBY','Ordenado por:') ;
-define('_APCAL_MB_CURSORTEDBY','Atualmente ordenados por:') ;
+define('_APCAL_MB_APCALORDER_ASC','Crescente') ;
+define('_APCAL_MB_APCALORDER_DESC','Decrescente') ;
+define('_APCAL_MB_APCALSORTBY','Ordenado por:') ;
+define('_APCAL_MB_APCALCURSORTEDBY','Atualmente ordenados por:') ;
 
-define("_APCAL_MB_LABEL_CHECKEDITEMS","");
-define("_APCAL_MB_LABEL_OUTPUTICS","");
+define("_APCAL_MB_APCALLABEL_CHECKEDITEMS","");
+define("_APCAL_MB_APCALLABEL_OUTPUTICS","");
 
-define("_APCAL_MB_ICALSELECTPLATFORM","Escolha um formato para exportaîåo");
+define("_APCAL_MB_APCALICALSELECTPLATFORM","Escolha um formato para exportaîåo");
 
 define('_APCAL_TH_SUMMARY','TùÕulo') ;
 define('_APCAL_TH_STARTDATETIME','Data e hora de inùÄio') ;
@@ -120,10 +120,10 @@ define('_APCAL_OPT_PRIVATEMYSELF','Apenas eu') ;
 define('_APCAL_OPT_PRIVATEGROUP','Grupo %s') ;
 define('_APCAL_OPT_PRIVATEINVALID','(grupo inváÍido)') ;
 
-define('_APCAL_MB_OP_AFTER','Depois') ;
-define('_APCAL_MB_OP_BEFORE','Antes') ;
-define('_APCAL_MB_OP_ON','Em') ;
-define('_APCAL_MB_OP_ALL','Todos') ;
+define('_APCAL_MB_APCALOP_AFTER','Depois') ;
+define('_APCAL_MB_APCALOP_BEFORE','Antes') ;
+define('_APCAL_MB_APCALOP_ON','Em') ;
+define('_APCAL_MB_APCALOP_ALL','Todos') ;
 
 define('_APCAL_CNFM_SAVEAS_YN','Você deseja realmente salvá-lo como outro registro?') ;
 define('_APCAL_CNFM_DELETE_YN','Você deseja realmente apagar este registro?') ;

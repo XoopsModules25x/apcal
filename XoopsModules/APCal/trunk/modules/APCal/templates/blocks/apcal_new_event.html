@@ -33,7 +33,7 @@
  *}>
 
 <{if $block.num_rows == 0}>
-  <{$block.lang_APCAL_MB_NOEVENT}>
+  <{$block.lang_APCAL_MB_APCALNOEVENT}>
 <{/if}>
 
   <dl>
@@ -50,7 +50,7 @@
   <{if $block.num_rows_rest > 0}>
     <table border='0' cellspacing='0' cellpadding='0' width='100%'>
       <tr>
-        <td align='right'><small><{$block.lang_APCAL_MB_RESTEVENT_PRE}> <{$block.num_rows_rest}> <{$block.lang_APCAL_MB_RESTEVENT_SUF}></small></td>
+        <td align='right'><small><{$block.lang_APCAL_MB_APCALRESTEVENT_PRE}> <{$block.num_rows_rest}> <{$block.lang_APCAL_MB_APCALRESTEVENT_SUF}></small></td>
       </tr>
     </table>
   <{/if}>
@@ -58,7 +58,7 @@
   <{if $block.insertable <> false}>
     <dl>
       <dt>
-        &nbsp; <font size='2'><a href='<{$block.get_target}>?smode=Daily&amp;action=Edit&amp;caldate=<{$block.caldate}>'><img src='<{$block.images_url}>/addevent.gif' border='0' width='14' height='12' /><{$block.lang_APCAL_MB_ADDEVENT}></a></font>
+        &nbsp; <font size='2'><a href='<{$block.get_target}>?smode=Daily&amp;action=Edit&amp;caldate=<{$block.caldate}>'><img src='<{$block.images_url}>/addevent.gif' border='0' width='14' height='12' /><{$block.lang_APCAL_MB_APCALADDEVENT}></a></font>
       </dt>
     </dl>
   <{/if}>

@@ -108,7 +108,7 @@ if( ! empty( $_POST['clone_tplset_do'] ) && ! empty( $_POST['clone_tplset_from']
 	// insert tplset table
 	$db->query( "INSERT INTO ".$db->prefix("tplset")." SET tplset_name='".addslashes($tplset_to)."', tplset_desc='Created by tplsadmin', tplset_created=UNIX_TIMESTAMP()" ) ;
 	copy_templates_db2db( $tplset_from , $tplset_to , "tpl_module='$target_dirname4sql'" ) ;
-	redirect_header( 'mytplsadmin.php?dirname='.$target_dirname , 1 , _MD_AM_DBUPDATED ) ;
+	redirect_header( 'mytplsadmin.php?dirname='.$target_dirname , 1 , _MD_APCALAM_APCALDBUPDATED ) ;
 	exit ;
 }
 
@@ -128,7 +128,7 @@ if( is_array( @$_POST['copy_do'] ) ) foreach( $_POST['copy_do'] as $tplset_from_
 		$tplfile = $myts->stripSlashesGPC( $tplfile_tmp ) ;
 		copy_templates_db2db( $tplset_from , $tplset_to , "tpl_file='".addslashes($tplfile)."'" ) ;
 	}
-	redirect_header( 'mytplsadmin.php?dirname='.$target_dirname , 1 , _MD_AM_DBUPDATED ) ;
+	redirect_header( 'mytplsadmin.php?dirname='.$target_dirname , 1 , _MD_APCALAM_APCALDBUPDATED ) ;
 	exit ;
 }
 
@@ -147,7 +147,7 @@ if( ! empty( $_POST['copyf2db_do'] ) ) {
 		$tplfile = $myts->stripSlashesGPC( $tplfile_tmp ) ;
 		copy_templates_f2db( $tplset_to , "tpl_file='".addslashes($tplfile)."'" ) ;
 	}
-	redirect_header( 'mytplsadmin.php?dirname='.$target_dirname , 1 , _MD_AM_DBUPDATED ) ;
+	redirect_header( 'mytplsadmin.php?dirname='.$target_dirname , 1 , _MD_APCALAM_APCALDBUPDATED ) ;
 	exit ;
 }
 
@@ -177,7 +177,7 @@ if( is_array( @$_POST['del_do'] ) ) foreach( $_POST['del_do'] as $tplset_from_tm
 		$tpl->clear_cache('db:'.$tplfile);
 		$tpl->clear_compiled_tpl('db:'.$tplfile);
 	}
-	redirect_header( 'mytplsadmin.php?dirname='.$target_dirname , 1 , _MD_AM_DBUPDATED ) ;
+	redirect_header( 'mytplsadmin.php?dirname='.$target_dirname , 1 , _MD_APCALAM_APCALDBUPDATED ) ;
 	exit ;
 }
 
@@ -207,7 +207,7 @@ $frs = $db->query($sql);
 
 xoops_cp_header() ;
 
-echo "<h3 style='text-align:left;'>"._MD_AM_TPLSETS." : $target_mname</h3>\n" ;
+echo "<h3 style='text-align:left;'>"._MD_APCALAM_APCALTPLSETS." : $target_mname</h3>\n" ;
 
 
 // beggining of table & form
@@ -216,7 +216,7 @@ echo "
 	".$xoopsGTicket->getTicketHtml( __LINE__ )."
 	<table class='outer'>
 		<tr>
-			<th>"._MD_FILENAME."</th>
+			<th>"._MD_APCALFILENAME."</th>
 			<th>type</th>
 			<th><input type='checkbox' onclick=\"with(document.MainForm){for(i=0;i<length;i++){if(elements[i].type=='checkbox'&&elements[i].name.indexOf('basecheck')>=0){elements[i].checked=this.checked;}}}\" />file</th>
 			$tplsets_th4disp
@@ -283,7 +283,7 @@ echo "
 	<tr>
 		<td class='head'>
 			"._CLONE.": <br />
-			<select name='clone_tplset_from'>$tplset_options</select>-&gt;<input type='text' name='clone_tplset_to' size='8' /><input type='submit' name='clone_tplset_do' value='"._MD_GENERATE."' />
+			<select name='clone_tplset_from'>$tplset_options</select>-&gt;<input type='text' name='clone_tplset_to' size='8' /><input type='submit' name='clone_tplset_do' value='"._MD_APCALGENERATE."' />
 		</td>
 		<td class='head'></td>
 		<td class='head'>

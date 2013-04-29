@@ -55,22 +55,22 @@ if( ! empty( $_POST['submit'] ) ) {
 	}
 
 	include( "mygroupperm.php" ) ;
-	redirect_header( XOOPS_URL."/modules/$mydirname/admin/groupperm.php" , 1 , _MD_AM_DBUPDATED );
+	redirect_header( XOOPS_URL."/modules/$mydirname/admin/groupperm.php" , 1 , _MD_APCALAM_APCALDBUPDATED );
 	exit ;
 }
 
 
 $item_list = array(
-	'1' => _AM_GPERM_G_INSERTABLE ,
-	'2' => _AM_GPERM_G_SUPERINSERT ,
-	'4' => _AM_GPERM_G_EDITABLE ,
-	'8' => _AM_GPERM_G_SUPEREDIT ,
-//	'16' => _AM_GPERM_G_DELETABLE ,
-	'32' => _AM_GPERM_G_SUPERDELETE
-//	'64' => _AM_GPERM_G_TOUCHOTHERS
+	'1' => _AM_APCAL_GPERM_G_INSERTABLE ,
+	'2' => _AM_APCAL_GPERM_G_SUPERINSERT ,
+	'4' => _AM_APCAL_GPERM_G_EDITABLE ,
+	'8' => _AM_APCAL_GPERM_G_SUPEREDIT ,
+//	'16' => _AM_APCAL_GPERM_G_DELETABLE ,
+	'32' => _AM_APCAL_GPERM_G_SUPERDELETE
+//	'64' => _AM_APCAL_GPERM_G_TOUCHOTHERS
 	) ;
 
-$form = new MyXoopsGroupPermForm( _AM_GROUPPERM , $xoopsModule->mid() , 'apcal_global' , _AM_GROUPPERMDESC ) ;
+$form = new MyXoopsGroupPermForm( _AM_APCAL_GROUPPERM , $xoopsModule->mid() , 'apcal_global' , _AM_APCAL_GROUPPERMDESC ) ;
 foreach( $item_list as $item_id => $item_name) {
 	$form->addItem( $item_id , $item_name ) ;
 }

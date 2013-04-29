@@ -1,6 +1,6 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_CNST_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_APCAL_CNST_LOADED' ) ) {
 
 
 
@@ -16,7 +16,7 @@ define('_APCAL_FMT_DHI','%1$s %2$s:%3$s');
 define('_APCAL_FMT_HI','%1$s:%2$s');
 define('_APCAL_TH_TIMEZONE','Time Zone');
 
-define( 'APCAL_CNST_LOADED' , 1 ) ;
+define( '_APCAL_CNST_LOADED' , 1 ) ;
 
 
 // format for date()  see http://jp.php.net/date
@@ -38,46 +38,46 @@ define('_APCAL_ICON_WEEKLY','Weekvoorstelling') ;
 define('_APCAL_ICON_MONTHLY','Maandvoorstelling') ;
 define('_APCAL_ICON_YEARLY','Jaarvoorstelling') ;
 
-define('_APCAL_MB_LINKTODAY','Vandaag') ;
-define('_APCAL_MB_NOSUBJECT','(geen onderwerp)') ;
+define('_APCAL_MB_APCALLINKTODAY','Vandaag') ;
+define('_APCAL_MB_APCALNOSUBJECT','(geen onderwerp)') ;
 
-define('_APCAL_MB_PREV_DATE','Gisteren') ;
-define('_APCAL_MB_NEXT_DATE','Morgen') ;
-define('_APCAL_MB_PREV_WEEK','Vorige week') ;
-define('_APCAL_MB_NEXT_WEEK','Volgende week') ;
-define('_APCAL_MB_PREV_MONTH','Vorige maand') ;
-define('_APCAL_MB_NEXT_MONTH','Volgende maand') ;
-define('_APCAL_MB_PREV_YEAR','Vorige jaar') ;
-define('_APCAL_MB_NEXT_YEAR','Volgend jaar') ;
+define('_APCAL_MB_APCALPREV_DATE','Gisteren') ;
+define('_APCAL_MB_APCALNEXT_DATE','Morgen') ;
+define('_APCAL_MB_APCALPREV_WEEK','Vorige week') ;
+define('_APCAL_MB_APCALNEXT_WEEK','Volgende week') ;
+define('_APCAL_MB_APCALPREV_MONTH','Vorige maand') ;
+define('_APCAL_MB_APCALNEXT_MONTH','Volgende maand') ;
+define('_APCAL_MB_APCALPREV_YEAR','Vorige jaar') ;
+define('_APCAL_MB_APCALNEXT_YEAR','Volgend jaar') ;
 
-define('_APCAL_MB_NOEVENT','Geen activiteiten') ;
-define('_APCAL_MB_ADDEVENT','Activiteiten toevoegen') ;
-define('_APCAL_MB_CONTINUING','(lopende)') ;
-define('_APCAL_MB_RESTEVENT_PRE','meer') ;
-define('_APCAL_MB_RESTEVENT_SUF','info') ;
-define('_APCAL_MB_TIMESEPARATOR','--') ;
+define('_APCAL_MB_APCALNOEVENT','Geen activiteiten') ;
+define('_APCAL_MB_APCALADDEVENT','Activiteiten toevoegen') ;
+define('_APCAL_MB_APCALCONTINUING','(lopende)') ;
+define('_APCAL_MB_APCALRESTEVENT_PRE','meer') ;
+define('_APCAL_MB_APCALRESTEVENT_SUF','info') ;
+define('_APCAL_MB_APCALTIMESEPARATOR','--') ;
 
-define('_APCAL_MB_ALLDAY_EVENT','Volledige dag') ;
-define('_APCAL_MB_LONG_EVENT','Als balk voorstellen') ;
-define('_APCAL_MB_LONG_SPECIALDAY','Verjaardag, etc.') ;
+define('_APCAL_MB_APCALALLDAY_EVENT','Volledige dag') ;
+define('_APCAL_MB_APCALLONG_EVENT','Als balk voorstellen') ;
+define('_APCAL_MB_APCALLONG_SPECIALDAY','Verjaardag, etc.') ;
 
-define('_APCAL_MB_PUBLIC','publiek') ;
-define('_APCAL_MB_PRIVATE','privé') ;
-define('_APCAL_MB_PRIVATETARGET',' %s') ;
+define('_APCAL_MB_APCALPUBLIC','publiek') ;
+define('_APCAL_MB_APCALPRIVATE','privé') ;
+define('_APCAL_MB_APCALPRIVATETARGET',' %s') ;
 
-define('_APCAL_MB_LINK_TO_RRULE1ST','Naar 1ste activiteit springen') ;
-define('_APCAL_MB_RRULE1ST','Dat is de 1ste activiteit') ;
+define('_APCAL_MB_APCALLINK_TO_RRULE1ST','Naar 1ste activiteit springen') ;
+define('_APCAL_MB_APCALRRULE1ST','Dat is de 1ste activiteit') ;
 
-define('_APCAL_MB_EVENT_NOTREGISTER','niet geregistreerd') ;
-define('_APCAL_MB_EVENT_ADMITTED','goedgekeurd') ;
-define('_APCAL_MB_EVENT_NEEDADMIT','wacht op goedkeuring') ;
+define('_APCAL_MB_APCALEVENT_NOTREGISTER','niet geregistreerd') ;
+define('_APCAL_MB_APCALEVENT_ADMITTED','goedgekeurd') ;
+define('_APCAL_MB_APCALEVENT_NEEDADMIT','wacht op goedkeuring') ;
 
-define('_APCAL_MB_TITLE_EVENTINFO','Activiteitsplanner') ;
-define('_APCAL_MB_SUBTITLE_EVENTDETAIL','Detailweergave') ;
-define('_APCAL_MB_SUBTITLE_EVENTEDIT','Editeerweergave') ;
+define('_APCAL_MB_APCALTITLE_EVENTINFO','Activiteitsplanner') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTDETAIL','Detailweergave') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTEDIT','Editeerweergave') ;
 
-define('_APCAL_MB_HOUR_SUF',':') ;
-define('_APCAL_MB_MINUTE_SUF','') ;
+define('_APCAL_MB_APCALHOUR_SUF',':') ;
+define('_APCAL_MB_APCALMINUTE_SUF','') ;
 
 define('_APCAL_TH_SUMMARY','Titel') ;
 define('_APCAL_TH_STARTDATETIME','Begin') ;
@@ -161,24 +161,24 @@ define('_APCAL_STRFFMT_TIME','%H:%M');
 define('_APCAL_FMT_YW','WEEK%2$s %1$s');
 define('_APCAL_FMT_WEEKNO','WEEK %s');
 define('_APCAL_ICON_LIST','List View');
-define('_APCAL_MB_SHOWALLCAT','All Categories');
-define('_APCAL_MB_ORDER_ASC','ascending');
-define('_APCAL_MB_ORDER_DESC','descending');
-define('_APCAL_MB_SORTBY','Sort by:');
-define('_APCAL_MB_CURSORTEDBY','Events currently sorted by:');
+define('_APCAL_MB_APCALSHOWALLCAT','All Categories');
+define('_APCAL_MB_APCALORDER_ASC','ascending');
+define('_APCAL_MB_APCALORDER_DESC','descending');
+define('_APCAL_MB_APCALSORTBY','Sort by:');
+define('_APCAL_MB_APCALCURSORTEDBY','Events currently sorted by:');
 define('_APCAL_TH_CATEGORIES','Categories');
 define('_APCAL_TH_LASTMODIFIED','Last Modified');
 define('_APCAL_BTN_PRINT','Print');
 
 // Appended by Xoops Language Checker -GIJOE- in 2004-01-17 18:09:08
 define('_APCAL_FMT_YMDO','%4$s%3$s%2$s%1$s');
-define('_APCAL_MB_LABEL_CHECKEDITEMS','Checked events are:');
-define('_APCAL_MB_LABEL_OUTPUTICS','to be exported in iCalendar');
-define('_APCAL_MB_ICALSELECTPLATFORM','Select platform');
-define('_APCAL_MB_OP_AFTER','After');
-define('_APCAL_MB_OP_BEFORE','Before');
-define('_APCAL_MB_OP_ON','On');
-define('_APCAL_MB_OP_ALL','All');
+define('_APCAL_MB_APCALLABEL_CHECKEDITEMS','Checked events are:');
+define('_APCAL_MB_APCALLABEL_OUTPUTICS','to be exported in iCalendar');
+define('_APCAL_MB_APCALICALSELECTPLATFORM','Select platform');
+define('_APCAL_MB_APCALOP_AFTER','After');
+define('_APCAL_MB_APCALOP_BEFORE','Before');
+define('_APCAL_MB_APCALOP_ON','On');
+define('_APCAL_MB_APCALOP_ALL','All');
 define('_APCAL_BTN_IMPORT','Import!');
 define('_APCAL_BTN_UPLOAD','Upload!');
 define('_APCAL_BTN_EXPORT','Export!');

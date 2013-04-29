@@ -1,6 +1,6 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_BL_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_MB_APCAL_BL_LOADED' ) ) {
 
 
 
@@ -17,7 +17,7 @@ define('_MB_APCAL_CATSEL','Kategori');
 define('_MB_APCAL_CATSELSUB','Visa också underkategorier');
 define('_MB_APCAL_UNTILDAYS','Antal %s dagar (0 betyder oçÏdligt)');
 
-define( 'APCAL_BL_LOADED' , 1 ) ;
+define( '_MB_APCAL_BL_LOADED' , 1 ) ;
 
 // for monthly calendar block
 define('_MB_APCAL_PREV_MONTH','F‹Óra');

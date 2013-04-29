@@ -101,7 +101,7 @@ main.php (line 41)
 define('_APCAL_SHARECALENDARFORM', 'Fill up that form to show the calendar on your website.');
 define('_APCAL_SHOWALLCAT', 'All categories');
 define('_APCAL_GENERATE', 'Generate');
-define('_AP_GENERATEHINT', 'You might have to click generate two times on certain browsers.');
+define('_APCAL_GENERATEHINT', 'You might have to click generate two times on certain browsers.');
 define('_APCAL_CATEGORIES', 'categories');
 define('_APCAL_NBEVENTS', 'Number of events displayed');
 define('_APCAL_WIDTH', 'Block width');
@@ -150,16 +150,16 @@ define('_APCAL_GPLUS_LNG', 'en');
 admin.php (line 8)
 // Index
 define('_AM_APCAL_TIMEZONE', 'Timezones');
-define('_AM_MODULEADMIN_CONFIG', 'Configurations');
+define('_AM_APCAL_MODULEADMIN_CONFIG', 'Configurations');
 define('_AM_APCAL_NBWAITINGEVENTS', 'There are %s events waiting for approval.');
 define('_AM_APCAL_NBEVENTS', 'There are %s upcomming events.');
 define('_AM_APCAL_NBCATS', 'There are %s categories.');
-define('_AM_MODULEADMIN_CONFIG_PHP', 'You must have at least php version %s (your current version is %s)');
-define('_AM_MODULEADMIN_CONFIG_XOOPS', 'You must have at least xoops version %s (your current version is %s)');
-define('_AM_PREFS', 'Preferences');
-define('_AM_UPDATE', 'Update');
-define('_AM_BLOCKS', 'Blocks');
-define('_AM_GOTOMODULE', 'Go to module');
+define('_AM_APCAL_MODULEADMIN_CONFIG_PHP', 'You must have at least php version %s (your current version is %s)');
+define('_AM_APCAL_MODULEADMIN_CONFIG_XOOPS', 'You must have at least xoops version %s (your current version is %s)');
+define('_AM_APCAL_PREFS', 'Preferences');
+define('_AM_APCAL_UPDATE', 'Update');
+define('_AM_APCAL_BLOCKS', 'Blocks');
+define('_AM_APCAL_GOTOMODULE', 'Go to module');
 
 admin.php (line 125)
 define('_AM_APCAL_CANBEMAIN', 'Can be a main category');
@@ -167,15 +167,15 @@ define('_AM_APCAL_COLOR', 'Color');
 
 admin.php (line 145)
 // Blocks & Groups Admin
-define('_AM_TITLE', 'Title');
-define('_AM_SIDE', 'Location');
-define('_AM_WEIGHT', 'Weight');
-define('_AM_VISIBLEIN', 'Visible in');
-define('_AM_BCACHETIME', 'Cache time');
-define('_AM_ACTION', 'Action');
-define('_AM_ACTIVERIGHTS', 'Module administration rights');
-define('_AM_ACCESSRIGHTS', 'Module access rights');
-define('_AM_BADMIN', 'Blocks administration');
+define('_AM_APCAL_TITLE', 'Title');
+define('_AM_APCAL_SIDE', 'Location');
+define('_AM_APCAL_WEIGHT', 'Weight');
+define('_AM_APCAL_VISIBLEIN', 'Visible in');
+define('_AM_APCAL_BCACHETIME', 'Cache time');
+define('_AM_APCAL_ACTION', 'Action');
+define('_AM_APCAL_ACTIVERIGHTS', 'Module administration rights');
+define('_AM_APCAL_ACCESSRIGHTS', 'Module access rights');
+define('_AM_APCAL_BADMIN', 'Blocks administration');
 
 
 apcal_constants.php (line 178)

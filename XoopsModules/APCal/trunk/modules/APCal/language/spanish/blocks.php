@@ -1,6 +1,6 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_BL_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_MB_APCAL_BL_LOADED' ) ) {
 
 
 
@@ -17,7 +17,7 @@ define('_MB_APCAL_CATSEL','CategorùÂ');
 define('_MB_APCAL_CATSELSUB','Mostrar tambien subcategorùÂs');
 define('_MB_APCAL_UNTILDAYS','Durante %s los dùÂs (0 implica siempre)');
 
-define( 'APCAL_BL_LOADED' , 1 ) ;
+define( '_MB_APCAL_BL_LOADED' , 1 ) ;
 
 // Xoops Mexican & Spanish Support (http://www.neoideas.net/xoops/)
 // $Id: blocks.php, v 0.5 2003/11/07 20:00:09$

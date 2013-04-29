@@ -99,7 +99,7 @@ if( ! empty( $_POST['do_04to06'] ) ) {
 		ADD cid smallint(5) unsigned zerofill NOT NULL default '0' AFTER end,
 		ADD end_date date AFTER end,
 		ADD start_date date AFTER end" ;
-	if( ! $xoopsDB->query( $sql ) ) error_halt( _AM_MB_FAILUPDATETABLE ) ;
+	if( ! $xoopsDB->query( $sql ) ) error_halt( _AM_APCAL_MB_FAILUPDATETABLE ) ;
 
 	// TimeZones of all records
 	$sql = "UPDATE $table_event SET 
@@ -107,11 +107,11 @@ if( ! empty( $_POST['do_04to06'] ) ) {
 		server_tz = $serverTZ,
 		poster_tz = tzid,
 		event_tz = tzid" ;
-	if( ! $xoopsDB->query( $sql ) ) error_halt( _AM_MB_FAILUPDATETABLE ) ;
+	if( ! $xoopsDB->query( $sql ) ) error_halt( _AM_APCAL_MB_FAILUPDATETABLE ) ;
 
 	// older tzid field update
 	$sql = "UPDATE $table_event SET dtstamp=dtstamp,tzid='',event_tz=9.0,poster_tz=9.0 WHERE tzid='Japan'" ;
-	if( ! $xoopsDB->query( $sql ) ) error_halt( _AM_MB_FAILUPDATETABLE ) ;
+	if( ! $xoopsDB->query( $sql ) ) error_halt( _AM_APCAL_MB_FAILUPDATETABLE ) ;
 
 	// Counting comments
 	$sql = 'SELECT com_itemid,count(*) FROM ' . $xoopsDB->prefix('xoopscomments') . " WHERE com_modid=$mid GROUP BY com_itemid" ;
@@ -122,7 +122,7 @@ if( ! empty( $_POST['do_04to06'] ) ) {
 
 	xoops_cp_header();
 	echo $xoopsLogger->dumpQueries();
-	redirect_header( $php_self , 5 , _AM_MB_SUCCESSUPDATETABLE ) ;
+	redirect_header( $php_self , 5 , _AM_APCAL_MB_SUCCESSUPDATETABLE ) ;
 
 } else if( ! empty( $_POST['create_cat'] ) ) {
 
@@ -154,7 +154,7 @@ $sql = "CREATE TABLE $table_cat (
 
 	xoops_cp_header();
 	echo $xoopsLogger->dumpQueries();
-	redirect_header( $php_self , 5 , _AM_MB_SUCCESSUPDATETABLE ) ;
+	redirect_header( $php_self , 5 , _AM_APCAL_MB_SUCCESSUPDATETABLE ) ;
 
 } else if( ! empty( $_POST['repair_stz'] ) ) {
 
@@ -178,7 +178,7 @@ $sql = "CREATE TABLE $table_cat (
 
 	xoops_cp_header();
 	echo $xoopsLogger->dumpQueries();
-	redirect_header( $php_self , 5 , _AM_MB_SUCCESSTZUPDATE ) ;
+	redirect_header( $php_self , 5 , _AM_APCAL_MB_SUCCESSTZUPDATE ) ;
 }
 
 
@@ -198,13 +198,13 @@ xoops_cp_header();
 if( ! $is_040 ) {
 
 	OpenTable() ;
-	echo _AM_ALRT_TOOOLDTABLE ;
+	echo _AM_APCAL_ALRT_TOOOLDTABLE ;
 	CloseTable() ;
 
 } else if( ! $is_060 ) {
 
 	OpenTable() ;
-	echo _AM_ALRT_OLDTABLE ;
+	echo _AM_APCAL_ALRT_OLDTABLE ;
 	echo "
 		<br />(0.4x, 0.5x -> 0.6)
 		<form action='' method='post'>
@@ -216,7 +216,7 @@ if( ! $is_040 ) {
 } else if( ! $has_cat ) {
 
 	OpenTable() ;
-	echo _AM_ALRT_CATTABLENOTEXIST ;
+	echo _AM_APCAL_ALRT_CATTABLENOTEXIST ;
 	echo "
 		<br />
 		<form action='' method='post'>
@@ -231,18 +231,18 @@ if( ! $is_040 ) {
 	$rs_stz = $xoopsDB->query( "SELECT COUNT(*),server_tz FROM $table_event GROUP BY server_tz" ) ;
 	OpenTable() ;
 	echo "
-		".sprintf(_AM_FMT_SERVER_TZ_ALL,date('Z',1104537600)/3600,date('Z',1120176000)/3600,date('T'),$xoopsConfig['server_TZ'],$cal->server_TZ)."
+		".sprintf(_AM_APCAL_FMT_SERVER_TZ_ALL,date('Z',1104537600)/3600,date('Z',1120176000)/3600,date('T'),$xoopsConfig['server_TZ'],$cal->server_TZ)."
 		<form action='' method='post'>
 		<table border='1'>
 			<tr>
 				<th>
-					"._AM_TH_SERVER_TZ_COUNT."
+					"._AM_APCAL_TH_SERVER_TZ_COUNT."
 				</th>
 				<th>
-					"._AM_TH_SERVER_TZ_VALUE."
+					"._AM_APCAL_TH_SERVER_TZ_VALUE."
 				</th>
 				<th>
-					"._AM_TH_SERVER_TZ_VALUE_TO."
+					"._AM_APCAL_TH_SERVER_TZ_VALUE_TO."
 				</th>
 			</tr>\n" ;
 
@@ -262,7 +262,7 @@ if( ! $is_040 ) {
 				</td>
 			</tr>\n" ;
 
-/*		printf( _AM_FMT_WRONGSTZ , $wrong_stzs ) ;
+/*		printf( _AM_APCAL_FMT_WRONGSTZ , $wrong_stzs ) ;
 		echo "
 			<br />
 				<input type='submit' name='repair_stz' value='"._GO."' />
@@ -275,12 +275,12 @@ if( ! $is_040 ) {
 
 	if( $server_tz_wrong ) {
 		echo "
-		<input type='submit' value='"._SUBMIT."' name='repair_stz' onclick='return confirm(\""._AM_JSALRT_SERVER_TZ."\");' />
+		<input type='submit' value='"._SUBMIT."' name='repair_stz' onclick='return confirm(\""._AM_APCAL_JSALRT_SERVER_TZ."\");' />
 		".$xoopsGTicket->getTicketHtml( __LINE__ )."
 		</form>\n" ;
-		echo _AM_NOTICE_SERVER_TZ ;
+		echo _AM_APCAL_NOTICE_SERVER_TZ ;
 	} else {
-		echo _AM_NOTICE_NOERRORS ;
+		echo _AM_APCAL_NOTICE_NOERRORS ;
 	}
 	CloseTable() ;
 }

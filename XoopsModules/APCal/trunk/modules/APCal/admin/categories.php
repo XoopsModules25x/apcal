@@ -44,10 +44,10 @@ function display_edit_form( $cat , $form_title , $action )
 	$form->addElement( new XoopsFormHidden( 'cid' , intval( $cat->cid ) ) ) ;
 
 	// Subject
-	$form->addElement( new XoopsFormText( _AM_CAT_TH_TITLE , 'cat_title' , 60 , 128 , htmlspecialchars( $cat->cat_title , ENT_QUOTES ) ) , true ) ;
+	$form->addElement( new XoopsFormText( _AM_APCAL_CAT_TH_TITLE , 'cat_title' , 60 , 128 , htmlspecialchars( $cat->cat_title , ENT_QUOTES ) ) , true ) ;
 
 	// Description
-    $tarea_tray =  new XoopsFormElementTray( _AM_CAT_TH_DESC , '<br />' ) ;
+    $tarea_tray =  new XoopsFormElementTray( _AM_APCAL_CAT_TH_DESC , '<br />' ) ;
     if ( class_exists( 'XoopsFormEditor' ) ) {
         $configs=array(
             'name'   => 'cat_desc',
@@ -69,15 +69,15 @@ function display_edit_form( $cat , $form_title , $action )
 	$cattree->makeMySelBox( "cat_title" , "weight" , $cat->pid , 1 , 'pid' ) ;
 	$cat_selbox = ob_get_contents() ;
 	ob_end_clean() ;
-	$form->addElement( new XoopsFormLabel( _AM_CAT_TH_PARENT , $cat_selbox ) ) ;
+	$form->addElement( new XoopsFormLabel( _AM_APCAL_CAT_TH_PARENT , $cat_selbox ) ) ;
 
 	// Weight
-	$form->addElement( new XoopsFormText( _AM_CAT_TH_WEIGHT , 'weight', 6 , 6 , intval( $cat->weight ) ) , true ) ;
+	$form->addElement( new XoopsFormText( _AM_APCAL_CAT_TH_WEIGHT , 'weight', 6 , 6 , intval( $cat->weight ) ) , true ) ;
 
 	// Options
-	$checkbox_tray =  new XoopsFormElementTray( _AM_CAT_TH_OPTIONS , '<br />' ) ;
+	$checkbox_tray =  new XoopsFormElementTray( _AM_APCAL_CAT_TH_OPTIONS , '<br />' ) ;
 	$ismenuitem_checkbox =  new XoopsFormCheckBox( '' , 'ismenuitem' , intval( $cat->ismenuitem ) ) ;
-	$ismenuitem_checkbox->addOption( 1 , _AM_CAT_TH_SUBMENU ) ;
+	$ismenuitem_checkbox->addOption( 1 , _AM_APCAL_CAT_TH_SUBMENU ) ;
 	$checkbox_tray->addElement( $ismenuitem_checkbox ) ;
     $canbemain_checkbox = new XoopsFormCheckBox('', 'canbemain', intval($cat->canbemain));
 	$canbemain_checkbox->addOption(1, _AM_APCAL_CANBEMAIN);
@@ -89,7 +89,7 @@ function display_edit_form( $cat , $form_title , $action )
     $form->addElement(new XoopsFormColorPicker(_AM_APCAL_COLOR, color, $color), false);
 
 	// Last Modified
-	$form->addElement( new XoopsFormLabel( _AM_CAT_TH_LASTMODIFY , formatTimestamp( $cat->udtstamp ) ) ) ;
+	$form->addElement( new XoopsFormLabel( _AM_APCAL_CAT_TH_LASTMODIFY , formatTimestamp( $cat->udtstamp ) ) ) ;
 
 	// Buttons
 	$button_tray = new XoopsFormElementTray( '' , '&nbsp;' ) ;
@@ -220,7 +220,7 @@ if( $action == "insert" ) {
     $sql .= ",color='".$_POST['color'].'\'';
 	if( ! mysql_query( $sql , $conn ) ) die( mysql_error() ) ;
 	rebuild_cat_tree( $cal->cat_table ) ;
-	$mes = urlencode( _AM_MB_CAT_INSERTED ) ;
+	$mes = urlencode( _AM_APCAL_MB_CAT_INSERTED ) ;
 	$cal->redirect( "done=inserted&mes=$mes" ) ;
 	exit ;
 
@@ -241,7 +241,7 @@ if( $action == "insert" ) {
     $sql .= "WHERE cid='$cid'" ;
 	if( ! mysql_query( $sql , $conn ) ) die( mysql_error() ) ;
 	rebuild_cat_tree( $cal->cat_table ) ;
-	$mes = urlencode( _AM_MB_CAT_UPDATED ) ;
+	$mes = urlencode( _AM_APCAL_MB_CAT_UPDATED ) ;
 	$cal->redirect( "done=updated&mes=$mes" ) ;
 	exit ;
 
@@ -283,7 +283,7 @@ if( $action == "insert" ) {
 	// cat�ơ��֥뤫��κ��
 	if( ! mysql_query( "DELETE FROM $cal->cat_table WHERE $whr" , $conn ) ) die( mysql_error() ) ;
 	rebuild_cat_tree( $cal->cat_table ) ;
-	$mes = urlencode( sprintf( _AM_FMT_CAT_DELETED , mysql_affected_rows() ) ) ;
+	$mes = urlencode( sprintf( _AM_APCAL_FMT_CAT_DELETED , mysql_affected_rows() ) ) ;
 	$cal->redirect( "done=deleted&mes=$mes" ) ;
 	exit ;
 
@@ -304,7 +304,7 @@ if( $action == "insert" ) {
 		$affected += mysql_affected_rows() ;
 	}
 	if( $affected > 0 ) rebuild_cat_tree( $cal->cat_table ) ;
-	$mes = urlencode( sprintf( _AM_FMT_CAT_BATCHUPDATED , $affected ) ) ;
+	$mes = urlencode( sprintf( _AM_APCAL_FMT_CAT_BATCHUPDATED , $affected ) ) ;
 	$cal->redirect( "done=batch_updated&mes=$mes" ) ;
 	exit ;
 
@@ -323,7 +323,7 @@ if( $disp == "edit" && $cid > 0 ) {
 	$sql = "SELECT *,UNIX_TIMESTAMP(dtstamp) AS udtstamp FROM $cal->cat_table WHERE cid='$cid'" ;
 	$crs = mysql_query( $sql , $conn ) ;
 	$cat = mysql_fetch_object( $crs ) ;
-	display_edit_form( $cat , _AM_MENU_CAT_EDIT , 'update' ) ;
+	display_edit_form( $cat , _AM_APCAL_MENU_CAT_EDIT , 'update' ) ;
 
 } else if( $disp == "new" ) {
 
@@ -332,15 +332,15 @@ if( $disp == "edit" && $cid > 0 ) {
 	$cat = new Dummy() ;
 	$cat->pid = $cid ;
 	$cat->udtstamp = time() ;
-	display_edit_form( $cat , _AM_MENU_CAT_NEW , 'insert' ) ;
+	display_edit_form( $cat , _AM_APCAL_MENU_CAT_NEW , 'insert' ) ;
 
 } else {
 
-	echo "<h4>"._AM_MENU_CATEGORIES."</h4>\n" ;
+	echo "<h4>"._AM_APCAL_MENU_CATEGORIES."</h4>\n" ;
 
 	if( ! empty( $_GET['mes'] ) ) echo "<p><font color='blue'>".htmlspecialchars($_GET['mes'],ENT_QUOTES)."</font></p>" ;
 
-	echo "<p><a href='?disp=new&cid=0'>"._AM_MB_MAKETOPCAT."<img src='../images/cat_add.gif' width='18' height='15' alt='' /></a></p>\n" ;
+	echo "<p><a href='?disp=new&cid=0'>"._AM_APCAL_MB_MAKETOPCAT."<img src='../images/cat_add.gif' width='18' height='15' alt='' /></a></p>\n" ;
 
 	// ���ƥ��꡼�ǡ�������
 	$cat_tree_array = $cattree->getChildTreeArray( 0 , 'weight ASC,cat_title' ) ;
@@ -352,10 +352,10 @@ if( $disp == "edit" && $cid > 0 ) {
 	<input type='hidden' name='delcat' value='' />
 	<table width='75%' class='outer' cellpadding='4' cellspacing='1'>
 	  <tr valign='middle'>
-	    <th>"._AM_CAT_TH_TITLE."</th>
-	    <th>"._AM_CAT_TH_OPERATION."</th>
-	    <th>"._AM_CAT_TH_ENABLED."</th>
-	    <th>"._AM_CAT_TH_WEIGHT."</th>
+	    <th>"._AM_APCAL_CAT_TH_TITLE."</th>
+	    <th>"._AM_APCAL_CAT_TH_OPERATION."</th>
+	    <th>"._AM_APCAL_CAT_TH_ENABLED."</th>
+	    <th>"._AM_APCAL_CAT_TH_WEIGHT."</th>
 	  </tr>
 	" ;
 
@@ -369,16 +369,16 @@ if( $disp == "edit" && $cid > 0 ) {
 		$enable_checked = $enabled ? "checked='checked'" : "" ;
 		$cid = intval( $cid ) ;
 		$cat_title = $myts->htmlSpecialChars( $cat_title ) ;
-		$del_confirm = 'confirm("' . sprintf( _AM_FMT_CATDELCONFIRM , $cat_title ) . '")' ;
+		$del_confirm = 'confirm("' . sprintf( _AM_APCAL_FMT_CATDELCONFIRM , $cat_title ) . '")' ;
 		echo "
 	  <tr>
 	    <td class='$oddeven' width='100%'><a href='?disp=edit&amp;cid=$cid'>$prefix&nbsp;$cat_title</a></td>
 	    <td class='$oddeven' align='center' nowrap='nowrap'>
 	      <a href='$mod_url/index.php?action=Edit&amp;cid=$cid' target='_blank'><img src='$cal->images_url/addevent.gif' border='0' width='14' height='12' /></a>
 	      &nbsp;
-	      <a href='?disp=edit&amp;cid=$cid'><img src='../images/cat_edit.gif' width='18' height='15' alt='"._AM_MENU_CAT_EDIT."' title='"._AM_MENU_CAT_EDIT."' /></a>
+	      <a href='?disp=edit&amp;cid=$cid'><img src='../images/cat_edit.gif' width='18' height='15' alt='"._AM_APCAL_MENU_CAT_EDIT."' title='"._AM_APCAL_MENU_CAT_EDIT."' /></a>
 	      &nbsp;
-	      <a href='?disp=new&amp;cid=$cid'><img src='../images/cat_add.gif' width='18' height='15' alt='"._AM_MENU_CAT_NEW."' title='"._AM_MENU_CAT_NEW."' /></a>
+	      <a href='?disp=new&amp;cid=$cid'><img src='../images/cat_add.gif' width='18' height='15' alt='"._AM_APCAL_MENU_CAT_NEW."' title='"._AM_APCAL_MENU_CAT_NEW."' /></a>
 	      &nbsp;
 	      <input type='button' value='"._DELETE."'  onclick='if($del_confirm){document.MainForm.delcat.value=\"$cid\"; submit();}' />
 	    </td>
@@ -390,10 +390,10 @@ if( $disp == "edit" && $cid > 0 ) {
 	// �ơ��֥�եå���
 	echo "
 	  <tr>
-	    <td colspan='4' align='right' class='head'><input type='submit' name='batch_update' value='"._AM_BTN_UPDATE."' /></td>
+	    <td colspan='4' align='right' class='head'><input type='submit' name='batch_update' value='"._AM_APCAL_BTN_UPDATE."' /></td>
 	  </tr>
 	  <tr>
-	    <td colspan='8' align='right' valign='bottom' height='50'>".APCAL_COPYRIGHT."</td>
+	    <td colspan='8' align='right' valign='bottom' height='50'>"._AM_APCAL_COPYRIGHT."</td>
 	  </tr>
 	</table>
 	</form>

@@ -40,53 +40,53 @@ define('_PICAL_ICON_WEEKLY','Wochenansicht') ;
 define('_PICAL_ICON_MONTHLY','Monatsansicht') ;
 define('_PICAL_ICON_YEARLY','Jahresansicht') ;
 
-define('_PICAL_MB_SHOWALLCAT','Alle Kategorien') ;
+define('_PICAL_MB_APCALSHOWALLCAT','Alle Kategorien') ;
 
-define('_PICAL_MB_LINKTODAY','Heute') ;
-define('_PICAL_MB_NOSUBJECT','(Kein Betreff)') ;
+define('_PICAL_MB_APCALLINKTODAY','Heute') ;
+define('_PICAL_MB_APCALNOSUBJECT','(Kein Betreff)') ;
 
-define('_PICAL_MB_PREV_DATE','Gestern') ;
-define('_PICAL_MB_NEXT_DATE','Morgen') ;
-define('_PICAL_MB_PREV_WEEK','Vorherige Woche') ;
-define('_PICAL_MB_NEXT_WEEK','Nächste Woche') ;
-define('_PICAL_MB_PREV_MONTH','Vorheriger Monat') ;
-define('_PICAL_MB_NEXT_MONTH','Nächster Monat') ;
-define('_PICAL_MB_PREV_YEAR','Vorheriges Jahr') ;
-define('_PICAL_MB_NEXT_YEAR','Nächstes Jahr') ;
+define('_PICAL_MB_APCALPREV_DATE','Gestern') ;
+define('_PICAL_MB_APCALNEXT_DATE','Morgen') ;
+define('_PICAL_MB_APCALPREV_WEEK','Vorherige Woche') ;
+define('_PICAL_MB_APCALNEXT_WEEK','Nächste Woche') ;
+define('_PICAL_MB_APCALPREV_MONTH','Vorheriger Monat') ;
+define('_PICAL_MB_APCALNEXT_MONTH','Nächster Monat') ;
+define('_PICAL_MB_APCALPREV_YEAR','Vorheriges Jahr') ;
+define('_PICAL_MB_APCALNEXT_YEAR','Nächstes Jahr') ;
 
-define('_PICAL_MB_NOEVENT','Keine Termine') ;
-define('_PICAL_MB_ADDEVENT','Termin(e) hinzufügen') ;
-define('_PICAL_MB_CONTINUING','(aktuell)') ;
-define('_PICAL_MB_RESTEVENT_PRE','weitere ') ;
-define('_PICAL_MB_RESTEVENT_SUF','Einträge vorhanden') ;
-define('_PICAL_MB_TIMESEPARATOR','--') ;
+define('_PICAL_MB_APCALNOEVENT','Keine Termine') ;
+define('_PICAL_MB_APCALADDEVENT','Termin(e) hinzufügen') ;
+define('_PICAL_MB_APCALCONTINUING','(aktuell)') ;
+define('_PICAL_MB_APCALRESTEVENT_PRE','weitere ') ;
+define('_PICAL_MB_APCALRESTEVENT_SUF','Einträge vorhanden') ;
+define('_PICAL_MB_APCALTIMESEPARATOR','--') ;
 
-define('_PICAL_MB_ALLDAY_EVENT','Ganztagstermin') ;
-define('_PICAL_MB_LONG_EVENT','Als Balken darstellen') ;
-define('_PICAL_MB_LONG_SPECIALDAY','Geburtstag, etc.') ;
+define('_PICAL_MB_APCALALLDAY_EVENT','Ganztagstermin') ;
+define('_PICAL_MB_APCALLONG_EVENT','Als Balken darstellen') ;
+define('_PICAL_MB_APCALLONG_SPECIALDAY','Geburtstag, etc.') ;
 
-define('_PICAL_MB_PUBLIC','Öffentlich') ;
-define('_PICAL_MB_PRIVATE','Privat') ;
-define('_PICAL_MB_PRIVATETARGET',' %s') ;
+define('_PICAL_MB_APCALPUBLIC','Öffentlich') ;
+define('_PICAL_MB_APCALPRIVATE','Privat') ;
+define('_PICAL_MB_APCALPRIVATETARGET',' %s') ;
 
-define('_PICAL_MB_LINK_TO_RRULE1ST','Zum 1. Termin springen') ;
-define('_PICAL_MB_RRULE1ST','Das ist der 1. Termin') ;
+define('_PICAL_MB_APCALLINK_TO_RRULE1ST','Zum 1. Termin springen') ;
+define('_PICAL_MB_APCALRRULE1ST','Das ist der 1. Termin') ;
 
-define('_PICAL_MB_EVENT_NOTREGISTER','nicht eingetragen') ;
-define('_PICAL_MB_EVENT_ADMITTED','freigegeben') ;
-define('_PICAL_MB_EVENT_NEEDADMIT','wartet auf Freigabe') ;
+define('_PICAL_MB_APCALEVENT_NOTREGISTER','nicht eingetragen') ;
+define('_PICAL_MB_APCALEVENT_ADMITTED','freigegeben') ;
+define('_PICAL_MB_APCALEVENT_NEEDADMIT','wartet auf Freigabe') ;
 
-define('_PICAL_MB_TITLE_EVENTINFO','Terminplaner') ;
-define('_PICAL_MB_SUBTITLE_EVENTDETAIL','Detailansicht') ;
-define('_PICAL_MB_SUBTITLE_EVENTEDIT','Bearbeitungsansicht') ;
+define('_PICAL_MB_APCALTITLE_EVENTINFO','Terminplaner') ;
+define('_PICAL_MB_APCALSUBTITLE_EVENTDETAIL','Detailansicht') ;
+define('_PICAL_MB_APCALSUBTITLE_EVENTEDIT','Bearbeitungsansicht') ;
 
-define('_PICAL_MB_HOUR_SUF',':') ;
-define('_PICAL_MB_MINUTE_SUF','') ;
+define('_PICAL_MB_APCALHOUR_SUF',':') ;
+define('_PICAL_MB_APCALMINUTE_SUF','') ;
 
-define('_PICAL_MB_ORDER_ASC','aufsteigend') ;
-define('_PICAL_MB_ORDER_DESC','absteigend') ;
-define('_PICAL_MB_SORTBY','Sortieren nach:') ;
-define('_PICAL_MB_CURSORTEDBY','Termine derzeit sortiert nach:') ;
+define('_PICAL_MB_APCALORDER_ASC','aufsteigend') ;
+define('_PICAL_MB_APCALORDER_DESC','absteigend') ;
+define('_PICAL_MB_APCALSORTBY','Sortieren nach:') ;
+define('_PICAL_MB_APCALCURSORTEDBY','Termine derzeit sortiert nach:') ;
 
 define('_PICAL_TH_SUMMARY','Titel') ;
 define('_PICAL_TH_STARTDATETIME','Start-Zeitpunkt') ;
@@ -164,13 +164,13 @@ define('_PICAL_RR_R_USEUNTIL','bis') ;
 
 // Appended by Xoops Language Checker -GIJOE- in 2004-01-17 18:09:07
 define('_PICAL_FMT_YMDO','%4$s%3$s%2$s%1$s');
-define('_PICAL_MB_LABEL_CHECKEDITEMS','Ausgewählte Einträge:');
-define('_PICAL_MB_LABEL_OUTPUTICS','mit iCalendar exportieren');
-define('_PICAL_MB_ICALSELECTPLATFORM','Plattform wählen');
-define('_PICAL_MB_OP_AFTER','Nachher');
-define('_PICAL_MB_OP_BEFORE','Vorher');
-define('_PICAL_MB_OP_ON','Aktuell');
-define('_PICAL_MB_OP_ALL','Alle');
+define('_PICAL_MB_APCALLABEL_CHECKEDITEMS','Ausgewählte Einträge:');
+define('_PICAL_MB_APCALLABEL_OUTPUTICS','mit iCalendar exportieren');
+define('_PICAL_MB_APCALICALSELECTPLATFORM','Plattform wählen');
+define('_PICAL_MB_APCALOP_AFTER','Nachher');
+define('_PICAL_MB_APCALOP_BEFORE','Vorher');
+define('_PICAL_MB_APCALOP_ON','Aktuell');
+define('_PICAL_MB_APCALOP_ALL','Alle');
 define('_PICAL_BTN_IMPORT','Import!');
 define('_PICAL_BTN_UPLOAD','Upload!');
 define('_PICAL_BTN_EXPORT','Export!');

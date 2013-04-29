@@ -59,7 +59,7 @@ $infoBoxes = array();
 $infoBoxes[_MI_APCAL_ADMENU1][] = sprintf(_AM_APCAL_NBWAITINGEVENTS, '<span style="color:'.($nbWaitingEvents>0 ? '#aa0000' : '#00aa00').'; font-weight : bold;">'.$nbWaitingEvents.'</span>');
 $infoBoxes[_MI_APCAL_ADMENU1][] = sprintf(_AM_APCAL_NBEVENTS, '<span style="font-weight : bold;">'.$nbEvents.'</span>');
 $infoBoxes[_MI_APCAL_ADMENU_CAT][] = sprintf(_AM_APCAL_NBCATS, '<span style="font-weight : bold;">'.$nbCats.'</span>');
-$infoBoxes[_AM_APCAL_TIMEZONE][] = sprintf(_AM_FMT_SERVER_TZ_ALL, date('Z', 1104537600)/3600, date('Z', 1120176000)/3600, date('T'), $xoopsConfig['server_TZ'], $cal->server_TZ);
+$infoBoxes[_AM_APCAL_TIMEZONE][] = sprintf(_AM_APCAL_FMT_SERVER_TZ_ALL, date('Z', 1104537600)/3600, date('Z', 1120176000)/3600, date('T'), $xoopsConfig['server_TZ'], $cal->server_TZ);
 
 $xoopsModule->loadAdminMenu();
 

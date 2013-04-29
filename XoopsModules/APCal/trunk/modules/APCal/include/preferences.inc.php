@@ -59,7 +59,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
       redirect_header('admin.php?fct=preferences', 1);
     }
     include_once XOOPS_ROOT_PATH.'/class/xoopsformloader.php';
-    $form = new XoopsThemeForm(_MD_AM_MODCONFIG, 'pref_form', 'admin.php?fct=preferences');
+    $form = new XoopsThemeForm(_MD_APCALAM_APCALMODCONFIG, 'pref_form', 'admin.php?fct=preferences');
     $module_handler =& xoops_gethandler('module');
     $module =& $module_handler->get($mod);
     if (file_exists(XOOPS_ROOT_PATH.'/modules/'.$module->getVar('dirname').'/language/'.$xoopsConfig['language'].'/modinfo.php')) {
@@ -277,9 +277,9 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
         setcookie($_POST['session_name'], session_id(), time()+(60*intval($_POST['session_expire'])), '/',  '', 0);
     } */
     if ( ! empty( $_POST['redirect'] ) ) {
-      redirect_header($_POST['redirect'], 2, _MD_AM_DBUPDATED);
+      redirect_header($_POST['redirect'], 2, _MD_APCALAM_APCALDBUPDATED);
     } else {
-      redirect_header("admin.php?fct=preferences",2,_MD_AM_DBUPDATED);
+      redirect_header("admin.php?fct=preferences",2,_MD_APCALAM_APCALDBUPDATED);
     }
   }
 }

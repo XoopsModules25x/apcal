@@ -96,7 +96,7 @@ if( ! empty( $_POST['do_modify'] ) ) {
 		$db->query( "UPDATE ".$db->prefix("tplfile")." SET tpl_lastmodified=UNIX_TIMESTAMP() WHERE tpl_id=$tpl_id" ) ;
 		xoops_template_touch( $tpl_id ) ;
 	}
-	redirect_header( 'mytplsadmin.php?dirname='.$tpl['tpl_module'] , 1 , _MD_AM_DBUPDATED ) ;
+	redirect_header( 'mytplsadmin.php?dirname='.$tpl['tpl_module'] , 1 , _MD_APCALAM_APCALDBUPDATED ) ;
 	exit ;
 }
 
@@ -107,7 +107,7 @@ xoops_cp_header() ;
 $mymenu_fake_uri = "/admin/mytplsadmin.php?dirname={$tpl['tpl_module']}" ;
 if( file_exists( './mymenu.php' ) ) include( './mymenu.php' ) ;
 
-echo "<h3 style='text-align:left;'>"._MD_AM_TPLSETS." : ".htmlspecialchars($tpl['tpl_type'],ENT_QUOTES)." : ".htmlspecialchars($tpl['tpl_file'],ENT_QUOTES)." (".htmlspecialchars($tpl['tpl_tplset'],ENT_QUOTES).")</h3>\n" ;
+echo "<h3 style='text-align:left;'>"._MD_APCALAM_APCALTPLSETS." : ".htmlspecialchars($tpl['tpl_type'],ENT_QUOTES)." : ".htmlspecialchars($tpl['tpl_file'],ENT_QUOTES)." (".htmlspecialchars($tpl['tpl_tplset'],ENT_QUOTES).")</h3>\n" ;
 
 
 // diff from file to selected DB template

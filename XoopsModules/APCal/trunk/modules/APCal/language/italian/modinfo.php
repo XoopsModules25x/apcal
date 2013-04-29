@@ -1,6 +1,6 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MI_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_MI_APCAL_APCALLOADED' ) ) {
 
 
 
@@ -11,13 +11,13 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MI_LOADED' ) ) {
 define('_MI_APCAL_ADMENU_MYTPLSADMIN','Templates');
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-05-06 18:04:00
-define('_MI_TIMEZONE_USING','Timezone of the server');
-define('_MI_OPT_TZ_USEXOOPS','value of XOOPS config');
-define('_MI_OPT_TZ_USEWINTER','value told from the server as winter time (recommended)');
-define('_MI_OPT_TZ_USESUMMER','value told from the server as summer time');
+define('_MI_APCALTIMEZONE_USING','Timezone of the server');
+define('_MI_APCALOPT_TZ_USEXOOPS','value of XOOPS config');
+define('_MI_APCALOPT_TZ_USEWINTER','value told from the server as winter time (recommended)');
+define('_MI_APCALOPT_TZ_USESUMMER','value told from the server as summer time');
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-05-03 05:31:13
-define('_MI_USE24HOUR','24hours system (No means 12hours system)');
+define('_MI_APCALUSE24HOUR','24hours system (No means 12hours system)');
 define('_MI_APCAL_ADMENU_PLUGINS','Plugins Manager');
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-04-22 12:02:02
@@ -28,7 +28,7 @@ define('_MI_APCAL_BNAME_MINICALEX_DESC','Extensible minicalendar with plugin sys
 define('_MI_APCAL_DEFAULTLOCALE','italia');
 define('_MI_APCAL_LOCALE','Locale (controlla i file in locales/*.php)');
 
-define( 'APCAL_MI_LOADED' , 1 ) ;
+define( '_MI_APCAL_APCALLOADED' , 1 ) ;
 
 // Module Info
 
@@ -60,54 +60,54 @@ define("_MI_APCAL_SM_SUBMIT","Invia");
 //define("_MI_APCAL_ADMENU1","");
 
 // Title of config items
-define("_MI_USERS_AUTHORITY", "Permessi degli Utenti");
-define("_MI_GUESTS_AUTHORITY", "Permessi degli ospiti");
-define("_MI_DEFAULT_VIEW", "Vista centrale predefinita");
-define("_MI_MINICAL_TARGET", "Vista per il calendarioMini");
-define("_MI_COMING_NUMROWS", "Numero di eventi da visualizzare nel blocco 'Prossimi Eventi'");
-define("_MI_SKINFOLDER", "Nome della directory del tema");
-define("_MI_SUNDAYCOLOR", "Colore della Domenica");
-define("_MI_WEEKDAYCOLOR", "Colore dei feriali");
-define("_MI_SATURDAYCOLOR", "Colore del Sabato");
-define("_MI_HOLIDAYCOLOR", "Colore delle feste");
-define("_MI_TARGETDAYCOLOR", "Colore del giorno selezionato");
-define("_MI_SUNDAYBGCOLOR", "Colore di sfondo della Domenica");
-define("_MI_WEEKDAYBGCOLOR", "Colore di sfondo dei feriali");
-define("_MI_SATURDAYBGCOLOR", "Colore di sfondodel Sabato");
-define("_MI_HOLIDAYBGCOLOR", "Colore di sfondodelle feste");
-define("_MI_TARGETDAYBGCOLOR", "Colore di sfondodel giorno selezionato");
-define("_MI_CALHEADCOLOR", "Colore della testata del calendario");
-define("_MI_CALHEADBGCOLOR", "Colore di sfondo della testata del calendario");
-define("_MI_CALFRAMECSS", "Stile del bordo del calendario");
-define("_MI_CANOUTPUTICS", "Permessi di esportazione file ics");
-define("_MI_MAXRRULEEXTRACT", "Limite di eventi estratti da rrule. (COUNT)");
-define("_MI_WEEKSTARTFROM", "Inizio della settimana");
-define("_MI_WEEKNUMBERING", "Numerazione delle settimane");
-define("_MI_DAYSTARTFROM", "Ora limite per separare i giorni");
-define("_MI_NAMEORUNAME" , "Nome visualizzato" ) ;
-define("_MI_DESCNAMEORUNAME" , "Scegli quale 'nome' è visualizzato" ) ;
+define("_MI_APCALUSERS_AUTHORITY", "Permessi degli Utenti");
+define("_MI_APCALGUESTS_AUTHORITY", "Permessi degli ospiti");
+define("_MI_APCALDEFAULT_VIEW", "Vista centrale predefinita");
+define("_MI_APCALMINICAL_TARGET", "Vista per il calendarioMini");
+define("_MI_APCALCOMING_NUMROWS", "Numero di eventi da visualizzare nel blocco 'Prossimi Eventi'");
+define("_MI_APCALSKINFOLDER", "Nome della directory del tema");
+define("_MI_APCALSUNDAYCOLOR", "Colore della Domenica");
+define("_MI_APCALWEEKDAYCOLOR", "Colore dei feriali");
+define("_MI_APCALSATURDAYCOLOR", "Colore del Sabato");
+define("_MI_APCALHOLIDAYCOLOR", "Colore delle feste");
+define("_MI_APCALTARGETDAYCOLOR", "Colore del giorno selezionato");
+define("_MI_APCALSUNDAYBGCOLOR", "Colore di sfondo della Domenica");
+define("_MI_APCALWEEKDAYBGCOLOR", "Colore di sfondo dei feriali");
+define("_MI_APCALSATURDAYBGCOLOR", "Colore di sfondodel Sabato");
+define("_MI_APCALHOLIDAYBGCOLOR", "Colore di sfondodelle feste");
+define("_MI_APCALTARGETDAYBGCOLOR", "Colore di sfondodel giorno selezionato");
+define("_MI_APCALCALHEADCOLOR", "Colore della testata del calendario");
+define("_MI_APCALCALHEADBGCOLOR", "Colore di sfondo della testata del calendario");
+define("_MI_APCALCALFRAMECSS", "Stile del bordo del calendario");
+define("_MI_APCALCANOUTPUTICS", "Permessi di esportazione file ics");
+define("_MI_APCALMAXRRULEEXTRACT", "Limite di eventi estratti da rrule. (COUNT)");
+define("_MI_APCALWEEKSTARTFROM", "Inizio della settimana");
+define("_MI_APCALWEEKNUMBERING", "Numerazione delle settimane");
+define("_MI_APCALDAYSTARTFROM", "Ora limite per separare i giorni");
+define("_MI_APCALNAMEORUNAME" , "Nome visualizzato" ) ;
+define("_MI_APCALDESCNAMEORUNAME" , "Scegli quale 'nome' è visualizzato" ) ;
 
 // Description of each config items
-define("_MI_EDITBYGUESTDSC", "Permessi degli ospiti di inserire eventi");
+define("_MI_APCALEDITBYGUESTDSC", "Permessi degli ospiti di inserire eventi");
 
 // Options of each config items
-define("_MI_OPT_AUTH_NONE", "non può inserire");
-define("_MI_OPT_AUTH_WAIT", "può inserire ma necessita approvazione");
-define("_MI_OPT_AUTH_POST", "puà inserire senza approvazione");
-define("_MI_OPT_AUTH_BYGROUP", "Speficificato nei permessi di gruppo");
-define("_MI_OPT_MINI_PHPSELF", "Pagina attuale");
-define("_MI_OPT_MINI_MONTHLY", "calendario mensile");
-define("_MI_OPT_MINI_WEEKLY", "calendario settimanale");
-define("_MI_OPT_MINI_DAILY", "calendario giornaliero");
-define("_MI_OPT_MINI_LIST", "lista eventi");
-define("_MI_OPT_CANOUTPUTICS", "può esportare");
-define("_MI_OPT_CANNOTOUTPUTICS", "non può esportare");
-define("_MI_OPT_STARTFROMSUN", "Domenica");
-define("_MI_OPT_STARTFROMMON", "Lunedì");
-define("_MI_OPT_WEEKNOEACHMONTH", "per ogni mese");
-define("_MI_OPT_WEEKNOWHOLEYEAR", "per l'intero anno");
-define("_MI_OPT_USENAME" , "Nickname" ) ;
-define("_MI_OPT_USEUNAME" , "Nome del Login" ) ;
+define("_MI_APCALOPT_AUTH_NONE", "non può inserire");
+define("_MI_APCALOPT_AUTH_WAIT", "può inserire ma necessita approvazione");
+define("_MI_APCALOPT_AUTH_POST", "puà inserire senza approvazione");
+define("_MI_APCALOPT_AUTH_BYGROUP", "Speficificato nei permessi di gruppo");
+define("_MI_APCALOPT_MINI_PHPSELF", "Pagina attuale");
+define("_MI_APCALOPT_MINI_MONTHLY", "calendario mensile");
+define("_MI_APCALOPT_MINI_WEEKLY", "calendario settimanale");
+define("_MI_APCALOPT_MINI_DAILY", "calendario giornaliero");
+define("_MI_APCALOPT_MINI_LIST", "lista eventi");
+define("_MI_APCALOPT_CANOUTPUTICS", "può esportare");
+define("_MI_APCALOPT_CANNOTOUTPUTICS", "non può esportare");
+define("_MI_APCALOPT_STARTFROMSUN", "Domenica");
+define("_MI_APCALOPT_STARTFROMMON", "Lunedì");
+define("_MI_APCALOPT_WEEKNOEACHMONTH", "per ogni mese");
+define("_MI_APCALOPT_WEEKNOWHOLEYEAR", "per l'intero anno");
+define("_MI_APCALOPT_USENAME" , "Nickname" ) ;
+define("_MI_APCALOPT_USEUNAME" , "Nome del Login" ) ;
 
 // Admin Menus
 define("_MI_APCAL_ADMENU0","Eventi da approvare");
