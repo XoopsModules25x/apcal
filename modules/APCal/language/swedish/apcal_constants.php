@@ -1,6 +1,6 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_CNST_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_APCAL_CNST_LOADED' ) ) {
 
 
 
@@ -16,7 +16,7 @@ define('_APCAL_FMT_DHI','%1$s %2$s:%3$s');
 define('_APCAL_FMT_HI','%1$s:%2$s');
 define('_APCAL_TH_TIMEZONE','Time Zone');
 
-define( 'APCAL_CNST_LOADED' , 1 ) ;
+define( '_APCAL_CNST_LOADED' , 1 ) ;
 
 
 // format for date()  see http://jp.php.net/date
@@ -40,46 +40,46 @@ define('_APCAL_ICON_WEEKLY','Vecko Vy') ;
 define('_APCAL_ICON_MONTHLY','MéÏads Vy') ;
 define('_APCAL_ICON_YEARLY','ŽÅrs Vy') ;
 
-define('_APCAL_MB_LINKTODAY','Idag') ;
-define('_APCAL_MB_NOSUBJECT','(Ingen rubrik)') ;
+define('_APCAL_MB_APCALLINKTODAY','Idag') ;
+define('_APCAL_MB_APCALNOSUBJECT','(Ingen rubrik)') ;
 
-define('_APCAL_MB_PREV_DATE','Imorgon') ;
-define('_APCAL_MB_NEXT_DATE','NçÔta dag') ;
-define('_APCAL_MB_PREV_WEEK','F‹Óra Veckan') ;
-define('_APCAL_MB_NEXT_WEEK','NçÔta Vecka') ;
-define('_APCAL_MB_PREV_MONTH','F‹Óra MéÏaden') ;
-define('_APCAL_MB_NEXT_MONTH','NçÔta MéÏad') ;
-define('_APCAL_MB_PREV_YEAR','F‹Óra ŽÅret') ;
-define('_APCAL_MB_NEXT_YEAR','NçÔta ŽÅr') ;
+define('_APCAL_MB_APCALPREV_DATE','Imorgon') ;
+define('_APCAL_MB_APCALNEXT_DATE','NçÔta dag') ;
+define('_APCAL_MB_APCALPREV_WEEK','F‹Óra Veckan') ;
+define('_APCAL_MB_APCALNEXT_WEEK','NçÔta Vecka') ;
+define('_APCAL_MB_APCALPREV_MONTH','F‹Óra MéÏaden') ;
+define('_APCAL_MB_APCALNEXT_MONTH','NçÔta MéÏad') ;
+define('_APCAL_MB_APCALPREV_YEAR','F‹Óra ŽÅret') ;
+define('_APCAL_MB_APCALNEXT_YEAR','NçÔta ŽÅr') ;
 
-define('_APCAL_MB_NOEVENT','Inga HçÏdelser') ;
-define('_APCAL_MB_ADDEVENT','LçÈg till') ;
-define('_APCAL_MB_CONTINUING','(forts)') ;
-define('_APCAL_MB_RESTEVENT_PRE','') ;
-define('_APCAL_MB_RESTEVENT_SUF','hçÏdelser') ;
-define('_APCAL_MB_TIMESEPARATOR','--') ;
+define('_APCAL_MB_APCALNOEVENT','Inga HçÏdelser') ;
+define('_APCAL_MB_APCALADDEVENT','LçÈg till') ;
+define('_APCAL_MB_APCALCONTINUING','(forts)') ;
+define('_APCAL_MB_APCALRESTEVENT_PRE','') ;
+define('_APCAL_MB_APCALRESTEVENT_SUF','hçÏdelser') ;
+define('_APCAL_MB_APCALTIMESEPARATOR','--') ;
 
-define('_APCAL_MB_ALLDAY_EVENT','HeldagshçÏdelse') ;
-define('_APCAL_MB_LONG_EVENT','Visa med linje') ;
-define('_APCAL_MB_LONG_SPECIALDAY','Jubileum mm.') ;
+define('_APCAL_MB_APCALALLDAY_EVENT','HeldagshçÏdelse') ;
+define('_APCAL_MB_APCALLONG_EVENT','Visa med linje') ;
+define('_APCAL_MB_APCALLONG_SPECIALDAY','Jubileum mm.') ;
 
-define('_APCAL_MB_PUBLIC','AllmçÏ') ;
-define('_APCAL_MB_PRIVATE','Privat') ;
-define('_APCAL_MB_PRIVATETARGET',' emellan %s') ;
+define('_APCAL_MB_APCALPUBLIC','AllmçÏ') ;
+define('_APCAL_MB_APCALPRIVATE','Privat') ;
+define('_APCAL_MB_APCALPRIVATETARGET',' emellan %s') ;
 
-define('_APCAL_MB_LINK_TO_RRULE1ST','Gå till f‹Ósta hçÏdelsen ') ;
-define('_APCAL_MB_RRULE1ST','Detta çÓ f‹Ósta hçÏdelsen') ;
+define('_APCAL_MB_APCALLINK_TO_RRULE1ST','Gå till f‹Ósta hçÏdelsen ') ;
+define('_APCAL_MB_APCALRRULE1ST','Detta çÓ f‹Ósta hçÏdelsen') ;
 
-define('_APCAL_MB_EVENT_NOTREGISTER','Inte Registrerad') ;
-define('_APCAL_MB_EVENT_ADMITTED','GodkçÏd') ;
-define('_APCAL_MB_EVENT_NEEDADMIT','VçÏtar på GodkçÏnade') ;
+define('_APCAL_MB_APCALEVENT_NOTREGISTER','Inte Registrerad') ;
+define('_APCAL_MB_APCALEVENT_ADMITTED','GodkçÏd') ;
+define('_APCAL_MB_APCALEVENT_NEEDADMIT','VçÏtar på GodkçÏnade') ;
 
-define('_APCAL_MB_TITLE_EVENTINFO','Schema') ;
-define('_APCAL_MB_SUBTITLE_EVENTDETAIL','Detaljer') ;
-define('_APCAL_MB_SUBTITLE_EVENTEDIT','Editera') ;
+define('_APCAL_MB_APCALTITLE_EVENTINFO','Schema') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTDETAIL','Detaljer') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTEDIT','Editera') ;
 
-define('_APCAL_MB_HOUR_SUF',':') ;
-define('_APCAL_MB_MINUTE_SUF','') ;
+define('_APCAL_MB_APCALHOUR_SUF',':') ;
+define('_APCAL_MB_APCALMINUTE_SUF','') ;
 
 define('_APCAL_TH_SUMMARY','HçÏdelse') ;
 define('_APCAL_TH_STARTDATETIME','Start Datum & Tid') ;
@@ -156,24 +156,24 @@ define('_APCAL_RR_R_USEUNTIL','framtill') ;
 define('_APCAL_FMT_YW','Vecka%2$s %1$s');
 define('_APCAL_FMT_WEEKNO','Vecka %s');
 define('_APCAL_ICON_LIST','List Vy');
-define('_APCAL_MB_SHOWALLCAT','Alla Kategorier');
-define('_APCAL_MB_ORDER_ASC','Stigande');
-define('_APCAL_MB_ORDER_DESC','Fallande');
-define('_APCAL_MB_SORTBY','Sorterad efter:');
-define('_APCAL_MB_CURSORTEDBY','HçÏdelserna çÓ sorterade efter:');
+define('_APCAL_MB_APCALSHOWALLCAT','Alla Kategorier');
+define('_APCAL_MB_APCALORDER_ASC','Stigande');
+define('_APCAL_MB_APCALORDER_DESC','Fallande');
+define('_APCAL_MB_APCALSORTBY','Sorterad efter:');
+define('_APCAL_MB_APCALCURSORTEDBY','HçÏdelserna çÓ sorterade efter:');
 define('_APCAL_TH_CATEGORIES','Kategorier');
 define('_APCAL_TH_LASTMODIFIED','Senast çÏdrad');
 define('_APCAL_BTN_PRINT','Skriv ut');
 
 // Appended by Xoops Language Checker -GIJOE- in 2004-01-17 18:09:09
 define('_APCAL_FMT_YMDO','%4$s%3$s%2$s%1$s');
-define('_APCAL_MB_LABEL_CHECKEDITEMS','Markerade hçÏdelser ');
-define('_APCAL_MB_LABEL_OUTPUTICS','kommer att bli exporterade till iCalendar');
-define('_APCAL_MB_ICALSELECTPLATFORM','VçÍj plattform');
-define('_APCAL_MB_OP_AFTER','Efter');
-define('_APCAL_MB_OP_BEFORE','F‹Óe');
-define('_APCAL_MB_OP_ON','På');
-define('_APCAL_MB_OP_ALL','Alla');
+define('_APCAL_MB_APCALLABEL_CHECKEDITEMS','Markerade hçÏdelser ');
+define('_APCAL_MB_APCALLABEL_OUTPUTICS','kommer att bli exporterade till iCalendar');
+define('_APCAL_MB_APCALICALSELECTPLATFORM','VçÍj plattform');
+define('_APCAL_MB_APCALOP_AFTER','Efter');
+define('_APCAL_MB_APCALOP_BEFORE','F‹Óe');
+define('_APCAL_MB_APCALOP_ON','På');
+define('_APCAL_MB_APCALOP_ALL','Alla');
 define('_APCAL_BTN_IMPORT','Importera!');
 define('_APCAL_BTN_UPLOAD','Ladda upp!');
 define('_APCAL_BTN_EXPORT','Exportera!');

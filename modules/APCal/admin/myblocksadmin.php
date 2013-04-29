@@ -59,7 +59,7 @@ error_reporting( $error_reporting_level ) ;
 
 $group_defs = file( "$xoops_system_path/language/$language/admin/groups.php" ) ;
 foreach( $group_defs as $def ) {
-	if( strstr( $def , '_AM_ACCESSRIGHTS' ) || strstr( $def , '_AM_ACTIVERIGHTS' ) ) eval( $def ) ;
+	if( strstr( $def , '_AM_APCAL_ACCESSRIGHTS' ) || strstr( $def , '_AM_APCAL_ACTIVERIGHTS' ) ) eval( $def ) ;
 }
 
 
@@ -115,12 +115,12 @@ function list_blocks()
 	<form action='admin.php' name='blockadmin' method='post'>
 		<table width='95%' class='outer' cellpadding='4' cellspacing='1'>
 		<tr valign='middle'>
-			<th>"._AM_TITLE."</th>
-			<th align='center' nowrap='nowrap'>"._AM_SIDE."</th>
-			<th align='center'>"._AM_WEIGHT."</th>
-			<th align='center'>"._AM_VISIBLEIN."</th>
-			<th align='center'>"._AM_BCACHETIME."</th>
-			<th align='right'>"._AM_ACTION."</th>
+			<th>"._AM_APCAL_TITLE."</th>
+			<th align='center' nowrap='nowrap'>"._AM_APCAL_SIDE."</th>
+			<th align='center'>"._AM_APCAL_WEIGHT."</th>
+			<th align='center'>"._AM_APCAL_VISIBLEIN."</th>
+			<th align='center'>"._AM_APCAL_BCACHETIME."</th>
+			<th align='right'>"._AM_APCAL_ACTION."</th>
 		</tr>\n" ;
 
 	// blocks displaying loop
@@ -185,8 +185,8 @@ function list_blocks()
 		$criteria = new CriteriaCompo(new Criteria('hasmain', 1));
 		$criteria->add(new Criteria('isactive', 1));
 		$module_list =& $module_handler->getList($criteria);
-		$module_list[-1] = _AM_TOPPAGE;
-		$module_list[0] = _AM_ALLPAGES;
+		$module_list[-1] = _AM_APCAL_TOPPAGE;
+		$module_list[0] = _AM_APCAL_ALLPAGES;
 		ksort($module_list);
 		$module_options = '' ;
 		foreach( $module_list as $mid => $mname ) {
@@ -316,10 +316,10 @@ function list_groups()
 		$item_list[ $block_arr[$i]->getVar("bid") ] = $block_arr[$i]->getVar("title") ;
 	}
 
-	$form = new MyXoopsGroupPermForm( _MD_AM_ADGS , 1 , 'block_read' , '' ) ;
+	$form = new MyXoopsGroupPermForm( _AM_APCAL_ADGS , 1 , 'block_read' , '' ) ;
 	if( $target_mid > 1 ) {
-		$form->addAppendix( 'module_admin' , $target_mid , $target_mname . ' ' . _AM_ACTIVERIGHTS ) ;
-		$form->addAppendix( 'module_read' , $target_mid , $target_mname .' ' . _AM_ACCESSRIGHTS ) ;
+		$form->addAppendix( 'module_admin' , $target_mid , $target_mname . ' ' . _AM_APCAL_ACTIVERIGHTS ) ;
+		$form->addAppendix( 'module_read' , $target_mid , $target_mname .' ' . _AM_APCAL_ACCESSRIGHTS ) ;
 	}
 	foreach( $item_list as $item_id => $item_name) {
 			$form->addItem( $item_id , $item_name ) ;
@@ -335,7 +335,7 @@ if( ! empty( $_POST['submit'] ) ) {
 	}
 
 	include( "mygroupperm.php" ) ;
-	redirect_header( XOOPS_URL."/modules/".$xoopsModule->dirname()."/admin/myblocksadmin.php$query4redirect" , 1 , _MD_AM_DBUPDATED );
+	redirect_header( XOOPS_URL."/modules/".$xoopsModule->dirname()."/admin/myblocksadmin.php$query4redirect" , 1 , _MD_APCALAM_APCALDBUPDATED );
 }
 
 xoops_cp_header() ;
@@ -343,7 +343,7 @@ xoops_cp_header() ;
 echo "<h3 style='text-align:left;'>$target_mname</h3>\n" ;
 
 if( ! empty( $block_arr ) ) {
-	echo "<h4 style='text-align:left;'>"._AM_BADMIN."</h4>\n" ;
+	echo "<h4 style='text-align:left;'>"._AM_APCAL_BADMIN."</h4>\n" ;
 	list_blocks() ;
 }
 

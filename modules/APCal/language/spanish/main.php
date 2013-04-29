@@ -1,14 +1,14 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MB_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MB_APCALLOADED' ) ) {
 
-define( 'APCAL_MB_LOADED' , 1 ) ;
+define( 'APCAL_MB_APCALLOADED' , 1 ) ;
 
 // index.php
 define('_MB_APCAL_ERR_NOPERMTOUPDATE',"Usted no tiene permisos para cambiar eventos");
 define('_APCAL_APURL', 'http://xoops.antiquespromotion.ca');
 define('_APCAL_APURL2', 'http://www.antiquespromotion.ca');
-define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="Calendar for Xoops" target="_blank">APCal</a> by <a href="http://www.antiquespromotion.ca" title="Promoci&oacute;n de antig¸edades Canad&aacute;" target="_blank">AP</a>');
+define('_AM_APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="Calendar for Xoops" target="_blank">APCal</a> by <a href="http://www.antiquespromotion.ca" title="Promoci&oacute;n de antig¸edades Canad&aacute;" target="_blank">AP</a>');
 define('_MB_APCAL_ERR_NOPERMTOINSERT',"Usted no tiene permisos para aÅ¬dir eventos");
 define('_MB_APCAL_ERR_NOPERMTODELETE',"Usted no tiene permisos para eliminar eventos");
 define('_MB_APCAL_ALT_PRINTTHISEVENT',"Imprimir este evento");
@@ -42,7 +42,7 @@ define('_APCAL_CALENDAROF', 'Calendario de');
 define('_APCAL_SHARECALENDARFORM', 'Rellena el Formulario para mostrar e lcalendario en tu p&aacute;gina web.');
 define('_APCAL_SHOWALLCAT', 'Todas las categor&iacute;as');
 define('_APCAL_GENERATE', 'Generar');
-define('_AP_GENERATEHINT', 'You might have to click generate two times on certain browsers.');
+define('_APCAL_GENERATEHINT', 'You might have to click generate two times on certain browsers.');
 define('_APCAL_CATEGORIES', 'Categor&iacute;as');
 define('_APCAL_NBEVENTS', 'N&uacute;meor de eventos a mostrar');
 define('_APCAL_WIDTH', 'Tama&ntilde;o del Bloque');

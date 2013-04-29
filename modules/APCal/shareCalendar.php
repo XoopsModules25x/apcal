@@ -59,7 +59,7 @@ $wTray = new XoopsFormElementTray(_APCAL_WIDTH);
 $wTray->addElement(new XoopsFormText('', 'w', 10, 7, '100'), true);
 $wTray->addElement($unitSelect);
 
-$generateButton = new XoopsFormButton(_AP_GENERATEHINT, 'generate', _APCAL_GENERATE, 'submit');
+$generateButton = new XoopsFormButton(_APCAL_GENERATEHINT, 'generate', _APCAL_GENERATE, 'submit');
 $generateButton->setExtra('onclick="showHTMLCode();return false;"');
 
 $form->addElement(new XoopsFormText(_APCAL_TITLE, 'h', 30, 60, $xoopsModule->getVar('name')), true);

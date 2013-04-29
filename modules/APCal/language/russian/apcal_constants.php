@@ -1,8 +1,8 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_CNST_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_APCAL_CNST_LOADED' ) ) {
 
-define( 'APCAL_CNST_LOADED' , 1 ) ;
+define( '_APCAL_CNST_LOADED' , 1 ) ;
 
 // the language file for jscalendar "DHTML Date/Time Selector"
 define('_APCAL_JS_CALENDAR','calendar-ru_win_.js');
@@ -34,58 +34,58 @@ define('_APCAL_ICON_WEEKLY','Неделя') ;
 define('_APCAL_ICON_MONTHLY','Месяц') ;
 define('_APCAL_ICON_YEARLY','Год') ;
 
-define('_APCAL_MB_SHOWALLCAT','Все категории') ;
+define('_APCAL_MB_APCALSHOWALLCAT','Все категории') ;
 
-define('_APCAL_MB_LINKTODAY','Сегодня') ;
-define('_APCAL_MB_NOSUBJECT','(Нет названия)') ;
+define('_APCAL_MB_APCALLINKTODAY','Сегодня') ;
+define('_APCAL_MB_APCALNOSUBJECT','(Нет названия)') ;
 
-define('_APCAL_MB_PREV_DATE','Вчера') ;
-define('_APCAL_MB_NEXT_DATE','Завтра') ;
-define('_APCAL_MB_PREV_WEEK','Предыдущая неделя') ;
-define('_APCAL_MB_NEXT_WEEK','Следующая неделя') ;
-define('_APCAL_MB_PREV_MONTH','Предыдущий месяц') ;
-define('_APCAL_MB_NEXT_MONTH','Следующий месяц') ;
-define('_APCAL_MB_PREV_YEAR','Предыдущий год') ;
-define('_APCAL_MB_NEXT_YEAR','Следующий год') ;
+define('_APCAL_MB_APCALPREV_DATE','Вчера') ;
+define('_APCAL_MB_APCALNEXT_DATE','Завтра') ;
+define('_APCAL_MB_APCALPREV_WEEK','Предыдущая неделя') ;
+define('_APCAL_MB_APCALNEXT_WEEK','Следующая неделя') ;
+define('_APCAL_MB_APCALPREV_MONTH','Предыдущий месяц') ;
+define('_APCAL_MB_APCALNEXT_MONTH','Следующий месяц') ;
+define('_APCAL_MB_APCALPREV_YEAR','Предыдущий год') ;
+define('_APCAL_MB_APCALNEXT_YEAR','Следующий год') ;
 
-define('_APCAL_MB_NOEVENT','Нет событий') ;
-define('_APCAL_MB_ADDEVENT','Добавить событие') ;
-define('_APCAL_MB_CONTINUING','(идет)') ;
-define('_APCAL_MB_RESTEVENT_PRE','еще') ;
-define('_APCAL_MB_RESTEVENT_SUF','событий') ;
-define('_APCAL_MB_TIMESEPARATOR','--') ;
+define('_APCAL_MB_APCALNOEVENT','Нет событий') ;
+define('_APCAL_MB_APCALADDEVENT','Добавить событие') ;
+define('_APCAL_MB_APCALCONTINUING','(идет)') ;
+define('_APCAL_MB_APCALRESTEVENT_PRE','еще') ;
+define('_APCAL_MB_APCALRESTEVENT_SUF','событий') ;
+define('_APCAL_MB_APCALTIMESEPARATOR','--') ;
 
-define('_APCAL_MB_ALLDAY_EVENT','Целый день') ;
-define('_APCAL_MB_LONG_EVENT','Показывать линией') ;
-define('_APCAL_MB_LONG_SPECIALDAY','Празднование и т.д.') ;
+define('_APCAL_MB_APCALALLDAY_EVENT','Целый день') ;
+define('_APCAL_MB_APCALLONG_EVENT','Показывать линией') ;
+define('_APCAL_MB_APCALLONG_SPECIALDAY','Празднование и т.д.') ;
 
-define('_APCAL_MB_PUBLIC','Для всех') ;
-define('_APCAL_MB_PRIVATE','Приватное') ;
-define('_APCAL_MB_PRIVATETARGET',' для %s') ;
+define('_APCAL_MB_APCALPUBLIC','Для всех') ;
+define('_APCAL_MB_APCALPRIVATE','Приватное') ;
+define('_APCAL_MB_APCALPRIVATETARGET',' для %s') ;
 
-define('_APCAL_MB_LINK_TO_RRULE1ST','Перейти к 1-му событию ') ;
-define('_APCAL_MB_RRULE1ST','Первое событие') ;
+define('_APCAL_MB_APCALLINK_TO_RRULE1ST','Перейти к 1-му событию ') ;
+define('_APCAL_MB_APCALRRULE1ST','Первое событие') ;
 
-define('_APCAL_MB_EVENT_NOTREGISTER','Не зарегистрировано') ;
-define('_APCAL_MB_EVENT_ADMITTED','Подтверждено') ;
-define('_APCAL_MB_EVENT_NEEDADMIT','В ожидании подтверждения') ;
+define('_APCAL_MB_APCALEVENT_NOTREGISTER','Не зарегистрировано') ;
+define('_APCAL_MB_APCALEVENT_ADMITTED','Подтверждено') ;
+define('_APCAL_MB_APCALEVENT_NEEDADMIT','В ожидании подтверждения') ;
 
-define('_APCAL_MB_TITLE_EVENTINFO','Событие') ;
-define('_APCAL_MB_SUBTITLE_EVENTDETAIL','Детальный просмотр') ;
-define('_APCAL_MB_SUBTITLE_EVENTEDIT','Редактирование') ;
+define('_APCAL_MB_APCALTITLE_EVENTINFO','Событие') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTDETAIL','Детальный просмотр') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTEDIT','Редактирование') ;
 
-define('_APCAL_MB_HOUR_SUF',':') ;
-define('_APCAL_MB_MINUTE_SUF','') ;
+define('_APCAL_MB_APCALHOUR_SUF',':') ;
+define('_APCAL_MB_APCALMINUTE_SUF','') ;
 
-define('_APCAL_MB_ORDER_ASC','по возрастанию') ;
-define('_APCAL_MB_ORDER_DESC','по убыванию') ;
-define('_APCAL_MB_SORTBY','Сортировать:') ;
-define('_APCAL_MB_CURSORTEDBY','События сортируются:') ;
+define('_APCAL_MB_APCALORDER_ASC','по возрастанию') ;
+define('_APCAL_MB_APCALORDER_DESC','по убыванию') ;
+define('_APCAL_MB_APCALSORTBY','Сортировать:') ;
+define('_APCAL_MB_APCALCURSORTEDBY','События сортируются:') ;
 
-define("_APCAL_MB_LABEL_CHECKEDITEMS","Выбранные события:");
-define("_APCAL_MB_LABEL_OUTPUTICS","");
+define("_APCAL_MB_APCALLABEL_CHECKEDITEMS","Выбранные события:");
+define("_APCAL_MB_APCALLABEL_OUTPUTICS","");
 
-define("_APCAL_MB_ICALSELECTPLATFORM","Выберите платформу");
+define("_APCAL_MB_APCALICALSELECTPLATFORM","Выберите платформу");
 
 define('_APCAL_TH_SUMMARY','Название') ;
 define('_APCAL_TH_TIMEZONE','Часовой пояс') ;
@@ -110,10 +110,10 @@ define('_APCAL_OPT_PRIVATEMYSELF','себя') ;
 define('_APCAL_OPT_PRIVATEGROUP','группы %s') ;
 define('_APCAL_OPT_PRIVATEINVALID','(неправильная группа)') ;
 
-define('_APCAL_MB_OP_AFTER','После') ;
-define('_APCAL_MB_OP_BEFORE','До') ;
-define('_APCAL_MB_OP_ON','В') ;
-define('_APCAL_MB_OP_ALL','Все') ;
+define('_APCAL_MB_APCALOP_AFTER','После') ;
+define('_APCAL_MB_APCALOP_BEFORE','До') ;
+define('_APCAL_MB_APCALOP_ON','В') ;
+define('_APCAL_MB_APCALOP_ALL','Все') ;
 
 define('_APCAL_CNFM_SAVEAS_YN','Вы хотите сохранить как отдельную запись?') ;
 define('_APCAL_CNFM_DELETE_YN','Вы хотите удалить запись?') ;

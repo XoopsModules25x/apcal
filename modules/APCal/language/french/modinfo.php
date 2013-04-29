@@ -1,8 +1,8 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MI_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_MI_APCAL_APCALLOADED' ) ) {
 
-define( 'APCAL_MI_LOADED' , 1 ) ;
+define( '_MI_APCAL_APCALLOADED' , 1 ) ;
 
 // Module Info
 

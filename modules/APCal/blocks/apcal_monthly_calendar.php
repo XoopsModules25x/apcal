@@ -95,7 +95,7 @@ function apcal_monthly_calendar_show( $options )
 	// legends of long events
 	foreach( $cal->long_event_legends as $bit => $legend ) {
 		$tmpl->addVar( "LongEventLegends" , "BIT_MASK" , 1 << ( $bit - 1 ) ) ;
-		$tmpl->addVar( "LongEventLegends" , "LEGEND_ALT" , _APCAL_MB_ALLDAY_EVENT . " $bit" ) ;
+		$tmpl->addVar( "LongEventLegends" , "LEGEND_ALT" , _APCAL_MB_APCALALLDAY_EVENT . " $bit" ) ;
 		$tmpl->addVar( "LongEventLegends" , "LEGEND" , $legend ) ;
 		$tmpl->addVar( "LongEventLegends" , "SKINPATH" , $cal->images_url ) ;
 		$tmpl->parseTemplate( "LongEventLegends" , "a" ) ;

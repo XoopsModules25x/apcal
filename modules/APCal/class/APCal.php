@@ -464,7 +464,7 @@ function get_date_schedule( $get_target = '' )
 	$yrs = mysql_query( "SELECT start,end,summary,id,allday FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start,end" , $this->conn ) ;
 	$num_rows = mysql_num_rows( $yrs ) ;
 
-	if( $num_rows == 0 ) $ret .= _APCAL_MB_NOEVENT."\n" ;
+	if( $num_rows == 0 ) $ret .= _APCAL_MB_APCALNOEVENT."\n" ;
 	else while( $event = mysql_fetch_object( $yrs ) ) {
 
 		$summary = $this->text_sanitizer_for_show( $event->summary ) ;
@@ -498,7 +498,7 @@ function get_date_schedule( $get_target = '' )
 	if( $this->insertable ) $ret .= "
 	       <dl>
 	         <dt>
-	           &nbsp; <font size='2'><a href='$get_target?smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"._APCAL_MB_ADDEVENT."</a></font>
+	           &nbsp; <font size='2'><a href='$get_target?smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"._APCAL_MB_APCALADDEVENT."</a></font>
 	         </dt>
 	       </dl>\n" ;
 
@@ -534,7 +534,7 @@ function get_coming_schedule( $get_target = '' , $num = 5 )
 	$yrs = mysql_query( "SELECT start,end,summary,id,allday FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start" , $this->conn ) ;
 	$num_rows = mysql_num_rows( $yrs ) ;
 
-	if( $num_rows == 0 ) $ret .= _APCAL_MB_NOEVENT."\n" ;
+	if( $num_rows == 0 ) $ret .= _APCAL_MB_APCALNOEVENT."\n" ;
 	else for( $i = 0 ; $i < $num ; $i ++ ) {
 		$event = mysql_fetch_object( $yrs ) ;
 		if( $event == false ) break ;
@@ -571,7 +571,7 @@ function get_coming_schedule( $get_target = '' , $num = 5 )
 	if( $num_rows > $num ) $ret .= "
            <table border='0' cellspacing='0' cellpadding='0' width='100%'>
             <tr>
-             <td align='right'><small>"._APCAL_MB_RESTEVENT_PRE.($num_rows-$num)._APCAL_MB_RESTEVENT_SUF."</small></td>
+             <td align='right'><small>"._APCAL_MB_APCALRESTEVENT_PRE.($num_rows-$num)._APCAL_MB_APCALRESTEVENT_SUF."</small></td>
             </tr>
            </table>\n" ;
 
@@ -579,7 +579,7 @@ function get_coming_schedule( $get_target = '' , $num = 5 )
 	if( $this->insertable ) $ret .= "
 	       <dl>
 	         <dt>
-	           &nbsp; <font size='2'><a href='$get_target?smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"._APCAL_MB_ADDEVENT."</a></font>
+	           &nbsp; <font size='2'><a href='$get_target?smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"._APCAL_MB_APCALADDEVENT."</a></font>
 	         </dt>
 	       </dl>\n" ;
 
@@ -708,9 +708,9 @@ function get_mini_calendar_html( $get_target = '' , $query_string = '' , $mode =
 	$tmpl->addVar( "WholeBoard" , "GET_TARGET" , $get_target ) ;
 	$tmpl->addVar( "WholeBoard" , "QUERY_STRING" , $query_string ) ;
 
-	$tmpl->addVar( "WholeBoard" , "MB_PREV_MONTH" , _APCAL_MB_PREV_MONTH ) ;
-	$tmpl->addVar( "WholeBoard" , "MB_NEXT_MONTH" , _APCAL_MB_NEXT_MONTH ) ;
-	$tmpl->addVar( "WholeBoard" , "MB_LINKTODAY" , _APCAL_MB_LINKTODAY ) ;
+	$tmpl->addVar( "WholeBoard" , "MB_PREV_MONTH" , _APCAL_MB_APCALPREV_MONTH ) ;
+	$tmpl->addVar( "WholeBoard" , "MB_NEXT_MONTH" , _APCAL_MB_APCALNEXT_MONTH ) ;
+	$tmpl->addVar( "WholeBoard" , "MB_LINKTODAY" , _APCAL_MB_APCALLINKTODAY ) ;
 
 	$tmpl->addVar( "WholeBoard" , "SKINPATH" , $this->images_url ) ;
 	$tmpl->addVar( "WholeBoard" , "FRAME_CSS" , $this->frame_css ) ;
@@ -968,7 +968,7 @@ function get_monthly( $get_target = '' , $query_string = '' , $for_print = false
 	// legends of long events
 	foreach( $this->long_event_legends as $bit => $legend ) {
 		$tmpl->addVar( "LongEventLegends" , "BIT_MASK" , 1 << ( $bit - 1 ) ) ;
-		$tmpl->addVar( "LongEventLegends" , "LEGEND_ALT" , _APCAL_MB_ALLDAY_EVENT . " $bit" ) ;
+		$tmpl->addVar( "LongEventLegends" , "LEGEND_ALT" , _APCAL_MB_APCALALLDAY_EVENT . " $bit" ) ;
 		$tmpl->addVar( "LongEventLegends" , "LEGEND" , $legend ) ;
 		$tmpl->addVar( "LongEventLegends" , "SKINPATH" , $this->images_url ) ;
 		$tmpl->parseTemplate( "LongEventLegends" , "a" ) ;
@@ -1116,7 +1116,7 @@ function get_calendar_information( $mode = 'M' )
 	$ret[ 'DISP_DAY' ] = "({$this->week_middle_names[ $this->day ]})" ;
 	list( $bgcolor , $color ) =  $this->daytype_to_colors( $this->daytype ) ;
 	$ret[ 'DISP_DAY_COLOR' ] = $color ;
-	$ret[ 'COPYRIGHT' ] = APCAL_COPYRIGHT ;
+	$ret[ 'COPYRIGHT' ] = _AM_APCAL_COPYRIGHT ;
 
 	// ï¿½Ø¥Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¥ï¿½ï¿½é¡¼
 	$ret[ 'CALHEAD_BGCOLOR' ]  =  $this->calhead_bgcolor ;
@@ -1130,15 +1130,15 @@ function get_calendar_information( $mode = 'M' )
 	$ret[ 'ICON_YEARLY' ] = _APCAL_ICON_YEARLY ;
 
 	// ï¿½ï¿½Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¥ï¿½Ã¥ï¿½
-	$ret[ 'MB_PREV_YEAR' ] = _APCAL_MB_PREV_YEAR ;
-	$ret[ 'MB_NEXT_YEAR' ] = _APCAL_MB_NEXT_YEAR ;
-	$ret[ 'MB_PREV_MONTH' ] = _APCAL_MB_PREV_MONTH ;
-	$ret[ 'MB_NEXT_MONTH' ] = _APCAL_MB_NEXT_MONTH ;
-	$ret[ 'MB_PREV_WEEK' ] = _APCAL_MB_PREV_WEEK ;
-	$ret[ 'MB_NEXT_WEEK' ] = _APCAL_MB_NEXT_WEEK ;
-	$ret[ 'MB_PREV_DATE' ] = _APCAL_MB_PREV_DATE ;
-	$ret[ 'MB_NEXT_DATE' ] = _APCAL_MB_NEXT_DATE ;
-	$ret[ 'MB_LINKTODAY' ] = _APCAL_MB_LINKTODAY ;
+	$ret[ 'MB_PREV_YEAR' ] = _APCAL_MB_APCALPREV_YEAR ;
+	$ret[ 'MB_NEXT_YEAR' ] = _APCAL_MB_APCALNEXT_YEAR ;
+	$ret[ 'MB_PREV_MONTH' ] = _APCAL_MB_APCALPREV_MONTH ;
+	$ret[ 'MB_NEXT_MONTH' ] = _APCAL_MB_APCALNEXT_MONTH ;
+	$ret[ 'MB_PREV_WEEK' ] = _APCAL_MB_APCALPREV_WEEK ;
+	$ret[ 'MB_NEXT_WEEK' ] = _APCAL_MB_APCALNEXT_WEEK ;
+	$ret[ 'MB_PREV_DATE' ] = _APCAL_MB_APCALPREV_DATE ;
+	$ret[ 'MB_NEXT_DATE' ] = _APCAL_MB_APCALNEXT_DATE ;
+	$ret[ 'MB_LINKTODAY' ] = _APCAL_MB_APCALLINKTODAY ;
 
 	// ï¿½ï¿½ï¿½ï¿½ï¿½Ø¤Î¥ï¿½ï¿½
 	$ret[ 'PREV_YEAR' ] = date("Y-n-j", mktime(0,0,0,$this->month,$this->date,$this->year-1));
@@ -1272,12 +1272,15 @@ function get_monthly_html($get_target='', $query_string='', $for_print = false)
         
         while($event = mysql_fetch_object($yrs)) 
         {
+            $event->start += $tzoffset;
+            $event->end += $tzoffset;
+            
             $startDay = date('j', $event->start);
             $endDay = date('j', $event->end);
             $endHour = date('H:i:s', $event->end);
             
             $startDay = $event->start < mktime(0, 0, 0, $this->month, 1, $this->year) ? 1 : $startDay;
-            $endDay = $endDay != $startDay && $endHour == '00:00:00' ? $endDay - 1 : $endDay;
+            //$endDay = $endDay != $startDay && $endHour == '00:00:00' ? $endDay - 1 : $endDay;
             $endDay = $event->end > mktime(0, 0, 0, $this->month, $lastDay, $this->year) ? $lastDay : $endDay;
             $week_end = $this->week_start + 6;
 
@@ -1319,8 +1322,8 @@ function get_monthly_html($get_target='', $query_string='', $for_print = false)
             }
             $events[$event_id]['link'] = $this->make_event_link($event->id, $get_target);
             $events[$event_id]['location'] = $this->text_sanitizer_for_show($event->location);
-            $events[$event_id]['start'] = $this->get_middle_md($event->start + $tzoffset).' '.($event->allday != 1 ? $this->get_middle_hi($event->start + $tzoffset) : '');
-            $events[$event_id]['end'] = ($event->allday != 1 ? $this->get_middle_md($event->end + $tzoffset) : $this->get_middle_md($event->end - 3600)).' '.($event->allday != 1 ? $this->get_middle_hi($event->end + $tzoffset) : '');
+            $events[$event_id]['start'] = $this->get_middle_md($event->start /*+ $tzoffset*/).' '.($event->allday < 1 ? $this->get_middle_hi($event->start /*+ $tzoffset*/) : '');
+            $events[$event_id]['end'] = /*($event->allday != 1 ? */$this->get_middle_md($event->end /*+ $tzoffset*/) /*: $this->get_middle_md($event->end - 3600))*/.' '.($event->allday < 1 ? $this->get_middle_hi($event->end/* + $tzoffset*/) : '');
             $events[$event_id]['cat'] = ($event->mainCategory && key_exists($event->mainCategory, $cats_color)) ? $event->mainCategory : '00000';
             $events[$event_id]['duration'] = $endDay - $startDay + 1;
             $events[$event_id]['picture'] = $pic && $this->showPicMonthly ? XOOPS_UPLOAD_URL."/APCal/{$pic->picture}" : '';
@@ -1517,16 +1520,17 @@ function get_weekly_html($get_target='')
 
 		if( $numrows_ars > 0 ) mysql_data_seek( $ars , 0 ) ;
 		while( $event = mysql_fetch_object( $ars ) ) {
+            if( $event->allday & 4 ) {$event->end += 86400;}
             if($event->gmlat > 0 || $event->gmlong > 0)
-                    $this->gmPoints[] = array('summary' => $event->summary, 'gmlat' => $event->gmlat, 'gmlong' => $event->gmlong, 'location' => $event->location, 'contact' => $event->contact, 'startDate' => date('j', $event->start), 'event_id' =>$event->id);
+                    $this->gmPoints[] = array('summary' => $event->summary, 'gmlat' => $event->gmlat, 'gmlong' => $event->gmlong, 'location' => $event->location, 'contact' => $event->contact, 'startDate' => date('j', $event->start + $tzoffset), 'event_id' =>$event->id);
 
 			if( $event->allday ) {
-				if( $event->start >= $now_unixtime + 86400 || $event->end <= $now_unixtime ) continue ;
+				if( $event->start + $tzoffset >= $now_unixtime + 86400 || $event->end + $tzoffset <= $now_unixtime ) continue ;
 			} else {
-				if( $event->start >= $bottomtime_of_day || $event->start != $toptime_of_day && $event->end <= $toptime_of_day ) continue ;
+				if( $event->start + $tzoffset >= $bottomtime_of_day || $event->start + $tzoffset != $toptime_of_day && $event->end + $tzoffset <= $toptime_of_day ) continue ;
 
-				$event->is_start_date = $event->start >= $toptime_of_day ;
-				$event->is_end_date = $event->end <= $bottomtime_of_day ;
+				$event->is_start_date = $event->start + $tzoffset >= $toptime_of_day ;
+				$event->is_end_date = $event->end + $tzoffset <= $bottomtime_of_day ;
 			}
 
 			$summary = $this->text_sanitizer_for_show( $event->summary ) ;
@@ -1570,11 +1574,11 @@ function get_weekly_html($get_target='')
 			if( $numrows_wrs > 0 ) mysql_data_seek( $wrs , 0 ) ;
 			while( $event = mysql_fetch_object( $wrs ) ) {
 				if( $event->allday ) {
-					if( $event->start >= $now_unixtime + 86400 || $event->end <= $now_unixtime ) continue ;
+					if( $event->start + $tzoffset >= $now_unixtime + 86400 || $event->end + $tzoffset <= $now_unixtime ) continue ;
 				} else {
-					if( $event->start >= $bottomtime_of_day || $event->start != $toptime_of_day && $event->end <= $toptime_of_day ) continue ;
-					$event->is_start_date = $event->start >= $toptime_of_day ;
-					$event->is_end_date = $event->end <= $bottomtime_of_day ;
+					if( $event->start + $tzoffset >= $bottomtime_of_day || $event->start + $tzoffset != $toptime_of_day && $event->end + $tzoffset <= $toptime_of_day ) continue ;
+					$event->is_start_date = $event->start + $tzoffset >= $toptime_of_day ;
+					$event->is_end_date = $event->end + $tzoffset <= $bottomtime_of_day ;
 				}
 
 				$summary = $this->text_sanitizer_for_show( $event->summary ) ;
@@ -1598,7 +1602,7 @@ function get_weekly_html($get_target='')
 					    </td>
 					    <td valign='top'>
                           $picture
-					      <font size='2'><a href='{$this->make_event_link($event->id, $get_target)}' class='$summary_class'><font color='#00FF00'>$summary("._APCAL_MB_EVENT_NEEDADMIT.")</a></font>";         
+					      <font size='2'><a href='{$this->make_event_link($event->id, $get_target)}' class='$summary_class'><font color='#00FF00'>$summary("._APCAL_MB_APCALEVENT_NEEDADMIT.")</a></font>";         
                 if($event->extkey0 == 1) {$event_str .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='"._APCAL_RO_ONLINE_POSS."' title='"._APCAL_RO_ONLINE_POSS."' />";} // added by goffy: mark this event, that online registration is active
                 $event_str .= "                  
 					    </td>
@@ -1623,7 +1627,7 @@ function get_weekly_html($get_target='')
 		if( $this->insertable ) $event_str .= "
 				  <tr>
 				    <td valign='bottom' colspan='2'>
-				      &nbsp; <font size='2'><a href='$get_target?cid=$this->now_cid&amp;smode=Weekly&amp;action=Edit&amp;caldate=$link'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"._APCAL_MB_ADDEVENT."</a></font>
+				      &nbsp; <font size='2'><a href='$get_target?cid=$this->now_cid&amp;smode=Weekly&amp;action=Edit&amp;caldate=$link'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"._APCAL_MB_APCALADDEVENT."</a></font>
 				    </td>
 				  </tr>
 		\n" ;
@@ -1734,7 +1738,7 @@ function get_daily_html($get_target='')
 	$yrs = mysql_query( "SELECT *,(start>='$toptime_of_day') AS is_start_date,(end<='$bottomtime_of_day') AS is_end_date FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start,end" , $this->conn ) ;
 	$num_rows = mysql_num_rows( $yrs ) ;
 
-	if( $num_rows == 0 ) $ret .= "<tr><td></td><td>"._APCAL_MB_NOEVENT."</td></tr>\n" ;
+	if( $num_rows == 0 ) $ret .= "<tr><td></td><td>"._APCAL_MB_APCALNOEVENT."</td></tr>\n" ;
 	else while( $event = mysql_fetch_object( $yrs ) ) {
         // Get picture
         $pic = mysql_fetch_object(mysql_query("SELECT picture FROM {$this->pic_table} WHERE event_id={$event->id} AND main_pic=1 LIMIT 0,1"));
@@ -1794,7 +1798,7 @@ function get_daily_html($get_target='')
 	         <td vlalign='top'>
 	           <font size='3'><a href='{$this->make_event_link($event->id, $get_target)}' class='$summary_class'><font color='#00FF00'>{$summary}</a></font>";    
         if($event->extkey0 == 1) $ret .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='"._APCAL_RO_ONLINE_POSS."' title='"._APCAL_RO_ONLINE_POSS."'>" ;	// added by goffy: mark this event, that online registration is active
-        $ret .= " ("._APCAL_MB_EVENT_NEEDADMIT.")
+        $ret .= " ("._APCAL_MB_APCALEVENT_NEEDADMIT.")
 	         </td>
 	       </tr>\n" ;
 	  }
@@ -1819,7 +1823,7 @@ function get_daily_html($get_target='')
 	if( $this->insertable ) $ret .= "
 	       <tr>
 	         <td valign='bottom' colspan='2'>
-	           &nbsp; <font size='2'><a href='$get_target?cid=$this->now_cid&amp;smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"._APCAL_MB_ADDEVENT."</a></font>
+	           &nbsp; <font size='2'><a href='$get_target?cid=$this->now_cid&amp;smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"._APCAL_MB_APCALADDEVENT."</a></font>
 	         </td>
 	       </tr>\n" ;
 
@@ -1957,9 +1961,9 @@ function get_schedule_view_html($for_print=false)
 	} else $ics_output_button = "" ;
 
 	if( $event->allday ) {
-		$tzoffset = 0 ;
-		$event->end -= 300 ;
-		$start_time_str = /*"("._APCAL_MB_ALLDAY_EVENT.")"*/'' ;
+		$tzoffset = intval( ( $this->user_TZ - $this->server_TZ ) * 3600 ) ;
+		//$event->end -= 300 ;
+		$start_time_str = /*"("._APCAL_MB_APCALALLDAY_EVENT.")"*/'' ;
 		$end_time_str = "" ;
 	} else {
 		$tzoffset = intval( ( $this->user_TZ - $this->server_TZ ) * 3600 ) ;
@@ -1987,9 +1991,9 @@ function get_schedule_view_html($for_print=false)
 			} else {
 				$parent_date_str = $this->get_long_ymdn( $parent_event->start + $tzoffset ) ;
 			}
-			$rrule .= "<br /><a href='?action=View&amp;event_id=$parent_event->id' target='_blank'>"._APCAL_MB_LINK_TO_RRULE1ST. " $parent_date_str</a>" ;
+			$rrule .= "<br /><a href='?action=View&amp;event_id=$parent_event->id' target='_blank'>"._APCAL_MB_APCALLINK_TO_RRULE1ST. " $parent_date_str</a>" ;
 		} else {
-			$rrule .= '<br /> '._APCAL_MB_RRULE1ST ;
+			$rrule .= '<br /> '._APCAL_MB_APCALRRULE1ST ;
 		}
 	}
 
@@ -2008,12 +2012,12 @@ function get_schedule_view_html($for_print=false)
 		if( $groupid == 0 ) $group = _APCAL_OPT_PRIVATEMYSELF ;
 		else if( isset( $this->groups[ $groupid ] ) ) $group = sprintf( _APCAL_OPT_PRIVATEGROUP , $this->groups[ $groupid ] ) ;
 		else $group = _APCAL_OPT_PRIVATEINVALID ;
-		$class_status = _APCAL_MB_PRIVATE . sprintf( _APCAL_MB_PRIVATETARGET , $group ) ;
+		$class_status = _APCAL_MB_APCALPRIVATE . sprintf( _APCAL_MB_APCALPRIVATETARGET , $group ) ;
 	} else {
-		$class_status = _APCAL_MB_PUBLIC ;
+		$class_status = _APCAL_MB_APCALPUBLIC ;
 	}
 
-	$admission_status = $event->admission ? _APCAL_MB_EVENT_ADMITTED : _APCAL_MB_EVENT_NEEDADMIT ;
+	$admission_status = $event->admission ? _APCAL_MB_APCALEVENT_ADMITTED : _APCAL_MB_APCALEVENT_NEEDADMIT ;
 	$last_modified = $this->get_long_ymdn( $event->udtstamp - intval( ( $this->user_TZ - $this->server_TZ ) * 3600 ) ) ;
 	$description = $this->textarea_sanitizer_for_show( $event->description ) ;
 	$summary = $this->text_sanitizer_for_show( $event->summary ) ;
@@ -2022,11 +2026,12 @@ function get_schedule_view_html($for_print=false)
     $contact = convertmycontacts($contact); // added one line by goffy: converting the contact name(s) into a link to member account this is not necessary for online registration
     $email = $this->text_sanitizer_for_show( $event->email ) ;
     $url = $this->text_sanitizer_for_show( $event->url ) ;
+    $url = substr($url, 0, 4) != 'http' ? 'http://'.$url : $url;
     $otherHour = explode('-', $event->otherHours);
     if($otherHour[0] != '')
     {
-        $event->end += 300 ;
-        $h = array(0, date('H', $event->start), date('i', $event->start), date('H', $event->end), date('i', $event->end));
+        //$event->end += 300 ;
+        $h = array(0, date('H', $event->start + $tzoffset), date('i', $event->start + $tzoffset), date('H', $event->end + $tzoffset), date('i', $event->end + $tzoffset));
         $d = $this->get_long_ymdn($event->start + ($h[0] * 3600 * 24) + $tzoffset);
         $otherHours = '<br />'.$d.'&nbsp;&nbsp;&nbsp;&nbsp;'.sprintf('%02d', $h[1]).':'.sprintf('%02d', $h[2]).' - '.sprintf('%02d', $h[3]).':'.sprintf('%02d', $h[4]);
         foreach($otherHour as $day)
@@ -2279,7 +2284,7 @@ function get_schedule_view_html($for_print=false)
 		<td><img src='$this->images_url/spacer.gif' alt='' width='150' height='4' /></td>		<td width='100%'></td>
 	</tr>
 	<tr>
-		<td width='100%' align='right' colspan='2'>".APCAL_COPYRIGHT."</td>
+		<td width='100%' align='right' colspan='2'>"._AM_APCAL_COPYRIGHT."</td>
 	</tr>
 	</table>
     \n" ;
@@ -2330,7 +2335,7 @@ function get_schedule_edit_html( )
 		}
 		$groupid = $event->groupid ;
 		$rrule = $event->rrule ;
-		$admission_status = $event->admission ? _APCAL_MB_EVENT_ADMITTED : _APCAL_MB_EVENT_NEEDADMIT ;
+		$admission_status = $event->admission ? _APCAL_MB_APCALEVENT_ADMITTED : _APCAL_MB_APCALEVENT_NEEDADMIT ;
 		$update_button = $editable ? "<input name='update' type='submit' value='"._APCAL_BTN_SUBMITCHANGES."' />" : "" ;
 		$insert_button = "<input name='saveas' type='submit' value='"._APCAL_BTN_SAVEAS."' onclick='return confirm(\""._APCAL_CNFM_SAVEAS_YN."\")' />" ;
 		$delete_button = $deletable ? "<input name='delete' type='submit' value='"._APCAL_BTN_DELETE."' onclick='return confirm(\""._APCAL_CNFM_DELETE_YN."\")' />" : "" ;
@@ -2377,6 +2382,7 @@ function get_schedule_edit_html( )
         $ro_form_new ="";
         // end added by goffy
 
+        //$tmpEnd = date('H:i', $event->end) == '00:00' ? $event->end - 300 : $event->end;
         $diff = date('j', $event->end) - date('j', $event->start);
         if($event->otherHours != '' /*&& $event->allday <= 0*/)
         {
@@ -2385,32 +2391,35 @@ function get_schedule_edit_html( )
             foreach($otherHours as $h)
             {
                 $h = explode(':', $h);
-                $startHours .= "<span name='StartSpan'>"._APCAL_DAY.' '.($h[0]+1);
-                $startHours .= " <select name='StartH[]'>".$this->get_options_for_hour($h[1]).'</select>';
-                $startHours .= " <select name='StartM[]'>".$this->get_options_for_min($h[2]).'</select></span>';
-                $endHours .= "<span name='EndSpan'>"._APCAL_DAY.' '.($h[0]+1);
-                $endHours .= " <select name='EndH[]'>".$this->get_options_for_hour($h[3]).'</select>';
-                $endHours .= " <select name='EndM[]'>".$this->get_options_for_min($h[4]).'</select></span>';
+                $startHours .= "<span name='StartSpan'>"._APCAL_DAY.'&nbsp;'.($h[0]+1);
+                $startHours .= "<select name='StartH[]'>".$this->get_options_for_hour($h[1]).'</select>';
+                $startHours .= "<select name='StartM[]'>".$this->get_options_for_min($h[2]).'</select></span>';
+                $endHours .= "<span name='EndSpan'>"._APCAL_DAY.'&nbsp;'.($h[0]+1);
+                $endHours .= "<select name='EndH[]'>".$this->get_options_for_hour($h[3]).'</select>';
+                $endHours .= "<select name='EndM[]'>".$this->get_options_for_min($h[4]).'</select></span>';
             }
         }
-        elseif($diff > 0 /*&& $event->allday <= 0*/)
+        elseif($diff > 0 /*&& $event->allday == 0*/)
         {
-            $samehours_checkbox = "checked='checked'";
+            //$samehours_checkbox = "checked='checked'";
             for($i=0; $i<$diff; $i++)
             {
-                $startHours .= _APCAL_DAY.' '.($i+2);
-                $startHours .= " <select name='StartH[]' disabled>".$this->get_options_for_hour(9).'</select>';
-                $startHours .= " <select name='StartM[]' disabled>".$this->get_options_for_min(0).'</select>';
-                $endHours .= _APCAL_DAY.' '.($i+2);
-                $endHours .= " <select name='EndH[]' disabled>".$this->get_options_for_hour(17).'</select>';
-                $endHours .= " <select name='EndM[]' disabled>".$this->get_options_for_min(0).'</select>';
+                $startHours .= "<span>"._APCAL_DAY.'&nbsp;'.($i+2);
+                $startHours .= "<select name='StartH[]' disabled>".$this->get_options_for_hour(9).'</select>';
+                $startHours .= "<select name='StartM[]' disabled>".$this->get_options_for_min(0).'</select></span>';
+                $endHours .= "<span>"._APCAL_DAY.'&nbsp;'.($i+2);
+                $endHours .= "<select name='EndH[]' disabled>".$this->get_options_for_hour(17).'</select>';
+                $endHours .= "<select name='EndM[]' disabled>".$this->get_options_for_min(0).'</select></span>';
             }
         }
         
         if( $event->allday ) {
 			$select_timezone_disabled = "disabled='disabled'" ;
+            $tzoffset_s2e = intval( ( $event->event_tz - $this->server_TZ ) * 3600 ) ;
+            $event->start += $tzoffset_s2e ;
+			$event->end += $tzoffset_s2e ;
 			$allday_checkbox = "checked='checked'" ;
-			//$allday_select = "disabled='disabled'" ;
+			$allday_select = $event->allday == 5 ? "disabled='disabled'" : '';
 			$allday_bit1 = ( $event->allday & 2 ) ? "checked='checked'" : "" ;
 			$allday_bit2 = ( $event->allday & 4 ) ? "checked='checked'" : "" ;
 			$allday_bit3 = ( $event->allday & 8 ) ? "checked='checked'" : "" ;
@@ -2426,8 +2435,8 @@ function get_schedule_edit_html( )
 			if( isset( $event->end_date ) ) {
 				$end_ymd = $end_long_ymdn = $event->end_date ;
 			} else {
-				$end_ymd = date( "Y-m-d" , $event->end - 300 ) ;
-				$end_long_ymdn = $this->get_long_ymdn( $event->end - 300 ) ;
+				$end_ymd = date( "Y-m-d" , $event->end ) ;
+				$end_long_ymdn = $this->get_long_ymdn( $event->end ) ;
 			}
 			$end_hour = date( "H" , $event->end ) ;
 			$end_min = date( "i" , $event->end ) ;
@@ -2478,7 +2487,7 @@ function get_schedule_edit_html( )
 		$start_min = 0 ;
 		$end_hour = 17 ;
 		$end_min = 0 ;
-		$admission_status = _APCAL_MB_EVENT_NOTREGISTER ;
+		$admission_status = _APCAL_MB_APCALEVENT_NOTREGISTER ;
 		$update_button = '' ;
 		$insert_button = "<input name='insert' type='submit' value='"._APCAL_BTN_NEWINSERTED."' />" ;
 		$delete_button = '' ;
@@ -2633,7 +2642,7 @@ function get_schedule_edit_html( )
     $caldate = explode('-', $_GET['caldate']);
     $caldate = strlen($caldate[0]) > 2 ? $caldate[0].'-'.$caldate[1].'-'.$caldate[2] : $caldate[2].'-'.$caldate[1].'-'.$caldate[0];
 	$ret = "
-<h2>"._APCAL_MB_TITLE_EVENTINFO." <small>-"._APCAL_MB_SUBTITLE_EVENTEDIT."-</small></h2>
+<h2>"._APCAL_MB_APCALTITLE_EVENTINFO." <small>-"._APCAL_MB_APCALSUBTITLE_EVENTEDIT."-</small></h2>
 <form action='{$this->make_cal_link('', $smode, 0, $caldate)}' method='post' name='MainForm' enctype='multipart/form-data'>
 	".$GLOBALS['xoopsGTicket']->getTicketHtml( __LINE__ )."
 	<input type='hidden' name='caldate' value='{$caldate}' />
@@ -2658,7 +2667,7 @@ function get_schedule_edit_html( )
 		<td class='head'>"._APCAL_TH_STARTDATETIME."</td>
 		<td class='even'>
 			$textbox_start_date &nbsp;
-			{$select_start_hour} {$select_start_min}"._APCAL_MB_MINUTE_SUF."</select>
+			{$select_start_hour} {$select_start_min}"._APCAL_MB_APCALMINUTE_SUF."</select>
             <span id='start_datetime'>$startHours</span>
 		</td>
 	</tr>
@@ -2666,14 +2675,14 @@ function get_schedule_edit_html( )
 		<td class='head'>"._APCAL_TH_ENDDATETIME."</td>
 		<td class='even'>
 			$textbox_end_date &nbsp; 
-			{$select_end_hour} {$select_end_min}"._APCAL_MB_MINUTE_SUF."
+			{$select_end_hour} {$select_end_min}"._APCAL_MB_APCALMINUTE_SUF."
             <span id='end_datetime'>$endHours</span>
 		</td>
 	</tr>
 	<tr>
 		<td class='head'>"._APCAL_TH_ALLDAYOPTIONS."</td>
 		<td class='even'>
-			<input type='radio' name='allday_bits[]' value='2' {$allday_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=true;enableSelects(true);' />"._APCAL_MB_ALLDAY_EVENT." &nbsp;
+			<input type='radio' name='allday_bits[]' value='2' {$allday_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=true;enableSelects(true);' />"._APCAL_MB_APCALALLDAY_EVENT." &nbsp;
             <input type='radio' name='allday_bits[]' value='0' {$samehours_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=false;enableSelects(true);' />"._APCAL_SAMEHOURS." &nbsp;
             <input type='radio' name='allday_bits[]' value='8' {$diffhours_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=false;enableSelects(false);' />"._APCAL_DIFFERENTHOURS."
 		</td>
@@ -2737,7 +2746,7 @@ function get_schedule_edit_html( )
 	</tr>
 	<tr>
 		<td class='head'>"._APCAL_TH_CLASS."</td>
-		<td class='even'><input type='radio' name='class' value='PUBLIC' $class_public onClick='document.MainForm.groupid.disabled=true' />"._APCAL_MB_PUBLIC." &nbsp;  &nbsp; <input type='radio' name='class' value='PRIVATE' $class_private onClick='document.MainForm.groupid.disabled=false' />"._APCAL_MB_PRIVATE.sprintf( _APCAL_MB_PRIVATETARGET , $select_private )."</td>
+		<td class='even'><input type='radio' name='class' value='PUBLIC' $class_public onClick='document.MainForm.groupid.disabled=true' />"._APCAL_MB_APCALPUBLIC." &nbsp;  &nbsp; <input type='radio' name='class' value='PRIVATE' $class_private onClick='document.MainForm.groupid.disabled=false' />"._APCAL_MB_APCALPRIVATE.sprintf( _APCAL_MB_APCALPRIVATETARGET , $select_private )."</td>
 	</tr>
 	<tr>
 		<td class='head'>"._APCAL_TH_RRULE."</td>
@@ -2773,7 +2782,7 @@ function get_schedule_edit_html( )
 if($this->enableregistration) {$ret .= $ro_form_edit;} // splitted and added one line by goffy
 $ret .= "<table>
         <tr><td><img src='$this->images_url/spacer.gif' alt='' height='4' /></td></tr>
-        <tr><td width='100%' align='right'>".APCAL_COPYRIGHT."</td></tr>
+        <tr><td width='100%' align='right'>"._AM_APCAL_COPYRIGHT."</td></tr>
 	</table>";
 
 $ret .= "
@@ -2795,10 +2804,10 @@ $ret .= "
                 var startNode = document.createElement('span');
                 var endNode = document.createElement('span');
 
-                startNode.innerHTML += \""._APCAL_DAY." \"+(i+2);
+                startNode.innerHTML += \""._APCAL_DAY."&nbsp;\"+(i+2);
                 startNode.innerHTML += \"<select name='StartH[]' disabled>".str_replace("\n", '', $this->get_options_for_hour($start_hour))."</select>\";
                 startNode.innerHTML += \"<select name='StartM[]' disabled>".str_replace("\n", '', $this->get_options_for_min($start_min))."</select>\";
-                endNode.innerHTML += \""._APCAL_DAY." \"+(i+2);
+                endNode.innerHTML += \""._APCAL_DAY."&nbsp;\"+(i+2);
                 endNode.innerHTML += \"<select name='EndH[]' disabled>".str_replace("\n", '', $this->get_options_for_hour($end_hour))."</select>\";
                 endNode.innerHTML += \"<select name='EndM[]' disabled>".str_replace("\n", '', $this->get_options_for_min($end_min))."</select>\";
 
@@ -2854,7 +2863,7 @@ $ret .= "
 // Save an event
 function update_schedule( $set_sql_append = '' , $whr_sql_append = '' , $notify_callback = null )
 {
-	if( $_POST[ 'summary' ] == "" ) $_POST[ 'summary' ] = _APCAL_MB_NOSUBJECT ;
+	if( $_POST[ 'summary' ] == "" ) $_POST[ 'summary' ] = _APCAL_MB_APCALNOSUBJECT ;
 
 	list( $start , $start_date , $use_default ) = $this->parse_posted_date( $this->mb_convert_kana( $_POST[ 'StartDate' ] , "a" ) , $this->unixtime ) ;
 	list( $end , $end_date , $use_default ) = $this->parse_posted_date( $this->mb_convert_kana( $_POST[ 'EndDate' ] , "a" ) , $this->unixtime ) ;
@@ -2869,6 +2878,7 @@ function update_schedule( $set_sql_append = '' , $whr_sql_append = '' , $notify_
 		}
 	}
 
+    $tzoffset_e2s = intval(($this->server_TZ - $_POST['event_tz']) * 3600);
 	if($start_date || $end_date) {
 		if( $start_date ) $date_append = ", start_date='$start_date'" ;
 		else $date_append = ", start_date=null" ;
@@ -2879,7 +2889,7 @@ function update_schedule( $set_sql_append = '' , $whr_sql_append = '' , $notify_
 		}
 		$set_sql_date = "start='$start', end='$end', allday='$allday' $date_append" ;
 		$allday_flag = true ;
-	} else if($_POST['allday_bits'][0] > 0) {
+	} else if($_POST['allday_bits'][0] > 0) { 
         $start += $_POST[ 'StartHour' ] * 3600 + $_POST[ 'StartMin' ] * 60 + $tzoffset_e2s ;
 		$end += $_POST[ 'EndHour' ] * 3600 + $_POST[ 'EndMin' ] * 60 + $tzoffset_e2s ;
 		if( $start > $end ) list( $start , $end ) = array( $end , $start ) ;
@@ -3214,7 +3224,7 @@ function get_categories_selform( $get_target = '' , $smode = null )
 	$ret .= "<input type='hidden' name='smode' value='$smode' />\n" ;
 	$ret .= "<input type='hidden' name='op' value='$op' />\n" ;
 	$ret .= "<select name='cid' onchange='submitCat(document.catSel.cid.value, document.catSel.smode.value, document.catSel.caldate.value);'>\n" ;
-	$ret .= ($this->useurlrewrite) ? "\t<option value='All'>"._APCAL_MB_SHOWALLCAT."</option>\n" : "\t<option value='0'>"._APCAL_MB_SHOWALLCAT."</option>\n";
+	$ret .= ($this->useurlrewrite) ? "\t<option value='All'>"._APCAL_MB_APCALSHOWALLCAT."</option>\n" : "\t<option value='0'>"._APCAL_MB_APCALSHOWALLCAT."</option>\n";
 	foreach( $this->categories as $cid => $cat ) {
 		$selected = $this->now_cid == $cid ? "selected='selected'" : "" ;
 		$depth_desc = str_repeat( '-' , intval( $cat->cat_depth ) ) ;
@@ -3452,16 +3462,16 @@ function get_coming_time_description( $start , $now , $admission = true )
 	if( $start >= $now && $start - $now < 86400 ) {
 		// 24ï¿½ï¿½ï¿½Ö°ï¿½ï¿½ï¿½Î¥ï¿½ï¿½Ù¥ï¿½ï¿½
 		if( ! $dot ) $dot = "<img border='0' src='$this->images_url/dot_today.gif' />" ;
-		$ret = "$dot <b>" . $this->get_middle_hi( $start ) . "</b>"._APCAL_MB_TIMESEPARATOR ;
+		$ret = "$dot <b>" . $this->get_middle_hi( $start ) . "</b>"._APCAL_MB_APCALTIMESEPARATOR ;
 	} else if( $start < $now ) {
 		// ï¿½ï¿½ï¿½Ç¤Ë³ï¿½ï¿½Ï¤ï¿½ï¿½ì¤¿ï¿½ï¿½ï¿½Ù¥ï¿½ï¿½
 		if( ! $dot ) $dot = "<img border='0' src='$this->images_url/dot_started.gif' />" ;
-		$ret = "$dot "._APCAL_MB_CONTINUING ;
+		$ret = "$dot "._APCAL_MB_APCALCONTINUING ;
 	} else {
 		// ï¿½ï¿½ï¿½ï¿½Ê¹ß¤Ë³ï¿½ï¿½Ï¤Ë¤Ê¤ë¥¤ï¿½Ù¥ï¿½ï¿½
 		if( ! $dot ) $dot = "<img border='0' src='$this->images_url/dot_future.gif' />" ;
-//		$ret = "$dot " . date( "n/j H:i" , $start ) . _APCAL_MB_TIMESEPARATOR ;
-		$ret = "$dot " . $this->get_middle_md( $start ) . " " . $this->get_middle_hi( $start ) . _APCAL_MB_TIMESEPARATOR ;
+//		$ret = "$dot " . date( "n/j H:i" , $start ) . _APCAL_MB_APCALTIMESEPARATOR ;
+		$ret = "$dot " . $this->get_middle_md( $start ) . " " . $this->get_middle_hi( $start ) . _APCAL_MB_APCALTIMESEPARATOR ;
 	}
 
 	return $ret ;
@@ -3495,11 +3505,11 @@ function get_todays_time_description( $start , $end , $ynj , $justify = true , $
 	} else $dot = "<img border='0' src='$this->images_url/dot_notadmit.gif' />" ;
 
 	if( $is_start_date ) {
-		if( $is_end_date ) $ret = "$dot {$start_desc}"._APCAL_MB_TIMESEPARATOR."{$end_desc}" ;
-		else $ret = "$dot {$start_desc}"._APCAL_MB_TIMESEPARATOR."{$stuffing}" ;
+		if( $is_end_date ) $ret = "$dot {$start_desc}"._APCAL_MB_APCALTIMESEPARATOR."{$end_desc}" ;
+		else $ret = "$dot {$start_desc}"._APCAL_MB_APCALTIMESEPARATOR."{$stuffing}" ;
 	} else {
-		if( $is_end_date ) $ret = "$dot {$stuffing}"._APCAL_MB_TIMESEPARATOR."{$end_desc}" ;
-		else $ret = "$dot "._APCAL_MB_CONTINUING ;
+		if( $is_end_date ) $ret = "$dot {$stuffing}"._APCAL_MB_APCALTIMESEPARATOR."{$end_desc}" ;
+		else $ret = "$dot "._APCAL_MB_APCALCONTINUING ;
 	}
 
 	return $ret ;
@@ -3531,11 +3541,11 @@ function get_time_desc_for_a_day( $event , $tzoffset , $border_for_2400 , $justi
 	} else $dot = "<img border='0' src='$this->images_url/dot_notadmit.gif' />" ;
 
 	if( $event->is_start_date ) {
-		if( $event->is_end_date ) $ret = "$dot {$start_desc}"._APCAL_MB_TIMESEPARATOR."{$end_desc}" ;
-		else $ret = "$dot {$start_desc}"._APCAL_MB_TIMESEPARATOR."{$stuffing}" ;
+		if( $event->is_end_date ) $ret = "$dot {$start_desc}"._APCAL_MB_APCALTIMESEPARATOR."{$end_desc}" ;
+		else $ret = "$dot {$start_desc}"._APCAL_MB_APCALTIMESEPARATOR."{$stuffing}" ;
 	} else {
-		if( $event->is_end_date ) $ret = "$dot {$stuffing}"._APCAL_MB_TIMESEPARATOR."{$end_desc}" ;
-		else $ret = "$dot "._APCAL_MB_CONTINUING ;
+		if( $event->is_end_date ) $ret = "$dot {$stuffing}"._APCAL_MB_APCALTIMESEPARATOR."{$end_desc}" ;
+		else $ret = "$dot "._APCAL_MB_APCALCONTINUING ;
 	}
 
 	return $ret ;
@@ -3688,7 +3698,7 @@ function output_ics_confirm( $post_target , $target = '_self' )
 	$webcal_url = str_replace( 'http://' , 'webcal://' , $post_target ) ;
 	// ï¿½ï¿½Ç§ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½
 	return "
-	<div style='text-align:center;width:100%;'>&nbsp;<br /><b>"._APCAL_MB_ICALSELECTPLATFORM."</b><br />&nbsp;</div>
+	<div style='text-align:center;width:100%;'>&nbsp;<br /><b>"._APCAL_MB_APCALICALSELECTPLATFORM."</b><br />&nbsp;</div>
 	<table border='0' cellpadding='5' cellspacing='2' width='100%'>
 	<tr>
 	<td align='right' width='50%'>

@@ -1,8 +1,8 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_CNST_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_APCAL_CNST_LOADED' ) ) {
 
-define( 'APCAL_CNST_LOADED' , 1 ) ;
+define( '_APCAL_CNST_LOADED' , 1 ) ;
 
 // the language file for jscalendar "DHTML Date/Time Selector"
 define('_APCAL_JS_CALENDAR','calendar-jp.js') ;
@@ -34,58 +34,58 @@ define('_APCAL_ICON_WEEKLY','週表示') ;
 define('_APCAL_ICON_MONTHLY','月表示') ;
 define('_APCAL_ICON_YEARLY','年間表示') ;
 
-define('_APCAL_MB_SHOWALLCAT','全カテゴリー表示') ;
+define('_APCAL_MB_APCALSHOWALLCAT','全カテゴリー表示') ;
 
-define('_APCAL_MB_LINKTODAY','＜今日＞') ;
-define('_APCAL_MB_NOSUBJECT','（件名なし）') ;
+define('_APCAL_MB_APCALLINKTODAY','＜今日＞') ;
+define('_APCAL_MB_APCALNOSUBJECT','（件名なし）') ;
 
-define('_APCAL_MB_PREV_DATE','昨日') ;
-define('_APCAL_MB_NEXT_DATE','明日') ;
-define('_APCAL_MB_PREV_WEEK','先週') ;
-define('_APCAL_MB_NEXT_WEEK','次週') ;
-define('_APCAL_MB_PREV_MONTH','前月') ;
-define('_APCAL_MB_NEXT_MONTH','翌月') ;
-define('_APCAL_MB_PREV_YEAR','去年') ;
-define('_APCAL_MB_NEXT_YEAR','来年') ;
+define('_APCAL_MB_APCALPREV_DATE','昨日') ;
+define('_APCAL_MB_APCALNEXT_DATE','明日') ;
+define('_APCAL_MB_APCALPREV_WEEK','先週') ;
+define('_APCAL_MB_APCALNEXT_WEEK','次週') ;
+define('_APCAL_MB_APCALPREV_MONTH','前月') ;
+define('_APCAL_MB_APCALNEXT_MONTH','翌月') ;
+define('_APCAL_MB_APCALPREV_YEAR','去年') ;
+define('_APCAL_MB_APCALNEXT_YEAR','来年') ;
 
-define('_APCAL_MB_NOEVENT','予定なし') ;
-define('_APCAL_MB_ADDEVENT','予定の追加') ;
-define('_APCAL_MB_CONTINUING','（継続中）') ;
-define('_APCAL_MB_RESTEVENT_PRE','他') ;
-define('_APCAL_MB_RESTEVENT_SUF','件') ;
-define('_APCAL_MB_TIMESEPARATOR','〜') ;
+define('_APCAL_MB_APCALNOEVENT','予定なし') ;
+define('_APCAL_MB_APCALADDEVENT','予定の追加') ;
+define('_APCAL_MB_APCALCONTINUING','（継続中）') ;
+define('_APCAL_MB_APCALRESTEVENT_PRE','他') ;
+define('_APCAL_MB_APCALRESTEVENT_SUF','件') ;
+define('_APCAL_MB_APCALTIMESEPARATOR','〜') ;
 
-define('_APCAL_MB_ALLDAY_EVENT','全日イベント') ;
-define('_APCAL_MB_LONG_EVENT','長期イベント') ;
-define('_APCAL_MB_LONG_SPECIALDAY','記念日・祝日等') ;
+define('_APCAL_MB_APCALALLDAY_EVENT','全日イベント') ;
+define('_APCAL_MB_APCALLONG_EVENT','長期イベント') ;
+define('_APCAL_MB_APCALLONG_SPECIALDAY','記念日・祝日等') ;
 
-define('_APCAL_MB_PUBLIC','公開');
-define('_APCAL_MB_PRIVATE','非公開');
-define('_APCAL_MB_PRIVATETARGET',' 公開先 %s');
+define('_APCAL_MB_APCALPUBLIC','公開');
+define('_APCAL_MB_APCALPRIVATE','非公開');
+define('_APCAL_MB_APCALPRIVATETARGET',' 公開先 %s');
 
-define('_APCAL_MB_LINK_TO_RRULE1ST','最初の予定 ') ;
-define('_APCAL_MB_RRULE1ST','初回分') ;
+define('_APCAL_MB_APCALLINK_TO_RRULE1ST','最初の予定 ') ;
+define('_APCAL_MB_APCALRRULE1ST','初回分') ;
 
-define('_APCAL_MB_EVENT_NOTREGISTER','未登録') ;
-define('_APCAL_MB_EVENT_ADMITTED','承認済') ;
-define('_APCAL_MB_EVENT_NEEDADMIT','未承認') ;
+define('_APCAL_MB_APCALEVENT_NOTREGISTER','未登録') ;
+define('_APCAL_MB_APCALEVENT_ADMITTED','承認済') ;
+define('_APCAL_MB_APCALEVENT_NEEDADMIT','未承認') ;
 
-define('_APCAL_MB_TITLE_EVENTINFO','予定表') ;
-define('_APCAL_MB_SUBTITLE_EVENTDETAIL','詳細情報') ;
-define('_APCAL_MB_SUBTITLE_EVENTEDIT','編集') ;
+define('_APCAL_MB_APCALTITLE_EVENTINFO','予定表') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTDETAIL','詳細情報') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTEDIT','編集') ;
 
-define('_APCAL_MB_HOUR_SUF','時') ;
-define('_APCAL_MB_MINUTE_SUF','分') ;
+define('_APCAL_MB_APCALHOUR_SUF','時') ;
+define('_APCAL_MB_APCALMINUTE_SUF','分') ;
 
-define('_APCAL_MB_ORDER_ASC','昇順') ;
-define('_APCAL_MB_ORDER_DESC','降順') ;
-define('_APCAL_MB_SORTBY','並び替え:') ;
-define('_APCAL_MB_CURSORTEDBY','現在の並び方:') ;
+define('_APCAL_MB_APCALORDER_ASC','昇順') ;
+define('_APCAL_MB_APCALORDER_DESC','降順') ;
+define('_APCAL_MB_APCALSORTBY','並び替え:') ;
+define('_APCAL_MB_APCALCURSORTEDBY','現在の並び方:') ;
 
-define("_APCAL_MB_LABEL_CHECKEDITEMS","チェックした予定を:");
-define("_APCAL_MB_LABEL_OUTPUTICS","iCalendarで出力する");
+define("_APCAL_MB_APCALLABEL_CHECKEDITEMS","チェックした予定を:");
+define("_APCAL_MB_APCALLABEL_OUTPUTICS","iCalendarで出力する");
 
-define("_APCAL_MB_ICALSELECTPLATFORM","出力対象を選択して下さい");
+define("_APCAL_MB_APCALICALSELECTPLATFORM","出力対象を選択して下さい");
 
 define('_APCAL_TH_SUMMARY','件名') ;
 define('_APCAL_TH_TIMEZONE','タイムゾーン') ;
@@ -110,10 +110,10 @@ define('_APCAL_OPT_PRIVATEMYSELF','自分のみ');
 define('_APCAL_OPT_PRIVATEGROUP','%s グループ');
 define('_APCAL_OPT_PRIVATEINVALID','(無効なグループ)');
 
-define('_APCAL_MB_OP_AFTER','以降の予定') ;
-define('_APCAL_MB_OP_BEFORE','以前の予定') ;
-define('_APCAL_MB_OP_ON','にかかる予定') ;
-define('_APCAL_MB_OP_ALL','日付指定無効') ;
+define('_APCAL_MB_APCALOP_AFTER','以降の予定') ;
+define('_APCAL_MB_APCALOP_BEFORE','以前の予定') ;
+define('_APCAL_MB_APCALOP_ON','にかかる予定') ;
+define('_APCAL_MB_APCALOP_ALL','日付指定無効') ;
 
 define('_APCAL_CNFM_SAVEAS_YN','別件として登録しますか') ;
 define('_APCAL_CNFM_DELETE_YN','削除してよろしいですか') ;

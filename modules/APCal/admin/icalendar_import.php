@@ -71,9 +71,9 @@ $cal->images_path = "$mod_path/images/$skin_folder" ;
 $serverTZ = $cal->server_TZ ;
 $userTZ = $xoopsUser->timezone() ;
 $tzoptions = "
-	<option value='s'>"._AM_TZOPT_SERVER."</option>
-	<option value='g'>"._AM_TZOPT_GMT."</option>
-	<option value='y'>"._AM_TZOPT_USER."</option>\n" ;
+	<option value='s'>"._AM_APCAL_TZOPT_SERVER."</option>
+	<option value='g'>"._AM_APCAL_TZOPT_GMT."</option>
+	<option value='y'>"._AM_APCAL_TZOPT_USER."</option>\n" ;
 switch( $tz ) {
 	case 's' :
 		$tzoffset = 0 ;
@@ -108,7 +108,7 @@ if( isset( $_POST[ 'http_import' ] ) && ! empty( $_POST[ 'import_uri' ] ) ) {
 		$cal->redirect( "done=error&mes=$mes" ) ;
 		exit ;
 	} else {
-		$mes = urlencode( sprintf( "$records "._AM_FMT_IMPORTED , $calname ) ) ;
+		$mes = urlencode( sprintf( "$records "._AM_APCAL_FMT_IMPORTED , $calname ) ) ;
 		$cal->redirect( "done=imported&mes=$mes" ) ;
 		exit ;
 	}
@@ -127,7 +127,7 @@ if( isset( $_POST[ 'http_import' ] ) && ! empty( $_POST[ 'import_uri' ] ) ) {
 		$cal->redirect( "done=error&mes=$mes" ) ;
 		exit ;
 	} else {
-		$mes = urlencode( sprintf( "$records "._AM_FMT_IMPORTED , $calname ) ) ;
+		$mes = urlencode( sprintf( "$records "._AM_APCAL_FMT_IMPORTED , $calname ) ) ;
 		$cal->redirect( "done=imported&mes=$mes" ) ;
 		exit ;
 	}
@@ -151,7 +151,7 @@ if( isset( $_POST[ 'http_import' ] ) && ! empty( $_POST[ 'import_uri' ] ) ) {
 		$records = mysql_affected_rows( $conn ) ;
 		$sql = "DELETE FROM $cal->table WHERE $whr 0 " ;
 		if( ! mysql_query( $sql , $conn ) ) echo mysql_error() ;
-		else $mes = urlencode( "$records "._AM_MES_DELETED ) ;
+		else $mes = urlencode( "$records "._AM_APCAL_MES_DELETED ) ;
 	} else {
 		$mes = "" ;
 	}
@@ -186,16 +186,16 @@ require_once XOOPS_ROOT_PATH.'/modules/APCal/admin/displayMenu.php';
 $xoopsGTicket->clear() ;
 
 echo "
-<h4>"._AM_ICALENDAR_IMPORT."</h4>
+<h4>"._AM_APCAL_ICALENDAR_IMPORT."</h4>
 <p><font color='blue'>".(isset($_GET['mes'])?htmlspecialchars($_GET['mes'],ENT_QUOTES):"")."</font></p>
 <form action='?tz=$tz&amp;num=$num' method='post'>
-  "._AM_LABEL_IMPORTFROMWEB."<br />
+  "._AM_APCAL_LABEL_IMPORTFROMWEB."<br />
   <input type='text' name='import_uri' size='80'>
   <input type='submit' name='http_import' value='"._APCAL_BTN_IMPORT."'>
   ".$xoopsGTicket->getTicketHtml( __LINE__ )."
 </form>
 <form action='?tz=$tz&amp;num=$num' method='post' enctype='multipart/form-data'>
-  "._AM_LABEL_UPLOADFROMFILE."<br />
+  "._AM_APCAL_LABEL_UPLOADFROMFILE."<br />
   <input type='hidden' name='MAX_FILE_SIZE' value='65536'>
   <input type='file' name='user_ics' size='72'>
   <input type='submit' name='local_import' value='"._APCAL_BTN_UPLOAD."'>
@@ -223,12 +223,12 @@ echo "
 ".$xoopsGTicket->getTicketHtml( __LINE__ )."
 <table width='100%' class='outer' cellpadding='4' cellspacing='1'>
   <tr valign='middle'>
-    <th>"._AM_IO_TH0."</th>
-    <th>"._AM_IO_TH1."<br />($tzdisp)</th>
-    <th>"._AM_IO_TH2."<br />($tzdisp)</th>
-    <th>"._AM_IO_TH3."</th>
-    <th>"._AM_IO_TH4."</th>
-    <th>"._AM_IO_TH5."</th>
+    <th>"._AM_APCAL_IO_TH0."</th>
+    <th>"._AM_APCAL_IO_TH1."<br />($tzdisp)</th>
+    <th>"._AM_APCAL_IO_TH2."<br />($tzdisp)</th>
+    <th>"._AM_APCAL_IO_TH3."</th>
+    <th>"._AM_APCAL_IO_TH4."</th>
+    <th>"._AM_APCAL_IO_TH5."</th>
     <th></th>
     <th><input type='checkbox' name='dummy' onclick=\"with(document.MainForm){for(i=0;i<length;i++){if(elements[i].type=='checkbox'){elements[i].checked=this.checked;}}}\" /></th>
   </tr>
@@ -243,11 +243,11 @@ while( $event = mysql_fetch_object( $rs ) ) {
 	if( $count ++ < $new_imported ) $newer_style = "style='background-color:#FFFFCC;'" ;
 	else $newer_style = '' ;
 	if( $event->allday ) {
-		$start_desc = date( _AM_DTFMT_LIST_ALLDAY , $event->start ) . '<br />(' . _APCAL_MB_ALLDAY_EVENT . ')' ;
-		$end_desc = date( _AM_DTFMT_LIST_ALLDAY , $event->end - 300 ) . '<br />(' . _APCAL_MB_ALLDAY_EVENT . ')' ;
+		$start_desc = date( _AM_APCAL_DTFMT_LIST_ALLDAY , $event->start ) . '<br />(' . _APCAL_MB_APCALALLDAY_EVENT . ')' ;
+		$end_desc = date( _AM_APCAL_DTFMT_LIST_ALLDAY , $event->end - 300 ) . '<br />(' . _APCAL_MB_APCALALLDAY_EVENT . ')' ;
 	} else {
-		$start_desc = date( _AM_DTFMT_LIST_NORMAL , $event->start + $tzoffset ) ;
-		$end_desc = date( _AM_DTFMT_LIST_NORMAL , $event->end + $tzoffset ) ;
+		$start_desc = date( _AM_APCAL_DTFMT_LIST_NORMAL , $event->start + $tzoffset ) ;
+		$end_desc = date( _AM_APCAL_DTFMT_LIST_NORMAL , $event->end + $tzoffset ) ;
 	}
 	$summary4disp = $myts->htmlSpecialChars( $event->summary ) ;
 	echo "
@@ -265,10 +265,10 @@ while( $event = mysql_fetch_object( $rs ) ) {
 
 echo "
   <tr>
-    <td colspan='8' align='right' class='head'>"._AM_LABEL_IO_CHECKEDITEMS." &nbsp; "._AM_LABEL_IO_DELETE."<input type='submit' name='delete' value='"._DELETE."' onclick='return confirm(\""._AM_CONFIRM_DELETE."\")' /></td>
+    <td colspan='8' align='right' class='head'>"._AM_APCAL_LABEL_IO_CHECKEDITEMS." &nbsp; "._AM_APCAL_LABEL_IO_DELETE."<input type='submit' name='delete' value='"._DELETE."' onclick='return confirm(\""._AM_APCAL_CONFIRM_DELETE."\")' /></td>
   </tr>
   <tr>
-    <td colspan='8' align='right' valign='bottom' height='50'>".APCAL_COPYRIGHT."</td>
+    <td colspan='8' align='right' valign='bottom' height='50'>"._AM_APCAL_COPYRIGHT."</td>
   </tr>
 </table>
 </form>

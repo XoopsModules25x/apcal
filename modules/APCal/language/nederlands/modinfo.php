@@ -1,6 +1,6 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MI_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_MI_APCAL_APCALLOADED' ) ) {
 
 
 
@@ -11,13 +11,13 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MI_LOADED' ) ) {
 define('_MI_APCAL_ADMENU_MYTPLSADMIN','Templates');
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-05-06 18:04:00
-define('_MI_TIMEZONE_USING','Timezone of the server');
-define('_MI_OPT_TZ_USEXOOPS','value of XOOPS config');
-define('_MI_OPT_TZ_USEWINTER','value told from the server as winter time (recommended)');
-define('_MI_OPT_TZ_USESUMMER','value told from the server as summer time');
+define('_MI_APCALTIMEZONE_USING','Timezone of the server');
+define('_MI_APCALOPT_TZ_USEXOOPS','value of XOOPS config');
+define('_MI_APCALOPT_TZ_USEWINTER','value told from the server as winter time (recommended)');
+define('_MI_APCALOPT_TZ_USESUMMER','value told from the server as summer time');
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-05-03 05:31:13
-define('_MI_USE24HOUR','24hours system (No means 12hours system)');
+define('_MI_APCALUSE24HOUR','24hours system (No means 12hours system)');
 define('_MI_APCAL_ADMENU_PLUGINS','Plugins Manager');
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-04-22 12:02:01
@@ -28,7 +28,7 @@ define('_MI_APCAL_BNAME_MINICALEX_DESC','Extensible minicalendar with plugin sys
 define('_MI_APCAL_DEFAULTLOCALE','');
 define('_MI_APCAL_LOCALE','Locale (check files in locales/*.php)');
 
-define( 'APCAL_MI_LOADED' , 1 ) ;
+define( '_MI_APCAL_APCALLOADED' , 1 ) ;
 
 // Module Info
 
@@ -62,44 +62,44 @@ define("_MI_APCAL_BNAME_AFTER_DESC","Activiteiten na deze dag tonen");
 //define("_MI_APCAL_ADMENU1","");
 
 // Title of config items
-define("_MI_USERS_AUTHORITY", "Rechten voor gebruikers");
-define("_MI_GUESTS_AUTHORITY", "Rechten voor gasten");
-define("_MI_MINICAL_TARGET", "Kalendervoorstelling die wordt getoond wanneer op een datum in de Mini-Kalender wordt geklikt");
-define("_MI_COMING_NUMROWS", "Aantal getoonde activiteiten in het 'Eerstvolgende activiteiten'-blok'");
-define("_MI_SKINFOLDER", "Skin");
-define("_MI_SUNDAYCOLOR", "Tekstkleur voor zondagen");
-define("_MI_WEEKDAYCOLOR", "Tekstkleur voor weekdagen");
-define("_MI_SATURDAYCOLOR", "Tekstkleur voor zaterdagen");
-define("_MI_HOLIDAYCOLOR", "Tekstkleur voor vrijdagen");
-define("_MI_TARGETDAYCOLOR", "Tekstkleur voor dagen met activiteiten");
-define("_MI_SUNDAYBGCOLOR", "Achtergrondkleur voor zondagen");
-define("_MI_WEEKDAYBGCOLOR", "Achtergrondkleur voor weekdagen");
-define("_MI_SATURDAYBGCOLOR", "Achtergrondkleur voor zaterdagen");
-define("_MI_HOLIDAYBGCOLOR", "Achtergrondkleur voor feestdag");
-define("_MI_TARGETDAYBGCOLOR", "Achtergrondkleur voor dagen met activiteiten");
-define("_MI_CALHEADCOLOR", "Kleur van de kalenderkop");
-define("_MI_CALHEADBGCOLOR", "Achtergrondkleur van de kalenderkop");
-define("_MI_CALFRAMECSS", "CSS-stijl van het kalenderraam");
-define("_MI_CANOUTPUTICS", "iCalendar-Data (.ics) export mogelijk maken?");
-define("_MI_MAXRRULEEXTRACT", "max. aantal activiteiten die door het Terugkeerpatroon kunnen gegenereerd worden");
-define("_MI_WEEKSTARTFROM", "De week begint op");
+define("_MI_APCALUSERS_AUTHORITY", "Rechten voor gebruikers");
+define("_MI_APCALGUESTS_AUTHORITY", "Rechten voor gasten");
+define("_MI_APCALMINICAL_TARGET", "Kalendervoorstelling die wordt getoond wanneer op een datum in de Mini-Kalender wordt geklikt");
+define("_MI_APCALCOMING_NUMROWS", "Aantal getoonde activiteiten in het 'Eerstvolgende activiteiten'-blok'");
+define("_MI_APCALSKINFOLDER", "Skin");
+define("_MI_APCALSUNDAYCOLOR", "Tekstkleur voor zondagen");
+define("_MI_APCALWEEKDAYCOLOR", "Tekstkleur voor weekdagen");
+define("_MI_APCALSATURDAYCOLOR", "Tekstkleur voor zaterdagen");
+define("_MI_APCALHOLIDAYCOLOR", "Tekstkleur voor vrijdagen");
+define("_MI_APCALTARGETDAYCOLOR", "Tekstkleur voor dagen met activiteiten");
+define("_MI_APCALSUNDAYBGCOLOR", "Achtergrondkleur voor zondagen");
+define("_MI_APCALWEEKDAYBGCOLOR", "Achtergrondkleur voor weekdagen");
+define("_MI_APCALSATURDAYBGCOLOR", "Achtergrondkleur voor zaterdagen");
+define("_MI_APCALHOLIDAYBGCOLOR", "Achtergrondkleur voor feestdag");
+define("_MI_APCALTARGETDAYBGCOLOR", "Achtergrondkleur voor dagen met activiteiten");
+define("_MI_APCALCALHEADCOLOR", "Kleur van de kalenderkop");
+define("_MI_APCALCALHEADBGCOLOR", "Achtergrondkleur van de kalenderkop");
+define("_MI_APCALCALFRAMECSS", "CSS-stijl van het kalenderraam");
+define("_MI_APCALCANOUTPUTICS", "iCalendar-Data (.ics) export mogelijk maken?");
+define("_MI_APCALMAXRRULEEXTRACT", "max. aantal activiteiten die door het Terugkeerpatroon kunnen gegenereerd worden");
+define("_MI_APCALWEEKSTARTFROM", "De week begint op");
 
 // Description of each config items
-define("_MI_EDITBYGUESTDSC", "Rechten voor gasten om activiteiten toe te voegen");
+define("_MI_APCALEDITBYGUESTDSC", "Rechten voor gasten om activiteiten toe te voegen");
 
 // Options of each config items
-define("_MI_OPT_AUTH_NONE", "mogen niet toevoegen");
-define("_MI_OPT_AUTH_WAIT", "mogen toevoegen maar hebben goedkeuring nodig");
-define("_MI_OPT_AUTH_POST", "mogen direct zonder goedkeuring toevoegen");
-define("_MI_OPT_AUTH_BYGROUP", "Vastgelegd door groepsrechten");
-define("_MI_OPT_MINI_PHPSELF", "Startpagina");
-define("_MI_OPT_MINI_MONTHLY", "Maandkalender");
-define("_MI_OPT_MINI_WEEKLY", "Weekkalender");
-define("_MI_OPT_MINI_DAILY", "Dagkalender");
-define("_MI_OPT_CANNOTOUTPUTICS", "ICS output activeren");
-define("_MI_OPT_CANOUTPUTICS", "ICS output deactiveren");
-define("_MI_OPT_STARTFROMSUN", "Zondag");
-define("_MI_OPT_STARTFROMMON", "Maandag");
+define("_MI_APCALOPT_AUTH_NONE", "mogen niet toevoegen");
+define("_MI_APCALOPT_AUTH_WAIT", "mogen toevoegen maar hebben goedkeuring nodig");
+define("_MI_APCALOPT_AUTH_POST", "mogen direct zonder goedkeuring toevoegen");
+define("_MI_APCALOPT_AUTH_BYGROUP", "Vastgelegd door groepsrechten");
+define("_MI_APCALOPT_MINI_PHPSELF", "Startpagina");
+define("_MI_APCALOPT_MINI_MONTHLY", "Maandkalender");
+define("_MI_APCALOPT_MINI_WEEKLY", "Weekkalender");
+define("_MI_APCALOPT_MINI_DAILY", "Dagkalender");
+define("_MI_APCALOPT_CANNOTOUTPUTICS", "ICS output activeren");
+define("_MI_APCALOPT_CANOUTPUTICS", "ICS output deactiveren");
+define("_MI_APCALOPT_STARTFROMSUN", "Zondag");
+define("_MI_APCALOPT_STARTFROMMON", "Maandag");
 
 
 // Admin Menus
@@ -109,13 +109,13 @@ define("_MI_APCAL_ADMENU2","Groepsrechten");
 
 
 // Appended by Xoops Language Checker -GIJOE- in 2003-12-05 14:18:43
-define('_MI_NAMEORUNAME','Poster name displayed');
-define('_MI_DESCNAMEORUNAME','Select which \'name\' is displayed');
-define('_MI_OPT_USENAME','Handle Name');
-define('_MI_OPT_USEUNAME','Login Name');
+define('_MI_APCALNAMEORUNAME','Poster name displayed');
+define('_MI_APCALDESCNAMEORUNAME','Select which \'name\' is displayed');
+define('_MI_APCALOPT_USENAME','Handle Name');
+define('_MI_APCALOPT_USEUNAME','Login Name');
 
 // Appended by Xoops Language Checker -GIJOE- in 2003-12-26 10:55:16
-define('_MI_DAYSTARTFROM','Borderline to separate days');
+define('_MI_APCALDAYSTARTFROM','Borderline to separate days');
 define('_MI_APCAL_GLOBAL_NOTIFY','Global');
 define('_MI_APCAL_GLOBAL_NOTIFYDSC','Global APCal notification options.');
 define('_MI_APCAL_CATEGORY_NOTIFY','Category');
@@ -131,11 +131,11 @@ define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFYSBJ','[{X_SITENAME}] {X_MODULE} auto-not
 define('_MI_APCAL_BNAME_NEW','Events newly posted');
 define('_MI_APCAL_BNAME_NEW_DESC','Display events ordered like that newer is upper');
 define('_MI_APCAL_SM_SUBMIT','Submit');
-define('_MI_DEFAULT_VIEW','Default View in center');
-define('_MI_WEEKNUMBERING','Numbering rule for weeks');
-define('_MI_OPT_MINI_LIST','event list');
-define('_MI_OPT_WEEKNOEACHMONTH','by each month');
-define('_MI_OPT_WEEKNOWHOLEYEAR','by whole year');
+define('_MI_APCALDEFAULT_VIEW','Default View in center');
+define('_MI_APCALWEEKNUMBERING','Numbering rule for weeks');
+define('_MI_APCALOPT_MINI_LIST','event list');
+define('_MI_APCALOPT_WEEKNOEACHMONTH','by each month');
+define('_MI_APCALOPT_WEEKNOWHOLEYEAR','by whole year');
 define('_MI_APCAL_ADMENU_CAT','Categories Manager');
 define('_MI_APCAL_ADMENU_CAT2GROUP','Category\'s Permissions');
 define('_MI_APCAL_ADMENU_TM','Table Maintenance');

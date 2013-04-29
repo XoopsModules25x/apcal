@@ -34,14 +34,14 @@
  *}>
  
 <{if $block.num_rows == 0}>
-  <{$block.lang_APCAL_MB_NOEVENT}>
+  <{$block.lang_APCAL_MB_APCALNOEVENT}>
 <{/if}>
 
   <dl>
     <{foreach item=event from=$block.events}>
       <dt>
         <{if $event.distance == 0}>
-          <font size='2'><img border='0' src='<{$block.images_url}>/<{$event.dot_gif}>' />&nbsp;&nbsp;<{$block.lang_APCAL_MB_CONTINUING}> - <{$event.end_desc}></font>
+          <font size='2'><img border='0' src='<{$block.images_url}>/<{$event.dot_gif}>' />&nbsp;&nbsp;<{$block.lang_APCAL_MB_APCALCONTINUING}> - <{$event.end_desc}></font>
         <{elseif $event.distance == 1}>
           <font size='2'><img border='0' src='<{$block.images_url}>/<{$event.dot_gif}>' />&nbsp;&nbsp;<{$event.start_desc}> - <{$event.end_desc}></font>
         <{elseif $event.distance == 2}>
@@ -59,7 +59,7 @@
   <{if $block.num_rows_rest > 0}>
     <table border='0' cellspacing='0' cellpadding='0' width='100%'>
       <tr>
-        <td><small><a href="<{$xoops_url}>/modules/APCal"><{$block.lang_APCAL_MB_RESTEVENT_PRE}> <{$block.num_rows_rest}> <{$block.lang_APCAL_MB_RESTEVENT_SUF}></a></small></td>
+        <td><small><a href="<{$xoops_url}>/modules/APCal"><{$block.lang_APCAL_MB_APCALRESTEVENT_PRE}> <{$block.num_rows_rest}> <{$block.lang_APCAL_MB_APCALRESTEVENT_SUF}></a></small></td>
       </tr>
     </table>
   <{/if}>
@@ -69,7 +69,7 @@
       <tr>
        <td align='left'>
          <font size='2'><small><a href='<{$block.get_target}>?smode=Daily&amp;action=Edit&amp;caldate=<{$block.caldate}>'>
-           <img src='<{$block.images_url}>/addevent.gif' border='0' width='14' height='12' /><{$block.lang_APCAL_MB_ADDEVENT}>
+           <img src='<{$block.images_url}>/addevent.gif' border='0' width='14' height='12' /><{$block.lang_APCAL_MB_APCALADDEVENT}>
          </a></small></font>
        </td>
       </tr>

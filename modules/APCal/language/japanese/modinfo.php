@@ -1,8 +1,8 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MI_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_MI_APCAL_APCALLOADED' ) ) {
 
-define( 'APCAL_MI_LOADED' , 1 ) ;
+define( '_MI_APCAL_APCALLOADED' , 1 ) ;
 
 // Module Info
 
@@ -39,60 +39,60 @@ define("_MI_APCAL_SM_SUBMIT","新規登録");
 //define("_MI_APCAL_ADMENU1","");
 
 // Title of config items
-define("_MI_USERS_AUTHORITY", "一般ユーザの権限");
-define("_MI_GUESTS_AUTHORITY", "ゲストの権限");
-define("_MI_DEFAULT_VIEW", "デフォルトのカレンダー表示画面");
-define("_MI_MINICAL_TARGET", "ミニカレンダーで日付をクリックした時の動作");
-define("_MI_COMING_NUMROWS", "今後の予定ブロックでの表示予定件数");
-define("_MI_SKINFOLDER", "スキンフォルダ名");
+define("_MI_APCALUSERS_AUTHORITY", "一般ユーザの権限");
+define("_MI_APCALGUESTS_AUTHORITY", "ゲストの権限");
+define("_MI_APCALDEFAULT_VIEW", "デフォルトのカレンダー表示画面");
+define("_MI_APCALMINICAL_TARGET", "ミニカレンダーで日付をクリックした時の動作");
+define("_MI_APCALCOMING_NUMROWS", "今後の予定ブロックでの表示予定件数");
+define("_MI_APCALSKINFOLDER", "スキンフォルダ名");
 define("_MI_APCAL_LOCALE", "地域設定ファイル (locales/*.php)");
-define("_MI_SUNDAYCOLOR", "日曜日の文字色");
-define("_MI_WEEKDAYCOLOR", "平日の文字色");
-define("_MI_SATURDAYCOLOR", "土曜日の文字色");
-define("_MI_HOLIDAYCOLOR", "祝日の文字色");
-define("_MI_TARGETDAYCOLOR", "対象日の文字色");
-define("_MI_SUNDAYBGCOLOR", "日曜日の背景色");
-define("_MI_WEEKDAYBGCOLOR", "平日の背景色");
-define("_MI_SATURDAYBGCOLOR", "土曜日の背景色");
-define("_MI_HOLIDAYBGCOLOR", "祝日の背景色");
-define("_MI_TARGETDAYBGCOLOR", "対象日の背景色");
-define("_MI_CALHEADCOLOR", "ヘッダ部文字色");
-define("_MI_CALHEADBGCOLOR", "ヘッダ部背景色");
-define("_MI_CALFRAMECSS", "カレンダーフレームのスタイル");
-define("_MI_CANOUTPUTICS", "icsファイル出力の許可・不許可");
-define("_MI_MAXRRULEEXTRACT", "繰り返し条件の展開上限数 (COUNT)");
-define("_MI_WEEKSTARTFROM", "週の開始曜日");
-define("_MI_WEEKNUMBERING", "週の数え方");
-define("_MI_DAYSTARTFROM", "一日を区切る時間");
-define("_MI_TIMEZONE_USING", "サーバのタイムゾーン指定");
-define("_MI_USE24HOUR", "24時間制とする（いいえなら、12時間制）");
-define("_MI_NAMEORUNAME" , "投稿者名の表示" ) ;
-define("_MI_DESCNAMEORUNAME" , "ログイン名かハンドル名か選択して下さい" ) ;
+define("_MI_APCALSUNDAYCOLOR", "日曜日の文字色");
+define("_MI_APCALWEEKDAYCOLOR", "平日の文字色");
+define("_MI_APCALSATURDAYCOLOR", "土曜日の文字色");
+define("_MI_APCALHOLIDAYCOLOR", "祝日の文字色");
+define("_MI_APCALTARGETDAYCOLOR", "対象日の文字色");
+define("_MI_APCALSUNDAYBGCOLOR", "日曜日の背景色");
+define("_MI_APCALWEEKDAYBGCOLOR", "平日の背景色");
+define("_MI_APCALSATURDAYBGCOLOR", "土曜日の背景色");
+define("_MI_APCALHOLIDAYBGCOLOR", "祝日の背景色");
+define("_MI_APCALTARGETDAYBGCOLOR", "対象日の背景色");
+define("_MI_APCALCALHEADCOLOR", "ヘッダ部文字色");
+define("_MI_APCALCALHEADBGCOLOR", "ヘッダ部背景色");
+define("_MI_APCALCALFRAMECSS", "カレンダーフレームのスタイル");
+define("_MI_APCALCANOUTPUTICS", "icsファイル出力の許可・不許可");
+define("_MI_APCALMAXRRULEEXTRACT", "繰り返し条件の展開上限数 (COUNT)");
+define("_MI_APCALWEEKSTARTFROM", "週の開始曜日");
+define("_MI_APCALWEEKNUMBERING", "週の数え方");
+define("_MI_APCALDAYSTARTFROM", "一日を区切る時間");
+define("_MI_APCALTIMEZONE_USING", "サーバのタイムゾーン指定");
+define("_MI_APCALUSE24HOUR", "24時間制とする（いいえなら、12時間制）");
+define("_MI_APCALNAMEORUNAME" , "投稿者名の表示" ) ;
+define("_MI_APCALDESCNAMEORUNAME" , "ログイン名かハンドル名か選択して下さい" ) ;
 
 // Description of each config items
-define("_MI_EDITBYGUESTDSC", "ゲストが予定を追加できるかどうか");
+define("_MI_APCALEDITBYGUESTDSC", "ゲストが予定を追加できるかどうか");
 
 // Options of each config items
-define("_MI_OPT_AUTH_NONE", "登録不可");
-define("_MI_OPT_AUTH_WAIT", "登録可・要承認");
-define("_MI_OPT_AUTH_POST", "登録可・承認不要");
-define("_MI_OPT_AUTH_BYGROUP", "グループ毎に設定する");
-define("_MI_OPT_MINI_PHPSELF", "現在のページをそのまま表示");
-define("_MI_OPT_MINI_MONTHLY", "月毎のカレンダーをメインに表示");
-define("_MI_OPT_MINI_WEEKLY", "週毎のカレンダーをメインに表示");
-define("_MI_OPT_MINI_DAILY", "一日だけのカレンダーをメインに表示");
-define("_MI_OPT_MINI_LIST", "予定一覧画面");
-define("_MI_OPT_CANNOTOUTPUTICS", "出力禁止");
-define("_MI_OPT_CANOUTPUTICS", "出力許可");
-define("_MI_OPT_STARTFROMSUN", "日曜日");
-define("_MI_OPT_STARTFROMMON", "月曜日");
-define("_MI_OPT_WEEKNOEACHMONTH", "月ごと");
-define("_MI_OPT_WEEKNOWHOLEYEAR", "年間通算");
-define("_MI_OPT_USENAME" , "ハンドル名" ) ;
-define("_MI_OPT_USEUNAME" , "ログイン名" ) ;
-define("_MI_OPT_TZ_USEXOOPS" , "XOOPSでの設定値" ) ;
-define("_MI_OPT_TZ_USEWINTER" , "サーバから得られた冬時間（推奨）" ) ;
-define("_MI_OPT_TZ_USESUMMER" , "サーバから得られた夏時間" ) ;
+define("_MI_APCALOPT_AUTH_NONE", "登録不可");
+define("_MI_APCALOPT_AUTH_WAIT", "登録可・要承認");
+define("_MI_APCALOPT_AUTH_POST", "登録可・承認不要");
+define("_MI_APCALOPT_AUTH_BYGROUP", "グループ毎に設定する");
+define("_MI_APCALOPT_MINI_PHPSELF", "現在のページをそのまま表示");
+define("_MI_APCALOPT_MINI_MONTHLY", "月毎のカレンダーをメインに表示");
+define("_MI_APCALOPT_MINI_WEEKLY", "週毎のカレンダーをメインに表示");
+define("_MI_APCALOPT_MINI_DAILY", "一日だけのカレンダーをメインに表示");
+define("_MI_APCALOPT_MINI_LIST", "予定一覧画面");
+define("_MI_APCALOPT_CANNOTOUTPUTICS", "出力禁止");
+define("_MI_APCALOPT_CANOUTPUTICS", "出力許可");
+define("_MI_APCALOPT_STARTFROMSUN", "日曜日");
+define("_MI_APCALOPT_STARTFROMMON", "月曜日");
+define("_MI_APCALOPT_WEEKNOEACHMONTH", "月ごと");
+define("_MI_APCALOPT_WEEKNOWHOLEYEAR", "年間通算");
+define("_MI_APCALOPT_USENAME" , "ハンドル名" ) ;
+define("_MI_APCALOPT_USEUNAME" , "ログイン名" ) ;
+define("_MI_APCALOPT_TZ_USEXOOPS" , "XOOPSでの設定値" ) ;
+define("_MI_APCALOPT_TZ_USEWINTER" , "サーバから得られた冬時間（推奨）" ) ;
+define("_MI_APCALOPT_TZ_USESUMMER" , "サーバから得られた夏時間" ) ;
 
 
 // Admin Menus

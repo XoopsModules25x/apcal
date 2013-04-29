@@ -73,9 +73,9 @@ $cal->images_path = "$mod_path/images/$skin_folder" ;
 
 // ��̤��ˤ��ʤ���ߡʥǥե���Ȥ�̤���
 $pf_options = "
-	<option value='future'>"._AM_OPT_FUTURE."</option>
-	<option value='past'>"._AM_OPT_PAST."</option>
-	<option value='pandf'>"._AM_OPT_PASTANDFUTURE."</option>\n" ;
+	<option value='future'>"._AM_APCAL_OPT_FUTURE."</option>
+	<option value='past'>"._AM_APCAL_OPT_PAST."</option>
+	<option value='pandf'>"._AM_APCAL_OPT_PASTANDFUTURE."</option>\n" ;
 $pf = empty( $_GET['pf'] ) ? 'future' : preg_replace( '/[^a-zA-Z0-9_-]/' , '' , $_GET['pf'] ) ;
 switch( $pf ) {
 	case 'past' :
@@ -106,9 +106,9 @@ $cat_selbox4extract = str_replace( "<option value='0'>" , "<option value='0'>"._
 $serverTZ = $cal->server_TZ ;
 $userTZ = $xoopsUser->timezone() ;
 $tzoptions = "
-	<option value='s'>"._AM_TZOPT_SERVER."</option>
-	<option value='g'>"._AM_TZOPT_GMT."</option>
-	<option value='y'>"._AM_TZOPT_USER."</option>\n" ;
+	<option value='s'>"._AM_APCAL_TZOPT_SERVER."</option>
+	<option value='g'>"._AM_APCAL_TZOPT_GMT."</option>
+	<option value='y'>"._AM_APCAL_TZOPT_USER."</option>\n" ;
 switch( $tz ) {
 	case 's' :
 		$tzoffset = 0 ;
@@ -149,7 +149,7 @@ if( isset( $_POST[ 'delete' ] ) ) {
 		$records = mysql_affected_rows( $conn ) ;
 		$sql = "DELETE FROM $cal->table WHERE $whr 0 " ;
 		if( ! mysql_query( $sql , $conn ) ) echo mysql_error() ;
-		else $mes = urlencode( "$records "._AM_MES_DELETED ) ;
+		else $mes = urlencode( "$records "._AM_APCAL_MES_DELETED ) ;
 	} else {
 		$mes = "" ;
 	}
@@ -173,7 +173,7 @@ if( isset( $_POST[ 'delete' ] ) ) {
 	$sql = "UPDATE $cal->table SET categories=CONCAT(categories,'$cid4sql') WHERE ($whr 0) AND categories NOT LIKE '%$cid4sql%'" ;
 	if( ! mysql_query( $sql , $conn ) ) echo mysql_error() ;
 	$records = mysql_affected_rows( $conn ) ;
-	$mes = urlencode( "$records "._AM_MES_EVENTLINKTOCAT ) ;
+	$mes = urlencode( "$records "._AM_APCAL_MES_EVENTLINKTOCAT ) ;
 	$cal->redirect( "cid=$cid&num=$num&tz=$tz&done=copied&mes=$mes" ) ;
 	exit ;
 
@@ -196,8 +196,8 @@ if( isset( $_POST[ 'delete' ] ) ) {
 	$sql = "UPDATE $cal->table SET categories=REPLACE(categories,'$old_cid4sql','$cid4sql') WHERE ($whr 0)" ;
 	if( ! mysql_query( $sql , $conn ) ) echo mysql_error() ;
 	$records = mysql_affected_rows( $conn ) ;
-	if( $cid > 0 ) $mes = urlencode( "$records "._AM_MES_EVENTLINKTOCAT ) ;
-	else $mes = urlencode( "$records "._AM_MES_EVENTUNLINKED ) ;
+	if( $cid > 0 ) $mes = urlencode( "$records "._AM_APCAL_MES_EVENTLINKTOCAT ) ;
+	else $mes = urlencode( "$records "._AM_APCAL_MES_EVENTUNLINKED ) ;
 	$cal->redirect( "cid=$old_cid&num=$num&tz=$tz&done=moved&mes=$mes" ) ;
 	exit ;
 
@@ -262,7 +262,7 @@ xoops_cp_header();
 require_once XOOPS_ROOT_PATH.'/modules/APCal/admin/displayMenu.php';
 
 echo "
-<h4>"._AM_MENU_EVENTS."</h4>
+<h4>"._AM_APCAL_MENU_EVENTS."</h4>
 <p><font color='blue'>".(isset($_GET['mes'])?htmlspecialchars($_GET['mes'],ENT_QUOTES):"")."</font></p>\n"
 . ( isset( $confirm_html ) ? $confirm_html : "" ) ."
 <form action='' method='get' style='margin-bottom:0px;text-align:left'>
@@ -283,7 +283,7 @@ echo "
         </select>
         $cat_selbox4extract
         <input type='text' name='txt' value='".htmlspecialchars($txt,ENT_QUOTES)."' />
-        <input type='submit' value='"._AM_BUTTON_EXTRACT."' /> &nbsp; 
+        <input type='submit' value='"._AM_APCAL_BUTTON_EXTRACT."' /> &nbsp; 
         $nav_html &nbsp; 
         <input type='hidden' name='num' value='$num' />
         <input type='hidden' name='tz' value='$tz' />
@@ -295,12 +295,12 @@ echo "
 ".$xoopsGTicket->getTicketHtml( __LINE__ )."
 <table width='100%' class='outer' cellpadding='4' cellspacing='1'>
   <tr valign='middle'>
-    <th>"._AM_IO_TH0."</th>
-    <th>"._AM_IO_TH1."<br />($tzdisp)</th>
-    <th>"._AM_IO_TH2."<br />($tzdisp)</th>
-    <th>"._AM_IO_TH3."</th>
-    <th>"._AM_IO_TH4."</th>
-    <th>"._AM_IO_TH5."</th>
+    <th>"._AM_APCAL_IO_TH0."</th>
+    <th>"._AM_APCAL_IO_TH1."<br />($tzdisp)</th>
+    <th>"._AM_APCAL_IO_TH2."<br />($tzdisp)</th>
+    <th>"._AM_APCAL_IO_TH3."</th>
+    <th>"._AM_APCAL_IO_TH4."</th>
+    <th>"._AM_APCAL_IO_TH5."</th>
     <th></th>
     <th><input type='checkbox' name='dummy' onclick=\"with(document.MainForm){for(i=0;i<length;i++){if(elements[i].type=='checkbox'){elements[i].checked=this.checked;}}}\" /></th>
   </tr>
@@ -312,11 +312,11 @@ $oddeven = 'odd' ;
 while( $event = mysql_fetch_object( $rs ) ) {
 	$oddeven = ( $oddeven == 'odd' ? 'even' : 'odd' ) ;
 	if( $event->allday ) {
-		$start_desc = date( _AM_DTFMT_LIST_ALLDAY , $event->start ) . '<br />(' . _APCAL_MB_ALLDAY_EVENT . ')' ;
-		$end_desc = date( _AM_DTFMT_LIST_ALLDAY , $event->end - 300 ) . '<br />(' . _APCAL_MB_ALLDAY_EVENT . ')' ;
+		$start_desc = date( _AM_APCAL_DTFMT_LIST_ALLDAY , $event->start ) . '<br />(' . _APCAL_MB_APCALALLDAY_EVENT . ')' ;
+		$end_desc = date( _AM_APCAL_DTFMT_LIST_ALLDAY , $event->end - 300 ) . '<br />(' . _APCAL_MB_APCALALLDAY_EVENT . ')' ;
 	} else {
-		$start_desc = date( _AM_DTFMT_LIST_NORMAL , $event->start + $tzoffset ) ;
-		$end_desc = date( _AM_DTFMT_LIST_NORMAL , $event->end + $tzoffset ) ;
+		$start_desc = date( _AM_APCAL_DTFMT_LIST_NORMAL , $event->start + $tzoffset ) ;
+		$end_desc = date( _AM_APCAL_DTFMT_LIST_NORMAL , $event->end + $tzoffset ) ;
 	}
 	$summary4disp = $myts->htmlSpecialChars( $event->summary ) ;
 	echo "
@@ -335,14 +335,14 @@ while( $event = mysql_fetch_object( $rs ) ) {
 echo "
   <tr>
     <td colspan='8' align='right' class='head'>
-      "._AM_LABEL_IO_CHECKEDITEMS." &nbsp; "._AM_LABEL_IO_OUTPUT."<input type='submit' name='output_ics_confirm' value='"._APCAL_BTN_EXPORT."' /> &nbsp; "._AM_LABEL_IO_DELETE."<input type='submit' name='delete' value='"._DELETE."' onclick='return confirm(\""._AM_CONFIRM_DELETE."\")' /><br />
+      "._AM_APCAL_LABEL_IO_CHECKEDITEMS." &nbsp; "._AM_APCAL_LABEL_IO_OUTPUT."<input type='submit' name='output_ics_confirm' value='"._APCAL_BTN_EXPORT."' /> &nbsp; "._AM_APCAL_LABEL_IO_DELETE."<input type='submit' name='delete' value='"._DELETE."' onclick='return confirm(\""._AM_APCAL_CONFIRM_DELETE."\")' /><br />
       <br />
-      $cat_selbox <input type='submit' name='movelink' value='"._AM_BUTTON_MOVE."' onclick='return confirm(\""._AM_CONFIRM_MOVE."\")' ".($cid<=0?"disabled='disabled'":"")." /> <input type='submit' name='addlink' value='"._AM_BUTTON_COPY."' onclick='return confirm(\""._AM_CONFIRM_COPY."\")' />
+      $cat_selbox <input type='submit' name='movelink' value='"._AM_APCAL_BUTTON_MOVE."' onclick='return confirm(\""._AM_APCAL_CONFIRM_MOVE."\")' ".($cid<=0?"disabled='disabled'":"")." /> <input type='submit' name='addlink' value='"._AM_APCAL_BUTTON_COPY."' onclick='return confirm(\""._AM_APCAL_CONFIRM_COPY."\")' />
       <input type='hidden' name='old_cid' value='$cid' />
     </td>
   </tr>
   <tr>
-    <td colspan='8' align='right' valign='bottom' height='50'>".APCAL_COPYRIGHT."</td>
+    <td colspan='8' align='right' valign='bottom' height='50'>"._AM_APCAL_COPYRIGHT."</td>
   </tr>
 </table>
 </form>

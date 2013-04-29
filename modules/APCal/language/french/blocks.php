@@ -1,8 +1,8 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_BL_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_MB_APCAL_BL_LOADED' ) ) {
 
-define( 'APCAL_BL_LOADED' , 1 ) ;
+define( '_MB_APCAL_BL_LOADED' , 1 ) ;
 
 // for monthly calendar block
 define('_MB_APCAL_PREV_MONTH','Pr&eacute;c');

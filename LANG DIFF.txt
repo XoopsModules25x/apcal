@@ -160,10 +160,10 @@ Version 2.0.0
     - added _APCAL_MESSAGE
     - added _APCAL_TELLAFRIENDTEXT
 - admin.php
-    - added _AM_PREFS
-    - added _AM_UPDATE
-    - added _AM_BLOCKS
-    - added _AM_GOTOMODULE
+    - added _AM_APCAL_PREFS
+    - added _AM_APCAL_UPDATE
+    - added _AM_APCAL_BLOCKS
+    - added _AM_APCAL_GOTOMODULE
     - added _AM_APCAL_CANBEMAIN
     - added _AM_APCAL_COLOR
 
@@ -183,7 +183,7 @@ Version 1.0.5
     - added _APCAL_SHARECALENDARFORM
     - added _APCAL_SHOWALLCAT
     - added _APCAL_GENERATE
-    - added _AP_GENERATEHINT
+    - added _APCAL_GENERATEHINT
     - added _APCAL_CATEGORIES
     - added _APCAL_NBEVENTS
     - added _APCAL_WIDTH
@@ -227,18 +227,18 @@ Version 1.0.5
     - added _MI_APCAL_DISPLAYCATTITLE
 - admin.php
     - added _AM_APCAL_TIMEZONE
-    - added _AM_MODULEADMIN_CONFIG
+    - added _AM_APCAL_MODULEADMIN_CONFIG
     - added _AM_APCAL_NBWAITINGEVENTS
     - added _AM_APCAL_NBEVENTS
     - added _AM_APCAL_NBCATS
-    - added _AM_MODULEADMIN_CONFIG_PHP
-    - added _AM_MODULEADMIN_CONFIG_XOOPS
-    - added _AM_TITLE
-    - added _AM_SIDE
-    - added _AM_WEIGHT
-    - added _AM_VISIBLEIN
-    - added _AM_BCACHETIME
-    - added _AM_ACTION
-    - added _AM_ACTIVERIGHTS
-    - added _AM_ACCESSRIGHTS
-    - added _AM_BADMIN
+    - added _AM_APCAL_MODULEADMIN_CONFIG_PHP
+    - added _AM_APCAL_MODULEADMIN_CONFIG_XOOPS
+    - added _AM_APCAL_TITLE
+    - added _AM_APCAL_SIDE
+    - added _AM_APCAL_WEIGHT
+    - added _AM_APCAL_VISIBLEIN
+    - added _AM_APCAL_BCACHETIME
+    - added _AM_APCAL_ACTION
+    - added _AM_APCAL_ACTIVERIGHTS
+    - added _AM_APCAL_ACCESSRIGHTS
+    - added _AM_APCAL_BADMIN

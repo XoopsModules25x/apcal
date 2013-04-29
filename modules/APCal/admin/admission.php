@@ -82,9 +82,9 @@ $cat_selbox4extract = str_replace( "<option value='0'>" , "<option value='0'>"._
 $serverTZ = $cal->server_TZ ;
 $userTZ = $xoopsUser->timezone() ;
 $tzoptions = "
-	<option value='s'>"._AM_TZOPT_SERVER."</option>
-	<option value='g'>"._AM_TZOPT_GMT."</option>
-	<option value='y'>"._AM_TZOPT_USER."</option>\n" ;
+	<option value='s'>"._AM_APCAL_TZOPT_SERVER."</option>
+	<option value='g'>"._AM_APCAL_TZOPT_GMT."</option>
+	<option value='y'>"._AM_APCAL_TZOPT_USER."</option>\n" ;
 switch( $tz ) {
 	case 's' :
 		$tzoffset = 0 ;
@@ -118,7 +118,7 @@ if( isset( $_POST[ 'admit' ] ) && isset( $_POST[ 'ids' ] ) && is_array( $_POST[ 
 	}
 	$sql = "UPDATE $cal->table SET admission=1 WHERE $whr 0" ;
 	if( ! mysql_query( $sql , $conn ) ) echo mysql_error() ;
-	else $mes = urlencode( _AM_MES_ADMITTED ) ;
+	else $mes = urlencode( _AM_APCAL_MES_ADMITTED ) ;
 	foreach( $_POST[ 'ids' ] as $id ) {
 		$cal->notify_new_event( $id ) ;
 	}
@@ -142,7 +142,7 @@ if( isset( $_POST[ 'admit' ] ) && isset( $_POST[ 'ids' ] ) && is_array( $_POST[ 
 		$records = mysql_affected_rows( $conn ) ;
 		$sql = "DELETE FROM $cal->table WHERE $whr 0 " ;
 		if( ! mysql_query( $sql , $conn ) ) echo mysql_error() ;
-		else $mes = urlencode( "$records "._AM_MES_DELETED ) ;
+		else $mes = urlencode( "$records "._AM_APCAL_MES_DELETED ) ;
 	} else {
 		$mes = "" ;
 	}
@@ -186,7 +186,7 @@ else $nav_num_info = ($pos+1).'-'.($pos+$num).'/'.$numrows ;
 xoops_cp_header();
 require_once XOOPS_ROOT_PATH.'/modules/APCal/admin/displayMenu.php';
 
-echo "<h4>"._AM_ADMISSION."</h4>
+echo "<h4>"._AM_APCAL_ADMISSION."</h4>
 <p><font color='blue'>".(isset($_GET['mes'])?htmlspecialchars($_GET['mes'],ENT_QUOTES):"")."</font></p>
 <form action='' method='get' style='margin-bottom:0px;text-align:left'>
   <select name='tz' onChange='submit();'>$tzoptions</select>
@@ -203,7 +203,7 @@ echo "<h4>"._AM_ADMISSION."</h4>
       <form action='' method='get' style='margin-bottom:0px;text-align:right'>
         $cat_selbox4extract
         <input type='text' name='txt' value='".htmlspecialchars($txt,ENT_QUOTES)."' />
-        <input type='submit' value='"._AM_BUTTON_EXTRACT."' /> &nbsp; 
+        <input type='submit' value='"._AM_APCAL_BUTTON_EXTRACT."' /> &nbsp; 
         $nav_html &nbsp; 
         <input type='hidden' name='num' value='$num' />
         <input type='hidden' name='tz' value='$tz' />
@@ -214,11 +214,11 @@ echo "<h4>"._AM_ADMISSION."</h4>
 <form name='MainForm' action='?tz=$tz&amp;num=$num&amp;cid=$cid' method='post' style='margin-top:0px;'>
 <table width='100%' class='outer' cellpadding='4' cellspacing='1'>
   <tr valign='middle'>
-    <th>"._AM_ADMIT_TH0."</th>
-    <th>"._AM_ADMIT_TH1."<br />($tzdisp)</th>
-    <th>"._AM_ADMIT_TH2."<br />($tzdisp)</th>
-    <th>"._AM_ADMIT_TH3."</th>
-    <th>"._AM_ADMIT_TH4."</th>
+    <th>"._AM_APCAL_ADMIT_TH0."</th>
+    <th>"._AM_APCAL_ADMIT_TH1."<br />($tzdisp)</th>
+    <th>"._AM_APCAL_ADMIT_TH2."<br />($tzdisp)</th>
+    <th>"._AM_APCAL_ADMIT_TH3."</th>
+    <th>"._AM_APCAL_ADMIT_TH4."</th>
     <th></th>
     <th><input type='checkbox' name='dummy' onclick=\"with(document.MainForm){for(i=0;i<length;i++){if(elements[i].type=='checkbox'){elements[i].checked=this.checked;}}}\" /></th>
   </tr>
@@ -230,11 +230,11 @@ $oddeven = 'odd' ;
 while( $event = mysql_fetch_object( $rs ) ) {
 	$oddeven = ( $oddeven == 'odd' ? 'even' : 'odd' ) ;
 	if( $event->allday ) {
-		$start_desc = date( _AM_DTFMT_LIST_ALLDAY , $event->start ) . '<br />(' . _APCAL_MB_ALLDAY_EVENT . ')' ;
-		$end_desc = date( _AM_DTFMT_LIST_ALLDAY , $event->end - 300 ) . '<br />(' . _APCAL_MB_ALLDAY_EVENT . ')' ;
+		$start_desc = date( _AM_APCAL_DTFMT_LIST_ALLDAY , $event->start ) . '<br />(' . _APCAL_MB_APCALALLDAY_EVENT . ')' ;
+		$end_desc = date( _AM_APCAL_DTFMT_LIST_ALLDAY , $event->end - 300 ) . '<br />(' . _APCAL_MB_APCALALLDAY_EVENT . ')' ;
 	} else {
-		$start_desc = date( _AM_DTFMT_LIST_NORMAL , $event->start + $tzoffset ) ;
-		$end_desc = date( _AM_DTFMT_LIST_NORMAL , $event->end + $tzoffset ) ;
+		$start_desc = date( _AM_APCAL_DTFMT_LIST_NORMAL , $event->start + $tzoffset ) ;
+		$end_desc = date( _AM_APCAL_DTFMT_LIST_NORMAL , $event->end + $tzoffset ) ;
 	}
 	$summary4disp = $myts->htmlSpecialChars( $event->summary ) ;
 	echo "
@@ -251,10 +251,10 @@ while( $event = mysql_fetch_object( $rs ) ) {
 
 echo "
   <tr>
-    <td colspan='8' align='right' class='head'>"._AM_LABEL_ADMIT."<input type='submit' name='admit' value='"._AM_BUTTON_ADMIT."' /> &nbsp; "._AM_LABEL_IO_DELETE."<input type='submit' name='delete' value='"._DELETE."' onclick='return confirm(\""._AM_CONFIRM_DELETE."\")' /></td>
+    <td colspan='8' align='right' class='head'>"._AM_APCAL_LABEL_ADMIT."<input type='submit' name='admit' value='"._AM_APCAL_BUTTON_ADMIT."' /> &nbsp; "._AM_APCAL_LABEL_IO_DELETE."<input type='submit' name='delete' value='"._DELETE."' onclick='return confirm(\""._AM_APCAL_CONFIRM_DELETE."\")' /></td>
   </tr>
   <tr>
-    <td colspan='8' align='right' valign='bottom' height='50'>".APCAL_COPYRIGHT."</td>
+    <td colspan='8' align='right' valign='bottom' height='50'>"._AM_APCAL_COPYRIGHT."</td>
   </tr>
 </table>
 ".$xoopsGTicket->getTicketHtml( __LINE__ )."

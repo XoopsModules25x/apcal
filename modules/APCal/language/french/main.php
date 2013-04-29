@@ -1,14 +1,14 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MB_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MB_APCALLOADED' ) ) {
 
-define( 'APCAL_MB_LOADED' , 1 ) ;
+define( 'APCAL_MB_APCALLOADED' , 1 ) ;
 
 // index.php
 define('_MB_APCAL_ERR_NOPERMTOUPDATE',"Vous n'&ecirc;tes pas autoris&eacute;s &agrave; modifier les &eacute;v&egrave;nements");
 define('_APCAL_APURL', 'http://xoops.antiquepromotion.com');
 define('_APCAL_APURL2', 'http://www.antiquepromotion.com');
-define('APCAL_COPYRIGHT' , '<a href="http://xoops.antiquepromotion.com" title="Calendrier pour Xoops" target="_blank">APCal</a> par <a href="http://www.antiquepromotion.com" title="Antiques Promotion Qu&eacute;bec" target="_blank">AP</a>');
+define('_AM_APCAL_COPYRIGHT' , '<a href="http://xoops.antiquepromotion.com" title="Calendrier pour Xoops" target="_blank">APCal</a> par <a href="http://www.antiquepromotion.com" title="Antiques Promotion Qu&eacute;bec" target="_blank">AP</a>');
 define('_MB_APCAL_ERR_NOPERMTOINSERT',"Vous n'&ecirc;tes pas autoris&eacute;s &agrave; cr&eacute;er des &eacute;v&egrave;nements");
 define('_MB_APCAL_ERR_NOPERMTODELETE',"Vous n'&ecirc;tes pas autoris&eacute;s &agrave; supprimer des &eacute;v&egrave;nements");
 define('_MB_APCAL_ALT_PRINTTHISEVENT','Imprimer cet &eacute;v&egrave;nement');
@@ -42,7 +42,7 @@ define('_APCAL_CALENDAROF', 'Calendrier de');
 define('_APCAL_SHARECALENDARFORM', 'Repmplissez ce formulaire pour montrer le calendrier sur votre site.');
 define('_APCAL_SHOWALLCAT', 'Toutes les cat&eacute;gories');
 define('_APCAL_GENERATE', 'G&eacute;n&eacute;rer');
-define('_AP_GENERATEHINT', 'Vous devez cliquer deux fois sur G&eacute;n&eacute;rer pour voir l\'exemple.');
+define('_APCAL_GENERATEHINT', 'Vous devez cliquer deux fois sur G&eacute;n&eacute;rer pour voir l\'exemple.');
 define('_APCAL_CATEGORIES', 'Cat&eacute;gories');
 define('_APCAL_NBEVENTS', 'Nombre d\'&eacute;v&eacute;nements visible');
 define('_APCAL_WIDTH', 'Largeur du bloc');

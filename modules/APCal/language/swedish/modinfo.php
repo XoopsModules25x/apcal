@@ -1,6 +1,6 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MI_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_MI_APCAL_APCALLOADED' ) ) {
 
 
 
@@ -11,13 +11,13 @@ if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MI_LOADED' ) ) {
 define('_MI_APCAL_ADMENU_MYTPLSADMIN','Templates');
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-05-06 18:04:00
-define('_MI_TIMEZONE_USING','Timezone of the server');
-define('_MI_OPT_TZ_USEXOOPS','value of XOOPS config');
-define('_MI_OPT_TZ_USEWINTER','value told from the server as winter time (recommended)');
-define('_MI_OPT_TZ_USESUMMER','value told from the server as summer time');
+define('_MI_APCALTIMEZONE_USING','Timezone of the server');
+define('_MI_APCALOPT_TZ_USEXOOPS','value of XOOPS config');
+define('_MI_APCALOPT_TZ_USEWINTER','value told from the server as winter time (recommended)');
+define('_MI_APCALOPT_TZ_USESUMMER','value told from the server as summer time');
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-05-03 05:31:13
-define('_MI_USE24HOUR','24hours system (No means 12hours system)');
+define('_MI_APCALUSE24HOUR','24hours system (No means 12hours system)');
 define('_MI_APCAL_ADMENU_PLUGINS','Plugins Manager');
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-04-22 12:02:02
@@ -28,7 +28,7 @@ define('_MI_APCAL_BNAME_MINICALEX_DESC','Utbyggbar Minikalender med plugin syste
 define('_MI_APCAL_DEFAULTLOCALE','');
 define('_MI_APCAL_LOCALE','Locale (kontrollera filer i locales/*.php)');
 
-define( 'APCAL_MI_LOADED' , 1 ) ;
+define( '_MI_APCAL_APCALLOADED' , 1 ) ;
 
 // Module Info
 
@@ -62,49 +62,49 @@ define("_MI_APCAL_BNAME_AFTER_DESC","Visa hçÏdelser efter markerad dag");
 //define("_MI_APCAL_ADMENU1","");
 
 // Title of config items
-define("_MI_USERS_AUTHORITY", "Beh‹Óigheter f‹Ó anvçÏdare");
-define("_MI_GUESTS_AUTHORITY", "Beh‹Óigheter f‹Ó gçÔter");
-define("_MI_MINICAL_TARGET", "Sida som visas i center blocket om man klickar på Minikalendern");
-define("_MI_COMING_NUMROWS", "Antalet visade hçÏdelser i blocket f‹Ó kommande hçÏdelser");
-define("_MI_SKINFOLDER", "Namnet på den katalog som innehéÍler 'skin' filerna");
-define("_MI_SUNDAYCOLOR", "FçÓg på texten f‹Ó S‹Ïdag");
-define("_MI_WEEKDAYCOLOR", "FçÓg på texten f‹Ó Veckodagar");
-define("_MI_SATURDAYCOLOR", "FçÓg på texten f‹Ó L‹Ódag");
-define("_MI_HOLIDAYCOLOR", "FçÓg på texten f‹Ó Helgdag");
-define("_MI_TARGETDAYCOLOR", "FçÓg på texten f‹Ó Markerad dag");
-define("_MI_SUNDAYBGCOLOR", "BakgrundsfçÓg f‹Ó S‹Ïdagar");
-define("_MI_WEEKDAYBGCOLOR", "BakgrundsfçÓg f‹Ó Veckodagar");
-define("_MI_SATURDAYBGCOLOR", "BakgrundsfçÓg f‹Ó L‹Ódagar");
-define("_MI_HOLIDAYBGCOLOR", "BakgrundsfçÓg f‹Ó Helgdagar");
-define("_MI_TARGETDAYBGCOLOR", "BakgrundsfçÓg på markerad dag");
-define("_MI_CALHEADCOLOR", "FçÓg på texten i 'headern' på kalendern");
-define("_MI_CALHEADBGCOLOR", "BakgrundsfçÓg i 'headern' på kalendern");
-define("_MI_CALFRAMECSS", "Stil på ramen runt kalendern");
-define("_MI_CANOUTPUTICS", "TilléÕelse att mata ut ics filer?");
-define("_MI_MAXRRULEEXTRACT", "ŽÖvre grçÏs på antalet hçÏdelser som féÓ extraheras med regel.(ANTAL)");
-define("_MI_WEEKSTARTFROM", "F‹Ósta dagen i veckan");
-define("_MI_DAYSTARTFROM", "GrçÏs f‹Ó att separera dagar");
-define("_MI_NAMEORUNAME" , "Vilket namn på anvçÏdaren skall visas" ) ;
-define("_MI_DESCNAMEORUNAME" , "VçÍj vilket 'namn' som visas" ) ;
+define("_MI_APCALUSERS_AUTHORITY", "Beh‹Óigheter f‹Ó anvçÏdare");
+define("_MI_APCALGUESTS_AUTHORITY", "Beh‹Óigheter f‹Ó gçÔter");
+define("_MI_APCALMINICAL_TARGET", "Sida som visas i center blocket om man klickar på Minikalendern");
+define("_MI_APCALCOMING_NUMROWS", "Antalet visade hçÏdelser i blocket f‹Ó kommande hçÏdelser");
+define("_MI_APCALSKINFOLDER", "Namnet på den katalog som innehéÍler 'skin' filerna");
+define("_MI_APCALSUNDAYCOLOR", "FçÓg på texten f‹Ó S‹Ïdag");
+define("_MI_APCALWEEKDAYCOLOR", "FçÓg på texten f‹Ó Veckodagar");
+define("_MI_APCALSATURDAYCOLOR", "FçÓg på texten f‹Ó L‹Ódag");
+define("_MI_APCALHOLIDAYCOLOR", "FçÓg på texten f‹Ó Helgdag");
+define("_MI_APCALTARGETDAYCOLOR", "FçÓg på texten f‹Ó Markerad dag");
+define("_MI_APCALSUNDAYBGCOLOR", "BakgrundsfçÓg f‹Ó S‹Ïdagar");
+define("_MI_APCALWEEKDAYBGCOLOR", "BakgrundsfçÓg f‹Ó Veckodagar");
+define("_MI_APCALSATURDAYBGCOLOR", "BakgrundsfçÓg f‹Ó L‹Ódagar");
+define("_MI_APCALHOLIDAYBGCOLOR", "BakgrundsfçÓg f‹Ó Helgdagar");
+define("_MI_APCALTARGETDAYBGCOLOR", "BakgrundsfçÓg på markerad dag");
+define("_MI_APCALCALHEADCOLOR", "FçÓg på texten i 'headern' på kalendern");
+define("_MI_APCALCALHEADBGCOLOR", "BakgrundsfçÓg i 'headern' på kalendern");
+define("_MI_APCALCALFRAMECSS", "Stil på ramen runt kalendern");
+define("_MI_APCALCANOUTPUTICS", "TilléÕelse att mata ut ics filer?");
+define("_MI_APCALMAXRRULEEXTRACT", "ŽÖvre grçÏs på antalet hçÏdelser som féÓ extraheras med regel.(ANTAL)");
+define("_MI_APCALWEEKSTARTFROM", "F‹Ósta dagen i veckan");
+define("_MI_APCALDAYSTARTFROM", "GrçÏs f‹Ó att separera dagar");
+define("_MI_APCALNAMEORUNAME" , "Vilket namn på anvçÏdaren skall visas" ) ;
+define("_MI_APCALDESCNAMEORUNAME" , "VçÍj vilket 'namn' som visas" ) ;
 
 // Description of each config items
-define("_MI_EDITBYGUESTDSC", "TilléÕelse f‹Ó gçÔter att lçÈga till hçÏdelser");
+define("_MI_APCALEDITBYGUESTDSC", "TilléÕelse f‹Ó gçÔter att lçÈga till hçÏdelser");
 
 // Options of each config items
-define("_MI_OPT_AUTH_NONE", "kan inte lçÈga till");
-define("_MI_OPT_AUTH_WAIT", "kan lçÈga till men krç×er godkçÏnande");
-define("_MI_OPT_AUTH_POST", "kan lçÈga till utan godkçÏnande");
-define("_MI_OPT_AUTH_BYGROUP", "Specificerad i GrupprçÕtigheterna");
-define("_MI_OPT_MINI_PHPSELF", "nuvarande sida");
-define("_MI_OPT_MINI_MONTHLY", "méÏadskalender");
-define("_MI_OPT_MINI_WEEKLY", "veckokalender");
-define("_MI_OPT_MINI_DAILY", "dagskalender");
-define("_MI_OPT_CANOUTPUTICS", "kan mata ut");
-define("_MI_OPT_CANNOTOUTPUTICS", "kan inte mata ut");
-define("_MI_OPT_STARTFROMSUN", "S‹Ïdag");
-define("_MI_OPT_STARTFROMMON", "MéÏdag");
-define("_MI_OPT_USENAME" , "AnvçÏdarnamn" ) ;
-define("_MI_OPT_USEUNAME" , "Login Namn" ) ;
+define("_MI_APCALOPT_AUTH_NONE", "kan inte lçÈga till");
+define("_MI_APCALOPT_AUTH_WAIT", "kan lçÈga till men krç×er godkçÏnande");
+define("_MI_APCALOPT_AUTH_POST", "kan lçÈga till utan godkçÏnande");
+define("_MI_APCALOPT_AUTH_BYGROUP", "Specificerad i GrupprçÕtigheterna");
+define("_MI_APCALOPT_MINI_PHPSELF", "nuvarande sida");
+define("_MI_APCALOPT_MINI_MONTHLY", "méÏadskalender");
+define("_MI_APCALOPT_MINI_WEEKLY", "veckokalender");
+define("_MI_APCALOPT_MINI_DAILY", "dagskalender");
+define("_MI_APCALOPT_CANOUTPUTICS", "kan mata ut");
+define("_MI_APCALOPT_CANNOTOUTPUTICS", "kan inte mata ut");
+define("_MI_APCALOPT_STARTFROMSUN", "S‹Ïdag");
+define("_MI_APCALOPT_STARTFROMMON", "MéÏdag");
+define("_MI_APCALOPT_USENAME" , "AnvçÏdarnamn" ) ;
+define("_MI_APCALOPT_USEUNAME" , "Login Namn" ) ;
 
 // Admin Menus
 define("_MI_APCAL_ADMENU0","GodkçÏna hçÏdelser");
@@ -131,11 +131,11 @@ define('_MI_APCAL_GLOBAL_NEWEVENT_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} automat
 define('_MI_APCAL_BNAME_NEW','Nyligen publicerade hçÏdelser');
 define('_MI_APCAL_BNAME_NEW_DESC','Visa hçÏdelser sorterade med nyaste ‹×erst');
 define('_MI_APCAL_SM_SUBMIT','LçÈg till');
-define('_MI_DEFAULT_VIEW','Default Vy i center');
-define('_MI_WEEKNUMBERING','Numrerings regel f‹Ó veckor');
-define('_MI_OPT_MINI_LIST','HçÏdelse lista');
-define('_MI_OPT_WEEKNOEACHMONTH','f‹Ó varje méÏad');
-define('_MI_OPT_WEEKNOWHOLEYEAR','f‹Ó hela éÓet');
+define('_MI_APCALDEFAULT_VIEW','Default Vy i center');
+define('_MI_APCALWEEKNUMBERING','Numrerings regel f‹Ó veckor');
+define('_MI_APCALOPT_MINI_LIST','HçÏdelse lista');
+define('_MI_APCALOPT_WEEKNOEACHMONTH','f‹Ó varje méÏad');
+define('_MI_APCALOPT_WEEKNOWHOLEYEAR','f‹Ó hela éÓet');
 define('_MI_APCAL_ADMENU_CAT','Kategori Administration');
 define('_MI_APCAL_ADMENU_CAT2GROUP','RçÕtigheter f‹Ó Kategorier');
 define('_MI_APCAL_ADMENU_TM','Tabell UnderhéÍl');

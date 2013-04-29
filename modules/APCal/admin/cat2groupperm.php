@@ -59,7 +59,7 @@ if( ! empty( $_POST['submit'] ) ) {
 	}
 
 	include( "mygroupperm.php" ) ;
-	redirect_header( XOOPS_URL."/modules/$mydirname/admin/cat2groupperm.php" , 1 , _MD_AM_DBUPDATED );
+	redirect_header( XOOPS_URL."/modules/$mydirname/admin/cat2groupperm.php" , 1 , _MD_APCALAM_APCALDBUPDATED );
 	exit ;
 }
 
@@ -67,7 +67,7 @@ if( ! empty( $_POST['submit'] ) ) {
 // creating Objects of XOOPS
 $myts =& MyTextSanitizer::getInstance();
 $cattree = new XoopsTree( $cat_table , "cid" , "pid" ) ;
-$form = new MyXoopsGroupPermForm( _AM_MENU_CAT2GROUP , $xoopsModule->mid() , 'apcal_cat' , _AM_CAT2GROUPDESC ) ;
+$form = new MyXoopsGroupPermForm( _AM_APCAL_MENU_CAT2GROUP , $xoopsModule->mid() , 'apcal_cat' , _AM_APCAL_CAT2GROUPDESC ) ;
 
 $cat_tree_array = $cattree->getChildTreeArray( 0 , 'weight ASC,cat_title' ) ;
 

@@ -1,12 +1,12 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_CNST_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_APCAL_CNST_LOADED' ) ) {
 
 
 
 // Appended by Xoops Language Checker -GIJOE- in 2005-09-09 18:17:12
-define('_APCAL_MB_LINK_TO_RRULE1ST','最初設定的日期');
-define('_APCAL_MB_RRULE1ST','第一次發生的日期');
+define('_APCAL_MB_APCALLINK_TO_RRULE1ST','最初設定的日期');
+define('_APCAL_MB_APCALRRULE1ST','第一次發生的日期');
 
 define('_APCAL_BTN_DELETE_ONE','單筆刪除');
 
@@ -18,7 +18,7 @@ define('_APCAL_FMT_DHI','%1$s %2$s:%3$s');
 define('_APCAL_FMT_HI','%1$s:%2$s');
 define('_APCAL_TH_TIMEZONE','時區');
 
-define( 'APCAL_CNST_LOADED' , 1 ) ;
+define( '_APCAL_CNST_LOADED' , 1 ) ;
 
 define('_APCAL_FMT_MD','%1$s%2$s') ;
 define('_APCAL_FMT_YMD','%1$s年 %2$s %3$s') ;
@@ -31,43 +31,43 @@ define('_APCAL_ICON_WEEKLY','週曆') ;
 define('_APCAL_ICON_MONTHLY','月曆') ;
 define('_APCAL_ICON_YEARLY','年曆') ;
 
-define('_APCAL_MB_LINKTODAY','今天') ;
-define('_APCAL_MB_NOSUBJECT','(沒有主題)') ;
+define('_APCAL_MB_APCALLINKTODAY','今天') ;
+define('_APCAL_MB_APCALNOSUBJECT','(沒有主題)') ;
 
-define('_APCAL_MB_PREV_DATE','前一天') ;
-define('_APCAL_MB_NEXT_DATE','次一天') ;
-define('_APCAL_MB_PREV_WEEK','上週') ;
-define('_APCAL_MB_NEXT_WEEK','下週') ;
-define('_APCAL_MB_PREV_MONTH','上個月') ;
-define('_APCAL_MB_NEXT_MONTH','下個月') ;
-define('_APCAL_MB_PREV_YEAR','前一年') ;
-define('_APCAL_MB_NEXT_YEAR','次一年') ;
+define('_APCAL_MB_APCALPREV_DATE','前一天') ;
+define('_APCAL_MB_APCALNEXT_DATE','次一天') ;
+define('_APCAL_MB_APCALPREV_WEEK','上週') ;
+define('_APCAL_MB_APCALNEXT_WEEK','下週') ;
+define('_APCAL_MB_APCALPREV_MONTH','上個月') ;
+define('_APCAL_MB_APCALNEXT_MONTH','下個月') ;
+define('_APCAL_MB_APCALPREV_YEAR','前一年') ;
+define('_APCAL_MB_APCALNEXT_YEAR','次一年') ;
 
-define('_APCAL_MB_NOEVENT','沒有事件') ;
-define('_APCAL_MB_ADDEVENT','新增事件') ;
-define('_APCAL_MB_CONTINUING','(繼續)') ;
-define('_APCAL_MB_RESTEVENT_PRE','更多') ;
-define('_APCAL_MB_RESTEVENT_SUF','事件') ;
-define('_APCAL_MB_TIMESEPARATOR','～') ;
+define('_APCAL_MB_APCALNOEVENT','沒有事件') ;
+define('_APCAL_MB_APCALADDEVENT','新增事件') ;
+define('_APCAL_MB_APCALCONTINUING','(繼續)') ;
+define('_APCAL_MB_APCALRESTEVENT_PRE','更多') ;
+define('_APCAL_MB_APCALRESTEVENT_SUF','事件') ;
+define('_APCAL_MB_APCALTIMESEPARATOR','～') ;
 
-define('_APCAL_MB_ALLDAY_EVENT','全天事件') ;
-define('_APCAL_MB_LONG_EVENT','長期事件') ;
-define('_APCAL_MB_LONG_SPECIALDAY','週年紀念日‧假日等') ;
+define('_APCAL_MB_APCALALLDAY_EVENT','全天事件') ;
+define('_APCAL_MB_APCALLONG_EVENT','長期事件') ;
+define('_APCAL_MB_APCALLONG_SPECIALDAY','週年紀念日‧假日等') ;
 
-define('_APCAL_MB_PUBLIC','公開事件') ;
-define('_APCAL_MB_PRIVATE','不公開事件') ;
-define('_APCAL_MB_PRIVATETARGET','　　公開於： %s');
+define('_APCAL_MB_APCALPUBLIC','公開事件') ;
+define('_APCAL_MB_APCALPRIVATE','不公開事件') ;
+define('_APCAL_MB_APCALPRIVATETARGET','　　公開於： %s');
 
-define('_APCAL_MB_EVENT_NOTREGISTER','尚未紀錄') ;
-define('_APCAL_MB_EVENT_ADMITTED','已審核') ;
-define('_APCAL_MB_EVENT_NEEDADMIT','審核中') ;
+define('_APCAL_MB_APCALEVENT_NOTREGISTER','尚未紀錄') ;
+define('_APCAL_MB_APCALEVENT_ADMITTED','已審核') ;
+define('_APCAL_MB_APCALEVENT_NEEDADMIT','審核中') ;
 
-define('_APCAL_MB_TITLE_EVENTINFO','行事曆') ;
-define('_APCAL_MB_SUBTITLE_EVENTDETAIL','觀看詳情') ;
-define('_APCAL_MB_SUBTITLE_EVENTEDIT','編輯') ;
+define('_APCAL_MB_APCALTITLE_EVENTINFO','行事曆') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTDETAIL','觀看詳情') ;
+define('_APCAL_MB_APCALSUBTITLE_EVENTEDIT','編輯') ;
 
-define('_APCAL_MB_HOUR_SUF','時') ;
-define('_APCAL_MB_MINUTE_SUF','分') ;
+define('_APCAL_MB_APCALHOUR_SUF','時') ;
+define('_APCAL_MB_APCALMINUTE_SUF','分') ;
 
 define('_APCAL_TH_SUMMARY','事件名') ;
 define('_APCAL_TH_STARTDATETIME','開始日時') ;
@@ -143,23 +143,23 @@ define('_APCAL_TH_SUBMITTER','發表者');
 define('_APCAL_FMT_YW','%1$s年 第%2$s週 ');
 define('_APCAL_FMT_WEEKNO','第%s週');
 define('_APCAL_ICON_LIST','顯示行事一覽表');
-define('_APCAL_MB_SHOWALLCAT','顯示全部類別');
-define('_APCAL_MB_ORDER_ASC','升羃');
-define('_APCAL_MB_ORDER_DESC','降羃');
-define('_APCAL_MB_SORTBY','排列順序：');
-define('_APCAL_MB_CURSORTEDBY','目前的排列方式：');
+define('_APCAL_MB_APCALSHOWALLCAT','顯示全部類別');
+define('_APCAL_MB_APCALORDER_ASC','升羃');
+define('_APCAL_MB_APCALORDER_DESC','降羃');
+define('_APCAL_MB_APCALSORTBY','排列順序：');
+define('_APCAL_MB_APCALCURSORTEDBY','目前的排列方式：');
 define('_APCAL_TH_CATEGORIES','類別');
 define('_APCAL_TH_LASTMODIFIED','最後更新日');
 define('_APCAL_BTN_PRINT','列印');
 
 define('_APCAL_FMT_YMDO','%1$s%2$s%3$s%4$s');
-define('_APCAL_MB_LABEL_CHECKEDITEMS','將選取的事件：');
-define('_APCAL_MB_LABEL_OUTPUTICS','使用 iCalendar 匯出');
-define('_APCAL_MB_ICALSELECTPLATFORM','選擇平臺');
-define('_APCAL_MB_OP_AFTER','往後的事件');
-define('_APCAL_MB_OP_BEFORE','之前的事件');
-define('_APCAL_MB_OP_ON','於');
-define('_APCAL_MB_OP_ALL','全部');
+define('_APCAL_MB_APCALLABEL_CHECKEDITEMS','將選取的事件：');
+define('_APCAL_MB_APCALLABEL_OUTPUTICS','使用 iCalendar 匯出');
+define('_APCAL_MB_APCALICALSELECTPLATFORM','選擇平臺');
+define('_APCAL_MB_APCALOP_AFTER','往後的事件');
+define('_APCAL_MB_APCALOP_BEFORE','之前的事件');
+define('_APCAL_MB_APCALOP_ON','於');
+define('_APCAL_MB_APCALOP_ALL','全部');
 define('_APCAL_BTN_IMPORT','執行匯入');
 define('_APCAL_BTN_UPLOAD','執行更新');
 define('_APCAL_BTN_EXPORT','輸出');

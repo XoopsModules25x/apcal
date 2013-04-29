@@ -1,12 +1,12 @@
 <?php
 
-if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( 'APCAL_MI_LOADED' ) ) {
+if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_MI_APCAL_APCALLOADED' ) ) {
 
 
 // Appended by Xoops Language Checker -GIJOE- in 2006-04-06 04:57:58
 define('_MI_APCAL_ADMENU_MYTPLSADMIN','Templates');
 
-define( 'APCAL_MI_LOADED' , 1 ) ;
+define( '_MI_APCAL_APCALLOADED' , 1 ) ;
 
 // Module Info
 
@@ -43,60 +43,60 @@ define("_MI_APCAL_SM_SUBMIT"                ,"Dodaj");
 //define("_MI_APCAL_ADMENU1","");
 
 // Title of config items
-define("_MI_USERS_AUTHORITY"                , "Prawa u¿ytkowników");
-define("_MI_GUESTS_AUTHORITY"               , "Prawa go¶ci");
-define("_MI_DEFAULT_VIEW"                   , "Domy¶lny widok na ¶rodku");
-define("_MI_MINICAL_TARGET"                 , "Docelowy widok z MiniCalendarza");
-define("_MI_COMING_NUMROWS"                 , "Liczba wydarzeñ w bloku Nadchodz±cych Wydarzeñ");
-define("_MI_SKINFOLDER"                     , "Nazwa folderu ze skórk±");
+define("_MI_APCALUSERS_AUTHORITY"                , "Prawa u¿ytkowników");
+define("_MI_APCALGUESTS_AUTHORITY"               , "Prawa go¶ci");
+define("_MI_APCALDEFAULT_VIEW"                   , "Domy¶lny widok na ¶rodku");
+define("_MI_APCALMINICAL_TARGET"                 , "Docelowy widok z MiniCalendarza");
+define("_MI_APCALCOMING_NUMROWS"                 , "Liczba wydarzeñ w bloku Nadchodz±cych Wydarzeñ");
+define("_MI_APCALSKINFOLDER"                     , "Nazwa folderu ze skórk±");
 define("_MI_APCAL_LOCALE"                   , "Lokacja (sprawd¼ pliki w locales/*.php)");
-define("_MI_SUNDAYCOLOR"                    , "Kolor niedziel");
-define("_MI_WEEKDAYCOLOR"                   , "Kolor zwyk³ego dnia");
-define("_MI_SATURDAYCOLOR"                  , "Kolor soboty");
-define("_MI_HOLIDAYCOLOR"                   , "Kolor wakacji");
-define("_MI_TARGETDAYCOLOR"                 , "Kolor wybranego dnia");
-define("_MI_SUNDAYBGCOLOR"                  , "T³o niedzieli");
-define("_MI_WEEKDAYBGCOLOR"                 , "T³o zwyk³ego dnia");
-define("_MI_SATURDAYBGCOLOR"                , "T³o soboty");
-define("_MI_HOLIDAYBGCOLOR"                 , "T³o wakacji");
-define("_MI_TARGETDAYBGCOLOR"               , "T³o wybranego dnia");
-define("_MI_CALHEADCOLOR"                   , "Kolor nag³ówka");
-define("_MI_CALHEADBGCOLOR"                 , "T³o nag³ówka");
-define("_MI_CALFRAMECSS"                    , "Styl ramki kalendarza");
-define("_MI_CANOUTPUTICS"                   , "Permission of outputting ics files");
-define("_MI_MAXRRULEEXTRACT"                , "Upper limit of events extracted by Rrule.(COUNT)");
-define("_MI_WEEKSTARTFROM"                  , "Dzieñ zaczyn±jcy tydzieñ");
-define("_MI_WEEKNUMBERING"                  , "Numbering rule for weeks");
-define("_MI_DAYSTARTFROM"                   , "Linia graniczna pomiêdzy dniami");
-define("_MI_TIMEZONE_USING"                 , "Strefa czasowa serwera");
-define("_MI_USE24HOUR"                      , "24-godzinny system (Lub 12-godzinny)");
-define("_MI_NAMEORUNAME"                    , "Wy¶wietlaæ nick autora wydarzenia" ) ;
-define("_MI_DESCNAMEORUNAME"                , "Wybierz je¿eli 'imiê' jest pokazywane" ) ;
+define("_MI_APCALSUNDAYCOLOR"                    , "Kolor niedziel");
+define("_MI_APCALWEEKDAYCOLOR"                   , "Kolor zwyk³ego dnia");
+define("_MI_APCALSATURDAYCOLOR"                  , "Kolor soboty");
+define("_MI_APCALHOLIDAYCOLOR"                   , "Kolor wakacji");
+define("_MI_APCALTARGETDAYCOLOR"                 , "Kolor wybranego dnia");
+define("_MI_APCALSUNDAYBGCOLOR"                  , "T³o niedzieli");
+define("_MI_APCALWEEKDAYBGCOLOR"                 , "T³o zwyk³ego dnia");
+define("_MI_APCALSATURDAYBGCOLOR"                , "T³o soboty");
+define("_MI_APCALHOLIDAYBGCOLOR"                 , "T³o wakacji");
+define("_MI_APCALTARGETDAYBGCOLOR"               , "T³o wybranego dnia");
+define("_MI_APCALCALHEADCOLOR"                   , "Kolor nag³ówka");
+define("_MI_APCALCALHEADBGCOLOR"                 , "T³o nag³ówka");
+define("_MI_APCALCALFRAMECSS"                    , "Styl ramki kalendarza");
+define("_MI_APCALCANOUTPUTICS"                   , "Permission of outputting ics files");
+define("_MI_APCALMAXRRULEEXTRACT"                , "Upper limit of events extracted by Rrule.(COUNT)");
+define("_MI_APCALWEEKSTARTFROM"                  , "Dzieñ zaczyn±jcy tydzieñ");
+define("_MI_APCALWEEKNUMBERING"                  , "Numbering rule for weeks");
+define("_MI_APCALDAYSTARTFROM"                   , "Linia graniczna pomiêdzy dniami");
+define("_MI_APCALTIMEZONE_USING"                 , "Strefa czasowa serwera");
+define("_MI_APCALUSE24HOUR"                      , "24-godzinny system (Lub 12-godzinny)");
+define("_MI_APCALNAMEORUNAME"                    , "Wy¶wietlaæ nick autora wydarzenia" ) ;
+define("_MI_APCALDESCNAMEORUNAME"                , "Wybierz je¿eli 'imiê' jest pokazywane" ) ;
 
 // Description of each config items
-define("_MI_EDITBYGUESTDSC"                 , "Uprawnienia dodawanie wydarzeñ przez go¶ci");
+define("_MI_APCALEDITBYGUESTDSC"                 , "Uprawnienia dodawanie wydarzeñ przez go¶ci");
 
 // Options of each config items
-define("_MI_OPT_AUTH_NONE"                  , "nie mo¿e dodawaæ");
-define("_MI_OPT_AUTH_WAIT"                  , "mo¿e ale musi to zaakceptowaæ administrator");
-define("_MI_OPT_AUTH_POST"                  , "mo¿e dodawaæ bez akceptacji administratora");
-define("_MI_OPT_AUTH_BYGROUP"               , "Ustawienia grup");
-define("_MI_OPT_MINI_PHPSELF"               , "Obecna strona");
-define("_MI_OPT_MINI_MONTHLY"               , "Miesiêczny kalendarz");
-define("_MI_OPT_MINI_WEEKLY"                , "Tygodniowy kalendarz");
-define("_MI_OPT_MINI_DAILY"                 , "Dzienny kalendarz");
-define("_MI_OPT_MINI_LIST"                  , "Lista wydarzeñ");
-define("_MI_OPT_CANOUTPUTICS"               , "mo¿e przetworzyæ");
-define("_MI_OPT_CANNOTOUTPUTICS"            , "nie mo¿e przetworzyæ");
-define("_MI_OPT_STARTFROMSUN"               , "Niedziela");
-define("_MI_OPT_STARTFROMMON"               , "Poniedzia³ek");
-define("_MI_OPT_WEEKNOEACHMONTH"            , "przez ka¿dy miesi±c");
-define("_MI_OPT_WEEKNOWHOLEYEAR"            , "przez ca³ rok");
-define("_MI_OPT_USENAME"                    , "Prawdziwe imiê" ) ;
-define("_MI_OPT_USEUNAME"                   , "Login" ) ;
-define("_MI_OPT_TZ_USEXOOPS"                , "Ustawienia Xoopsa" ) ;
-define("_MI_OPT_TZ_USEWINTER"               , "warto¶æ z serwera jako czas zimowy (zalecane)" ) ;
-define("_MI_OPT_TZ_USESUMMER"               , "warto¶æ z serwera jako czas letni" ) ;
+define("_MI_APCALOPT_AUTH_NONE"                  , "nie mo¿e dodawaæ");
+define("_MI_APCALOPT_AUTH_WAIT"                  , "mo¿e ale musi to zaakceptowaæ administrator");
+define("_MI_APCALOPT_AUTH_POST"                  , "mo¿e dodawaæ bez akceptacji administratora");
+define("_MI_APCALOPT_AUTH_BYGROUP"               , "Ustawienia grup");
+define("_MI_APCALOPT_MINI_PHPSELF"               , "Obecna strona");
+define("_MI_APCALOPT_MINI_MONTHLY"               , "Miesiêczny kalendarz");
+define("_MI_APCALOPT_MINI_WEEKLY"                , "Tygodniowy kalendarz");
+define("_MI_APCALOPT_MINI_DAILY"                 , "Dzienny kalendarz");
+define("_MI_APCALOPT_MINI_LIST"                  , "Lista wydarzeñ");
+define("_MI_APCALOPT_CANOUTPUTICS"               , "mo¿e przetworzyæ");
+define("_MI_APCALOPT_CANNOTOUTPUTICS"            , "nie mo¿e przetworzyæ");
+define("_MI_APCALOPT_STARTFROMSUN"               , "Niedziela");
+define("_MI_APCALOPT_STARTFROMMON"               , "Poniedzia³ek");
+define("_MI_APCALOPT_WEEKNOEACHMONTH"            , "przez ka¿dy miesi±c");
+define("_MI_APCALOPT_WEEKNOWHOLEYEAR"            , "przez ca³ rok");
+define("_MI_APCALOPT_USENAME"                    , "Prawdziwe imiê" ) ;
+define("_MI_APCALOPT_USEUNAME"                   , "Login" ) ;
+define("_MI_APCALOPT_TZ_USEXOOPS"                , "Ustawienia Xoopsa" ) ;
+define("_MI_APCALOPT_TZ_USEWINTER"               , "warto¶æ z serwera jako czas zimowy (zalecane)" ) ;
+define("_MI_APCALOPT_TZ_USESUMMER"               , "warto¶æ z serwera jako czas letni" ) ;
 
 // Admin Menus
 define("_MI_APCAL_ADMENU0"                  , "Wydarzenia do akceptacji");
