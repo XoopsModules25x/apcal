@@ -620,8 +620,8 @@ function dayCompare($now, $then) {
 // function to compare to dates in Ymd and return the number of months 
 // that differ between them.
 function monthCompare($now, $then) {
-	ereg ("([0-9]{4})([0-9]{2})([0-9]{2})", $now, $date_now);
-	ereg ("([0-9]{4})([0-9]{2})([0-9]{2})", $then, $date_then);
+    preg_match ("/([0-9]{4})([0-9]{2})([0-9]{2})/", $now, $date_now);
+    preg_match ("/([0-9]{4})([0-9]{2})([0-9]{2})/", $then, $date_then);
 	$diff_years = $date_now[1] - $date_then[1];
 	$diff_months = $date_now[2] - $date_then[2];
 	if ($date_now[2] < $date_then[2]) {
@@ -634,8 +634,8 @@ function monthCompare($now, $then) {
 }
 
 function yearCompare($now, $then) {
-	ereg ("([0-9]{4})([0-9]{2})([0-9]{2})", $now, $date_now);
-	ereg ("([0-9]{4})([0-9]{2})([0-9]{2})", $then, $date_then);
+    preg_match("/([0-9]{4})([0-9]{2})([0-9]{2})/", $now, $date_now);
+    preg_match("/([0-9]{4})([0-9]{2})([0-9]{2})/", $then, $date_then);
 	$diff_years = $date_now[1] - $date_then[1];
 	return $diff_years;
 }
@@ -744,11 +744,11 @@ function parse( $filename , $calendar_name )
 	while (!feof($ifile)) {
 		$line = $nextline;
 		$nextline = fgets($ifile, 1024);
-		$nextline = ereg_replace("[\r\n]", "", $nextline);
+		$nextline = preg_replace("/[\r\n]/", "", $nextline);
 		while (substr($nextline, 0, 1) == " ") {
 			$line = $line . substr($nextline, 1);
 			$nextline = fgets($ifile, 1024);
-			$nextline = ereg_replace("[\r\n]", "", $nextline);
+			$nextline = preg_replace("/[\r\n]/", "", $nextline);
 		}
 		$line = trim($line);
 		if ($line == 'BEGIN:VEVENT') {
@@ -822,7 +822,7 @@ function parse( $filename , $calendar_name )
 */		} else {
 	
 			unset ($field, $data, $prop_pos, $property);
-			ereg ("([^:]+):(.*)", $line, $line);
+            preg_match("(/[^:]+):(.*)/", $line, $line);
 			$field = $line[1];
 			$data = $line[2];
 			
@@ -838,8 +838,8 @@ function parse( $filename , $calendar_name )
 /*				case 'DUE':
 					$zulu_time = false;
 					if (substr($data,-1) == 'Z') $zulu_time = true;
-					$data = ereg_replace('T', '', $data);
-					$data = ereg_replace('Z', '', $data);
+					$data = preg_replace('/T/', '', $data);
+					$data = preg_replace('/Z/', '', $data);
 					if (preg_match("/^DUE;VALUE=DATE/i", $field))  {
 						$allday_start = $data;
 						$start_date = $allday_start;
@@ -852,7 +852,7 @@ function parse( $filename , $calendar_name )
 							$tz_due = 'GMT';
 						}
 		
-						ereg ('([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{0,2})([0-9]{0,2})', $data, $regs);
+						preg_match('/([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{0,2})([0-9]{0,2})/', $data, $regs);
 						$start_date = $regs[1] . $regs[2] . $regs[3];
 						$start_time = $regs[4] . $regs[5];
 						$start_unixtime = mktime($regs[4], $regs[5], 0, $regs[2], $regs[3], $regs[1]);
@@ -951,9 +951,9 @@ function parse( $filename , $calendar_name )
 				case 'DTSTART':
 					$zulu_time = false;
 					if (substr($data,-1) == 'Z') $zulu_time = true;
-					$data = ereg_replace('T', '', $data);
-					$data = ereg_replace('Z', '', $data);
-					$field = ereg_replace(';VALUE=DATE-TIME', '', $field); 
+					$data = preg_replace('/T/', '', $data);
+					$data = preg_replace('/Z/', '', $data);
+					$field = preg_replace('/;VALUE=DATE-TIME/', '', $field);
 					if (preg_match("/^DTSTART;VALUE=DATE/i", $field))  {
 						$allday_start = $data;
 						$start_date = $allday_start;
@@ -966,7 +966,7 @@ function parse( $filename , $calendar_name )
 							$tz_dtstart = 'GMT';
 						}
 		
-						ereg ('([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{0,2})([0-9]{0,2})', $data, $regs);
+                        preg_match('/([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{0,2})([0-9]{0,2})/', $data, $regs);
 						$start_date = $regs[1] . $regs[2] . $regs[3];
 						$start_time = $regs[4] . $regs[5];
 						$start_unixtime = mktime($regs[4], $regs[5], 0, $regs[2], $regs[3], $regs[1]);
@@ -1000,9 +1000,9 @@ function parse( $filename , $calendar_name )
 				case 'DTEND':
 					$zulu_time = false;
 					if (substr($data,-1) == 'Z') $zulu_time = true;
-					$data = ereg_replace('T', '', $data);
-					$data = ereg_replace('Z', '', $data);
-					$field = ereg_replace(';VALUE=DATE-TIME', '', $field); 
+					$data = preg_replace('/T/', '', $data);
+					$data = preg_replace('/Z/', '', $data);
+					$field = preg_replace('/;VALUE=DATE-TIME/', '', $field);
 					if (preg_match("/^DTEND;VALUE=DATE/i", $field))  {
 						$allday_end = $data;
 					} else {
@@ -1014,7 +1014,7 @@ function parse( $filename , $calendar_name )
 							$tz_dtend = 'GMT';
 						}
 						
-						ereg ('([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{0,2})([0-9]{0,2})', $data, $regs);
+                        preg_match('/([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{0,2})([0-9]{0,2})/', $data, $regs);
 						$end_date = $regs[1] . $regs[2] . $regs[3];
 						$end_time = $regs[4] . $regs[5];
 						$end_unixtime = mktime($regs[4], $regs[5], 0, $regs[2], $regs[3], $regs[1]);
@@ -1041,9 +1041,9 @@ function parse( $filename , $calendar_name )
 /*				case 'EXDATE':
 					$data = split(",", $data);
 					foreach ($data as $exdata) {
-						$exdata = ereg_replace('T', '', $exdata);
-						$exdata = ereg_replace('Z', '', $exdata);
-						ereg ('([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{0,2})([0-9]{0,2})', $exdata, $regs);
+						$exdata = preg_replace('/T/', '', $exdata);
+						$exdata = preg_replace('/Z/', '', $exdata);
+						preg_match ('/([0-9]{4})([0-9]{2})([0-9]{2})([0-9]{0,2})([0-9]{0,2})/', $exdata, $regs);
 						$except_dates[] = $regs[1] . $regs[2] . $regs[3];
 						$except_times[] = $regs[4] . $regs[5];
 					}
@@ -1092,7 +1092,7 @@ function parse( $filename , $calendar_name )
 					
 /*				case 'DURATION':
 					if (($first_duration == TRUE) && (!stristr($field, '=DURATION'))) {
-						ereg ('^P([0-9]{1,2})?([W,D]{0,1}[T])?([0-9]{1,2}[H])?([0-9]{1,2}[M])?([0-9]{1,2}[S])?', $data, $duration);
+						preg_match('/^P([0-9]{1,2})?([W,D]{0,1}[T])?([0-9]{1,2}[H])?([0-9]{1,2}[M])?([0-9]{1,2}[S])?/', $data, $duration);
 						if ($duration[2] = 'W') {
 							$weeks = $duration[1];
 							$days = 0;
@@ -1100,9 +1100,9 @@ function parse( $filename , $calendar_name )
 							$days = $duration[1];
 							$weeks = 0;
 						}
-						$hours = ereg_replace('H', '', $duration[3]);
-						$minutes = ereg_replace('M', '', $duration[4]);
-						$seconds = ereg_replace('S', '', $duration[5]);
+						$hours = preg_replace('/H/', '', $duration[3]);
+						$minutes = preg_replace('/M/', '', $duration[4]);
+						$seconds = preg_replace('/S/', '', $duration[5]);
 						$the_duration = ($weeks * 60 * 60 * 24 * 7) + ($days * 60 * 60 * 24) + ($hours * 60 * 60) + ($minutes * 60) + ($seconds);
 						$end_unixtime = $start_unixtime + $the_duration;
 						$end_time = date ('Hi', $end_unixtime);
