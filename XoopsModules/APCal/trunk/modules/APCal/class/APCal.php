@@ -3240,7 +3240,7 @@ function get_categories_selform( $get_target = '' , $smode = null )
 // Ç¯ï¿½ï¿½ï¿½ï¿½Î¥Æ¥ï¿½ï¿½ï¿½ï¿½È¥Ü¥Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¤ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½UnixTimestampï¿½ï¿½ï¿½Ö¤ï¿½
 function parse_posted_date( $date_desc , $default_unixtime )
 {
-	if( ! ereg( "^([0-9][0-9]+)[-./]?([0-1]?[0-9])[-./]?([0-3]?[0-9])$" , $date_desc , $regs ) ) {
+	if( ! preg_match( "#^([0-9][0-9]+)[-./]?([0-1]?[0-9])[-./]?([0-3]?[0-9])$#" , $date_desc , $regs ) ) {
 		$unixtime = $default_unixtime ;
 		$use_default = true ;
 		$iso_date = '' ;
@@ -3740,7 +3740,7 @@ function output_ics( )
 		if( function_exists( "mb_ereg_replace" ) ) {
 			$summary = mb_ereg_replace( '[<>|"?*,:;\\/]' , '' , $summary ) ;
 		} else {
-			$summary = ereg_replace( '[<>|"?*,:;\\/]' , '' , $summary ) ;
+			$summary = preg_replace( '/[<>|"?*,:;\\/]/' , '' , $summary ) ;
 		}
 		// ï¿½Ø»ï¿½Ê¸ï¿½ï¿½ï¿½ï¿½Ã¤ï¿½ï¿½ï¿½Ì¾.ics ï¿½ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½Ì¾ï¿½È¤ï¿½ï¿½ï¿½ (ï¿½ï¿½SJISï¿½Ñ´ï¿½)
 		$output_filename = mb_convert_encoding($summary , "ASCII" ).'.ics';
@@ -4488,7 +4488,7 @@ function rrule_extract( $event_id )
 			$month = gmdate( 'm' , $gmstart ) ;
 			$year = gmdate( 'Y' , $gmstart ) ;
 			$c = 1 ;
-			if( isset( $BYDAY ) && ereg( '^(-1|[1-4])(SU|MO|TU|WE|TH|FR|SA)' , $BYDAY , $regs ) ) {
+			if( isset( $BYDAY ) && preg_match( '/^(-1|[1-4])(SU|MO|TU|WE|TH|FR|SA)/' , $BYDAY , $regs ) ) {
 				// ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(BYDAY)ï¿½Î¾ï¿½ï¿½ï¿½Ê£ï¿½ï¿½ï¿½Ô²Ä¡ï¿½
 				// ï¿½ï¿½Åªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½
 				$wdays = array_keys( $this->byday2langday_w ) ;
@@ -4590,7 +4590,7 @@ function rrule_extract( $event_id )
 			$months = array_unique( $months ) ;
 			if( ! count( $months ) ) return ;
 
-			if( isset( $BYDAY ) && ereg( '^(-1|[1-4])(SU|MO|TU|WE|TH|FR|SA)' , $BYDAY , $regs ) ) {
+			if( isset( $BYDAY ) && preg_match( '/^(-1|[1-4])(SU|MO|TU|WE|TH|FR|SA)/' , $BYDAY , $regs ) ) {
 				// ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¾ï¿½ï¿½ï¿½Ê£ï¿½ï¿½ï¿½Ô²Ä¡ï¿½
 				// ï¿½ï¿½Åªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½
 				$wdays = array_keys( $this->byday2langday_w ) ;
