@@ -1232,7 +1232,7 @@ function get_monthly_html($get_target='', $query_string='', $for_print = false)
 
 	$tzoffset = intval(($this->user_TZ - $this->server_TZ ) * 3600);
 	if($tzoffset == 0) {$whr_term = "start<='$mlast_unixtime' AND end>'$mtop_unixtime'";} 
-    else {$whr_term = "(allday AND start<='$mlast_unixtime' AND end>'$mtop_unixtime') OR (!allday AND start<='".($mlast_unixtime - $tzoffset)."' AND end>'".($mtop_unixtime - $tzoffset)."')";}
+    else {$whr_term = "(allday AND start<='".($mlast_unixtime - $tzoffset)."' AND end>'".($mtop_unixtime - $tzoffset)."') OR (!allday AND start<='".($mlast_unixtime - $tzoffset)."' AND end>'".($mtop_unixtime - $tzoffset)."')";}
 
     // Where clause - Categories
 	$whr_categories = $this->get_where_about_categories();
