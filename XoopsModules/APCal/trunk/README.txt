@@ -1,5 +1,5 @@
 Module Name : APCal
-Version Number : 2.1.3
+Version Number : 2.2.0
 Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
 
 MODULE DESCRIPTION
