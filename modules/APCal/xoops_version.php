@@ -60,9 +60,9 @@ $modversion['license'] = 'GNU GPL 2.0';
 $modversion['license_url'] = 'www.gnu.org/licenses/gpl-2.0.html';
 $modversion['official'] = 0;
 $modversion['help'] = "" ;
-$modversion['version'] = 2.20;
+$modversion['version'] = 2.21;
 $modversion['status_version'] = 'Final';
-$modversion['release_date'] = '2013/03/13';
+$modversion['release_date'] = '2013/06/14';
 $modversion['module_website_url'] = 'http://xoops.antiquespromotion.ca';
 $modversion['module_website_name'] = 'Antiques Promotion';
 $modversion['module_status'] = $modversion['status_version'];
@@ -134,7 +134,7 @@ $modversion['blocks'][$b] = array(
 	'edit_func'		=> 'apcal_coming_schedule_edit' ,
 	'template'		=> "apcal{$mydirnumber}_coming_schedule.html" ,
 	'can_clone'		=> true ,
-	'options'		=> "{$mydirname}|5|0|0|0"
+	'options'		=> "{$mydirname}|5|0|1|0"
 ) ;
 
 $b++;
@@ -464,6 +464,16 @@ $modversion['config'][$c] = array(
 	'name'			=> 'apcal_enablesocial' ,
 	'title'			=> '_MI_APCAL_ENABLESOCIAL' ,
 	'description'	=> '' ,
+	'formtype'		=> 'yesno' ,
+	'valuetype'		=> 'int' ,
+	'default'		=> '1' ,
+	'options'		=> array()
+);
+$c++;
+$modversion['config'][$c] = array(
+	'name'			=> 'apcal_enabletellafriend' ,
+	'title'			=> '_MI_APCAL_ENABLETELLAFRIEND' ,
+	'description'	=> '_MI_APCAL_ENABLETELLAFRIEND_DESC' ,
 	'formtype'		=> 'yesno' ,
 	'valuetype'		=> 'int' ,
 	'default'		=> '1' ,

@@ -28,6 +28,10 @@ define('_MB_APCAL_UNTILDAYS',"Jusqu'&agrave; %s jours (0 correspond &agrave; san
 define('_MB_APCAL_MAXGIFSADAY',"Maximum d'images dotgifs par jour");
 define('_MB_APCAL_JUSTONCEADAYAPLUGIN','Afficher seulement une image par jour et par plugin');
 
+define('_MB_APCAL_SHOWPICTURES', 'Afficher les images');
+define('_MB_APCAL_YES', 'Oui');
+define('_MB_APCAL_NO', 'Non');
+
 }
 
 ?>

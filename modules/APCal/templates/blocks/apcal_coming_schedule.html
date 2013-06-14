@@ -33,6 +33,30 @@
  */
  *}>
  
+<script type="text/javascript" src="<{$xoops_url}>/modules/APCal/images/js/highslide/highslide-with-gallery.js"></script>
+<link rel="stylesheet" type="text/css" href="<{$xoops_url}>/modules/APCal/images/js/highslide/highslide.css" />
+<script type="text/javascript">
+    hs.graphicsDir = '<{$xoops_url}>/modules/APCal/images/js/highslide/graphics/';
+    hs.align = 'center';
+    hs.transitions = ['expand', 'crossfade'];
+    hs.outlineType = 'glossy-dark';
+    hs.wrapperClassName = 'dark';
+    hs.fadeInOut = true;
+
+    // Add the controlbar
+    if (hs.addSlideshow) hs.addSlideshow({
+        interval: 5000,
+        repeat: false,
+        useControls: true,
+        fixedControls: 'fit',
+        overlayOptions: {
+            opacity: .6,
+            position: 'bottom center',
+            hideOnMouseOut: true
+        }
+    });
+</script>
+ 
 <{if $block.num_rows == 0}>
   <{$block.lang_APCAL_MB_APCALNOEVENT}>
 <{/if}>
@@ -40,18 +64,29 @@
   <dl>
     <{foreach item=event from=$block.events}>
       <dt>
-        <{if $event.distance == 0}>
-          <font size='2'><img border='0' src='<{$block.images_url}>/<{$event.dot_gif}>' />&nbsp;&nbsp;<{$block.lang_APCAL_MB_APCALCONTINUING}> - <{$event.end_desc}></font>
-        <{elseif $event.distance == 1}>
-          <font size='2'><img border='0' src='<{$block.images_url}>/<{$event.dot_gif}>' />&nbsp;&nbsp;<{$event.start_desc}> - <{$event.end_desc}></font>
-        <{elseif $event.distance == 2}>
-          <font size='2'><img border='0' src='<{$block.images_url}>/<{$event.dot_gif}>' />&nbsp;&nbsp;<{$event.start_desc}><{if $event.multiday}> - <{$event.end_desc}><{/if}></font>
+        <{if $block.showPictures > 0 && $event.picture != ''}>
+        <font size='2'>
+            <a href="<{$xoops_upload_url}>/APCal/<{$event.picture}>" class="highslide" title="<{$event.summary}>" onclick="return hs.expand(this)">
+                <img src="<{$xoops_upload_url}>/APCal/thumbs/<{$event.picture}>" alt="<{$event.summary}>" title="<{$event.summary}>" style='max-width: 18px; max-height: 20px;' />
+            </a>
         <{else}>
-          <font size='2'><img border='0' src='<{$block.images_url}>/<{$event.dot_gif}>' />&nbsp;&nbsp;<{$event.start_desc}><{if $event.multiday}> - <{$event.end_desc}><{/if}></font>
+        <font size='2'>
+            <img src="<{$block.images_url}>/<{$event.dot_gif}>" alt="<{$event.summary}>" title="<{$event.summary}>" style='max-width: 18px; max-height: 20px;' />&nbsp;
         <{/if}>
+        
+        <{if $event.distance == 0}>
+            <{$block.lang_APCAL_MB_APCALCONTINUING}> - <{$event.end_desc}>
+        <{elseif $event.distance == 1}>
+            <{$event.start_desc}> - <{$event.end_desc}>
+        <{elseif $event.distance == 2}>
+            <{$event.start_desc}><{if $event.multiday}> - <{$event.end_desc}><{/if}>
+        <{else}>
+            <{$event.start_desc}><{if $event.multiday}> - <{$event.end_desc}><{/if}>
+        <{/if}>
+        </font>
       </dt>
       <dd style='margin-left:20px;'>
-        <font size='2'><a href='<{$block.get_target}>?smode=Daily&amp;action=View&amp;event_id=<{$event.id}>&amp;caldate=<{$block.caldate}>' class='calsummary'><{$event.summary}></a></font>
+        <font size='2'><a href='<{$block.get_target}>?smode=Daily&amp;action=View&amp;event_id=<{$event.id}>&amp;caldate=<{$block.caldate}>' class='calsummary' title='<{$event.mainCat}> - <{$event.location}>'><{$event.summary}></a></font>
       </dd>
     <{/foreach}>
   </dl>

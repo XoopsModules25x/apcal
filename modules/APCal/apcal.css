@@ -35,9 +35,9 @@ div.leftDiv   {width: 33%; float: left;  text-align: left;}
 div.centerDiv {width: 33%; float: left;  text-align: center;}
 div.rightDiv  {width: 33%; float: right; text-align: right;}
 
-div.eventTitle {width: 38%; float: left;}
-div.share {width: 38%; float: right; text-align: right;}
-div.socialNetworks {width: 58%; float: left; text-align: left; margin-top: 10px;}
+div.eventTitle {width: 35%; float: left;}
+div.share {width: 35%; float: right; text-align: right;}
+div.socialNetworks {width: 61%; float: left; text-align: left; margin-top: 10px;}
 div.socialNetworks span.facebook, .fb-like  {width: 130px; display: inline;}
 div.socialNetworks span.facebook .fb_iframe_widget {display: inline;}
 div.socialNetworks span.googleplus {padding: 0 5px;}

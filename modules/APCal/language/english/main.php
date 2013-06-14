@@ -75,6 +75,7 @@ define('_APCAL_LOCATION', 'Location');
 define('_APCAL_TELLAFRIEND', 'Tell a friend');
 define('_APCAL_FROM', 'From');
 define('_APCAL_TO', 'To');
+define('_APCAL_CAPTCHA', 'Confirmation code');
 define('_APCAL_SUBJECT', 'Subject');
 define('_APCAL_MESSAGE', 'Message');
 define('_APCAL_TELLAFRIENDTEXT', 'You should visit this fabulous calendar at');
