@@ -1,0 +1,14 @@
+RewriteEngine on
+
+RewriteRule ^(.+)-([0-9]{10})$ index.php?action=View&event_id=$2 [NC,L]
+RewriteRule ^(.+)-([0-9]{1,2}-[0-9]{1,2}-[0-9]{4})$ index.php?action=View&event_id=$1&date=$2 [NC,L]
+
+RewriteRule ^([0-9]{4}-[0-9]{1,2}-[0-9]{1,2})$ index.php?caldate=$1 [NC,L]
+RewriteRule ^(Yearly|Monthly|Weekly|Daily|List)$ index.php?smode=$1 [NC,L]
+RewriteRule ^(Yearly|Monthly|Weekly|Daily|List)-([0-9]{4}-[0-9]{1,2}-[0-9]{1,2})$ index.php?smode=$1&caldate=$2 [NC,L]
+RewriteRule ^(.+)-(Yearly|Monthly|Weekly|Daily|List)-([0-9]{4}-[0-9]{1,2}-[0-9]{1,2})$ index.php?cid=$1&smode=$2&caldate=$3 [NC,L]
+RewriteRule ^(.+)-(Yearly|Monthly|Weekly|Daily|List)$ index.php?cid=$1&smode=$2 [NC,L]
+RewriteRule ^(.+)-([0-9]{4}-[0-9]{1,2}-[0-9]{1,2})$ index.php?cid=$1&caldate=$2 [NC,L]
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?cid=$1 [NC,L]

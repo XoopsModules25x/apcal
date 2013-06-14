@@ -1,0 +1,9 @@
+Module Name : APCal
+Version Number : 2.2.1
+Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
+
+INSTALL INSTRUCTIONS
+1. Upload the APCal directory to XOOPS_URL/modules/
+2. Log in to your site as administrator.
+3. Install the module using the XOOPS module administration panel at 'System Admin Modules'.
+   If you already have the piCal module, all your categories and events will be automatically transfered.
