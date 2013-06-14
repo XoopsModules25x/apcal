@@ -104,6 +104,7 @@ class APCal
     var $eventNavEnabled = 1;
     var $displayCatTitle = 1;
     var $enablesocial = true;
+    var $enabletellafriend = true;
     
     var $default_view = 'Monthly';
 
@@ -2026,7 +2027,7 @@ function get_schedule_view_html($for_print=false)
     $contact = convertmycontacts($contact); // added one line by goffy: converting the contact name(s) into a link to member account this is not necessary for online registration
     $email = $this->text_sanitizer_for_show( $event->email ) ;
     $url = $this->text_sanitizer_for_show( $event->url ) ;
-    $url = substr($url, 0, 4) != 'http' ? 'http://'.$url : $url;
+    $url = $url != '' && substr($url, 0, 4) != 'http' ? 'http://'.$url : $url;
     $otherHour = explode('-', $event->otherHours);
     if($otherHour[0] != '')
     {

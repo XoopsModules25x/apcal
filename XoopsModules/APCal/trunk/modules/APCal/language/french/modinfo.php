@@ -84,6 +84,8 @@ define('_MI_APCAL_ENABLESHARING', 'Autoriser vos usagers &agrave; partager votre
 define('_MI_APCAL_EVENTNAVENABLED', 'Afficher le menu de navigation lors de la visualisation d\'un &eacute;v&eacute;nement');
 define('_MI_APCAL_DISPLAYCATTITLE', 'Afficher le nom de la cat&eacute;gorie comme titre de module sur la page');
 define('_MI_APCAL_ENABLESOCIAL', 'Afficher les liens vers les r&eacute;seaux sociaux');
+define('_MI_APCAL_ENABLETELLAFRIEND', 'Activer le formulaire d\'envoie de courriel "Envoyer &agrave; un ami"');
+define('_MI_APCAL_ENABLETELLAFRIEND_DESC', '');
 define('_MI_APCAL_NBPICS', 'Nombre maximal d\'images permises (0 pour ne pas en afficher)');
 define('_MI_APCAL_PICSWIDTH', 'Largeur maximale des images lors de la visualisation d\'un &eacute;v&eacute;nement');
 define('_MI_APCAL_PICSHEIGHT', 'Hauteur maximale des images lors de la visualisation d\'un &eacute;v&eacute;nement');

@@ -243,6 +243,10 @@
 			break ;
 	}
 
+    $xoopsTpl->assign('showSocial', $cal->enablesocial);
+    $xoopsTpl->assign('showTellaFriend', $cal->enabletellafriend);
+    
+    
     if($action == 'View')
     {
         $event_id = isset($_GET['event_id']) && $_GET['event_id'] > 0 ? $_GET['event_id'] : 0;
@@ -280,7 +284,6 @@
         $xoopsTpl->assign('xoops_pagetitle', $title);
 
         $xoopsTpl->assign('showMap', $cal->enableeventmap);
-        $xoopsTpl->assign('showSocial', $cal->enablesocial);
     }
     elseif($action == '')
     {
@@ -329,13 +332,16 @@
                     <a href="'.$cal->base_url.'/print.php?cid='.$cal->now_cid.'&smode='.$smode.'&caldate='.$cal->caldate.'" target="_blank">
                         <img src="'.$cal->images_url.'/print.gif" alt="'._APCAL_BTN_PRINT.'" border="0" '.PRINT_ATTRIB.' />
                     </a>
-                </span>
-                <span class="tellafriend">
-                    <a href="" title="'._APCAL_TELLAFRIEND.'" onclick="window.open(\''.XOOPS_URL.'/modules/APCal/tellafriend.php?url=\'+encodeURIComponent(location.href)+\'&title=\'+encodeURIComponent(document.title), \'_blank\',\'toolbar=no,width=800,height=450\'); return false;">
-                        <img src="'.XOOPS_URL.'/modules/APCal/images/tellafriend.png" height="20" width="20" alt="'._APCAL_TELLAFRIEND.'" title="'._APCAL_TELLAFRIEND.'" />
-                    </a>
-                </span>
-                <span class="delicious">
+                </span>';
+            if($cal->enabletellafriend)
+            {
+                echo '<span class="tellafriend">
+                        <a href="" title="'._APCAL_TELLAFRIEND.'" onclick="window.open(\''.XOOPS_URL.'/modules/APCal/tellafriend.php?url=\'+encodeURIComponent(location.href)+\'&title=\'+encodeURIComponent(document.title), \'_blank\',\'toolbar=no,width=800,height=450\'); return false;">
+                            <img src="'.XOOPS_URL.'/modules/APCal/images/tellafriend.png" height="20" width="20" alt="'._APCAL_TELLAFRIEND.'" title="'._APCAL_TELLAFRIEND.'" />
+                        </a>
+                    </span>';
+            }
+            echo '<span class="delicious">
                     <a href="http://www.delicious.com/save" title="Delicious" onclick="window.open(\'http://www.delicious.com/save?v=5&noui&jump=close&url=\'+encodeURIComponent(location.href)+\'&title=\'+encodeURIComponent(document.title), \'delicious\',\'toolbar=no,width=550,height=550\'); return false;">
                         <img src="'.XOOPS_URL.'/modules/APCal/images/delicious.png" height="20" width="20" alt="Delicious" title="Delicious" />
                     </a>

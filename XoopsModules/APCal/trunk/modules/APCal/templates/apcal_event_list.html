@@ -44,21 +44,23 @@
           <td>
             <{$cat_desc}><br /><br />
             <{$map}><br />
-        <{if !$showSocial}>
+        <{if $showSocial}>
              <div class="socialNetworks">
                 <span class="print">
                     <a href="<{$print_link}>" target="_blank">
                         <img src="<{$images_url}>/print.gif" alt="<{$alt_print}>" title="<{$alt_print}>" border="0" />
                     </a>
                 </span>
+                <{if $showTellaFriend}>
                 <span class="tellafriend">
                     <a href="" title="<{$smarty.const._APCAL_TELLAFRIEND}>" onclick="window.open('<{$xoops_url}>/modules/APCal/tellafriend.php?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), '<{$smarty.const._APCAL_TELLAFRIEND}>', 'toolbar=no, width=550, height=550'); return false;">
                         <img src="<{$xoops_url}>/modules/APCal/images/tellafriend.png" height="20" width="20" alt="<{$smarty.const._APCAL_TELLAFRIEND}>" title="<{$smarty.const._APCAL_TELLAFRIEND}>" />
                     </a>
                 </span>
+                <{/if}>
                 <span class="delicious">
                     <a href="http://www.delicious.com/save" title="Delicious" onclick="window.open('http://www.delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;">
-                        <img src="http://www.delicious.com/static/img/delicious.small.gif" height="20" width="20" alt="Delicious" title="Delicious" />
+                        <img src="<{$xoops_url}>/modules/APCal/images/delicious.png" height="20" width="20" alt="Delicious" title="Delicious" />
                     </a>
                 </span>
                 <span class="googleplus">

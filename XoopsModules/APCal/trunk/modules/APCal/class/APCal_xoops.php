@@ -412,7 +412,7 @@ function get_blockarray_coming_event( $get_target = '' , $num = 5 , $for_coming 
 	$num_rows = mysql_result( $yrs , 0 , 0 ) ;
 
 	// �ܥ�����
-	$yrs = mysql_query( "SELECT start,end,summary,id,uid,allday,location,contact,description FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start LIMIT $num" , $this->conn ) ;
+	$yrs = mysql_query( "SELECT start,end,summary,id,uid,allday,location,contact,description,mainCategory FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start LIMIT $num" , $this->conn ) ;
 
 	$block = array(
 		'insertable' => $this->insertable ,
@@ -442,8 +442,8 @@ function get_blockarray_coming_event( $get_target = '' , $num = 5 , $for_coming 
 		// $event->start,end �ϥ����л���  $start,$end �ϥ桼������
 		if( $event->allday ) {
 			$can_time_disp = false ;
-			$start_for_time = $start_for_date = $event->start ;
-			$end_for_time = $end_for_date = $event->end - 300 ;
+			$start_for_time = $start_for_date = $event->start  + $tzoffset;
+			$end_for_time = $end_for_date = $event->end - 300  + $tzoffset;
 		} else {
 			$can_time_disp = $for_coming ;
 			$start_for_time = $event->start + $tzoffset ;
@@ -490,6 +490,10 @@ function get_blockarray_coming_event( $get_target = '' , $num = 5 , $for_coming 
         
         $multiday = (intval(date('j', $end_for_time)) > intval(date('j', $start_for_time))) ? true : false;
         
+        $pic = mysql_fetch_object(mysql_query("SELECT picture FROM {$this->pic_table} WHERE event_id={$event->id} AND main_pic=1 LIMIT 0,1"));
+        $cat = mysql_fetch_object(mysql_query("SELECT cat_title FROM {$this->cat_table} WHERE cid={$event->mainCategory} LIMIT 0,1"));
+        
+        
 		$block['events'][] = array( 
 			'summary' => $this->text_sanitizer_for_show( $event->summary ) ,
 			'location' => $this->text_sanitizer_for_show( $event->location ) ,
@@ -504,7 +508,9 @@ function get_blockarray_coming_event( $get_target = '' , $num = 5 , $for_coming 
 			'uid' => $event->uid ,
 			'dot_gif' => $dot ,
 			'distance' => $distance ,
-            'multiday' => $multiday
+            'multiday' => $multiday,
+            'picture' => ($pic ? $pic->picture : ''),
+            'mainCat' => ($cat ? htmlentities($cat->cat_title, ENT_QUOTES, 'UTF-8') : '')
 		) ;
 	}
 

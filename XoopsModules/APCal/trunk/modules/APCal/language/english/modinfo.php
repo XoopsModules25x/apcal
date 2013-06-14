@@ -84,6 +84,8 @@ define('_MI_APCAL_ENABLESHARING', 'Enable users to share your calendar on their 
 define('_MI_APCAL_EVENTNAVENABLED', 'Enable navigation menu in event view');
 define('_MI_APCAL_DISPLAYCATTITLE', 'Display category tilte as module page title');
 define('_MI_APCAL_ENABLESOCIAL', 'Enable social networks links');
+define('_MI_APCAL_ENABLETELLAFRIEND', 'Enable "Tell a friend" email form');
+define('_MI_APCAL_ENABLETELLAFRIEND_DESC', '');
 define('_MI_APCAL_NBPICS', 'Maximum number of pictures allowed (0 if you don\'t want any)');
 define('_MI_APCAL_PICSWIDTH', 'Maximum width of pictures for display in event view');
 define('_MI_APCAL_PICSHEIGHT', 'Maximum height of pictures for display in event view');

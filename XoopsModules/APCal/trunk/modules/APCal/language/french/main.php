@@ -75,6 +75,7 @@ define('_APCAL_LOCATION', 'Endroit');
 define('_APCAL_TELLAFRIEND', 'Envoyer &agrave; un ami');
 define('_APCAL_FROM', 'De');
 define('_APCAL_TO', '&agrave;');
+define('_APCAL_CAPTCHA', 'Code de confirmation');
 define('_APCAL_SUBJECT', 'Objet');
 define('_APCAL_MESSAGE', 'Message');
 define('_APCAL_TELLAFRIENDTEXT', 'Vous devriez regarder ce fabuleux calendrier au');

@@ -28,6 +28,10 @@ define("_MB_APCAL_UNTILDAYS","Until %s days at most (0 means eternal)");
 define("_MB_APCAL_MAXGIFSADAY","Max dotgifs per a day");
 define("_MB_APCAL_JUSTONCEADAYAPLUGIN","Display just 1 gif per a day and per a plugin");
 
+define('_MB_APCAL_SHOWPICTURES', 'Show pictures');
+define('_MB_APCAL_YES', 'Yes');
+define('_MB_APCAL_NO', 'No');
+
 }
 
 ?>

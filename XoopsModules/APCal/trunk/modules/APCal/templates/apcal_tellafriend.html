@@ -35,23 +35,37 @@
     <form name="tellafriend" action="<{$xoops_url}>/modules/APCal/tellafriend.php" method="post">
         <table>
             <tr>
-                <td><{$smarty.const._APCAL_TO}></td>
-                <td><input type="text" name="to" style="width: 400px;" onkeypress="if(window.event.keyCode == 13){validate();}" /></td>
+                <td class="head"><{$smarty.const._APCAL_TO}></td>
+                <td class="even"><input type="text" name="to" value="<{if isset($vars.to)}><{$vars.to}><{/if}>" style="width: 400px;" onkeypress="if(window.event.keyCode == 13){validate();}" /></td>
             </tr>
             <tr>
-                <td><{$smarty.const._APCAL_FROM}></td>
-                <td><input type="text" name="from" value="<{$from}>" style="width: 400px;" onkeypress="if(window.event.keyCode == 13){validate();}" /></td>
+                <td class="head"><{$smarty.const._APCAL_FROM}></td>
+                <td class="odd"><input type="text" name="from" value="<{if isset($vars.from)}><{$vars.from}><{else}><{$from}><{/if}>" style="width: 400px;" onkeypress="if(window.event.keyCode == 13){validate();}" /></td>
+            </tr>
+            <{if $captcha != ''}>
+            <tr>
+                <td class="head"><{$smarty.const._APCAL_CAPTCHA}></td>
+                <td class="even">
+                    <span style="color: red; font-weight: bold; font: 1.1em;"><{$captchaMsg}></span>
+                    <br />
+                    <{$captcha}>
+                </td>
+            </tr>
+            <{/if}>
+            <tr>
+                <td class="head"><{$smarty.const._APCAL_SUBJECT}></td>
+                <td class="odd"><input type="text" name="subject" value="<{if isset($vars.subject)}><{$vars.subject}><{else}><{$title}><{/if}>" style="width: 400px;" onkeypress="if(window.event.keyCode == 13){validate();}" /></td>
             </tr>
             <tr>
-                <td><{$smarty.const._APCAL_SUBJECT}></td>
-                <td><input type="text" name="subject" value="<{$title}>" style="width: 400px;" onkeypress="if(window.event.keyCode == 13){validate();}" /></td>
-            </tr>
-            <tr>
-                <td><{$smarty.const._APCAL_MESSAGE}></td>
-                <td>
+                <td class="head"><{$smarty.const._APCAL_MESSAGE}></td>
+                <td class="even">
                     <textarea name="message" style="width: 400px; height: 150px;">
+<{if isset($vars.message)}>
+<{$vars.message}>
+<{else}>
 <{$smarty.const._APCAL_TELLAFRIENDTEXT}>
 <{$url}>
+<{/if}>
                     </textarea>
                 </td>
             </tr>

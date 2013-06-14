@@ -46,6 +46,7 @@ function apcal_coming_schedule_show_tpl( $options )
 	$maxitem = empty( $options[1] ) ? 10 : intval( $options[1] ) ;
 	$now_cid = empty( $options[2] ) ? 0 : intval( $options[2] ) ;
 	$untildays = empty( $options[4] ) ? 0 : intval( $options[4] ) ;
+    $showPictures = empty( $options[3] ) ? 0 : intval( $options[3] ) ;
 
 	// setting physical & virtual paths
 	$mod_path = XOOPS_ROOT_PATH."/modules/$mydirname" ;
@@ -73,6 +74,7 @@ function apcal_coming_schedule_show_tpl( $options )
 	$cal->images_path = "$mod_path/images/$skin_folder" ;
 
 	$block = $cal->get_blockarray_coming_event( "$mod_url/index.php" , $maxitem , true , $untildays ) ;
+    $block['showPictures'] = $showPictures;
 	return $block ;
 }
 
@@ -86,6 +88,7 @@ function apcal_coming_schedule_edit( $options )
 	$maxitem = empty( $options[1] ) ? 10 : intval( $options[1] ) ;
 	$now_cid = empty( $options[2] ) ? 0 : intval( $options[2] ) ;
 	$untildays = empty( $options[4] ) ? 0 : intval( $options[4] ) ;
+    $showPictures = empty( $options[3] ) ? 0 : intval( $options[3] ) ;
 
 	// setting physical & virtual paths
 	$mod_path = XOOPS_ROOT_PATH."/modules/$mydirname" ;
@@ -125,9 +128,13 @@ function apcal_coming_schedule_edit( $options )
 	$ret .= "</select><br />\n" ;
 
 	// サブカテゴリー表示の実装はまだまだ先（一応予約だけしておく）
-	$ret .= "<input type='hidden' name='options[3]' value='0' />\n" ;
+	//$ret .= "<input type='hidden' name='options[3]' value='0' />\n" ;
 
-	// 表示上限日数
+    $ret .= _MB_APCAL_SHOWPICTURES . ":&nbsp;" ;
+    $ret .= _MB_APCAL_YES." <input type='radio' name='options[3]' value='1'".($showPictures == 1 ? 'checked="checked"' : '')." style='text-align:right;' />&nbsp;" ;
+    $ret .= _MB_APCAL_NO." <input type='radio' name='options[3]' value='0'".($showPictures == 0 ? 'checked="checked"' : '')." style='text-align:right;' /><br />\n" ;
+    
+    // 表示上限日数
 	$ret .= sprintf( _MB_APCAL_UNTILDAYS , "<input type='text' size='4' name='options[4]' value='$untildays' style='text-align:right;' />" ) . "<br />\n" ;
 
 	return $ret ;
