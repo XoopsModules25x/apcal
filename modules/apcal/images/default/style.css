@@ -1,7 +1,0 @@
-/* Style sheet for APCal (you can add embed css's here) */
-
-tr.apcal-monthly td { width: 90px; margin: 0; word-wrap:break-word; }
-tr.apcal-monthly td.apcal-weekmark { width: 10px; margin: 0; }
-
-table.apcal-categoryform { table-layout:fixed; }
-td.apcal-categoryform { margin: 4px 0; }
