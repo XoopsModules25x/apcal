@@ -1,4 +1,4 @@
-﻿{UNAME} de-registrated {NAME} from following event:
+{UNAME} de-registrated {NAME} from following event:
 Event: {SUMMARY}
 Location: {LOCATION}
 Date: {DATE}

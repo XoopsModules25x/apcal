@@ -1,4 +1,4 @@
-﻿Event: {SUMMARY}
+Event: {SUMMARY}
 Location: {LOCATION}
 Date: {DATE}
 

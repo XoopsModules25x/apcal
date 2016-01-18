@@ -68,8 +68,8 @@ $modversion['module_website_name'] = 'Antiques Promotion';
 $modversion['module_status'] = $modversion['status_version'];
 $modversion['author_website_url'] = 'http://www.antiquespromotion.ca';
 $modversion['author_website_name'] = 'Antiques Promotion';
-$modversion['min_php'] = '5.2.0';
-$modversion['min_xoops'] = '2.4.0';
+$modversion['min_php'] = '5.5';
+$modversion['min_xoops'] = '2.5.7.2';
 
 // mysql
 $modversion['sqlfile']['mysql'] = "sql/apcal.sql";
