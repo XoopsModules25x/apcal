@@ -1,0 +1,97 @@
+Module Name : APCal 
+Version Number : 2.2.0
+Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
+
+Version 2.2.0
+- Fixed   Timezones issue which was adding or removing days to an event.
+- Fixed   All day events set on the first day of a month don't appear on everyday of the previous month.
+- Updated All language files and variables to make the module clonable with SmartClone.
+
+Version 2.1.3
+- Fixed   Events which need to be admitted don't create doubles of active events and an error message when clicked..
+- Fixed   All day events set on the first day of a month don't appear on everyday of the previous month.
+
+Version 2.1.2
+- Fixed   When inserting a new event, pictures are saved.
+- Fixed   The module now comes with its own datepicker because of some Xoops version bug.
+- Fixed   The map displays correclty when the contact is a user from the website.
+
+Version 2.1.1
+- Fixed   When inserting a new event, pictures are saved.
+- Updated Empty fields doesn't show in the event view.
+
+Version 2.1.0
+- Added   Online registration feature with option to turn it on/off. (Uers can subscribe to an event and receive notifications for it) (Thanks to Goffy)
+- Updated New way to make thumbs for better support on every servers. (Needs GD library)  
+- Updated When you save an event, the redirection is where you were before (Instead of current month)
+- Fixed   Links on events in the map for Yearly view and List view
+- Fixed   Some minor bug fixes
+- New features are translated in English, French and German.
+
+Version 2.0.4
+- Updated Spanish and German translation.
+- Fixed   The link to add an event from the monthly view.
+
+Version 2.0.3
+- Minor bug fix on events insertion.
+- The box in monthly view will not expand more than the screen width and height.
+
+Version 2.0.2
+- Fixed Shift for events in the first week of the month.
+- Updated Language of social networks buttons in module language files.
+- Updated Full event summary show in monthly view to take all available space.
+- Updated In event view, event summary as title.
+
+Version 2.0.0
+- Updated Monthly view with linear view for one event (instead of repeating over and over)
+- Added   Possibility to Add Pictures to an event including a separate main picture.
+- Added   Thumbnail pictures with viewer in event view.
+- Added   Seperate field for website and e-mail.
+- Added   Optional main picture display in Monthly View (on mouse over), List View, Daily View and Weekly View.
+- Added   Each category have its own color.
+- Added   Legend of categories with categories colors.
+- Added   Possibility to choose which category to be used for an event (as we keep multi-category feature).  
+- Added   Possibility to choose different hours for the same event (if multiple days are selected).
+- Updated More neutral theme colors for images, should be a better fit with most website.
+- Updated Reorganisation of admin preferences.
+- Added   Tell a friend feature.
+- Added   New sharing button (LindedIn and Delicious).
+- Some minor bug fixes.
+
+Version 1.0.6
+- Added   links to social networks (Facebook, Twitter, Google+)
+
+Version 1.0.5
+- Updated Admin menu to fit XOOPS 2.4 and 2.5.
+- Some functions updates to fit php 5.3.
+
+Version 1.0.4
+- Updated admin menu.
+- Fixed   the bug caused by the .htaccess file generating an "Internal server error".
+- Some minor bug fixes.
+
+Version 1.0.3
+- Some minor bug fixes.
+
+Version 1.0.2
+- Updated Google Optimization.
+- Added   onUpdate action to add the new DB fields.
+- Updated onInstall action.
+- Added   navigation menu in event view and option to enable/disable it.
+- Updated option to have bigger columns for every day (Select the ones bigger).
+- Updated the "share this calendar" example to fit with Internet Explorer (IE7+)
+
+Version 1.0.1
+- Updated URLRewriting.
+- Updated Google Optimization.
+
+Version 1.0.0
+- Added   a map showing all events location.
+- Added   markers with number representing the date of event with next event first.
+- Added   individual map showing event location.
+- Added   optimization for Google.
+- Added   possibility to add a description in HTML for each categories.
+- Added   an API that allows webmasters to show easily your calendar on their website (linking back to your site).
+- Updated customizable theme.
+- Added   option for bigger columns for week-ends.
+- Updated calendar of holidays for United States, Canada and France.

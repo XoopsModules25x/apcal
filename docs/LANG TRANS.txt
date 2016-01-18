@@ -1,0 +1,273 @@
+Module Name : APCal
+Version Number : 2.2.0
+Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
+
+
+modinfo.php (line 35)
+define("_MI_APCAL_BNAME_MAP", 'Map of events for this month');
+define("_MI_APCAL_BNAME_MAP_DESC", '');
+
+modinfo.php (line 73)
+define("_MI_APCAL_GMLAT" , "\"Google Map\" default latitude" ) ;
+define("_MI_APCAL_GMLNG" , "\"Google Map\" default longitude" ) ;
+define("_MI_APCAL_GMZOOM" , "\"Google Map\" default zoom level" ) ;
+define("_MI_APCAL_GMHEIGHT" , "\"Google Map\" height (in pixels)" ) ;
+define("_MI_APCAL_USEURLREWRITE" , "Use URL rewriting" ) ;
+define("_MI_APCAL_WIDERWEEKEND" , "Wider columns in month view for:" ) ;
+define('_MI_APCAL_GETTHMCOLOR', 'Main css filename in your theme folder');
+define('_MI_APCAL_THMORDEFAULT', 'Colors from:');
+define('_MI_APCAL_ENABLECALMAP', 'Show google map in calendar view');
+define('_MI_APCAL_ENABLEEVENTMAP', 'Show google map in event view');
+define('_MI_APCAL_ENABLESHARING', 'Enable users to share your calendar on their website');
+define('_MI_APCAL_EVENTNAVENABLED', 'Enable navigation menu in event view');
+define('_MI_APCAL_DISPLAYCATTITLE', 'Display category tilte as module page title');
+define('_MI_APCAL_ENABLESOCIAL', 'Enable social networks links');
+define('_MI_APCAL_NBPICS', 'Maximum number of pictures allowed (0 if you don\'t want any)');
+define('_MI_APCAL_PICSWIDTH', 'Maximum width of pictures for display in event view');
+define('_MI_APCAL_PICSHEIGHT', 'Maximum height of pictures for display in event view');
+define('_MI_APCAL_SHOWPICMONTHLY', 'Show main picture in monthly view');
+define('_MI_APCAL_SHOWPICWEEKLY', 'Show main picture in weekly view');
+define('_MI_APCAL_SHOWPICDAILY', 'Show main picture in daily view');
+define('_MI_APCAL_SHOWPICLIST', 'Show main picture in list view');
+define('_MI_APCAL_EVENTBGCOLOR', ' Bgcolor of event\'s row');
+define('_MI_APCAL_EVENTCOLOR', 'Color of event\'s row');
+define('_MI_APCAL_ALLCATSCOLOR', 'Color for the default category');
+define('_MI_APCAL_DISPLAYTIMEZONE', 'Display Timezone when showing time');
+define('_MI_APCAL_ICSNEWCAL', 'Create a new calendar for ical exportation');
+define('_MI_APCAL_ENABLEREGISTRATION', 'Enable online registration');
+
+modinfo.php (line 101)
+define('_MI_APCAL_USERS', 'Users');
+define('_MI_APCAL_COLORS', 'Colors');
+define('_MI_APCAL_SETTINGS', 'General Settings');
+define('_MI_APCAL_CALSETTINGS', 'Calendar Settings');
+define('_MI_APCAL_CALDISPLAY', 'Calendar Display');
+define('_MI_APCAL_EVENTS', 'Events');
+define('_MI_APCAL_PICTURES', 'Pictures');
+define('_MI_APCAL_MAP', 'Google Map');
+define('_MI_APCAL_COMMENTSNOT', 'Comments & Notifications');
+
+modinfo.php (line 115)
+define("_MI_APCAL_DESCUSEURLREWRITE" , "<b>In order to make it works, copy /modules/APCal/doc/.htaccess to /modules/APCal/.</b><br /><br />N.B.: If you don't have the apache \"mod_rewrite\" installed on your server, it might not work. Please contact your system admin for details." ) ;
+define("_MI_APCAL_WIDERWEEKENDDESC" , "Hold down the \"Ctrl\" key on your keyboard while you click to select more than one day." );
+define('_MI_APCAL_THMORDEFAULTDESC', 'Theme: Give your main css filename in the next field. (Recommended)<br />Custom: Fill up the next 13 fields.<br />Default: Use the default colors.');
+
+modinfo.php (line 140)
+define('_MI_APCAL_OPT_THM', 'Theme');
+define('_MI_APCAL_OPT_CUSTOM', 'Custom');
+define('_MI_APCAL_OPT_DEFAULT', 'Default');
+define("_MI_APCAL_OPT_NONE", "None");
+define('_MI_APCAL_SUNDAY', 'Sunday');
+define('_MI_APCAL_MONDAY', 'Monday');
+define('_MI_APCAL_TUESDAY', 'Tuesday');
+define('_MI_APCAL_WEDNESDAY', 'Wednesday');
+define('_MI_APCAL_THURSDAY', 'Thursday');
+define('_MI_APCAL_FRIDAY', 'Friday');
+define('_MI_APCAL_SATURDAY', 'Saturday');
+
+modinfo.php (line 153)
+define('_MI_APCAL_INDEX', 'Index');
+
+
+main.php (line 9)
+define('_APCAL_APURL', 'http://xoops.antiquespromotion.ca');
+define('_APCAL_APURL2', 'http://www.antiquespromotion.ca');
+
+main.php (line 20)
+// edit event
+define('_APCAL_TH_GETCOORDS', 'Find position');
+define('_APCAL_TH_LATITUDE', 'Latitude');
+define('_APCAL_TH_LONGITUDE', 'Longitude');
+define('_APCAL_TH_ZOOM', 'Zoom level');
+define('_APCAL_TH_EMAIL', 'Email');
+define('_APCAL_TH_URL', 'URL');
+define('_APCAL_MAINPICTURE', 'Main picture');
+define('_APCAL_PICTURES', 'Other pictures');
+define('_APCAL_TH_MAINCATEGORY', 'Main Category');
+define('_APCAL_NONE', 'None');
+define('_APCAL_DAY', 'Day');
+define('_APCAL_DIFFERENTHOURS', 'Different hours for each days');
+define('_APCAL_SAMEHOURS', 'Use same hours for each day');
+
+main.php (line 35)
+// API texts
+define('_APCAL_PROVIDEDBY', 'Results provided by');
+define('_APCAL_X', 'by');
+define('_APCAL_AP', 'Antiques Promotion Canada');
+define('_APCAL_CALENDAROF', 'Calendar of');
+
+main.php (line 41)
+// Share admin
+define('_APCAL_SHARECALENDARFORM', 'Fill up that form to show the calendar on your website.');
+define('_APCAL_SHOWALLCAT', 'All categories');
+define('_APCAL_GENERATE', 'Generate');
+define('_APCAL_GENERATEHINT', 'You might have to click generate two times on certain browsers.');
+define('_APCAL_CATEGORIES', 'categories');
+define('_APCAL_NBEVENTS', 'Number of events displayed');
+define('_APCAL_WIDTH', 'Block width');
+define('_APCAL_STYLE', 'Style and colors');
+define('_APCAL_IFCUSTOM', 'If you chose "custom", fill the section below (in CSS).');
+define('_APCAL_BORDER', 'Block border');
+define('_APCAL_TITLE', 'Calendar title');
+define('_APCAL_TEXT', 'Calendar text');
+define('_APCAL_LINK', 'Event links');
+define('_APCAL_EVEN', 'Even rows');
+define('_APCAL_ODD', 'Odd rows');
+define('_APCAL_DEFAULT', 'Default');
+define('_APCAL_CUSTOM', 'Custom');
+define('_APCAL_THEME', 'From your theme');
+define('_APCAL_SHAREINFO', 'In order to display the calendar on your website, you must copy & paste this HTML code on your desired webpage.');
+define('_APCAL_SHARECALENDAR', 'Display this calendar on your website');
+
+main.php (line 63)
+// Event view
+define('_APCAL_PREVEVENT', 'Previous event');
+define('_APCAL_NEXTEVENT', 'Next event');
+define('_APCAL_BACKTOCAL', 'Back to calendar');
+
+main.php (line 68)
+// Tooltip
+define('_APCAL_CLICKFORDETAILS', 'Click to open event');
+define('_APCAL_BEGIN', 'From');
+define('_APCAL_END', 'To');
+define('_APCAL_LOCATION', 'Location');
+
+main.php (line 74)
+// Tell a friend
+define('_APCAL_TELLAFRIEND', 'Tell a friend');
+define('_APCAL_FROM', 'From');
+define('_APCAL_TO', 'To');
+define('_APCAL_SUBJECT', 'Subject');
+define('_APCAL_MESSAGE', 'Message');
+define('_APCAL_TELLAFRIENDTEXT', 'You should visit this fabulous calendar at');
+
+main.php (line 82)
+// Share
+define('_APCAL_FB_LNG', 'en_US');
+define('_APCAL_GPLUS_LNG', 'en');
+
+
+admin.php (line 8)
+// Index
+define('_AM_APCAL_TIMEZONE', 'Timezones');
+define('_AM_APCAL_MODULEADMIN_CONFIG', 'Configurations');
+define('_AM_APCAL_NBWAITINGEVENTS', 'There are %s events waiting for approval.');
+define('_AM_APCAL_NBEVENTS', 'There are %s upcomming events.');
+define('_AM_APCAL_NBCATS', 'There are %s categories.');
+define('_AM_APCAL_MODULEADMIN_CONFIG_PHP', 'You must have at least php version %s (your current version is %s)');
+define('_AM_APCAL_MODULEADMIN_CONFIG_XOOPS', 'You must have at least xoops version %s (your current version is %s)');
+define('_AM_APCAL_PREFS', 'Preferences');
+define('_AM_APCAL_UPDATE', 'Update');
+define('_AM_APCAL_BLOCKS', 'Blocks');
+define('_AM_APCAL_GOTOMODULE', 'Go to module');
+
+admin.php (line 125)
+define('_AM_APCAL_CANBEMAIN', 'Can be a main category');
+define('_AM_APCAL_COLOR', 'Color');
+
+admin.php (line 145)
+// Blocks & Groups Admin
+define('_AM_APCAL_TITLE', 'Title');
+define('_AM_APCAL_SIDE', 'Location');
+define('_AM_APCAL_WEIGHT', 'Weight');
+define('_AM_APCAL_VISIBLEIN', 'Visible in');
+define('_AM_APCAL_BCACHETIME', 'Cache time');
+define('_AM_APCAL_ACTION', 'Action');
+define('_AM_APCAL_ACTIVERIGHTS', 'Module administration rights');
+define('_AM_APCAL_ACCESSRIGHTS', 'Module access rights');
+define('_AM_APCAL_BADMIN', 'Blocks administration');
+
+
+apcal_constants.php (line 178)
+define('_APCAL_RO_CANCEL','Action canceled');
+define('_APCAL_RO_RADIO_YES','Yes');
+define('_APCAL_RO_RADIO_NO','No');
+
+define('_APCAL_RO_ONLINE_POSS','For these events online registration is possible. ');
+define('_APCAL_RO_ONLINE_POSS_2','For this event online registration is possible. ');
+define('_APCAL_RO_ONLY_MEMBERS','Online registration is only possible for registrated users. ');
+define('_APCAL_RO_ONLINE_NO','Online registration is not activated for this event');
+define('_APCAL_RO_ONLINE_YES','Online registration is activated for this event');
+define('_APCAL_RO_ONLINE_ACTIVATE','Activate online registration for this event');
+define('_APCAL_RO_ONLINE_DEACTIVATE','Do not use online registration for this event');
+define('_APCAL_RO_ONLINE','Registrations');
+define('_APCAL_RO_BTN_ADD','registrate');
+define('_APCAL_RO_BTN_ADDMORE','Edit or add further registrations');
+define('_APCAL_RO_BTN_REMOVE','deregistrate');
+define('_APCAL_RO_ENABLE_ONLINE','Online registration');
+define('_APCAL_RO_NOMEMBERS','There are no registrations for this event');
+define('_APCAL_RO_BTN_LISTMEMBERS','List of participants');
+define('_APCAL_RO_SUCCESS_ADD','The registration for this event was successful');
+define('_APCAL_RO_SUCCESS_REMOVE','The de-registration for this event was successful');
+define('_APCAL_RO_UNAME','Registrating person');
+define('_APCAL_RO_FIRSTNAME','first name');
+define('_APCAL_RO_LASTNAME','last name');
+define('_APCAL_RO_EMAIL','E-mail-address');
+define('_APCAL_RO_EXTRAINFO1','Telephone'); //use it as you want; if you keep it blank, it will be invisible; if you change later, it has no effect on the data himself
+define('_APCAL_RO_EXTRAINFO2','Remarks'); //use it as you want, if you keep it blank, it will be invisible
+define('_APCAL_RO_EXTRAINFO3',''); //use it as you want, if you keep it blank, it will be invisible
+define('_APCAL_RO_EXTRAINFO4',''); //use it as you want, if you keep it blank, it will be invisible
+define('_APCAL_RO_EXTRAINFO5',''); //use it as you want, if you keep it blank, it will be invisible
+
+define('_APCAL_RO_BTN_CONF_ADD','Confirm registration');
+define('_APCAL_RO_BTN_CONF_ADD_MORE','Confirm registration and registrate further persons');
+define('_APCAL_RO_BTN_CONF_REMOVE','Confirm de-registration');
+define('_APCAL_RO_BTN_CANCEL','Cancel');
+define('_APCAL_RO_EVENT','Event');
+define('_APCAL_RO_TITLE1','Registration for an event');
+define('_APCAL_RO_OBLIGATORY','This fields are obligatory!');
+
+define('_APCAL_RO_ERROR_REMOVE','Unexepted error when deleting registration');
+define('_APCAL_RO_ERROR_ADD','Unexepted error when creating registration');
+define('_APCAL_RO_BTN_BACK','Go back');
+define('_APCAL_RO_BACK','You will be redirected to last page');
+define('_APCAL_RO_ONLINE2','Online registrations');
+define('_APCAL_RO_ACTION','Action');
+
+define('_APCAL_RO_TITLE2','Activate online registration for this event');
+define('_APCAL_RO_BTN_RO_EDIT','Edit online registration');
+define('_APCAL_RO_BTN_RO_DEACTIVATE','Delete online registration');
+define('_APCAL_RO_BTN_RO_ACTIVATE','Activate');
+define('_APCAL_RO_QUANTITY','Maximum number of participants<br/>(0 means: no limit)');
+define('_APCAL_RO_QUANTITY2','Maximum number of participants');
+define('_APCAL_RO_DATELIMIT','Deadline for online registration');
+define('_APCAL_RO_EMAIL_NOTIFY','E-mail-address, which should be notified in case of (de-)registrations (keep blank, if you want no notifications)');
+define('_APCAL_RO_BTN_CONF_ACTIVATE','Confirm');
+define('_APCAL_RO_ERROR_RO_ACTIVATE','Unexpected error while activating online registration');
+define('_APCAL_RO_SUCCESS_RO_ACTIVATE','Activating/editing online registration was successful');
+define('_APCAL_RO_ERROR_RO_DEACTIVATE','Unexpected error while deactivating online registration');
+define('_APCAL_RO_SUCCESS_RO_DEACTIVATE','Deactivating online registration was successful');
+define('_APCAL_RO_ERROR_FULL','Sorry, but there are no more places available for this event');
+define('_APCAL_RO_ERROR_TIMEOUT','Sorry, but you have exceeded the deadline of this event');
+define('_APCAL_RO_ERROR_OBLIGATORY','Please fill in obligatory field \"%f\"');
+define('_APCAL_RO_BTN_CONF_SAVE','Save');
+define('_APCAL_RO_BTN_CONF_EDIT','Save changes');
+
+define('_APCAL_RO_MAIL_SUBJ_ADD','Info registration');
+define('_APCAL_RO_MAIL_SUBJ_REMOVE','Info de-registration');
+define('_APCAL_RO_MAIL_SUBJ_TEXT','Information about the event');
+define('_APCAL_RO_DATE','Date');
+define('_APCAL_RO_LOCATION','Location');
+define('_APCAL_RO_LINK','Link to event');
+define('_APCAL_RO_TITLE3','List of existing registrations');
+define('_APCAL_RO_TITLE4','Send an email to all participant, which have entered an email-address');
+define('_APCAL_RO_MAIL_SENDER','Sender');
+define('_APCAL_RO_MAIL_SUBJ','Subject');
+define('_APCAL_RO_MAIL_BODY1','Mailtext');
+define('_APCAL_RO_MAIL_BODY2','The expressions in curly brackets will be replaced (z.B. {NAME} will be replace by first name and last name)');
+define('_APCAL_RO_BTN_SEND','Send');
+define('_APCAL_RO_MAILSENT',' message(s) sent');
+
+define('_APCAL_RO_TITLE5','Change registrations');
+define('_APCAL_RO_BTN_EDIT','Edit');
+define('_APCAL_RO_SUCCESS_EDIT','Change of registration data successful');
+define('_APCAL_RO_ERROR_EDIT','Unexpected error while changing registration');
+define('_APCAL_RO_SEND_CONF1','E-Mail confirmation');
+define('_APCAL_RO_SEND_CONF2','send to');
+define('_APCAL_RO_SEND_CONF3','Send E-Mail-confirmation: ');
+
+define('_APCAL_RO_REDIRECT','You will be redirected to activation of online registration');
+define('_APCAL_RO_SUCCESS_NEW_EVENT','Event succesfully created');
+define('_APCAL_RO_SUCCESS_DELETE_EVENT','Event succesfully deleted');
+define('_APCAL_RO_SUCCESS_UPDATE_EVENT','Event succesfully changed');
+define('_APCAL_RO_SUCCESS_COPY_EVENT','Event succesfully copied');
