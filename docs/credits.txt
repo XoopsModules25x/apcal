@@ -1,0 +1,7 @@
+Credits
+===============
+
+Originally developed by GIJoe as piCal
+
+The fork "APCal" was developed by Dedale Antiques Promotion (http://xoops.antiquespromotion.ca)
+

@@ -11,9 +11,9 @@
 //////////////////////////////////////////////////////////////
 
 ob_start();
-if (!file_exists(dirname(__FILE__).'/phpthumb.functions.php') || !include_once(dirname(__FILE__).'/phpthumb.functions.php')) {
+if (!file_exists(__DIR__.'/phpthumb.functions.php') || !include_once(__DIR__.'/phpthumb.functions.php')) {
 	ob_end_flush();
-	die('failed to include_once(phpthumb.functions.php) - realpath="'.realpath(dirname(__FILE__).'/phpthumb.functions.php').'"');
+	die('failed to include_once(phpthumb.functions.php) - realpath="'.realpath(__DIR__.'/phpthumb.functions.php').'"');
 }
 ob_end_clean();
 
@@ -27,17 +27,17 @@ ob_end_clean();
 //$PHPTHUMB_CONFIG['document_root'] = 'c:\\webroot\\example.com\\www';
 //$PHPTHUMB_CONFIG['document_root'] = $_SERVER['DOCUMENT_ROOT'];
 //$PHPTHUMB_CONFIG['document_root'] = realpath((@$_SERVER['DOCUMENT_ROOT'] && file_exists(@$_SERVER['DOCUMENT_ROOT'].$_SERVER['PHP_SELF'])) ? $_SERVER['DOCUMENT_ROOT'] : str_replace(dirname(@$_SERVER['PHP_SELF']), '', str_replace(DIRECTORY_SEPARATOR, '/', realpath('.'))));
-$PHPTHUMB_CONFIG['document_root'] = realpath((getenv('DOCUMENT_ROOT') && preg_match('#^'.preg_quote(realpath(getenv('DOCUMENT_ROOT'))).'#', realpath(__FILE__))) ? getenv('DOCUMENT_ROOT') : str_replace(dirname(@$_SERVER['PHP_SELF']), '', str_replace(DIRECTORY_SEPARATOR, '/', dirname(__FILE__))));
+$PHPTHUMB_CONFIG['document_root'] = realpath((getenv('DOCUMENT_ROOT') && preg_match('#^'.preg_quote(realpath(getenv('DOCUMENT_ROOT'))).'#', realpath(__FILE__))) ? getenv('DOCUMENT_ROOT') : str_replace(dirname(@$_SERVER['PHP_SELF']), '', str_replace(DIRECTORY_SEPARATOR, '/', __DIR__)));
 
 // * Cache directory configuration (choose only one of these - leave the other lines commented-out):
 // Note: this directory must be writable (usually chmod 777 is neccesary) for caching to work.
 // If the directory is not writable no error will be generated but caching will be disabled.
-$PHPTHUMB_CONFIG['cache_directory'] = dirname(__FILE__).'/cache/';                            // set the cache directory relative to the phpThumb() installation
+$PHPTHUMB_CONFIG['cache_directory'] = __DIR__.'/cache/';                            // set the cache directory relative to the phpThumb() installation
 //$PHPTHUMB_CONFIG['cache_directory'] = $PHPTHUMB_CONFIG['document_root'].'/phpthumb/cache/'; // set the cache directory to an absolute directory for all source images
 //$PHPTHUMB_CONFIG['cache_directory'] = './cache/';                                           // set the cache directory relative to the source image - must start with '.' (will not work to cache URL- or database-sourced images, please use an absolute directory name)
 //$PHPTHUMB_CONFIG['cache_directory'] = null;                                                 // disable thumbnail caching (not recommended)
 //if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
-//	$PHPTHUMB_CONFIG['cache_directory'] = dirname(__FILE__).'/cache/'; // set the cache directory to an absolute directory for all source images
+//	$PHPTHUMB_CONFIG['cache_directory'] = __DIR__.'/cache/'; // set the cache directory to an absolute directory for all source images
 //} else {
 //	$PHPTHUMB_CONFIG['cache_directory'] = '/tmp/persistent/phpthumb/cache/';
 //}
@@ -62,7 +62,7 @@ $PHPTHUMB_CONFIG['cache_maxfiles'] = 200;             // delete least-recently-a
 
 // * Source image cache configuration
 $PHPTHUMB_CONFIG['cache_source_enabled']   = false;                               // if true, source images obtained via HTTP are cached to $PHPTHUMB_CONFIG['cache_source_directory']
-$PHPTHUMB_CONFIG['cache_source_directory'] = dirname(__FILE__).'/cache/source/';  // set the cache directory for unprocessed source images
+$PHPTHUMB_CONFIG['cache_source_directory'] = __DIR__.'/cache/source/';  // set the cache directory for unprocessed source images
 
 // * cache source modification date configuration
 $PHPTHUMB_CONFIG['cache_source_filemtime_ignore_local']  = false; // if true, local source images will not be checked for modification date and cached image will be used if available, even if source image is changed or removed
@@ -143,7 +143,7 @@ $PHPTHUMB_CONFIG['output_interlace'] = true;   // if true: interlaced output for
 // * Error message configuration
 $PHPTHUMB_CONFIG['error_image_width']           = 400;      // default width for error images
 $PHPTHUMB_CONFIG['error_image_height']          = 100;      // default height for error images
-$PHPTHUMB_CONFIG['error_message_image_default'] = '';       // Set this to the name of a generic error image (e.g. '/images/error.png') that you want displayed in place of any error message that may occur. This setting is overridden by the 'err' parameter, which does the same thing.
+$PHPTHUMB_CONFIG['error_message_image_default'] = '';       // Set this to the name of a generic error image (e.g. '/assets/images/error.png') that you want displayed in place of any error message that may occur. This setting is overridden by the 'err' parameter, which does the same thing.
 $PHPTHUMB_CONFIG['error_bgcolor']               = 'CCCCFF'; // background color of error message images
 $PHPTHUMB_CONFIG['error_textcolor']             = 'FF0000'; // color of text in error messages
 $PHPTHUMB_CONFIG['error_fontsize']              = 1;        // size of text in error messages, from 1 (smallest) to 5 (largest)
@@ -171,23 +171,23 @@ $PHPTHUMB_CONFIG['border_hexcolor']     = '000000'; // Default border color - us
 $PHPTHUMB_CONFIG['background_hexcolor'] = 'FFFFFF'; // Default background color when thumbnail aspect ratio does not match fixed-dimension box - usual HTML-style hex color notation (overridden with 'bg' parameter)
 
 // * Watermark configuration
-$PHPTHUMB_CONFIG['ttf_directory'] = dirname(__FILE__).'/fonts'; // Base directory for TTF font files
+$PHPTHUMB_CONFIG['ttf_directory'] = __DIR__.'/fonts'; // Base directory for TTF font files
 //$PHPTHUMB_CONFIG['ttf_directory'] = 'c:/windows/fonts';
 
 
 // * MySQL configuration
 // You may want to pull data from a database rather than a physical file
-// If so, modify the $PHPTHUMB_CONFIG['mysql_query'] line to suit your database structure
+// If so, modify the $PHPTHUMB_CONFIG['mysqli_query'] line to suit your database structure
 // Note: the data retrieved must be the actual binary data of the image, not a URL or filename
 
-$PHPTHUMB_CONFIG['mysql_query'] = '';
-//$PHPTHUMB_CONFIG['mysql_query'] = 'SELECT `picture` FROM `products` WHERE (`id` = \''.mysql_escape_string(@$_GET['id']).'\')';
+$PHPTHUMB_CONFIG['mysqli_query'] = '';
+//$PHPTHUMB_CONFIG['mysqli_query'] = 'SELECT `picture` FROM `products` WHERE (`id` = \''.mysqli_escape_string(@$_GET['id']).'\')';
 
-// These 4 values must be modified if $PHPTHUMB_CONFIG['mysql_query'] is not empty, but may be ignored if $PHPTHUMB_CONFIG['mysql_query'] is blank.
-$PHPTHUMB_CONFIG['mysql_hostname'] = 'localhost';
-$PHPTHUMB_CONFIG['mysql_username'] = '';
-$PHPTHUMB_CONFIG['mysql_password'] = '';
-$PHPTHUMB_CONFIG['mysql_database'] = '';
+// These 4 values must be modified if $PHPTHUMB_CONFIG['mysqli_query'] is not empty, but may be ignored if $PHPTHUMB_CONFIG['mysqli_query'] is blank.
+$PHPTHUMB_CONFIG['mysqli_hostname'] = 'localhost';
+$PHPTHUMB_CONFIG['mysqli_username'] = '';
+$PHPTHUMB_CONFIG['mysqli_password'] = '';
+$PHPTHUMB_CONFIG['mysqli_database'] = '';
 
 
 // * Security configuration
@@ -242,11 +242,11 @@ $PHPTHUMB_DEFAULTS_DISABLEGETPARAMS  = false; // if true, GETstring parameters w
 // Function for generating hashed calls to phpThumb if 'high_security_enabled'
 // example:
 //   require_once($_SERVER['DOCUMENT_ROOT'].'/phpThumb/phpThumb.config.php');
-//   echo '<img src="'.phpThumbURL('src=/images/pic.jpg&w=50').'">';
+//   echo '<img src="'.phpThumbURL('src=/assets/images/pic.jpg&w=50').'">';
 
 function phpThumbURL($ParameterString) {
 	global $PHPTHUMB_CONFIG;
-	return str_replace(@$PHPTHUMB_CONFIG['document_root'], '', dirname(__FILE__)).DIRECTORY_SEPARATOR.'phpThumb.php?'.$ParameterString.'&hash='.md5($ParameterString.@$PHPTHUMB_CONFIG['high_security_password']);
+	return str_replace(@$PHPTHUMB_CONFIG['document_root'], '', __DIR__).DIRECTORY_SEPARATOR.'phpThumb.php?'.$ParameterString.'&hash='.md5($ParameterString.@$PHPTHUMB_CONFIG['high_security_password']);
 }
 
 ///////////////////////////////////////////////////////////////////////////////

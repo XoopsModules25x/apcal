@@ -2,8 +2,8 @@
 
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
-//                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                  Copyright (c) 2000-2016 XOOPS.org                        //
+//                       <http://xoops.org/>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -24,20 +24,18 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
- 
+
 /**
- * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @copyright   {@link http://xoops.org/ XOOPS Project}
+ * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
- * @version     $Id:$
  */
- 
-for( $y = 2001 ; $y < 2020 ; $y ++ ) {
-	$this->holidays[ "$y-1-1" ] = 'Íîâûé Ãîä' ;
-	$this->holidays[ "$y-1-7" ] = 'Ðîæäåñòâî' ;
-	$this->holidays[ "$y-2-23" ] = 'Äåíü Çàùèòíèêà Îòå÷åñòâà' ;
-	$this->holidays[ "$y-3-8" ] = 'Ìåæäóíàðîäíûé Æåíñêèé Äåíü' ;
-	$this->holidays[ "$y-5-9" ] = 'Äåíü Ïîáåäû' ;
-	$this->holidays[ "$y-6-12" ] = 'Äåíü Ðîññèè' ;
+
+for ($y = 2001; $y < 2020; ++$y) {
+    $this->holidays["$y-1-1"]  = 'ÐÐ¾Ð²Ñ‹Ð¹ Ð“Ð¾Ð´';
+    $this->holidays["$y-1-7"]  = 'Ð Ð¾Ð¶Ð´ÐµÑÑ‚Ð²Ð¾';
+    $this->holidays["$y-2-23"] = 'Ð”ÐµÐ½ÑŒ Ð—Ð°Ñ‰Ð¸Ñ‚Ð½Ð¸ÐºÐ° ÐžÑ‚ÐµÑ‡ÐµÑÑ‚Ð²Ð°';
+    $this->holidays["$y-3-8"]  = 'ÐœÐµÐ¶Ð´ÑƒÐ½Ð°Ñ€Ð¾Ð´Ð½Ñ‹Ð¹ Ð–ÐµÐ½ÑÐºÐ¸Ð¹ Ð”ÐµÐ½ÑŒ';
+    $this->holidays["$y-5-9"]  = 'Ð”ÐµÐ½ÑŒ ÐŸÐ¾Ð±ÐµÐ´Ñ‹';
+    $this->holidays["$y-6-12"] = 'Ð”ÐµÐ½ÑŒ Ð Ð¾ÑÑÐ¸Ð¸';
 }
-?>

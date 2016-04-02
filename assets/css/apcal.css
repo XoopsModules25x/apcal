@@ -1,0 +1,62 @@
+/*
+//  ------------------------------------------------------------------------ //
+//                XOOPS - PHP Content Management System                      //
+//                  Copyright (c) 2000-2016 XOOPS.org                        //
+//                       <http://xoops.org/>                             //
+//  ------------------------------------------------------------------------ //
+//  This program is free software; you can redistribute it and/or modify     //
+//  it under the terms of the GNU General Public License as published by     //
+//  the Free Software Foundation; either version 2 of the License, or        //
+//  (at your option) any later version.                                      //
+//                                                                           //
+//  You may not change or alter any portion of this comment or credits       //
+//  of supporting developers from this source code or any supporting         //
+//  source code which is considered copyrighted (c) material of the          //
+//  original comment or credit authors.                                      //
+//                                                                           //
+//  This program is distributed in the hope that it will be useful,          //
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
+//  GNU General Public License for more details.                             //
+//                                                                           //
+//  You should have received a copy of the GNU General Public License        //
+//  along with this program; if not, write to the Free Software              //
+//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
+//  ------------------------------------------------------------------------ //
+*/
+/**
+ * @copyright   XOOPS Project (http://xoops.org)
+ * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @author      Antiques Promotion (http://www.antiquespromotion.ca)
+ */
+div.eventNav {padding: 5px 10px 35px 10px;}
+div.leftDiv   {width: 33%; float: left;  text-align: left;}
+div.centerDiv {width: 33%; float: left;  text-align: center;}
+div.rightDiv  {width: 33%; float: right; text-align: right;}
+
+div.eventTitle {width: 35%; float: left;}
+div.share {width: 35%; float: right; text-align: right;}
+div.socialNetworks {width: 61%; float: left; text-align: left; margin-top: 10px;}
+div.socialNetworks span.facebook, .fb-like  {width: 130px; display: inline;}
+div.socialNetworks span.facebook .fb_iframe_widget {display: inline;}
+div.socialNetworks span.googleplus {padding: 0 5px;}
+div.socialNetworks span.googleplus div {display: inline !important;}
+/*span.print {float: right; vertical-align: top;}*/
+
+div.tooltip {display: none; position: absolute; border: 2px solid; padding: 0; background: #eee; z-index: 100;}
+div.tooltip div.summary {padding: 10px; color: #fff;}
+div.tooltip div.details {padding: 10px; color: #000;}
+div.tooltip div.details div.info {white-space: nowrap; padding: 0 0 10px 0;}
+div.tooltip div.details img {float: left; width: 50px; margin: 0 10px 10px 0; border: 1px solid #999;}
+div.tooltip div.details div.click {border-top: 1px solid #aaa;}
+
+table.month {width: 100%; margin: 0; table-layout: fixed; border-spacing: 0; border-collapse: collapse;}
+table.month td.dayname {font-size: 1.3em; text-align: center; vertical-align: middle; border: 1px solid;}
+table.month td.weekno {width: 20px; vertical-align: middle;}
+table.month td.day {overflow: hidden; margin: 0; padding: 0; border: 1px solid; border-bottom: none;}
+table.month td.event {border: solid; border-width: 0 1px; white-space: nowrap;}
+table.month td.event a {padding: 3px 5px; border-style: solid; border-width: 1px 1px 3px 3px; margin: 3px; background: #eee; height: 100%; display: block; overflow: hidden;}
+table.month td.noevent {padding: 5px 0; border: none; border-left: 1px solid; border-right: 1px solid;}
+table.month td.spacer {padding: 2px; border: none; border-left: 1px solid; border-right: 1px solid;}
+
+div.eventPics img {border: 1px solid #999;}

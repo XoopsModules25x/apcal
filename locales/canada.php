@@ -2,8 +2,8 @@
 
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
-//                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                  Copyright (c) 2000-2016 XOOPS.org                        //
+//                       <http://xoops.org/>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -24,59 +24,67 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
- 
+
 /**
- * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @copyright   {@link http://xoops.org/ XOOPS Project}
+ * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @author      Antiques Promotion (http://www.antiquespromotion.ca)
- * @version     $Id:$
  */
- 
-if(!function_exists('easter'))
-{
-function easter($y, &$holidays)
-{
-    $e = 21 + easter_days($y);
-    if($e > 31) {$e -= 31; $em = 4;}
-    else {$em = 3;}
-    $f = $e - 2;
-    $m = $e + 1;
-    if($f > 0) {$holidays[ "$y-$em-$f" ] = 'Good Friday';}
-    else {$f = 31 - $f; $holidays[ "$y-3-$f" ] = 'Good Friday';}
-    $holidays[ "$y-$em-$e" ] = 'Easter';
-    if($m > 31) {$m -= 31; $holidays[ "$y-4-$m" ] = 'Easter Monday';}
-    else {$holidays[ "$y-$em-$m" ] = 'Easter Monday';}  
-}
+
+if (!function_exists('easter')) {
+    function easter($y, &$holidays)
+    {
+        $e = 21 + easter_days($y);
+        if ($e > 31) {
+            $e -= 31;
+            $em = 4;
+        } else {
+            $em = 3;
+        }
+        $f = $e - 2;
+        $m = $e + 1;
+        if ($f > 0) {
+            $holidays["$y-$em-$f"] = 'Good Friday';
+        } else {
+            $f                   = 31 - $f;
+            $holidays["$y-3-$f"] = 'Good Friday';
+        }
+        $holidays["$y-$em-$e"] = 'Easter';
+        if ($m > 31) {
+            $m -= 31;
+            $holidays["$y-4-$m"] = 'Easter Monday';
+        } else {
+            $holidays["$y-$em-$m"] = 'Easter Monday';
+        }
+    }
 }
 
 $this->holidays = array();
-$start = intval(date('Y')) - 10;
-$end = $start + 30;
+$start          = (int)date('Y') - 10;
+$end            = $start + 30;
 
-for( $y = $start ; $y < $end ; $y ++ ) {
-easter($y, $this->holidays);
-$v = (intval(date('N', strtotime("$y-5-25"))) == 1) ? '25' : date('j', strtotime('Last Monday', strtotime("$y-5-25")));
-$m = date('j', strtotime('+2 Sunday', strtotime("$y-5-1")));
-$f = date('j', strtotime('+3 Sunday', strtotime("$y-6-1")));
-$c = date('j', strtotime('+1 Monday', strtotime("$y-8-1")));
-$l = date('j', strtotime('+1 Monday', strtotime("$y-9-1")));
-$t = date('j', strtotime('+2 Monday', strtotime("$y-10-1")));
+for ($y = $start; $y < $end; ++$y) {
+    easter($y, $this->holidays);
+    $v = ((int)date('N', strtotime("$y-5-25")) == 1) ? '25' : date('j', strtotime('Last Monday', strtotime("$y-5-25")));
+    $m = date('j', strtotime('+2 Sunday', strtotime("$y-5-1")));
+    $f = date('j', strtotime('+3 Sunday', strtotime("$y-6-1")));
+    $c = date('j', strtotime('+1 Monday', strtotime("$y-8-1")));
+    $l = date('j', strtotime('+1 Monday', strtotime("$y-9-1")));
+    $t = date('j', strtotime('+2 Monday', strtotime("$y-10-1")));
 
-$this->holidays[ "$y-1-1" ] = 'New Years Day';
-$this->holidays[ "$y-2-14" ] = 'Valentine\'s Day';
-$this->holidays[ "$y-3-17" ] = 'St. Patrick\'s Day';
-$this->holidays[ "$y-4-22" ] = 'Earth Day';
-$this->holidays[ "$y-5-$m" ] = 'Mother\'s Day';
-$this->holidays[ "$y-5-$v" ] = 'Victoria Day';
-$this->holidays[ "$y-6-$f" ] = 'Father\'s Day';
-$this->holidays[ "$y-7-1" ] = 'Canada Day';
-$this->holidays[ "$y-8-$c" ] = 'Civic Holiday';
-$this->holidays[ "$y-9-$l" ] = 'Labour Day';
-$this->holidays[ "$y-10-$t" ] = 'Thanksgiving';
-$this->holidays[ "$y-10-31" ] = 'Halloween';
-$this->holidays[ "$y-11-11" ] = 'Rememberance Day';
-$this->holidays[ "$y-12-25" ] = 'Christmas Day';
-$this->holidays[ "$y-12-26" ] = 'Boxing Day';
+    $this->holidays["$y-1-1"]   = 'New Years Day';
+    $this->holidays["$y-2-14"]  = 'Valentine\'s Day';
+    $this->holidays["$y-3-17"]  = 'St. Patrick\'s Day';
+    $this->holidays["$y-4-22"]  = 'Earth Day';
+    $this->holidays["$y-5-$m"]  = 'Mother\'s Day';
+    $this->holidays["$y-5-$v"]  = 'Victoria Day';
+    $this->holidays["$y-6-$f"]  = 'Father\'s Day';
+    $this->holidays["$y-7-1"]   = 'Canada Day';
+    $this->holidays["$y-8-$c"]  = 'Civic Holiday';
+    $this->holidays["$y-9-$l"]  = 'Labour Day';
+    $this->holidays["$y-10-$t"] = 'Thanksgiving';
+    $this->holidays["$y-10-31"] = 'Halloween';
+    $this->holidays["$y-11-11"] = 'Rememberance Day';
+    $this->holidays["$y-12-25"] = 'Christmas Day';
+    $this->holidays["$y-12-26"] = 'Boxing Day';
 }
-
-?>

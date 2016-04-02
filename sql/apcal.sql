@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------ #
 #               XOOPS - PHP Content Management System                      #
-#                   Copyright (c) 2000 XOOPS.org                           #
-#                      <http://www.xoops.org/>                             #
+#                   Copyright (c) 2000-2016 XOOPS.org                           #
+#                      <http://xoops.org/>                             #
 # ------------------------------------------------------------------------ #
 # This program is free software; you can redistribute it and/or modify     #
 # it under the terms of the GNU General Public License as published by     #
@@ -22,76 +22,77 @@
 # along with this program; if not, write to the Free Software              #
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA #
 # ------------------------------------------------------------------------ #
- 
 
-# @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
+
+# @copyright   XOOPS Project (http://xoops.org)
 # @license     http://www.fsf.org/copyleft/gpl.html GNU public license
 # @author      Antiques Promotion (http://www.antiquespromotion.ca)
-# @version     $Id:$
 
 CREATE TABLE `apcal_cat` (
-  `cid` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,
-  `pid` smallint(5) unsigned zerofill NOT NULL DEFAULT '00000',
-  `weight` smallint(5) NOT NULL DEFAULT '0',
-  `exportable` tinyint(4) NOT NULL DEFAULT '1',
-  `autocreated` tinyint(4) NOT NULL DEFAULT '0',
-  `canbemain` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `ismenuitem` tinyint(4) NOT NULL DEFAULT '0',
-  `enabled` tinyint(4) NOT NULL DEFAULT '1',
-  `cat_shorttitle` varchar(255) NOT NULL DEFAULT '',
-  `cat_title` varchar(255) NOT NULL DEFAULT '',
-  `cat_desc` text NOT NULL,
-  `color` varchar(7) NOT NULL DEFAULT '#5555AA',
-  `dtstamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `cat_extkey0` int(10) unsigned zerofill NOT NULL DEFAULT '0000000000',
-  `cat_depth` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `cat_style` varchar(255) NOT NULL DEFAULT '',
+  `cid`            SMALLINT(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+  `pid`            SMALLINT(5) UNSIGNED ZEROFILL NOT NULL DEFAULT '00000',
+  `weight`         SMALLINT(5)                   NOT NULL DEFAULT '0',
+  `exportable`     TINYINT(4)                    NOT NULL DEFAULT '1',
+  `autocreated`    TINYINT(4)                    NOT NULL DEFAULT '0',
+  `canbemain`      TINYINT(1) UNSIGNED           NOT NULL DEFAULT '0',
+  `ismenuitem`     TINYINT(4)                    NOT NULL DEFAULT '0',
+  `enabled`        TINYINT(4)                    NOT NULL DEFAULT '1',
+  `cat_shorttitle` VARCHAR(255)                  NOT NULL DEFAULT '',
+  `cat_title`      VARCHAR(255)                  NOT NULL DEFAULT '',
+  `cat_desc`       TEXT                          NOT NULL,
+  `color`          VARCHAR(7)                    NOT NULL DEFAULT '#5555AA',
+  `dtstamp`        TIMESTAMP                     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `cat_extkey0`    INT(10) UNSIGNED ZEROFILL     NOT NULL DEFAULT '0000000000',
+  `cat_depth`      TINYINT(3) UNSIGNED           NOT NULL DEFAULT '0',
+  `cat_style`      VARCHAR(255)                  NOT NULL DEFAULT '',
   PRIMARY KEY (`cid`),
   KEY `pid` (`pid`),
   KEY `weight` (`weight`),
   KEY `cat_depth` (`cat_depth`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 
 CREATE TABLE `apcal_event` (
-  `id` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
-  `uid` mediumint(8) unsigned zerofill NOT NULL DEFAULT '00000000',
-  `groupid` smallint(5) unsigned zerofill NOT NULL DEFAULT '00000',
-  `shortsummary` varchar(255) NOT NULL DEFAULT '',
-  `summary` varchar(255) NOT NULL DEFAULT '',
-  `location` varchar(255) NOT NULL DEFAULT '',
-  `url` varchar(255) NOT NULL DEFAULT '',
-  `email` varchar(255) NOT NULL DEFAULT '',
-  `gmlat` float NOT NULL DEFAULT '0',
-  `gmlong` float NOT NULL DEFAULT '0',
-  `gmzoom` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `organizer` varchar(255) NOT NULL DEFAULT '',
-  `sequence` varchar(255) NOT NULL DEFAULT '',
-  `contact` varchar(255) NOT NULL DEFAULT '',
-  `tzid` varchar(255) NOT NULL DEFAULT 'GMT',
-  `description` text NOT NULL,
-  `dtstamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `mainCategory` smallint(5) unsigned zerofill NOT NULL DEFAULT '00000',
-  `categories` varchar(255) NOT NULL DEFAULT '',
-  `transp` tinyint(4) NOT NULL DEFAULT '1',
-  `priority` tinyint(4) NOT NULL DEFAULT '0',
-  `admission` tinyint(4) NOT NULL DEFAULT '0',
-  `class` varchar(255) NOT NULL DEFAULT 'PUBLIC',
-  `rrule` varchar(255) NOT NULL DEFAULT '',
-  `rrule_pid` int(8) unsigned zerofill NOT NULL DEFAULT '00000000',
-  `unique_id` varchar(255) NOT NULL DEFAULT '',
-  `allday` tinyint(4) NOT NULL DEFAULT '0',
-  `start` int(10) unsigned NOT NULL DEFAULT '0',
-  `end` int(10) unsigned NOT NULL DEFAULT '0',
-  `otherHours` varchar(255) NOT NULL DEFAULT '',
-  `start_date` date DEFAULT NULL,
-  `end_date` date DEFAULT NULL,
-  `cid` smallint(5) unsigned zerofill NOT NULL DEFAULT '00000',
-  `comments` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `event_tz` float(2,1) NOT NULL DEFAULT '0.0',
-  `server_tz` float(2,1) NOT NULL DEFAULT '0.0',
-  `poster_tz` float(2,1) NOT NULL DEFAULT '0.0',
-  `extkey0` int(10) unsigned zerofill NOT NULL DEFAULT '0000000000',
-  `extkey1` int(10) unsigned zerofill NOT NULL DEFAULT '0000000000',
+  `id`           INT(10) UNSIGNED ZEROFILL      NOT NULL AUTO_INCREMENT,
+  `uid`          MEDIUMINT(8) UNSIGNED ZEROFILL NOT NULL DEFAULT '00000000',
+  `groupid`      SMALLINT(5) UNSIGNED ZEROFILL  NOT NULL DEFAULT '00000',
+  `shortsummary` VARCHAR(255)                   NOT NULL DEFAULT '',
+  `summary`      VARCHAR(255)                   NOT NULL DEFAULT '',
+  `location`     VARCHAR(255)                   NOT NULL DEFAULT '',
+  `url`          VARCHAR(255)                   NOT NULL DEFAULT '',
+  `email`        VARCHAR(255)                   NOT NULL DEFAULT '',
+  `gmlat`        FLOAT                          NOT NULL DEFAULT '0',
+  `gmlong`       FLOAT                          NOT NULL DEFAULT '0',
+  `gmzoom`       TINYINT(3) UNSIGNED            NOT NULL DEFAULT '0',
+  `organizer`    VARCHAR(255)                   NOT NULL DEFAULT '',
+  `sequence`     VARCHAR(255)                   NOT NULL DEFAULT '',
+  `contact`      VARCHAR(255)                   NOT NULL DEFAULT '',
+  `tzid`         VARCHAR(255)                   NOT NULL DEFAULT 'GMT',
+  `description`  TEXT                           NOT NULL,
+  `dtstamp`      TIMESTAMP                      NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `mainCategory` SMALLINT(5) UNSIGNED ZEROFILL  NOT NULL DEFAULT '00000',
+  `categories`   VARCHAR(255)                   NOT NULL DEFAULT '',
+  `transp`       TINYINT(4)                     NOT NULL DEFAULT '1',
+  `priority`     TINYINT(4)                     NOT NULL DEFAULT '0',
+  `admission`    TINYINT(4)                     NOT NULL DEFAULT '0',
+  `class`        VARCHAR(255)                   NOT NULL DEFAULT 'PUBLIC',
+  `rrule`        VARCHAR(255)                   NOT NULL DEFAULT '',
+  `rrule_pid`    INT(8) UNSIGNED ZEROFILL       NOT NULL DEFAULT '00000000',
+  `unique_id`    VARCHAR(255)                   NOT NULL DEFAULT '',
+  `allday`       TINYINT(4)                     NOT NULL DEFAULT '0',
+  `start`        INT(10) UNSIGNED               NOT NULL DEFAULT '0',
+  `end`          INT(10) UNSIGNED               NOT NULL DEFAULT '0',
+  `otherHours`   VARCHAR(255)                   NOT NULL DEFAULT '',
+  `start_date`   DATE                                    DEFAULT NULL,
+  `end_date`     DATE                                    DEFAULT NULL,
+  `cid`          SMALLINT(5) UNSIGNED ZEROFILL  NOT NULL DEFAULT '00000',
+  `comments`     MEDIUMINT(8) UNSIGNED          NOT NULL DEFAULT '0',
+  `event_tz`     FLOAT(2, 1)                    NOT NULL DEFAULT '0.0',
+  `server_tz`    FLOAT(2, 1)                    NOT NULL DEFAULT '0.0',
+  `poster_tz`    FLOAT(2, 1)                    NOT NULL DEFAULT '0.0',
+  `extkey0`      INT(10) UNSIGNED ZEROFILL      NOT NULL DEFAULT '0000000000',
+  `extkey1`      INT(10) UNSIGNED ZEROFILL      NOT NULL DEFAULT '0000000000',
   PRIMARY KEY (`id`),
   KEY `admission` (`admission`),
   KEY `allday` (`allday`),
@@ -144,27 +145,31 @@ CREATE TABLE `apcal_event` (
   KEY `class_3` (`class`),
   KEY `rrule_pid_3` (`rrule_pid`),
   KEY `categories_3` (`categories`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 
 CREATE TABLE `apcal_pictures` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `event_id` int(10) unsigned zerofill NOT NULL,
-  `picture` varchar(255) NOT NULL,
-  `main_pic` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `id`       INT(10) UNSIGNED          NOT NULL AUTO_INCREMENT,
+  `event_id` INT(10) UNSIGNED ZEROFILL NOT NULL,
+  `picture`  VARCHAR(255)              NOT NULL,
+  `main_pic` TINYINT(1) UNSIGNED       NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 
 CREATE TABLE `apcal_plugins` (
-  `pi_id` smallint(5) unsigned zerofill NOT NULL AUTO_INCREMENT,
-  `pi_title` varchar(255) NOT NULL DEFAULT '',
-  `pi_type` varchar(8) NOT NULL DEFAULT '',
-  `pi_dirname` varchar(50) NOT NULL DEFAULT '',
-  `pi_file` varchar(50) NOT NULL DEFAULT '',
-  `pi_dotgif` varchar(255) NOT NULL DEFAULT '',
-  `pi_options` varchar(255) NOT NULL DEFAULT '',
-  `pi_enabled` tinyint(4) NOT NULL DEFAULT '0',
-  `pi_weight` smallint(5) unsigned NOT NULL DEFAULT '0',
-  `last_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `pi_id`         SMALLINT(5) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+  `pi_title`      VARCHAR(255)                  NOT NULL DEFAULT '',
+  `pi_type`       VARCHAR(8)                    NOT NULL DEFAULT '',
+  `pi_dirname`    VARCHAR(50)                   NOT NULL DEFAULT '',
+  `pi_file`       VARCHAR(50)                   NOT NULL DEFAULT '',
+  `pi_dotgif`     VARCHAR(255)                  NOT NULL DEFAULT '',
+  `pi_options`    VARCHAR(255)                  NOT NULL DEFAULT '',
+  `pi_enabled`    TINYINT(4)                    NOT NULL DEFAULT '0',
+  `pi_weight`     SMALLINT(5) UNSIGNED          NOT NULL DEFAULT '0',
+  `last_modified` TIMESTAMP                     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`pi_id`),
   KEY `pi_weight` (`pi_weight`),
   KEY `pi_type` (`pi_type`),
@@ -172,45 +177,56 @@ CREATE TABLE `apcal_plugins` (
   KEY `pi_file` (`pi_file`),
   KEY `pi_options` (`pi_options`),
   KEY `pi_enabled` (`pi_enabled`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8;
 
 CREATE TABLE `apcal_ro_events` (
-  `roe_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `roe_eventid` mediumint(8) unsigned zerofill NOT NULL DEFAULT '00000000',
-  `roe_number` int(10) NOT NULL DEFAULT '0',
-  `roe_datelimit` int(10) NOT NULL DEFAULT '0',
-  `roe_submitter` int(10) NOT NULL DEFAULT '0',
-  `roe_date_created` int(10) NOT NULL DEFAULT '0',
+  `roe_id`           INT(10) UNSIGNED               NOT NULL AUTO_INCREMENT,
+  `roe_eventid`      MEDIUMINT(8) UNSIGNED ZEROFILL NOT NULL DEFAULT '00000000',
+  `roe_number`       INT(10)                        NOT NULL DEFAULT '0',
+  `roe_datelimit`    INT(10)                        NOT NULL DEFAULT '0',
+  `roe_submitter`    INT(10)                        NOT NULL DEFAULT '0',
+  `roe_date_created` INT(10)                        NOT NULL DEFAULT '0',
   PRIMARY KEY (`roe_id`),
   KEY `event` (`roe_eventid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8
+  AUTO_INCREMENT = 1;
 
 
 CREATE TABLE `apcal_ro_members` (
-  `rom_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `rom_eventid` mediumint(8) unsigned zerofill NOT NULL DEFAULT '00000000',
-  `rom_firstname` varchar(200) DEFAULT NULL,
-  `rom_lastname` varchar(200) DEFAULT NULL,
-  `rom_email` varchar(200) DEFAULT NULL,
-  `rom_extrainfo1` varchar(200) DEFAULT NULL,
-  `rom_extrainfo2` varchar(200) DEFAULT NULL,
-  `rom_extrainfo3` varchar(200) DEFAULT NULL,
-  `rom_extrainfo4` varchar(200) DEFAULT NULL,
-  `rom_extrainfo5` varchar(200) DEFAULT NULL,
-  `rom_submitter` int(10) NOT NULL DEFAULT '0',
-  `rom_date_created` int(10) NOT NULL DEFAULT '0',
+  `rom_id`           INT(10) UNSIGNED               NOT NULL AUTO_INCREMENT,
+  `rom_eventid`      MEDIUMINT(8) UNSIGNED ZEROFILL NOT NULL DEFAULT '00000000',
+  `rom_firstname`    VARCHAR(200)                            DEFAULT NULL,
+  `rom_lastname`     VARCHAR(200)                            DEFAULT NULL,
+  `rom_email`        VARCHAR(200)                            DEFAULT NULL,
+  `rom_extrainfo1`   VARCHAR(200)                            DEFAULT NULL,
+  `rom_extrainfo2`   VARCHAR(200)                            DEFAULT NULL,
+  `rom_extrainfo3`   VARCHAR(200)                            DEFAULT NULL,
+  `rom_extrainfo4`   VARCHAR(200)                            DEFAULT NULL,
+  `rom_extrainfo5`   VARCHAR(200)                            DEFAULT NULL,
+  `rom_submitter`    INT(10)                        NOT NULL DEFAULT '0',
+  `rom_date_created` INT(10)                        NOT NULL DEFAULT '0',
   PRIMARY KEY (`rom_id`),
-  UNIQUE KEY `UNQ_EMAIL` (`rom_eventid`,`rom_email`),
+  UNIQUE KEY `UNQ_EMAIL` (`rom_eventid`, `rom_email`),
   KEY `event` (`rom_eventid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8
+  AUTO_INCREMENT = 1;
 
 
 CREATE TABLE `apcal_ro_notify` (
-  `ron_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ron_eventid` mediumint(8) unsigned zerofill NOT NULL DEFAULT '00000000',
-  `ron_email` varchar(200) DEFAULT NULL,
-  `ron_submitter` int(10) DEFAULT NULL,
-  `ron_date_created` int(11) NOT NULL DEFAULT '0',
+  `ron_id`           INT(10) UNSIGNED               NOT NULL AUTO_INCREMENT,
+  `ron_eventid`      MEDIUMINT(8) UNSIGNED ZEROFILL NOT NULL DEFAULT '00000000',
+  `ron_email`        VARCHAR(200)                            DEFAULT NULL,
+  `ron_submitter`    INT(10)                                 DEFAULT NULL,
+  `ron_date_created` INT(11)                        NOT NULL DEFAULT '0',
   PRIMARY KEY (`ron_id`),
   KEY `event` (`ron_eventid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8
+  AUTO_INCREMENT = 1;

@@ -2,8 +2,8 @@
 
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
-//                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                  Copyright (c) 2000-2016 XOOPS.org                        //
+//                       <http://xoops.org/>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -24,21 +24,20 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
- 
+
 /**
- * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @copyright   {@link http://xoops.org/ XOOPS Project}
+ * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @author      Antiques Promotion (http://www.antiquespromotion.ca)
- * @version     $Id:$
  */
- 
-require '../../mainfile.php';
 
-include XOOPS_ROOT_PATH.'/header.php';
-require_once XOOPS_ROOT_PATH.'/class/xoopsformloader.php';
+require dirname(dirname(__DIR__)) . '/mainfile.php';
 
-$tpl = new XoopsTpl();
-$form = new XoopsThemeForm(_APCAL_SHARECALENDARFORM, 'calendar', '', 'post');
+include XOOPS_ROOT_PATH . '/header.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+
+$tpl        = new XoopsTpl();
+$form       = new XoopsThemeForm(_APCAL_SHARECALENDARFORM, 'calendar', '', 'post');
 $formCustom = new XoopsThemeForm(_APCAL_IFCUSTOM, 'custom', '', 'post');
 
 $catSelect = new XoopsFormSelect(_APCAL_CATEGORIES, 'c', 0);
@@ -82,27 +81,24 @@ $form->display();
 echo '<div id="customSettings" style="display: none;">';
 $formCustom->display();
 echo '</div>';
-echo '<br />'._APCAL_SHAREINFO.'<br />';
+echo '<br />' . _APCAL_SHAREINFO . '<br />';
 echo '<div id="htmlCode"></div>';
-echo $tpl->fetch(XOOPS_ROOT_PATH.'/modules/APCal/templates/shareCalendar.html');
+echo $tpl->fetch(XOOPS_ROOT_PATH . '/modules/APCal/templates/shareCalendar.tpl');
 
-include XOOPS_ROOT_PATH.'/footer.php';
+include XOOPS_ROOT_PATH . '/footer.php';
 
 function getCategories()
 {
     global $xoopsDB;
-    
-    $cats = array(0 => _APCAL_SHOWALLCAT);
-    $result = $xoopsDB->queryF("SELECT cid, cat_title, cat_depth FROM {$xoopsDB->prefix('apcal_cat')} ORDER BY weight");
 
-	while($cat = $xoopsDB->fetchObject($result))
-    {
-		$depth_desc = str_repeat('-', intval( $cat->cat_depth));
-        $title = htmlspecialchars($cat->cat_title , ENT_QUOTES);
+    $cats   = array(0 => _APCAL_SHOWALLCAT);
+    $result = $GLOBALS['xoopsDB']->queryF("SELECT cid, cat_title, cat_depth FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} ORDER BY weight");
+
+    while ($cat = $GLOBALS['xoopsDB']->fetchObject($result)) {
+        $depth_desc      = str_repeat('-', (int)$cat->cat_depth);
+        $title           = htmlspecialchars($cat->cat_title, ENT_QUOTES);
         $cats[$cat->cid] = "$depth_desc $title";
-	}
+    }
 
     return $cats;
 }
-
-?>

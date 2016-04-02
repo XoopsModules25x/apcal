@@ -2,8 +2,8 @@
 
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
-//                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                  Copyright (c) 2000-2016 XOOPS.org                        //
+//                       <http://xoops.org/>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -24,56 +24,54 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
- 
+
 /**
- * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @copyright   {@link http://xoops.org/ XOOPS Project}
+ * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @author      Antiques Promotion (http://www.antiquespromotion.ca)
  * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
- * @version     $Id:$
  */
- 
-$i = 0;
-$adminmenu[$i]['title'] = _MI_APCAL_INDEX ;
-$adminmenu[$i]['link'] = "admin/index.php";
-$adminmenu[$i]['icon'] = 'images/admin/home.png';
-$i++;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU0 ;
-$adminmenu[$i]['link'] = "admin/admission.php";
-$adminmenu[$i]['icon'] = 'images/admin/admitting.png';
-$i++;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU1 ;
-$adminmenu[$i]['link'] = "admin/events.php";
-$adminmenu[$i]['icon'] = 'images/admin/events.png';
-$i++;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_CAT ;
-$adminmenu[$i]['link'] = "admin/categories.php";
-$adminmenu[$i]['icon'] = 'images/admin/category.png';
-$i++;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_CAT2GROUP ;
-$adminmenu[$i]['link'] = "admin/cat2groupperm.php";
-$adminmenu[$i]['icon'] = 'images/admin/permissions.png';
-$i++;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU2 ;
-$adminmenu[$i]['link'] = "admin/groupperm.php";
-$adminmenu[$i]['icon'] = 'images/admin/permissions.png';
-$i++;
-$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_ICAL ;
-$adminmenu[$i]['link'] = "admin/icalendar_import.php";
-$adminmenu[$i]['icon'] = 'images/admin/import.png';
-//$i++;
+
+$i                      = 0;
+$adminmenu[$i]['title'] = _MI_APCAL_INDEX;
+$adminmenu[$i]['link']  = 'admin/index.php';
+$adminmenu[$i]['icon']  = 'assets/images/admin/home.png';
+++$i;
+$adminmenu[$i]['title'] = _MI_APCAL_ADMENU0;
+$adminmenu[$i]['link']  = 'admin/admission.php';
+$adminmenu[$i]['icon']  = 'assets/images/admin/admitting.png';
+++$i;
+$adminmenu[$i]['title'] = _MI_APCAL_ADMENU1;
+$adminmenu[$i]['link']  = 'admin/events.php';
+$adminmenu[$i]['icon']  = 'assets/images/admin/events.png';
+++$i;
+$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_CAT;
+$adminmenu[$i]['link']  = 'admin/categories.php';
+$adminmenu[$i]['icon']  = 'assets/images/admin/category.png';
+++$i;
+$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_CAT2GROUP;
+$adminmenu[$i]['link']  = 'admin/cat2groupperm.php';
+$adminmenu[$i]['icon']  = 'assets/images/admin/permissions.png';
+++$i;
+$adminmenu[$i]['title'] = _MI_APCAL_ADMENU2;
+$adminmenu[$i]['link']  = 'admin/groupperm.php';
+$adminmenu[$i]['icon']  = 'assets/images/admin/permissions.png';
+++$i;
+$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_ICAL;
+$adminmenu[$i]['link']  = 'admin/icalendar_import.php';
+$adminmenu[$i]['icon']  = 'assets/images/admin/import.png';
+//++$i;
 //$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_TM;
 //$adminmenu[$i]['link'] = "admin/maintenance.php";
-//$i++;
+//++$i;
 //$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_PLUGINS;
 //$adminmenu[$i]['link'] = "admin/pluginsmanager.php";
-//$i++;
+//++$i;
 //$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_MYTPLSADMIN;
 //$adminmenu[$i]['link'] = "admin/mytplsadmin.php";
-//$i++;
+//++$i;
 //$adminmenu[$i]['title'] = _MI_APCAL_ADMENU_MYBLOCKSADMIN;
 //$adminmenu[$i]['link'] = "admin/myblocksadmin.php";
-//$i++;
+//++$i;
 //$adminmenu[$i]['title'] = _PREFERENCES;
 //$adminmenu[$i]['link'] = "admin/admin.php?fct=preferences&op=showmod";
-?>

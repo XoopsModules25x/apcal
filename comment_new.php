@@ -2,8 +2,8 @@
 
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
-//                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                  Copyright (c) 2000-2016 XOOPS.org                        //
+//                       <http://xoops.org/>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -24,57 +24,57 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
- 
+
 /**
- * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @copyright   {@link http://xoops.org/ XOOPS Project}
+ * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
- * @version     $Id:$
  */
 
-include '../../mainfile.php';
+include dirname(dirname(__DIR__)) . '/mainfile.php';
 
 // for "Duplicatable"
-$mydirname = basename( dirname( __FILE__ ) ) ;
-if( ! preg_match( '/^(\D+)(\d*)$/' , $mydirname , $regs ) ) echo ( "invalid dirname: " . htmlspecialchars( $mydirname ) ) ;
-$mydirnumber = $regs[2] === '' ? '' : intval( $regs[2] ) ;
+$moduleDirName = basename(__DIR__);
+if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
+    echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+}
+$mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
 
-// MySQL�ؤ���³
-$conn = $xoopsDB->conn ;
+// MySQL¤Ø¤ÎÀÜÂ³
+$conn = $GLOBALS['xoopsDB']->conn;
 
 // setting physical & virtual paths
-$mod_path = XOOPS_ROOT_PATH."/modules/$mydirname" ;
-$mod_url = XOOPS_URL."/modules/$mydirname" ;
+$mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
+$mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
 
-// ���饹������ɤ߹���
-if( ! class_exists( 'APCal_xoops' ) ) {
-	require_once( "$mod_path/class/APCal.php" ) ;
-	require_once( "$mod_path/class/APCal_xoops.php" ) ;
+// ¥¯¥é¥¹ÄêµÁ¤ÎÆÉ¤ß¹þ¤ß
+if (!class_exists('APCal_xoops')) {
+    require_once("$mod_path/class/APCal.php");
+    require_once("$mod_path/class/APCal_xoops.php");
 }
 
-// creating an instance of APCal 
-$cal = new APCal_xoops( "" , $xoopsConfig['language'] , true ) ;
+// creating an instance of APCal
+$cal = new APCal_xoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
-$cal->conn = $conn ;
-include( "$mod_path/include/read_configs.php" ) ;
-$cal->base_url = $mod_url ;
-$cal->base_path = $mod_path ;
-$cal->images_url = "$mod_url/images/$skin_folder" ;
-$cal->images_path = "$mod_path/images/$skin_folder" ;
+$cal->conn = $conn;
+include("$mod_path/include/read_configs.php");
+$cal->base_url    = $mod_url;
+$cal->base_path   = $mod_path;
+$cal->images_url  = "$mod_url/assets/images/$skin_folder";
+$cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-$event_id = empty( $_GET['com_itemid'] ) ? 0 : intval( $_GET['com_itemid'] ) ;
-if( $event_id > 0 ) {
-	$rs = $xoopsDB->query( "SELECT summary,rrule_pid FROM $cal->table WHERE id=$event_id" ) ;
-	list( $title , $rrule_pid ) = $xoopsDB->fetchRow( $rs ) ;
-	$com_replytitle = $title ;
+$event_id = empty($_GET['com_itemid']) ? 0 : (int)$_GET['com_itemid'];
+if ($event_id > 0) {
+    $rs = $GLOBALS['xoopsDB']->query("SELECT summary,rrule_pid FROM $cal->table WHERE id=$event_id");
+    list($title, $rrule_pid) = $GLOBALS['xoopsDB']->fetchRow($rs);
+    $com_replytitle = $title;
 
-	// RRULE events
-	if( $rrule_pid != 0 ) {
-		$_GET['com_itemid'] = $rrule_pid ;
-		$HTTP_GET_VARS['com_itemid'] = $rrule_pid ;
-	}
+    // RRULE events
+    if ($rrule_pid != 0) {
+        $_GET['com_itemid']          = $rrule_pid;
+        $HTTP_GET_VARS['com_itemid'] = $rrule_pid;
+    }
 
-	include XOOPS_ROOT_PATH.'/include/comment_new.php';
+    include XOOPS_ROOT_PATH . '/include/comment_new.php';
 }
-?>

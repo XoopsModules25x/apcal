@@ -2,8 +2,8 @@
 
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
-//                    Copyright (c) 2000 XOOPS.org                           //
-//                       <http://www.xoops.org/>                             //
+//                  Copyright (c) 2000-2016 XOOPS.org                        //
+//                       <http://xoops.org/>                             //
 //  ------------------------------------------------------------------------ //
 //  This program is free software; you can redistribute it and/or modify     //
 //  it under the terms of the GNU General Public License as published by     //
@@ -24,43 +24,41 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
- 
+
 /**
- * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
+ * @copyright   {@link http://xoops.org/ XOOPS Project}
+ * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
- * @version     $Id:$
  */
- 
-if( ! defined( 'APCAL_COMMENT_FUNCTIONS_INCLUDED' ) ) {
 
-define( 'APCAL_COMMENT_FUNCTIONS_INCLUDED' , 1 ) ;
+if (!defined('APCAL_COMMENT_FUNCTIONS_INCLUDED')) {
+    define('APCAL_COMMENT_FUNCTIONS_INCLUDED', 1);
 
-// comment callback functions
+    // comment callback functions
 
-function apcal_comments_update( $event_id , $total_num ) {
+    function apcal_comments_update($event_id, $total_num)
+    {
+        // record total_num
+        global $xoopsDB, $cal;
 
-	// record total_num
-	global $xoopsDB , $cal ;
+        if (is_object($cal)) {
+            $tablename = $cal->table;
+        } else {
+            $moduleDirName = basename(dirname(__DIR__));
+            if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
+                echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
+            }
+            $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
+            $tablename   = $GLOBALS['xoopsDB']->prefix("apcal{$mydirnumber}_event");
+        }
 
-	if( is_object( $cal ) ) {
-		$tablename = $cal->table ;
-	} else {
-		$mydirname = basename( dirname( dirname( __FILE__ ) ) ) ;
-		if( ! preg_match( '/^(\D+)(\d*)$/' , $mydirname , $regs ) ) echo ( "invalid dirname: " . htmlspecialchars( $mydirname ) ) ;
-		$mydirnumber = $regs[2] === '' ? '' : intval( $regs[2] ) ;
-		$tablename = $xoopsDB->prefix("apcal{$mydirnumber}_event") ;
-	}
+        $ret = $GLOBALS['xoopsDB']->query("UPDATE $tablename SET comments=$total_num WHERE id=$event_id");
 
-	$ret = $xoopsDB->query( "UPDATE $tablename SET comments=$total_num WHERE id=$event_id" ) ;
-	return $ret ;
+        return $ret;
+    }
+
+    function apcal_comments_approve(&$comment)
+    {
+        // notification mail here
+    }
 }
-
-function apcal_comments_approve( &$comment )
-{
-	// notification mail here
-}
-
-}
-
-?>

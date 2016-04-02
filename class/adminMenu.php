@@ -9,14 +9,13 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   The XOOPS Project http://sourceforge.net/projects/xoops/
+ * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author      John Neill (AKA Catzwolf)
  * @author      Andricq Nicolas (AKA MusS)
- * @version     $Id:$
  */
 
-defined( 'XOOPS_ROOT_PATH' ) or die();
+defined('XOOPS_ROOT_PATH') || die();
 
 class APCalAdminMenuHandler
 {
@@ -24,36 +23,36 @@ class APCalAdminMenuHandler
      *
      * @var string
      */
-    var $_menutop = array();
-    var $_menutabs = array();
-    var $_obj;
-    var $_header;
-    var $_subheader;
+    public $_menutop  = array();
+    public $_menutabs = array();
+    public $_obj;
+    public $_header;
+    public $_subheader;
 
     /**
      * Constructor
      */
-    function __construct()
+    public function __construct()
     {
         global $xoopsModule;
         $this->_obj =& $xoopsModule;
     }
 
-    function getAddon($addon)
+    public function getAddon($addon)
     {
         $this->_obj =& $addon;
     }
 
-    function addMenuTop($value, $name = "")
+    public function addMenuTop($value, $name = '')
     {
-        if ($name != "" ) {
+        if ($name != '') {
             $this->_menutop[$value] = $name;
         } else {
             $this->_menutop[$value] = $value;
         }
     }
 
-    function addMenuTopArray($options, $multi = true)
+    public function addMenuTopArray($options, $multi = true)
     {
         if (is_array($options)) {
             if ($multi == true) {
@@ -68,16 +67,16 @@ class APCalAdminMenuHandler
         }
     }
 
-    function addMenuTabs($value, $name = "")
+    public function addMenuTabs($value, $name = '')
     {
-        if ($name != "") {
+        if ($name != '') {
             $this->_menutabs[$value] = $name;
         } else {
             $this->_menutabs[$value] = $value;
         }
     }
 
-    function addMenuTabsArray($options, $multi = true)
+    public function addMenuTabsArray($options, $multi = true)
     {
         if (is_array($options)) {
             if ($multi == true) {
@@ -92,43 +91,44 @@ class APCalAdminMenuHandler
         }
     }
 
-    function addHeader($value)
+    public function addHeader($value)
     {
         $this->_header = $value;
     }
 
-    function addSubHeader($value)
+    public function addSubHeader($value)
     {
         $this->_subheader = $value;
     }
 
-    function breadcrumb_nav($basename = "Home")
+    public function breadcrumb_nav($basename = 'Home')
     {
         global $bc_site, $bc_label;
-        $site = $bc_site;
+        $site       = $bc_site;
         $return_str = "<a href=\"/\">$basename</a>";
-        $str = substr(dirname( xoops_getenv('PHP_SELF')), 1);
+        $str        = substr(dirname(xoops_getenv('PHP_SELF')), 1);
 
-        $arr = split('/', $str);
+        $arr = explode('/', $str);
         $num = count($arr);
 
         if ($num > 1) {
-            foreach($arr as $val) {
+            foreach ($arr as $val) {
                 $return_str .= ' &gt; <a href="' . $site . $val . '/">' . $bc_label[$val] . '</a>';
                 $site .= $val . '/';
             }
-        } else if ($num == 1) {
+        } elseif ($num == 1) {
             $arr = $str;
             $return_str .= ' &gt; <a href="' . $bc_site . $arr . '/">' . $bc_label[$arr] . '</a>';
         }
+
         return $return_str;
     }
 
-    function render($currentoption = 1, $display = true)
+    public function render($currentoption = 1, $display = true)
     {
         global $modversion;
         $_dirname = $this->_obj->getVar('dirname');
-        $i = 0;
+        $i        = 0;
 
         /**
          * Selects current menu tab
@@ -136,10 +136,10 @@ class APCalAdminMenuHandler
         foreach ($this->_menutabs as $k => $menus) {
             $menuItems[] = $menus;
         }
-        $breadcrumb = $menuItems[$currentoption];
+        $breadcrumb                = $menuItems[$currentoption];
         $menuItems[$currentoption] = 'current';
         //Not the best method of adding CSS but the only method available at the moment since xoops is shitty with the backend
-        $menu = "<style type=\"text/css\" media=\"screen\">@import \"" . XOOPS_URL . "/modules/" . $this->_obj->getVar( 'dirname' ) . "/css/menu.css\";</style>";
+        $menu = "<style type=\"text/css\" media=\"screen\">@import \"" . XOOPS_URL . '/modules/' . $this->_obj->getVar('dirname') . "/css/menu.css\";</style>";
         $menu .= "<div id='buttontop_mod'>";
         $menu .= "<table style='width: 100%; padding: 0;' cellspacing='0'>\n<tr>";
         $menu .= "<td style='font-size: 10px; text-align: left; color: #2F5376; padding: 0 6px; line-height: 18px;'>";
@@ -147,29 +147,29 @@ class APCalAdminMenuHandler
             $menu .= " <a href=\"$k\">$v</a> |";
         }
         $menu = substr($menu, 0, -1);
-        
-        $menu .= "</td>";
-        $menu .= "<td style='text-align: right;'><strong>" . $this->_obj->getVar( 'name' ) . "</strong> : " . $breadcrumb . "</td>";
+
+        $menu .= '</td>';
+        $menu .= "<td style='text-align: right;'><strong>" . $this->_obj->getVar('name') . '</strong> : ' . $breadcrumb . '</td>';
         $menu .= "</tr>\n</table>\n";
         $menu .= "</div>\n";
         $menu .= "<div id='buttonbar_mod'><ul>";
         foreach ($this->_menutabs as $k => $v) {
-            $menu .= "<li id='" . $menuItems[$i] . "'><a href='" . XOOPS_URL . "/modules/" . $this->_obj->getVar( 'dirname' ) . "/" . $k . "'><span>$v</span></a></li>\n";
-            $i++;
+            $menu .= "<li id='" . $menuItems[$i] . "'><a href='" . XOOPS_URL . '/modules/' . $this->_obj->getVar('dirname') . '/' . $k . "'><span>$v</span></a></li>\n";
+            ++$i;
         }
         $menu .= "</ul>\n</div>\n";
         if ($this->_header) {
             $menu .= "<h4 class='admin_header'>";
-            if (isset( $modversion['name'])) {
-                if ($modversion['image'] && $this->_obj->getVar( 'mid' ) == 1) {
+            if (isset($modversion['name'])) {
+                if ($modversion['image'] && $this->_obj->getVar('mid') == 1) {
                     $system_image = XOOPS_URL . '/modules/system/images/system/' . $modversion['image'];
                 } else {
-                    $system_image = XOOPS_URL . '/modules/' . $_dirname . '/images/' . $modversion['image'];
+                    $system_image = XOOPS_URL . '/modules/' . $_dirname . '/assets/images/' . $modversion['image'];
                 }
                 $menu .= "<img src='$system_image' align='middle' height='32' width='32' alt='' />";
-                $menu .= " " . $modversion['name'] . "</h4>\n";
+                $menu .= ' ' . $modversion['name'] . "</h4>\n";
             } else {
-                $menu .= " " . $this->_header . "</h4>\n";
+                $menu .= ' ' . $this->_header . "</h4>\n";
             }
         }
         if ($this->_subheader) {
@@ -184,5 +184,3 @@ class APCalAdminMenuHandler
         }
     }
 }
-
-?>
