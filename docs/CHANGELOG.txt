@@ -10,6 +10,7 @@ Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
 - PSR-2 cosmetics (mamba)
 - removed @version (mamba)
 - intval to (int) (mamba)
+- mysql_result fixes (geekwright)
 
 
 Version 2.2.0
