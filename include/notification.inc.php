@@ -65,16 +65,16 @@ function apcal' . $mydirnumber . '_notify_iteminfo($not_category, $item_id)
         $item["url"] = "";
     } elseif ($not_category == "category") {
         // Assume we have a valid cid
-        $sql = "SELECT cat_title FROM ".$GLOBALS['xoopsDB']->prefix("apcal' . $mydirnumber . '_cat")." WHERE cid=\'$item_id\'";
-        $rs = $GLOBALS['xoopsDB']->query( $sql ) ;
-        list( $cat_title ) = $GLOBALS['xoopsDB']->fetchRow( $rs ) ;
+        $sql = "SELECT cat_title FROM ".$GLOBALS["xoopsDB"]->prefix("apcal' . $mydirnumber . '_cat")." WHERE cid=\'$item_id\'";
+        $rs = $GLOBALS["xoopsDB"]->query( $sql ) ;
+        list( $cat_title ) = $GLOBALS["xoopsDB"]->fetchRow( $rs ) ;
         $item["name"] = $myts->htmlSpecialChars( $cat_title ) ;
         $item["url"] = "$mod_url/index.php?smode=List&amp;cid=$item_id" ;
     } elseif ($not_category == "event") {
         // Assume we have a valid event_id
-        $sql = "SELECT summary,start FROM ".$GLOBALS['xoopsDB']->prefix("apcal' . $mydirnumber . '_event")." WHERE id=$item_id";
-        $rs = $GLOBALS['xoopsDB']->query( $sql ) ;
-        list( $summary , $start ) = $GLOBALS['xoopsDB']->fetchRow( $rs ) ;
+        $sql = "SELECT summary,start FROM ".$GLOBALS["xoopsDB"]->prefix("apcal' . $mydirnumber . '_event")." WHERE id=$item_id";
+        $rs = $GLOBALS["xoopsDB"]->query( $sql ) ;
+        list( $summary , $start ) = $GLOBALS["xoopsDB"]->fetchRow( $rs ) ;
         $start_str = formatTimestamp( $start , "s" ) ;
         $item["name"] = $myts->htmlSpecialChars( "[$start_str] $summary" ) ;
         $item["url"] = "$mod_url/index.php?action=View&amp;event_id=$item_id" ;
