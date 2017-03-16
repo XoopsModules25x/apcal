@@ -180,7 +180,7 @@ $whr         = "UNIX_TIMESTAMP(dtstamp) > $older_limit AND (rrule_pid=0 OR rrule
 $rs        = $GLOBALS['xoopsDB']->query("SELECT COUNT(id) FROM $cal->table WHERE $whr");
 $numrows   = 0;
 $resultRow = $GLOBALS['xoopsDB']->fetchRow($rs);
-if (false !== $resultRow && isset($resultRow[$field])) {
+if (false !== $resultRow && isset($resultRow[0])) {
     $numrows = $resultRow[0];
 }
 $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY  dtstamp DESC LIMIT $pos,$num");
