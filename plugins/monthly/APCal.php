@@ -59,7 +59,7 @@ if (!preg_match('/^(\D+)(\d*)$/', $plugin['dirname'], $regs)) {
 $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
 
 if ($this->base_url == XOOPS_URL . '/modules/' . $plugin['dirname']) {
-    $cal =& $this;
+    $cal = $this;
 } else {
     // create a targeting instance of APCal
     $cal = new APCal_xoops('', $this->language, true);

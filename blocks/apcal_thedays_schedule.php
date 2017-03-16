@@ -36,7 +36,7 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
 
     // XOOPS 2.1/2.2
     if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
-        $GLOBALS['apcal_blockinstance_object'] =& $this;
+        $GLOBALS['apcal_blockinstance_object'] = $this;
     }
 
     function apcal_thedays_schedule_show_tpl($options)

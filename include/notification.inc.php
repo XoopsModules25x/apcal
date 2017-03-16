@@ -51,7 +51,7 @@ function apcal' . $mydirnumber . '_notify_iteminfo($not_category, $item_id)
         $module_handler = xoops_getHandler("module");
         $module = $module_handler->getByDirname("' . $moduleDirName . '");
         $config_handler = xoops_getHandler("config");
-        $config =& $config_handler->getConfigsByCat(0,$module->getVar("mid"));
+        $config = $config_handler->getConfigsByCat(0,$module->getVar("mid"));
     } else {
         $module =& $xoopsModule;
         $config =& $xoopsModuleConfig;

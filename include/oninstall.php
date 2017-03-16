@@ -119,7 +119,7 @@ function transferTable($tablename)
 function setDefaultPerm()
 {
     $moduleHnd     = xoops_getHandler('module');
-    $module        =& $moduleHnd->getByDirname('APCal');
+    $module        = $moduleHnd->getByDirname('APCal');
     $modid         = $module->getVar('mid');
     $gperm_handler = xoops_getHandler('groupperm');
     //$item_ids = array(1, 2, 4, 8, 32);
@@ -128,7 +128,7 @@ function setDefaultPerm()
     $pical_global = $gperm_handler->getObjects(new Criteria('gperm_name', 'pical_global'));
 
     foreach ($pical_cat as $cat_perm) {
-        $gperm =& $gperm_handler->create();
+        $gperm = $gperm_handler->create();
         $gperm->setVar('gperm_groupid', $cat_perm->getVar('gperm_groupid'));
         $gperm->setVar('gperm_name', 'apcal_cat');
         $gperm->setVar('gperm_modid', $modid);
@@ -138,7 +138,7 @@ function setDefaultPerm()
     }
 
     foreach ($pical_global as $global_perm) {
-        $gperm =& $gperm_handler->create();
+        $gperm = $gperm_handler->create();
         $gperm->setVar('gperm_groupid', $global_perm->getVar('gperm_groupid'));
         $gperm->setVar('gperm_name', 'apcal_global');
         $gperm->setVar('gperm_modid', $modid);
@@ -148,7 +148,7 @@ function setDefaultPerm()
     }
 
     /*foreach ($item_ids as $item_id) {
-        $gperm =& $gperm_handler->create();
+        $gperm = $gperm_handler->create();
         $gperm->setVar('gperm_groupid', 1);
         $gperm->setVar('gperm_name', 'apcal_global');
         $gperm->setVar('gperm_modid', $modid);

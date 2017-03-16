@@ -72,7 +72,7 @@ if (function_exists('weblog_create_permissionsql')) {
     // get weblog config values
     $mod_handler                 = xoops_getHandler('module');
     $weblogmodule_config_handler = xoops_getHandler('config');
-    $mod_weblog                  =& $mod_handler->getByDirname($plugin['dirname']);
+    $mod_weblog                  = $mod_handler->getByDirname($plugin['dirname']);
     $weblog_config               = $weblogmodule_config_handler->getConfigList($mod_weblog->mid());
     list($bl_contents_field, $add_whr) = weblog_create_permissionsql($weblog_config);
 } else {
