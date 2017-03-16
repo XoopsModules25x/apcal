@@ -41,8 +41,8 @@ if (!defined('APCAL_BLOCK_MONTHLY_CALENDAR_INCLUDED')) {
         $moduleDirName = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         if (!class_exists('APCal_xoops')) {
