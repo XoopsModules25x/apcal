@@ -1,5 +1,5 @@
 ![alt XOOPS CMS](http://xoops.org/images/logoXoops4GithubRepository.png)
-##APCal module for  [XOOPS CMS 2.5.8+](https://xoops.org)
+## APCal module for  [XOOPS CMS 2.5.8+](https://xoops.org)
 [![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat)](LICENSE)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/XoopsModules25x/apcal.svg?style=flat)](https://scrutinizer-ci.com/g/XoopsModules25x/apcal/?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4ef0014b9f174dbbbc7978cdc71631a4)](https://www.codacy.com/app/XoopsModules25x/apcal_2)
@@ -18,4 +18,3 @@ To contribute to the Tutorial, [fork it on GitHub](https://github.com/XoopsDocs/
 Please visit us on http://xoops.org
 
 The upcoming "next generation" version of XOOPS CMS is being crafted on GitHub at: https://github.com/XOOPS
-
