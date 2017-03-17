@@ -1,99 +1,100 @@
 <pattemplate:tmpl name="WholeBoard">
-  <table border='0' cellspacing='0' cellpadding='0' width='100%'>
-    <tr>
-      <td width='100%' class='calframe'>
-        <!-- header -->
-        <table border='0' cellspacing='0' cellpadding='0' style='width:100%;border-collapse:collapse;'>
-         <tr>
-           <td nowrap='nowrap' colspan='8' align='center' bgcolor='{CALHEAD_BGCOLOR}'>
-             <table border='0' cellspacing='0' cellpadding='0' width='560' class='apcal-categoryform'>
-             <tr>
-               <td align='center' valign='middle' style='vertical-align:middle;' class='apcal-categoryform'>{CATEGORIES_SELFORM}</td>
-               <td width='8'><img src='{SKINPATH}/spacer.gif' alt='' width='8' height='4' /></td>
-               <td width='18' valign='middle' style='vertical-align:middle;'><a href='{PREVIOUSYEARLINK}'><img src='{SKINPATH}/arrowleft.gif' width='18' height='14' border='0' alt='{MB_PREV_YEAR}' title='{MB_PREV_YEAR}' /></a></td>
-               <td width='130' align='center' valign='middle' nowrap='nowrap' style='vertical-align:middle;'><img src='{SKINPATH}/spacer.gif' alt='' width='130' height='4' /><br /><font size='4' color='{CALHEAD_COLOR}'><b><span class='calhead'>{DISP_YEAR}<br /><img src='{SKINPATH}/spacer.gif' alt='' width='130' height='4' /></td>
-               <td width='18' valign='middle' style='vertical-align:middle;'><a href='{NEXTYEARLINK}'><img src='{SKINPATH}/arrowright.gif' width='18' height='14' border='0' alt='{MB_NEXT_YEAR}' title='{MB_NEXT_YEAR}' /></a></td>
-               <td align='right' valign='middle' style='vertical-align:middle;'>
-                 <font size='1'><a href='{MONTHLYVIEW}'><img src='{SKINPATH}/month_on.gif' border='0' width='30' height='24' alt='{ICON_MONTHLY}' title='{ICON_MONTHLY}' /></a></font>
-                 <font size='1'><a href='{WEEKLYVIEW}'><img src='{SKINPATH}/week_on.gif' border='0' width='30' height='24' alt='{ICON_WEEKLY}' title='{ICON_WEEKLY}' /></a></font>
-                 <font size='1'><a href='{DAILYVIEW}'><img src='{SKINPATH}/day_on.gif' border='0' width='30' height='24' alt='{ICON_DAILY}' title='{ICON_DAILY}' /></a></font>
-                 <font size='1'><a href='{LISTVIEW}'><img src='{SKINPATH}/list_on.gif' border='0' width='30' height='24' alt='{ICON_LIST}' title='{ICON_LIST}' /></a></font>
-               </td>
-             </tr>
-             </table>
-           </td>
-         </tr>
-        </table>
+    <table border='0' cellspacing='0' cellpadding='0' width='100%'>
+        <tr>
+            <td width='100%' class='calframe'>
+                <!-- header -->
+                <table border='0' cellspacing='0' cellpadding='0' style='width:100%;border-collapse:collapse;'>
+                    <tr>
+                        <td nowrap='nowrap' colspan='8' align='center' bgcolor='{CALHEAD_BGCOLOR}'>
+                            <table border='0' cellspacing='0' cellpadding='0' width='560' class='apcal-categoryform'>
+                                <tr>
+                                    <td align='center' valign='middle' style='vertical-align:middle;' class='apcal-categoryform'>{CATEGORIES_SELFORM}</td>
+                                    <td width='8'><img src='{SKINPATH}/spacer.gif' alt='' width='8' height='4'/></td>
+                                    <td width='18' valign='middle' style='vertical-align:middle;'><a href='{PREVIOUSYEARLINK}'><img src='{SKINPATH}/arrowleft.gif' width='18' height='14' border='0' alt='{MB_PREV_YEAR}' title='{MB_PREV_YEAR}'/></a></td>
+                                    <td width='130' align='center' valign='middle' nowrap='nowrap' style='vertical-align:middle;'><img src='{SKINPATH}/spacer.gif' alt='' width='130' height='4'/><br/><font size='4' color='{CALHEAD_COLOR}'><b><span class='calhead'>{DISP_YEAR}<br/><img
+                                            src='{SKINPATH}/spacer.gif' alt='' width='130' height='4'/></td>
+                                    <td width='18' valign='middle' style='vertical-align:middle;'><a href='{NEXTYEARLINK}'><img src='{SKINPATH}/arrowright.gif' width='18' height='14' border='0' alt='{MB_NEXT_YEAR}' title='{MB_NEXT_YEAR}'/></a></td>
+                                    <td align='right' valign='middle' style='vertical-align:middle;'>
+                                        <font size='1'><a href='{MONTHLYVIEW}'><img src='{SKINPATH}/month_on.gif' border='0' width='30' height='24' alt='{ICON_MONTHLY}' title='{ICON_MONTHLY}'/></a></font>
+                                        <font size='1'><a href='{WEEKLYVIEW}'><img src='{SKINPATH}/week_on.gif' border='0' width='30' height='24' alt='{ICON_WEEKLY}' title='{ICON_WEEKLY}'/></a></font>
+                                        <font size='1'><a href='{DAILYVIEW}'><img src='{SKINPATH}/day_on.gif' border='0' width='30' height='24' alt='{ICON_DAILY}' title='{ICON_DAILY}'/></a></font>
+                                        <font size='1'><a href='{LISTVIEW}'><img src='{SKINPATH}/list_on.gif' border='0' width='30' height='24' alt='{ICON_LIST}' title='{ICON_LIST}'/></a></font>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
 
-        <!-- body -->
-        <table border='0' cellspacing='0' cellpadding='0' width='100%' style='border-collapse:collapse;'>
+                <!-- body -->
+                <table border='0' cellspacing='0' cellpadding='0' width='100%' style='border-collapse:collapse;'>
 
-         <tr>
-           <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10' /></td>
-         </tr>
+                    <tr>
+                        <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10'/></td>
+                    </tr>
 
-         <tr>
-           <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30' /></td>
-           <td align='center' valign='top'>{MINICAL1}</td>
-           <td align='center' valign='top'>{MINICAL2}</td>
-           <td align='center' valign='top'>{MINICAL3}</td>
-         </tr>
+                    <tr>
+                        <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30'/></td>
+                        <td align='center' valign='top'>{MINICAL1}</td>
+                        <td align='center' valign='top'>{MINICAL2}</td>
+                        <td align='center' valign='top'>{MINICAL3}</td>
+                    </tr>
 
-         <tr>
-           <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10' /></td>
-         </tr>
+                    <tr>
+                        <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10'/></td>
+                    </tr>
 
-         <tr>
-           <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30' /></td>
-           <td align='center' valign='top'>{MINICAL4}</td>
-           <td align='center' valign='top'>{MINICAL5}</td>
-           <td align='center' valign='top'>{MINICAL6}</td>
-         </tr>
+                    <tr>
+                        <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30'/></td>
+                        <td align='center' valign='top'>{MINICAL4}</td>
+                        <td align='center' valign='top'>{MINICAL5}</td>
+                        <td align='center' valign='top'>{MINICAL6}</td>
+                    </tr>
 
-         <tr>
-           <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10' /></td>
-         </tr>
+                    <tr>
+                        <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10'/></td>
+                    </tr>
 
-         <tr>
-           <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30' /></td>
-           <td align='center' valign='top'>{MINICAL7}</td>
-           <td align='center' valign='top'>{MINICAL8}</td>
-           <td align='center' valign='top'>{MINICAL9}</td>
-         </tr>
+                    <tr>
+                        <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30'/></td>
+                        <td align='center' valign='top'>{MINICAL7}</td>
+                        <td align='center' valign='top'>{MINICAL8}</td>
+                        <td align='center' valign='top'>{MINICAL9}</td>
+                    </tr>
 
-         <tr>
-           <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10' /></td>
-         </tr>
+                    <tr>
+                        <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10'/></td>
+                    </tr>
 
-         <tr>
-           <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30' /></td>
-           <td align='center' valign='top'>{MINICAL10}</td>
-           <td align='center' valign='top'>{MINICAL11}</td>
-           <td align='center' valign='top'>{MINICAL12}</td>
-         </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
-  <br />
-  <!-- Controller -->
-  <table border='0' cellspacing='0' cellpadding='0' width='100%'>
-    <tr>
-      <td width='10'><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='10' /></td>
-      <td width='100%' align='center'>
-        <form action='{GET_TARGET}?cid={CID}&amp;smode=Yearly&amp;{QUERY_STRING}' method='post'>
-          <select name='apcal_year'>{YEAR_OPTIONS}</select> &nbsp; 
-          <input type='submit' name='apcal_jumpcaldate' value='{LANG_JUMP}'>
-          &nbsp; 
-          <a href='{TODAYLINK}'>{MB_LINKTODAY}</a>
-        </form>
-      </td>
-    </tr>
-  </table>
-  <table border='0' cellspacing='0' cellpadding='0' width='100%'>
-    <tr>
-      <td width='10'><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='10' /></td>
-      <td width='100%' align='right'>{COPYRIGHT}</td>
-    </tr>
-  </table>
+                    <tr>
+                        <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30'/></td>
+                        <td align='center' valign='top'>{MINICAL10}</td>
+                        <td align='center' valign='top'>{MINICAL11}</td>
+                        <td align='center' valign='top'>{MINICAL12}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <!-- Controller -->
+    <table border='0' cellspacing='0' cellpadding='0' width='100%'>
+        <tr>
+            <td width='10'><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='10'/></td>
+            <td width='100%' align='center'>
+                <form action='{GET_TARGET}?cid={CID}&amp;smode=Yearly&amp;{QUERY_STRING}' method='post'>
+                    <select name='apcal_year'>{YEAR_OPTIONS}</select> &nbsp;
+                    <input type='submit' name='apcal_jumpcaldate' value='{LANG_JUMP}'>
+                    &nbsp;
+                    <a href='{TODAYLINK}'>{MB_LINKTODAY}</a>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <table border='0' cellspacing='0' cellpadding='0' width='100%'>
+        <tr>
+            <td width='10'><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='10'/></td>
+            <td width='100%' align='right'>{COPYRIGHT}</td>
+        </tr>
+    </table>
 </pattemplate:tmpl>

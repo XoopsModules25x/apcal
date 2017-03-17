@@ -90,7 +90,7 @@ if (!defined('APCAL_BLOCK_MONTHLY_CALENDAR_INCLUDED')) {
             $tmpl->parseTemplate('LongEventLegends', 'a');
         }
 
-        // content generated from patTemplate
+        // content generated from PatTemplate
         $block['content'] = $tmpl->getParsedTemplate('WholeBoard');
         error_reporting($original_level);
 

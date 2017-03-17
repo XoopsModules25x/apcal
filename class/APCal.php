@@ -22,7 +22,7 @@
 if (!class_exists('APCal')) {
     define('APCAL_EVENT_TABLE', 'apcal_event');
     define('APCAL_CAT_TABLE', 'apcal_cat');
-    require_once __DIR__ . '/../../../include/cp_header.php';
+//    require_once __DIR__ . '/../../../include/cp_header.php';
     require_once XOOPS_ROOT_PATH . '/modules/apcal/include/ro_contacthandler.php'; // added by goffy convert name(s) in field contact in a links to member account
     require_once XOOPS_ROOT_PATH . '/modules/apcal/class/thumb.php';
 
@@ -1077,7 +1077,7 @@ if (!class_exists('APCal')) {
             // $this->caldate ï¿½Î¥ê¥¹ï¿½È¥ï¿½
             $this->set_date($backuped_caldate);
 
-            // content generated from patTemplate
+            // content generated from PatTemplate
             $ret = $tmpl->getParsedTemplate('WholeBoard');
 
             return $ret;
@@ -1168,7 +1168,7 @@ if (!class_exists('APCal')) {
             // $this->caldate ï¿½Î¥ê¥¹ï¿½È¥ï¿½
             $this->set_date($backuped_caldate);
 
-            // content generated from patTemplate
+            // content generated from PatTemplate
             $ret = $tmpl->getParsedTemplate('WholeBoard');
 
             return $ret;
@@ -1229,7 +1229,7 @@ if (!class_exists('APCal')) {
             // BODY of the calendar
             $tmpl->addVar('WholeBoard', 'CALENDAR_BODY', $this->get_weekly_html($get_target, $query_string));
 
-            // content generated from patTemplate
+            // content generated from PatTemplate
             $ret = $tmpl->getParsedTemplate('WholeBoard');
 
             return $ret;
@@ -1290,7 +1290,7 @@ if (!class_exists('APCal')) {
             // BODY of the calendar
             $tmpl->addVar('WholeBoard', 'CALENDAR_BODY', $this->get_daily_html($get_target, $query_string));
 
-            // content generated from patTemplate
+            // content generated from PatTemplate
             $ret = $tmpl->getParsedTemplate('WholeBoard');
 
             return $ret;
@@ -2272,7 +2272,7 @@ if (!class_exists('APCal')) {
                         $this->original_id   = $parent_event->id;
                         $is_extracted_record = true;
                     } else {
-                        $parent_event =& $event;
+                        $parent_event = $event;
                     }
                 }
                 $rrule = $this->rrule_to_human_language($event->rrule);

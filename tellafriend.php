@@ -36,7 +36,7 @@ if ($cal->enabletellafriend) {
 
         $tpl->assign('title', $_GET['title']);
         $tpl->assign('url', $_GET['url']);
-        $tpl->assign('from', (isset($xoopsUser) && $xoopsUser != null ? $xoopsUser->getVar('email') : ''));
+        $tpl->assign('from', (isset($xoopsUser) && $xoopsUser !== null ? $xoopsUser->getVar('email') : ''));
         $tpl->assign('captcha', $captcha->render());
         $tpl->assign('captchaMsg', !$verify && $xoopsCaptcha ? $xoopsCaptcha->getMessage() : '');
         $tpl->assign('vars', $_POST);
