@@ -190,7 +190,7 @@ class MyXoopsGroupPermForm extends XoopsForm
 
         $ret = '<h4>' . $this->getTitle() . '</h4>' . $this->_permDesc . '<br />';
         $ret .= "<form name='" . $this->getName() . "' id='" . $this->getName() . "' action='" . $this->getAction() . "' method='" . $this->getMethod() . "'" . $this->getExtra() . ">\n<table width='100%' class='outer' cellspacing='1'>\n";
-        $elements =& $this->getElements();
+        $elements = $this->getElements();
         foreach (array_keys($elements) as $i) {
             if (!is_object($elements[$i])) {
                 $ret .= $elements[$i];

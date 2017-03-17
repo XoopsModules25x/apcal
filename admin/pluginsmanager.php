@@ -56,8 +56,8 @@ $limit_file    = preg_replace('/([^0-9A-Za-z_.-]+)/', '', @$_GET['limit_file']);
 $conn = $GLOBALS['xoopsDB']->conn;
 
 // setting physical & virtual paths
-$mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-$mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+$mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+$mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
 $cal = new APCal_xoops('', $xoopsConfig['language'], true);

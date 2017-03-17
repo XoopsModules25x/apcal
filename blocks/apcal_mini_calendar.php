@@ -63,8 +63,8 @@ if (!defined('APCAL_BLOCK_MINI_CALENDAR_INCLUDED')) {
         }
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         if (!class_exists('APCal_xoops')) {

@@ -94,11 +94,11 @@ if ($block['is_custom']) {
 } else {
     if ($block['template'] != '' && !defined('XOOPS_ORETEKI')) {
         $tplfile_handler = xoops_getHandler('tplfile');
-        $btemplate       =& $tplfile_handler->find($GLOBALS['xoopsConfig']['template_set'], 'block', $block['bid']);
+        $btemplate       = $tplfile_handler->find($GLOBALS['xoopsConfig']['template_set'], 'block', $block['bid']);
         if (count($btemplate) > 0) {
             $form->addElement(new XoopsFormLabel(_AM_CONTENT, '<a href="mytplsform.php?tpl_file=' . $btemplate[0]->getVar('tpl_file') . '&amp;tpl_tplset=' . htmlspecialchars($GLOBALS['xoopsConfig']['template_set'], ENT_QUOTES) . '">' . _AM_EDITTPL . '</a>'));
         } else {
-            $btemplate2 =& $tplfile_handler->find('default', 'block', $block['bid']);
+            $btemplate2 = $tplfile_handler->find('default', 'block', $block['bid']);
             if (count($btemplate2) > 0) {
                 $form->addElement(new XoopsFormLabel(_AM_CONTENT, '<a href="mytplsform.php?tpl_file=' . $btemplate2[0]->getVar('tpl_file') . '&amp;tpl_tplset=default">' . _AM_EDITTPL . '</a>'));
             }

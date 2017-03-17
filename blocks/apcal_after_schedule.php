@@ -36,7 +36,7 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
 
     // XOOPS 2.1/2.2
     if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
-        $GLOBALS['apcal_blockinstance_object'] =& $this;
+        $GLOBALS['apcal_blockinstance_object'] = $this;
     }
 
     function apcal_after_schedule_show_tpl($options)
@@ -49,8 +49,8 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
         $untildays     = empty($options[4]) ? 0 : (int)$options[4];
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         if (!class_exists('APCal_xoops')) {
@@ -100,8 +100,8 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
         $untildays     = empty($options[4]) ? 0 : (int)$options[4];
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         require_once("$mod_path/class/APCal.php");
@@ -119,7 +119,7 @@ if (!defined('APCAL_BLOCK_AFTER_SCHEDULE_INCLUDED')) {
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName ' />\n";
+        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName' />\n";
 
         // É½¼¨¸Ä¿ô
         $ret .= _MB_APCAL_MAXITEMS . ':';

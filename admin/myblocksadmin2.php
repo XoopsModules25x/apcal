@@ -112,7 +112,7 @@ function list_blockinstances()
     $criteria = new CriteriaCompo($crit);
     $criteria->setSort('visible DESC, side ASC, weight');
     $instance_handler = xoops_getHandler('blockinstance');
-    $instances        =& $instance_handler->getObjects($criteria, true, true);
+    $instances        = $instance_handler->getObjects($criteria, true, true);
 
     //Get modules and pages for visible in
     $module_list[_AM_APCAL_SYSTEMLEVEL]['0-2'] = _AM_APCAL_ADMINBLOCK;

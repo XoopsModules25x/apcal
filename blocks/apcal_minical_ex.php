@@ -139,8 +139,8 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         $myts = MyTextSanitizer::getInstance();
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         if (!class_exists('APCal_xoops')) {
@@ -200,8 +200,8 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         //$plugins4disp = empty( $options[3] ) ? '' : htmlspecialchars( str_replace( array( ' ' , "\t" , "\0" ) , '' ,  $options[3] ) , ENT_QUOTES ) ;
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         require_once("$mod_path/class/APCal.php");
@@ -219,7 +219,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName ' />\n";
+        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName' />\n";
 
         // max dotgifs a day
         $ret .= _MB_APCAL_MAXGIFSADAY . ':';

@@ -36,7 +36,7 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
 
     // XOOPS 2.1/2.2
     if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
-        $GLOBALS['apcal_blockinstance_object'] =& $this;
+        $GLOBALS['apcal_blockinstance_object'] = $this;
     }
 
     function apcal_thedays_schedule_show_tpl($options)
@@ -47,8 +47,8 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
         $now_cid       = empty($options[1]) ? 0 : (int)$options[1];
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         if (!class_exists('APCal_xoops')) {
@@ -96,8 +96,8 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
         $now_cid       = empty($options[1]) ? 0 : (int)$options[1];
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         require_once("$mod_path/class/APCal.php");

@@ -54,8 +54,8 @@ $done = isset($_GET['done']) ? $_GET['done'] : '';
 $conn = $GLOBALS['xoopsDB']->conn;
 
 // setting physical & virtual paths
-$mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-$mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+$mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+$mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // creating an instance of APCal
 $cal = new APCal_xoops('', $xoopsConfig['language'], true);
@@ -180,7 +180,7 @@ $whr         = "UNIX_TIMESTAMP(dtstamp) > $older_limit AND (rrule_pid=0 OR rrule
 $rs        = $GLOBALS['xoopsDB']->query("SELECT COUNT(id) FROM $cal->table WHERE $whr");
 $numrows   = 0;
 $resultRow = $GLOBALS['xoopsDB']->fetchRow($rs);
-if (false !== $resultRow && isset($resultRow[$field])) {
+if (false !== $resultRow && isset($resultRow[0])) {
     $numrows = $resultRow[0];
 }
 $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY  dtstamp DESC LIMIT $pos,$num");
