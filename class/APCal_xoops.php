@@ -500,10 +500,10 @@ if (!class_exists('APCal_xoops')) {
             //            $yrs = $xoopsDB->query("SELECT start,end,summary,id,uid,allday,location,contact,description,mainCategory FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start LIMIT $num");
 
             $yrs       = $GLOBALS['xoopsDB']->query("SELECT COUNT(*) FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class)");
-            $numrows   = 0;
+            $num_rows   = 0;
             $resultRow = $GLOBALS['xoopsDB']->fetchRow($yrs);
-            if (false !== $resultRow && isset($resultRow[$field])) {
-                $numrows = $resultRow[0];
+            if (false !== $resultRow && isset($resultRow[0])) {
+                $num_rows = $resultRow[0];
             }
             $yrs = $GLOBALS['xoopsDB']->query("SELECT start,end,summary,id,uid,allday,location,contact,description,mainCategory FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start LIMIT $num");
 
