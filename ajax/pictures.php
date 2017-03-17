@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(dirname(dirname(__DIR__))) . '/mainfile.php';
+require_once __DIR__ . '/../../../mainfile.php';
 
 $xoopsLogger->activated = false;
 restore_error_handler();

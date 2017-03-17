@@ -69,10 +69,10 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
     define('_MI_APCAL_USE24HOUR', '24hours system (No means 12hours system)');
     define('_MI_APCAL_NAMEORUNAME', 'Poster name displayed');
 
-    define('_MI_APCAL_GMLAT', "\"Google Map\" default latitude");
-    define('_MI_APCAL_GMLNG', "\"Google Map\" default longitude");
-    define('_MI_APCAL_GMZOOM', "\"Google Map\" default zoom level");
-    define('_MI_APCAL_GMHEIGHT', "\"Google Map\" height (in pixels)");
+    define('_MI_APCAL_GMLAT', '"Google Map" default latitude');
+    define('_MI_APCAL_GMLNG', '"Google Map" default longitude');
+    define('_MI_APCAL_GMZOOM', '"Google Map" default zoom level');
+    define('_MI_APCAL_GMHEIGHT', '"Google Map" height (in pixels)');
     define('_MI_APCAL_USEURLREWRITE', 'Use URL rewriting');
     define('_MI_APCAL_WIDERWEEKEND', 'Wider columns in month view for:');
     define('_MI_APCAL_GETTHMCOLOR', 'Main css filename in your theme folder');
@@ -113,9 +113,9 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
     define('_MI_APCAL_EDITBYGUESTDSC', 'Permission of adding events by Guest');
     define('_MI_APCAL_LOCALEDESC', 'N.B.: Holidays are perpetual for USA, Canada, Canada-fr and France only. For all other countries, you must make it yourself.');
     define('_MI_APCAL_DESCNAMEORUNAME', "Select which 'name' is displayed");
-    define('_MI_APCAL_DESCUSEURLREWRITE', "<b>In order to make it works, copy /modules/APCal/doc/.htaccess to /modules/APCal/.</b><br /><br />N.B.: If you don't have the apache \"mod_rewrite\" installed on your server, it might not work. Please contact your system admin for details.");
-    define('_MI_APCAL_WIDERWEEKENDDESC', "Hold down the \"Ctrl\" key on your keyboard while you click to select more than one day.");
-    define('_MI_APCAL_THMORDEFAULTDESC', 'Theme: Give your main css filename in the next field. (Recommended)<br />Custom: Fill up the next 13 fields.<br />Default: Use the default colors.');
+    define('_MI_APCAL_DESCUSEURLREWRITE', "<b>In order to make it works, copy /modules/apcal/doc/.htaccess to /modules/apcal/.</b><br><br>N.B.: If you don't have the apache \"mod_rewrite\" installed on your server, it might not work. Please contact your system admin for details.");
+    define('_MI_APCAL_WIDERWEEKENDDESC', 'Hold down the "Ctrl" key on your keyboard while you click to select more than one day.');
+    define('_MI_APCAL_THMORDEFAULTDESC', 'Theme: Give your main css filename in the next field. (Recommended)<br>Custom: Fill up the next 13 fields.<br>Default: Use the default colors.');
 
     // Options of each config items
     define('_MI_APCAL_OPT_AUTH_NONE', 'cannot add');
@@ -180,4 +180,17 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
     define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYCAP', 'Notify me when a new event is created in the Category.');
     define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYDSC', 'Notify me with the description included when a new event is created in the Category.');
     define('_MI_APCAL_CATEGORY_NEWEVENT_NOTIFYSBJ', '[{X_SITENAME}] {X_MODULE} auto-notify : New event in {CATEGORY_TITLE}');
+
+    //Help
+    define('_MI_APCAL_DIRNAME', basename(dirname(dirname(__DIR__))));
+    define('_MI_APCAL_HELP_HEADER', __DIR__.'/help/helpheader.html');
+    define('_MI_APCAL_BACK_2_ADMIN', 'Back to Administration of ');
+    define('_MI_APCAL_OVERVIEW', 'Overview');
+
+    //define('_MI_APCAL_HELP_DIR', __DIR__);
+
+    //help multi-page
+    define('_MI_APCAL_DISCLAIMER', 'Disclaimer');
+    define('_MI_APCAL_LICENSE', 'License');
+    define('_MI_APCAL_SUPPORT', 'Support');
 }

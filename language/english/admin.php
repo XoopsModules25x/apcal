@@ -83,22 +83,23 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_AM_APCAL_LOADED')) {
     define('_AM_APCAL_GPERM_G_SUPERDELETE', 'Super delete');
     define('_AM_APCAL_GPERM_G_TOUCHOTHERS', 'Can touch others');
     define('_AM_APCAL_CAT2GROUPDESC', 'Check categories which you allow to access');
-    define('_AM_APCAL_GROUPPERMDESC', "Select permissions that each group is allowed to do<br />If you need this feature, set 'Authorities of users' to Specified in Group's permissions first.<br />The settings of two groups of Administrator and Guest will be ignored.");
+    define('_AM_APCAL_GROUPPERMDESC', "Select permissions that each group is allowed to do<br>If you need this feature, set 'Authorities of users' to Specified in Group's permissions first.<br>The settings of two groups of Administrator and Guest will be ignored.");
 
     // Table Maintenance
     define('_AM_APCAL_MB_SUCCESSUPDATETABLE', 'Updating table(s) has succeeded');
     define('_AM_APCAL_MB_FAILUPDATETABLE', 'Updating table(s) has failed');
     define('_AM_APCAL_NOTICE_NOERRORS', 'There is no error with tables or records.');
-    define('_AM_APCAL_ALRT_CATTABLENOTEXIST', "The categories table does not exist.<br />\nDo you wish to create the table?");
-    define('_AM_APCAL_ALRT_OLDTABLE', "The structure of events table is old.<br />\nDo you wish to upgrade the table?");
-    define('_AM_APCAL_ALRT_TOOOLDTABLE', "Table error occured.<br />\nPerhaps you used APCal 0.3x or earlier.<br />\nFirst, update into 0.4x or 0.5x.");
-    define('_AM_APCAL_FMT_SERVER_TZ_ALL', 'Timezone of the server (winter): %+2.1f<br />Timezone of the server (summer): %+2.1f<br />Zonename of the server: %s<br />The value of XOOPS config: %+2.1f<br />The value of APCal using: %+2.1f<br />');
-    define('_AM_APCAL_FMT_WRONGSTZ', 'Ther is %s event(s) saved with a bad timezone.<br />Would you like to repair them?');
+    define('_AM_APCAL_ALRT_CATTABLENOTEXIST', "The categories table does not exist.<br>\nDo you wish to create the table?");
+    define('_AM_APCAL_ALRT_OLDTABLE', "The structure of events table is old.<br>\nDo you wish to upgrade the table?");
+    define('_AM_APCAL_ALRT_TOOOLDTABLE', "Table error occured.<br>\nPerhaps you used APCal 0.3x or earlier.<br>\nFirst, update into 0.4x or 0.5x.");
+    define('_AM_APCAL_FMT_SERVER_TZ_ALL',
+           'Timezone of the server (winter): %+2.1f<br>Timezone of the server (summer): %+2.1f<br>Zonename of the server: %s<br>The value of XOOPS config: %+2.1f<br>The value of APCal using: %+2.1f<br>');
+    define('_AM_APCAL_FMT_WRONGSTZ', 'Ther is %s event(s) saved with a bad timezone.<br>Would you like to repair them?');
     define('_AM_APCAL_TH_SERVER_TZ_COUNT', 'Events');
     define('_AM_APCAL_TH_SERVER_TZ_VALUE', 'Timezone');
     define('_AM_APCAL_TH_SERVER_TZ_VALUE_TO', 'Changes (-14.0��14.0)');
     define('_AM_APCAL_JSALRT_SERVER_TZ', "Don't forget backing-up events table before this operation");
-    define('_AM_APCAL_NOTICE_SERVER_TZ', "If your server set the timezone area with summer time (=Day Light Saving) and some events were registerd in APCal 0.6x or 0.7x, dont't push this button.<br />eg) It is natural to display both -5.0 and -4.0 in EDT");
+    define('_AM_APCAL_NOTICE_SERVER_TZ', "If your server set the timezone area with summer time (=Day Light Saving) and some events were registerd in APCal 0.6x or 0.7x, dont't push this button.<br>eg) It is natural to display both -5.0 and -4.0 in EDT");
     define('_AM_APCAL_MB_SUCCESSTZUPDATE', 'Events are modified with the timezone(s).');
 
     // Categories
@@ -154,4 +155,12 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_AM_APCAL_LOADED')) {
     //define('_AM_APCAL_ADGS', 'Groups');
 
     define('_AM_APCALAM_APCALDBUPDATED', 'Database Updated');
+
+    define('_AM_APCAL_UPGRADEFAILED0', "Update failed - couldn't rename field '%s'");
+    define('_AM_APCAL_UPGRADEFAILED1', "Update failed - couldn't add new fields");
+    define('_AM_APCAL_UPGRADEFAILED2', "Update failed - couldn't rename table '%s'");
+    define('_AM_APCAL_ERROR_COLUMN', 'Could not create column in database : %s');
+    define('_AM_APCAL_ERROR_BAD_XOOPS', 'This module requires XOOPS %s+ (%s installed)');
+    define('_AM_APCAL_ERROR_BAD_PHP', 'This module requires PHP version %s+ (%s installed)');
+    define('_AM_APCAL_ERROR_TAG_REMOVAL', 'Could not remove tags from Tag Module');
 }

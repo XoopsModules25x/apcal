@@ -1,43 +1,30 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-include_once(dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php');
-include_once '../include/gtickets.php';
-include_once XOOPS_ROOT_PATH . '/class/template.php';
+require_once __DIR__ . '/../../../include/cp_header.php';
+require_once __DIR__ . '/../include/gtickets.php';
+require_once XOOPS_ROOT_PATH . '/class/template.php';
 
-include_once dirname(__DIR__) . '/include/Text_Diff.php';
-include_once dirname(__DIR__) . '/include/Text_Diff_Renderer.php';
-include_once dirname(__DIR__) . '/include/Text_Diff_Renderer_unified.php';
+require_once __DIR__ . '/../include/Text_Diff.php';
+require_once __DIR__ . '/../include/Text_Diff_Renderer.php';
+require_once __DIR__ . '/../include/Text_Diff_Renderer_unified.php';
 
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
 
@@ -54,9 +41,9 @@ if (!file_exists("$xoops_system_path/language/$language/admin/tplsets.php")) {
 // load language constants
 // to prevent from notice that constants already defined
 $error_reporting_level = error_reporting(0);
-include_once("$xoops_system_path/constants.php");
-include_once("$xoops_system_path/language/$language/admin.php");
-include_once("$xoops_system_path/language/$language/admin/tplsets.php");
+require_once "$xoops_system_path/constants.php";
+require_once "$xoops_system_path/language/$language/admin.php";
+require_once "$xoops_system_path/language/$language/admin/tplsets.php";
 error_reporting($error_reporting_level);
 
 // check $xoopsModule
@@ -65,8 +52,8 @@ if (!is_object($xoopsModule)) {
 }
 
 // check access right (needs system_admin of tplset)
-$sysperm_handler = xoops_getHandler('groupperm');
-if (!$sysperm_handler->checkRight('system_admin', XOOPS_SYSTEM_TPLSET, $xoopsUser->getGroups())) {
+$syspermHandler = xoops_getHandler('groupperm');
+if (!$syspermHandler->checkRight('system_admin', XOOPS_SYSTEM_TPLSET, $xoopsUser->getGroups())) {
     redirect_header(XOOPS_URL . '/user.php', 1, _NOPERM);
 }
 
@@ -110,10 +97,18 @@ if (!empty($_POST['do_modify'])) {
 xoops_cp_header();
 $mymenu_fake_uri = "/admin/mytplsadmin.php?dirname={$tpl['tpl_module']}";
 if (file_exists('./mymenu.php')) {
-    include('./mymenu.php');
+    include __DIR__ . '/mymenu.php';
 }
 
-echo "<h3 style='text-align:left;'>" . _MD_APCALAM_APCALTPLSETS . ' : ' . htmlspecialchars($tpl['tpl_type'], ENT_QUOTES) . ' : ' . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES) . ' (' . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES) . ")</h3>\n";
+echo "<h3 style='text-align:left;'>"
+     . _MD_APCALAM_APCALTPLSETS
+     . ' : '
+     . htmlspecialchars($tpl['tpl_type'], ENT_QUOTES)
+     . ' : '
+     . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES)
+     . ' ('
+     . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES)
+     . ")</h3>\n";
 
 // diff from file to selected DB template
 $basefilepath        = XOOPS_ROOT_PATH . '/modules/' . $tpl['tpl_module'] . '/templates/' . ($tpl['tpl_type'] == 'block' ? 'blocks/' : '') . $tpl['tpl_file'];
@@ -136,7 +131,15 @@ if (file_exists($basefilepath)) {
 // diff from DB-default to selected DB template
 $diff_from_default4disp = '';
 if ($tpl['tpl_tplset'] != 'default') {
-    list($default_source) = $db->fetchRow($db->query('SELECT tpl_source FROM ' . $db->prefix('tplfile') . ' NATURAL LEFT JOIN ' . $db->prefix('tplsource') . " WHERE tpl_tplset='default' AND tpl_file='" . addslashes($tpl['tpl_file']) . "' AND tpl_module='" . addslashes($tpl['tpl_module']) . "'"));
+    list($default_source) = $db->fetchRow($db->query('SELECT tpl_source FROM '
+                                                     . $db->prefix('tplfile')
+                                                     . ' NATURAL LEFT JOIN '
+                                                     . $db->prefix('tplsource')
+                                                     . " WHERE tpl_tplset='default' AND tpl_file='"
+                                                     . addslashes($tpl['tpl_file'])
+                                                     . "' AND tpl_module='"
+                                                     . addslashes($tpl['tpl_module'])
+                                                     . "'"));
     $diff     = new Text_Diff(explode("\n", $default_source), explode("\n", $tpl['tpl_source']));
     $renderer = new Text_Diff_Renderer_unified();
     $diff_str = htmlspecialchars($renderer->render($diff), ENT_QUOTES);
@@ -153,7 +156,7 @@ if ($tpl['tpl_tplset'] != 'default') {
 
 echo "
     <form name='diff_form' id='diff_form' action='' method='get'>
-    <input type='checkbox' name='display_diff2file' value='1' onClick=\"if (this.checked) {document.getElementById('diff2file').style.display='block'} else {document.getElementById('diff2file').style.display='none'};\" id='display_diff2file' checked='checked' />&nbsp;<label for='display_diff2file'>diff from file</label>
+    <input type='checkbox' name='display_diff2file' value='1' onClick=\"if (this.checked) {document.getElementById('diff2file').style.display='block'} else {document.getElementById('diff2file').style.display='none'};\" id='display_diff2file' checked />&nbsp;<label for='display_diff2file'>diff from file</label>
     <pre id='diff2file' style='display:block;border:1px solid black;'>$diff_from_file4disp</pre>
     <input type='checkbox' name='display_diff2default' value='1' onClick=\"if (this.checked) {document.getElementById('diff2default').style.display='block'} else {document.getElementById('diff2default').style.display='none'};\" id='display_diff2default' />&nbsp;<label for='display_diff2default'>diff from default</label>
     <pre id='diff2default' style='display:none;border:1px solid black;'>$diff_from_default4disp</pre>
@@ -163,7 +166,7 @@ echo "
 <form name='MainForm' action='?tpl_file=" . htmlspecialchars($tpl['tpl_file'], ENT_QUOTES) . '&amp;tpl_tplset=' . htmlspecialchars($tpl['tpl_tplset'], ENT_QUOTES) . "' method='post'>
     " . $xoopsGTicket->getTicketHtml(__LINE__) . "
     <textarea name='tpl_source' wrap='off' style='width:600px;height:400px;'>" . htmlspecialchars($tpl['tpl_source'], ENT_QUOTES) . "</textarea>
-    <br />
+    <br>
     <input type='submit' name='do_modify' value='" . _SUBMIT . "' />
     <input type='reset' name='reset' value='reset' />
 </form>\n";

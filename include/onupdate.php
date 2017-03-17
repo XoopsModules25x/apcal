@@ -1,39 +1,75 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
-
-/**
- * @copyright   {@link http://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      Antiques Promotion (http://www.antiquespromotion.ca)
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-function xoops_module_update_APCal($xoopsModule)
+/**
+ * @copyright    {@link http://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @author       Antiques Promotion (http://www.antiquespromotion.ca)
+ * @return bool
+ */
+
+if ((!defined('XOOPS_ROOT_PATH')) || !($GLOBALS['xoopsUser'] instanceof XoopsUser)
+    || !$GLOBALS['xoopsUser']->IsAdmin()
+) {
+    exit('Restricted access' . PHP_EOL);
+}
+
+/**
+ * @param string $tablename
+ *
+ * @return bool
+ */
+function tableExists($tablename)
 {
-    global $xoopsDB;
+    $result = $GLOBALS['xoopsDB']->queryF("SHOW TABLES LIKE '$tablename'");
+
+    return ($GLOBALS['xoopsDB']->getRowsNum($result) > 0) ? true : false;
+}
+
+/**
+ *
+ * Prepares system prior to attempting to install module
+ * @param XoopsModule $module {@link XoopsModule}
+ *
+ * @return bool true if ready to install, false if not
+ */
+function xoops_module_pre_update_apcal(XoopsModule $module)
+{
+    $moduleDirName = basename(dirname(__DIR__));
+    $classUtility  = ucfirst($moduleDirName) . 'Utility';
+    if (!class_exists($classUtility)) {
+        xoops_load('utility', $moduleDirName);
+    }
+    //check for minimum XOOPS version
+    if (!$classUtility::checkVerXoops($module)) {
+        return false;
+    }
+
+    // check for minimum PHP version
+    if (!$classUtility::checkVerPhp($module)) {
+        return false;
+    }
+
+    return true;
+}
+
+function xoops_module_update_apcal(XoopsModule $module)
+{
+    //    global $xoopsDB;
+    $moduleDirName = basename(dirname(__DIR__));
+    $capsDirName   = strtoupper($moduleDirName);
 
     if (!$GLOBALS['xoopsDB']->queryF("SELECT shortsummary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')}")) {
         if ($GLOBALS['xoopsDB']->queryF("ALTER TABLE {$GLOBALS['xoopsDB']->prefix('apcal_event')} ADD shortsummary VARCHAR(255) AFTER groupid")) {
@@ -125,16 +161,94 @@ function xoops_module_update_APCal($xoopsModule)
     $GLOBALS['xoopsDB']->queryF("UPDATE {$GLOBALS['xoopsDB']->prefix('apcal_event')} SET start_date=NULL,end_date=NULL");
     $GLOBALS['xoopsDB']->queryF("UPDATE {$GLOBALS['xoopsDB']->prefix('apcal_event')} t, (SELECT id, shortsummary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} x WHERE x.rrule_pid>0 GROUP BY x.shortsummary ORDER BY start) AS e SET t.rrule_pid=e.id WHERE t.shortsummary=e.shortsummary;");
 
-    if (!is_dir(XOOPS_UPLOAD_PATH . '/APCal/')) {
-        mkdir(XOOPS_UPLOAD_PATH . '/APCal/', 0755);
+    //    if (!is_dir(XOOPS_UPLOAD_PATH . '/apcal/')) {
+    //        mkdir(XOOPS_UPLOAD_PATH . '/apcal/', 0755);
+    //    }
+    //    if (!is_dir(XOOPS_UPLOAD_PATH . '/apcal/thumbs/')) {
+    //        mkdir(XOOPS_UPLOAD_PATH . '/apcal/thumbs/', 0755);
+    //    }
+
+    require_once __DIR__ . '/config.php';
+    $configurator = new ModuleConfigurator();
+    $classUtility = ucfirst($moduleDirName) . 'Utility';
+    if (!class_exists($classUtility)) {
+        xoops_load('utility', $moduleDirName);
     }
-    if (!is_dir(XOOPS_UPLOAD_PATH . '/APCal/thumbs/')) {
-        mkdir(XOOPS_UPLOAD_PATH . '/APCal/thumbs/', 0755);
+
+    //delete old HTML templates
+    if (count($configurator->templateFolders) > 0) {
+        foreach ($configurator->templateFolders as $folder) {
+            $templateFolder = $GLOBALS['xoops']->path('modules/' . $moduleDirName . $folder);
+            if (is_dir($templateFolder)) {
+                $templateList = array_diff(scandir($templateFolder), array('..', '.'));
+                foreach ($templateList as $k => $v) {
+                    $fileInfo = new SplFileInfo($templateFolder . $v);
+                    if ($fileInfo->getExtension() === 'html' && $fileInfo->getFilename() !== 'index.html') {
+                        if (file_exists($templateFolder . $v)) {
+                            unlink($templateFolder . $v);
+                        }
+                    }
+                }
+            }
+        }
     }
+
+    //  ---  DELETE OLD FILES ---------------
+    if (count($configurator->oldFiles) > 0) {
+        //    foreach (array_keys($GLOBALS['uploadFolders']) as $i) {
+        foreach (array_keys($configurator->oldFiles) as $i) {
+            $tempFile = $GLOBALS['xoops']->path('modules/' . $moduleDirName . $configurator->oldFiles[$i]);
+            if (is_file($tempFile)) {
+                unlink($tempFile);
+            }
+        }
+    }
+
+    //  ---  DELETE OLD FOLDERS ---------------
+    xoops_load('XoopsFile');
+    if (count($configurator->oldFolders) > 0) {
+        //    foreach (array_keys($GLOBALS['uploadFolders']) as $i) {
+        foreach (array_keys($configurator->oldFolders) as $i) {
+            $tempFolder = $GLOBALS['xoops']->path('modules/' . $moduleDirName . $configurator->oldFolders[$i]);
+            /* @var $folderHandler XoopsObjectHandler */
+            $folderHandler = XoopsFile::getHandler('folder', $tempFolder);
+            $folderHandler->delete($tempFolder);
+        }
+    }
+
+    //  ---  CREATE FOLDERS ---------------
+    if (count($configurator->uploadFolders) > 0) {
+        //    foreach (array_keys($GLOBALS['uploadFolders']) as $i) {
+        foreach (array_keys($configurator->uploadFolders) as $i) {
+            $classUtility::createFolder($configurator->uploadFolders[$i]);
+        }
+    }
+
+    //  ---  COPY blank.png FILES ---------------
+    if (count($configurator->blankFiles) > 0) {
+        $file = __DIR__ . '/../assets/images/blank.png';
+        foreach (array_keys($configurator->blankFiles) as $i) {
+            $dest = $configurator->blankFiles[$i] . '/blank.png';
+            $classUtility::copyFile($file, $dest);
+        }
+    }
+
+    //delete .html entries from the tpl table
+    $sql = 'DELETE FROM ' . $GLOBALS['xoopsDB']->prefix('tplfile') . " WHERE `tpl_module` = '" . $module->getVar('dirname', 'n') . '\' AND `tpl_file` LIKE \'%.html%\'';
+    $GLOBALS['xoopsDB']->queryF($sql);
+
+    /** @var XoopsGroupPermHandler $gpermHandler */
+    $gpermHandler = xoops_getHandler('groupperm');
+
+    return $gpermHandler->deleteByModule($module->getVar('mid'), 'item_read');
 
     return true;
 }
 
+/**
+ * @param $str
+ * @return mixed
+ */
 function makeShort($str)
 {
     $replacements = array(
@@ -171,7 +285,7 @@ function makeShort($str)
         'Ü' => 'U',
         'Ý' => 'Y',
         'Þ' => 'B',
-        'ß' => 'Ss',
+        'ß' => 'ss',
         'à' => 'a',
         'á' => 'a',
         'â' => 'a',
@@ -202,10 +316,11 @@ function makeShort($str)
         'ý' => 'y',
         'ý' => 'y',
         'þ' => 'b',
-        'ÿ' => 'y');
+        'ÿ' => 'y'
+    );
 
     $str = strip_tags($str);
     $str = strtr($str, $replacements);
 
-    return str_replace(array(' ', '-', '/', "\\", "'", "\"", "\r", "\n", '&', '?', '!', '%', ',', '.'), '', $str);
+    return str_replace(array(' ', '-', '/', "\\", "'", '"', "\r", "\n", '&', '?', '!', '%', ',', '.'), '', $str);
 }

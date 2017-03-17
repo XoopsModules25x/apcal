@@ -1,40 +1,25 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      Antiques Promotion (http://www.antiquespromotion.ca)
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
-if (!defined('XOOPS_ROOT_PATH')) {
-    exit;
-}
+defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
@@ -73,14 +58,14 @@ while (list($key, $val) = $GLOBALS['xoopsDB']->fetchRow($rs)) {
 
 // get server timezone
 switch ($timezone_using) {
-    case 'xoops' :
+    case 'xoops':
         $cal->server_TZ = $xoopsConfig['server_TZ'];
         break;
-    case 'summer' :
+    case 'summer':
         $cal->server_TZ = date('Z', 1120176000) / 3600;
         break;
-    case 'winter' :
-    default :
+    case 'winter':
+    default:
         $cal->server_TZ = date('Z', 1104537600) / 3600;
         break;
 }
@@ -96,8 +81,8 @@ if (is_object($xoopsUser)) {
     $user_id = $xoopsUser->uid();
     $isadmin = $xoopsUser->isadmin($mid);
 
-    $member_handler = xoops_getHandler('member');
-    $system_groups  = $member_handler->getGroupList();
+    $memberHandler = xoops_getHandler('member');
+    $system_groups  = $memberHandler->getGroupList();
 
     if ($isadmin) {
 
@@ -111,7 +96,7 @@ if (is_object($xoopsUser)) {
 
         // ����ԤΥ��ƥ��ꥢ���������¡������ƥ����
         $sql             = "SELECT cid,pid,cat_shorttitle,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table ORDER BY weight";
-        $rs              = $GLOBALS['xoopsDB']->query( $sql);
+        $rs              = $GLOBALS['xoopsDB']->query($sql);
         $cal->categories = array();
         while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
             $cal->categories[(int)$cat->cid] = $cat;
@@ -125,18 +110,20 @@ if (is_object($xoopsUser)) {
     } else {
 
         // ���̥桼���ϼ�ʬ�ν�°���륰�롼�פΤ�
-        $my_group_ids = $member_handler->getGroupsByUser($user_id);
+        $my_group_ids = $memberHandler->getGroupsByUser($user_id);
         $cal->groups  = array();
         $ids4sql      = '(';
         foreach ($my_group_ids as $id) {
             $cal->groups[$id] = $system_groups[$id];
-            $ids4sql .= "$id,";
+            $ids4sql          .= "$id,";
         }
         $ids4sql .= '0)';
 
         // ���̥桼���Υ��ƥ��ꥢ����������
-        $sql             = "SELECT distinct cid,pid,cat_shorttitle,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table LEFT JOIN " . $GLOBALS['xoopsDB']->prefix('group_permission') . " ON cid=gperm_itemid WHERE gperm_name='apcal_cat' AND gperm_modid='$mid' AND enabled AND gperm_groupid IN $ids4sql ORDER BY weight";
-        $rs              = $GLOBALS['xoopsDB']->query( $sql);
+        $sql             = "SELECT distinct cid,pid,cat_shorttitle,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table LEFT JOIN "
+                           . $GLOBALS['xoopsDB']->prefix('group_permission')
+                           . " ON cid=gperm_itemid WHERE gperm_name='apcal_cat' AND gperm_modid='$mid' AND enabled AND gperm_groupid IN $ids4sql ORDER BY weight";
+        $rs              = $GLOBALS['xoopsDB']->query($sql);
         $cal->categories = array();
         while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
             $cal->categories[(int)$cat->cid] = $cat;
@@ -149,26 +136,26 @@ if (is_object($xoopsUser)) {
         if ($users_authority & 256) {
 
             // groupperm �ǡ��ġ��Υ��롼�פ��Ȥ�����
-            $gperm_handler = xoops_getHandler('groupperm');
+            $gpermHandler = xoops_getHandler('groupperm');
 
             // ��Ͽ����
-            $insertable = $gperm_handler->checkRight('apcal_global', 1, $my_group_ids, $mid);
-            if ($insertable && $gperm_handler->checkRight('apcal_global', 2, $my_group_ids, $mid)) {
+            $insertable = $gpermHandler->checkRight('apcal_global', 1, $my_group_ids, $mid);
+            if ($insertable && $gpermHandler->checkRight('apcal_global', 2, $my_group_ids, $mid)) {
                 $admission_insert_sql = ',admission=1';
             } else {
                 $admission_insert_sql = ',admission=0';
             }
 
             // �Խ�����
-            $editable = $gperm_handler->checkRight('apcal_global', 4, $my_group_ids, $mid);
-            if ($editable && $gperm_handler->checkRight('apcal_global', 8, $my_group_ids, $mid)) {
+            $editable = $gpermHandler->checkRight('apcal_global', 4, $my_group_ids, $mid);
+            if ($editable && $gpermHandler->checkRight('apcal_global', 8, $my_group_ids, $mid)) {
                 $admission_update_sql = ',admission=1';
             } else {
                 $admission_update_sql = ',admission=0';
             }
 
             // ���¡ʺ��ǧ�λ��Ȥ��ޤ��ʤΤǡ�̵�����Τߡ�
-            $deletable = $gperm_handler->checkRight('apcal_global', 32, $my_group_ids, $mid);
+            $deletable = $gpermHandler->checkRight('apcal_global', 32, $my_group_ids, $mid);
 
             // �Ȥꤢ������¾�ͤΥ쥳���ɤϤ����餻�ʤ�
             $whr_sql_append = "AND uid=$user_id ";
@@ -205,7 +192,11 @@ if (is_object($xoopsUser)) {
     }
 
     // �����ȤΥ��ƥ��ꥢ����������
-    $sql             = "SELECT distinct cid,pid,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table LEFT JOIN " . $GLOBALS['xoopsDB']->prefix('group_permission') . " ON cid=gperm_itemid WHERE gperm_name='apcal_cat' AND gperm_modid='$mid' AND enabled AND gperm_groupid='" . XOOPS_GROUP_ANONYMOUS . "' ORDER BY weight";
+    $sql             = "SELECT distinct cid,pid,cat_title,cat_desc,color,ismenuitem,cat_depth,canbemain FROM $cal->cat_table LEFT JOIN "
+                       . $GLOBALS['xoopsDB']->prefix('group_permission')
+                       . " ON cid=gperm_itemid WHERE gperm_name='apcal_cat' AND gperm_modid='$mid' AND enabled AND gperm_groupid='"
+                       . XOOPS_GROUP_ANONYMOUS
+                       . "' ORDER BY weight";
     $rs              = $GLOBALS['xoopsDB']->query($sql);
     $cal->categories = array();
     while ($cat = $GLOBALS['xoopsDB']->fetchObject($rs)) {
@@ -242,6 +233,12 @@ if (!empty($cal->locale)) {
 // mbstring�Τʤ�PHP���Ф��륨�ߥ�졼��
 // mb_strcut�Υ��ߥ�졼��
 if (!function_exists('mb_strcut')) {
+    /**
+     * @param $str
+     * @param $start
+     * @param $len
+     * @return string
+     */
     function mb_strcut($str, $start, $len)
     {
         // 2�Х��ȴĶ��ʤ饫�åȤ��ʤ�
@@ -255,6 +252,12 @@ if (!function_exists('mb_strcut')) {
 }
 // mb_convert_encoding�Υ��ߥ�졼�ȡʲ��⤷�ʤ���
 if (!function_exists('mb_convert_encoding')) {
+    /**
+     * @param         $str
+     * @param         $from
+     * @param  string $to
+     * @return mixed
+     */
     function mb_convert_encoding($str, $from, $to = 'auto')
     {
         return $str;

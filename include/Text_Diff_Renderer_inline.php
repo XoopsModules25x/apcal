@@ -53,16 +53,33 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
      */
     public $_split_level = 'lines';
 
+    /**
+     * @param $xbeg
+     * @param $xlen
+     * @param $ybeg
+     * @param $ylen
+     * @return string
+     */
     public function _blockHeader($xbeg, $xlen, $ybeg, $ylen)
     {
         return $this->_block_header;
     }
 
+    /**
+     * @param $header
+     * @return mixed
+     */
     public function _startBlock($header)
     {
         return $header;
     }
 
+    /**
+     * @param         $lines
+     * @param  string $prefix
+     * @param  bool   $encode
+     * @return string
+     */
     public function _lines($lines, $prefix = ' ', $encode = true)
     {
         if ($encode) {
@@ -76,32 +93,47 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
         }
     }
 
+    /**
+     * @param $lines
+     * @return string
+     */
     public function _added($lines)
     {
         array_walk($lines, array(&$this, '_encode'));
-        $lines[0] = $this->_ins_prefix . $lines[0];
+        $lines[0]                 = $this->_ins_prefix . $lines[0];
         $lines[count($lines) - 1] .= $this->_ins_suffix;
 
         return $this->_lines($lines, ' ', false);
     }
 
+    /**
+     * @param         $lines
+     * @param  bool   $words
+     * @return string
+     */
     public function _deleted($lines, $words = false)
     {
         array_walk($lines, array(&$this, '_encode'));
-        $lines[0] = $this->_del_prefix . $lines[0];
+        $lines[0]                 = $this->_del_prefix . $lines[0];
         $lines[count($lines) - 1] .= $this->_del_suffix;
 
         return $this->_lines($lines, ' ', false);
     }
 
+    /**
+     * @param $orig
+     * @param $final
+     * @return string
+     */
     public function _changed($orig, $final)
     {
         /* If we've already split on words, don't try to do so again - just
          * display. */
         if ($this->_split_level == 'words') {
             $prefix = '';
-            while ($orig[0] !== false && $final[0] !== false && substr($orig[0], 0, 1) == ' ' && substr($final[0], 0, 1) == ' ') {
-                $prefix .= substr($orig[0], 0, 1);
+            while ($orig[0] !== false && $final[0] !== false && substr($orig[0], 0, 1) == ' '
+                   && substr($final[0], 0, 1) == ' ') {
+                $prefix   .= substr($orig[0], 0, 1);
                 $orig[0]  = substr($orig[0], 1);
                 $final[0] = substr($final[0], 1);
             }
@@ -128,6 +160,11 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
         return str_replace($nl, "\n", $renderer->render($diff)) . "\n";
     }
 
+    /**
+     * @param         $string
+     * @param  string $newlineEscape
+     * @return array
+     */
     public function _splitOnWords($string, $newlineEscape = "\n")
     {
         $words  = array();
@@ -139,12 +176,15 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
             $spaces  = strspn(substr($string, $pos), " \n");
             $nextpos = strcspn(substr($string, $pos + $spaces), " \n");
             $words[] = str_replace("\n", $newlineEscape, substr($string, $pos, $spaces + $nextpos));
-            $pos += $spaces + $nextpos;
+            $pos     += $spaces + $nextpos;
         }
 
         return $words;
     }
 
+    /**
+     * @param $string
+     */
     public function _encode(&$string)
     {
         $string = htmlspecialchars($string);

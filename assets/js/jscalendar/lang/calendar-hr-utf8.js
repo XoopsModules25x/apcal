@@ -1,30 +1,30 @@
-/* Croatian language file for the DHTML Calendar version 0.9.2 
-* Author Krunoslav Zubrinic <krunoslav.zubrinic@vip.hr>, June 2003.
-* Feel free to use this script under the terms of the GNU Lesser General
-* Public License, as long as you do not remove or alter this notice.
-*/
+/* Croatian language file for the DHTML Calendar version 0.9.2
+ * Author Krunoslav Zubrinic <krunoslav.zubrinic@vip.hr>, June 2003.
+ * Feel free to use this script under the terms of the GNU Lesser General
+ * Public License, as long as you do not remove or alter this notice.
+ */
 Calendar._DN = new Array
 ("Nedjelja",
- "Ponedjeljak",
- "Utorak",
- "Srijeda",
- "Četvrtak",
- "Petak",
- "Subota",
- "Nedjelja");
+    "Ponedjeljak",
+    "Utorak",
+    "Srijeda",
+    "Četvrtak",
+    "Petak",
+    "Subota",
+    "Nedjelja");
 Calendar._MN = new Array
 ("Siječanj",
- "Veljača",
- "Ožujak",
- "Travanj",
- "Svibanj",
- "Lipanj",
- "Srpanj",
- "Kolovoz",
- "Rujan",
- "Listopad",
- "Studeni",
- "Prosinac");
+    "Veljača",
+    "Ožujak",
+    "Travanj",
+    "Svibanj",
+    "Lipanj",
+    "Srpanj",
+    "Kolovoz",
+    "Rujan",
+    "Listopad",
+    "Studeni",
+    "Prosinac");
 
 // tooltips
 Calendar._TT = {};

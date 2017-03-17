@@ -30,6 +30,7 @@ class Text_Diff_Renderer
 
     /**
      * Constructor.
+     * @param array $params
      */
     public function __construct($params = array())
     {
@@ -87,7 +88,7 @@ class Text_Diff_Renderer
                             $block[] = new Text_Diff_Op_copy($context);
                         }
                         $output .= $this->_block($x0, $ntrail + $xi - $x0, $y0, $ntrail + $yi - $y0, $block);
-                        $block = false;
+                        $block  = false;
                     }
                 }
                 $context = $edit->orig;
@@ -119,6 +120,14 @@ class Text_Diff_Renderer
         return $output . $this->_endDiff();
     }
 
+    /**
+     * @param $xbeg
+     * @param $xlen
+     * @param $ybeg
+     * @param $ylen
+     * @param $edits
+     * @return string
+     */
     public function _block($xbeg, $xlen, $ybeg, $ylen, &$edits)
     {
         $output = $this->_startBlock($this->_blockHeader($xbeg, $xlen, $ybeg, $ylen));
@@ -146,16 +155,29 @@ class Text_Diff_Renderer
         return $output . $this->_endBlock();
     }
 
+    /**
+     * @return string
+     */
     public function _startDiff()
     {
         return '';
     }
 
+    /**
+     * @return string
+     */
     public function _endDiff()
     {
         return '';
     }
 
+    /**
+     * @param $xbeg
+     * @param $xlen
+     * @param $ybeg
+     * @param $ylen
+     * @return string
+     */
     public function _blockHeader($xbeg, $xlen, $ybeg, $ylen)
     {
         if ($xlen > 1) {
@@ -168,36 +190,65 @@ class Text_Diff_Renderer
         return $xbeg . ($xlen ? ($ylen ? 'c' : 'd') : 'a') . $ybeg;
     }
 
+    /**
+     * @param $header
+     * @return string
+     */
     public function _startBlock($header)
     {
         return $header . "\n";
     }
 
+    /**
+     * @return string
+     */
     public function _endBlock()
     {
         return '';
     }
 
+    /**
+     * @param         $lines
+     * @param  string $prefix
+     * @return string
+     */
     public function _lines($lines, $prefix = ' ')
     {
         return $prefix . implode("\n$prefix", $lines) . "\n";
     }
 
+    /**
+     * @param $lines
+     * @return string
+     */
     public function _context($lines)
     {
         return $this->_lines($lines);
     }
 
+    /**
+     * @param $lines
+     * @return string
+     */
     public function _added($lines)
     {
         return $this->_lines($lines, '>');
     }
 
+    /**
+     * @param $lines
+     * @return string
+     */
     public function _deleted($lines)
     {
         return $this->_lines($lines, '<');
     }
 
+    /**
+     * @param $orig
+     * @param $final
+     * @return string
+     */
     public function _changed($orig, $final)
     {
         return $this->_deleted($orig) . "---\n" . $this->_added($final);

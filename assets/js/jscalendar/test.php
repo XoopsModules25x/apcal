@@ -23,7 +23,7 @@ setcookie('lang', $lang);
     // "calendar.php" -- I think it's best if you leave it inside the
     // "/jscalendar/" directory.  Just put here the correct path to it, such as
     // "../jscalendar/calendar.php" or something.
-    require_once('calendar.php');
+    require_once __DIR__ . '/calendar.php';
 
     // parameters to constructor:
     //     1. the absolute URL path to the calendar files
@@ -44,19 +44,18 @@ setcookie('lang', $lang);
 <body>
 
 <?php if ($_REQUEST['submitted']) {
-    ?>
+        ?>
 
     <h1>Form submitted</h1>
 
     <?php foreach ($_REQUEST as $key => $val) {
-        echo htmlspecialchars($key) . ' = ' . htmlspecialchars($val) . '<br />';
-    }
-    ?>
+            echo htmlspecialchars($key) . ' = ' . htmlspecialchars($val) . '<br>';
+        } ?>
 
     <?php
 
-} else {
-    ?>
+    } else {
+        ?>
 
     <h1>Calendar.php test</h1>
 
@@ -64,23 +63,22 @@ setcookie('lang', $lang);
         Select language: <select name="lang" onchange="this.form.submit()">
             <?php
             $cwd = getcwd();
-            chdir('lang');
-            foreach (glob('*.js') as $filename) {
-                $l        = preg_replace('/(^calendar-|.js$)/', '', $filename);
-                $selected = '';
-                if ($l == $lang) {
-                    $selected = 'selected="selected" ';
-                }
-                $display = $l;
-                if ($l == 'en') {
-                    $display = 'EN';
-                }
-                echo '<option ' . $selected . 'value="' . $l . '">' . $display . '</option>';
+        chdir('lang');
+        foreach (glob('*.js') as $filename) {
+            $l        = preg_replace('/(^calendar-|.js$)/', '', $filename);
+            $selected = '';
+            if ($l == $lang) {
+                $selected = 'selected ';
             }
-            ?>
+            $display = $l;
+            if ($l == 'en') {
+                $display = 'EN';
+            }
+            echo '<option ' . $selected . 'value="' . $l . '">' . $display . '</option>';
+        } ?>
         </select>
-        <blockquote style="font-size: 90%">
-            <b>NOTE</b>: as of this release, 0.9.6, only "EN" and "RO", which I
+        <blockquote style="font-size: 90%;">
+            <span style="font-weight: bold;">NOTE</span>: as of this release, 0.9.6, only "EN" and "RO", which I
             maintain, function correctly. Other language files do not work
             because they need to be updated. If you update some language file,
             please consider sending it back to me so that I can include it in the
@@ -103,12 +101,13 @@ setcookie('lang', $lang);
                             'showsTime'  => true,
                             'showOthers' => true,
                             'ifFormat'   => '%Y-%m-%d %I:%M %P',
-                            'timeFormat' => '12'), // field attributes go here
+                            'timeFormat' => '12'
+                        ), // field attributes go here
                         array(
                             'style' => 'width: 15em; color: #840; background-color: #ff8; border: 1px solid #000; text-align: center',
                             'name'  => 'date1',
-                            'value' => strftime('%Y-%m-%d %I:%M %P', strtotime('now'))));
-                    ?>
+                            'value' => strftime('%Y-%m-%d %I:%M %P', time())
+                        )); ?>
                 </td>
             </tr>
         </table>
@@ -120,7 +119,7 @@ setcookie('lang', $lang);
 
     <?php
 
-} ?>
+    } ?>
 
 </body>
 </html>

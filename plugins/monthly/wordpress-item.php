@@ -1,39 +1,24 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
- * @copyright   {@link http://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link http://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.gnu.org/licenses/gpl-2.0.html GNU GPL 2 or later}
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
  * @author      A plugin for wordpress ME by nobunobu
  */
 
-if (!defined('XOOPS_ROOT_PATH')) {
-    exit;
-}
+defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 /*
     $db : db instance
@@ -61,7 +46,9 @@ $range_start_s = mktime(0, 0, 0, $this->month, 0, $this->year);
 $range_end_s   = mktime(0, 0, 0, $this->month + 1, 1, $this->year);
 
 // query (added 86400 second margin "begin" & "end")
-$result = $db->query('SELECT post_title,ID,UNIX_TIMESTAMP(post_date) FROM ' . $db->prefix("wp{$mydirnumber}_posts") . " WHERE UNIX_TIMESTAMP(post_date) >= $range_start_s AND UNIX_TIMESTAMP(post_date) < $range_end_s AND post_status='publish'");
+$result = $db->query('SELECT post_title,ID,UNIX_TIMESTAMP(post_date) FROM '
+                     . $db->prefix("wp{$mydirnumber}_posts")
+                     . " WHERE UNIX_TIMESTAMP(post_date) >= $range_start_s AND UNIX_TIMESTAMP(post_date) < $range_end_s AND post_status='publish'");
 
 while (list($title, $id, $server_time) = $db->fetchRow($result)) {
     $user_time = $server_time + $tzoffset_s2u;
@@ -77,7 +64,8 @@ while (list($title, $id, $server_time) = $db->fetchRow($result)) {
         'server_time' => $server_time,
         'user_time'   => $user_time,
         'name'        => 'p',
-        'title'       => $myts->htmlSpecialChars($title));
+        'title'       => $myts->htmlSpecialChars($title)
+    );
     if ($just1gif) {
         // just 1 gif per a plugin & per a day
         $plugin_returns[$target_date][$plugin['dirname']] = $tmp_array;

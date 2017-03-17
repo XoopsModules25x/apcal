@@ -1,5 +1,37 @@
-CHANGELOG: APCal 
+CHANGELOG: APCal
 Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
+
+2.22 Beta 2  NOT RELEASED
+---------------------------------------
+- XOOPS 2.5.9, PHP 7.1 (mamba)
+- removed @version (mamba)
+- PSR-2 code cosmetics (mamba)
+- addNavigation(basename(__FILE__))  (mamba)
+- dirname(__FILE__) to __DIR__ (mamba)
+- replaced < br /> with < br > (mamba)
+- Unnecessary double quotes (mamba)
+- reference mismatch (mamba)
+- Hardening to type safe (mamba)
+- changed _handler to Handler (mamba)
+- update Help (mamba)
+- removed '/' from void HTML elements (&lt;br&gt;, &lt;img&gt;, etc) (mamba)
+- HTML 5: removed 'selected' and 'checked' (mamba)
+- updated file headers for consistency (mamba)
+- CSS3 and HTML5 updates (mamba)
+- renamed several $indexAdmin with $adminObject for consistency (mamba)
+- MySQL commands conversion to $xoopsDB (mamba)
+- key_exists to array_key_exists (mamba)
+- Short syntax for applied operation (mamba)
+- improved 'salt' in gticket.php (mamba)
+- changed while(list) to foreach (mamba)
+- changed $k < count($matches[0]) to $kMax = count($matches[0]); $k < $kMax; (mamba)
+- updated 'require' and 'include_once' to 'require_once' (mamba)
+- updated PHP4 constructors (mamba)
+- added PhpDocs headers (mamba)
+- started conversion to XMF (mamba)
+    - updated addInfoBoxLine entries (mamba)
+    - displayNavigation(basename(__FILE__))  (mamba)
+    - changed to ->displayButton('left') (mamba)
 
 2.22 Beta 1  2016-03-30
 ---------------------------------------
@@ -38,7 +70,7 @@ Version 2.1.1
 Version 2.1.0
 ---------------------------------------
 - Added   Online registration feature with option to turn it on/off. (Uers can subscribe to an event and receive notifications for it) (Thanks to Goffy)
-- Updated New way to make thumbs for better support on every servers. (Needs GD library)  
+- Updated New way to make thumbs for better support on every servers. (Needs GD library)
 - Updated When you save an event, the redirection is where you were before (Instead of current month)
 - Fixed   Links on events in the map for Yearly view and List view
 - Fixed   Some minor bug fixes
@@ -70,7 +102,7 @@ Version 2.0.0
 - Added   Optional main picture display in Monthly View (on mouse over), List View, Daily View and Weekly View.
 - Added   Each category have its own color.
 - Added   Legend of categories with categories colors.
-- Added   Possibility to choose which category to be used for an event (as we keep multi-category feature).  
+- Added   Possibility to choose which category to be used for an event (as we keep multi-category feature).
 - Added   Possibility to choose different hours for the same event (if multiple days are selected).
 - Updated More neutral theme colors for images, should be a better fit with most website.
 - Updated Reorganisation of admin preferences.

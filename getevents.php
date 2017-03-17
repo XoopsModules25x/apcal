@@ -1,37 +1,24 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      Antiques Promotion (http://www.antiquespromotion.ca)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
-require_once dirname(dirname(__DIR__)) . '/mainfile.php';
+require_once __DIR__ . '/../../mainfile.php';
 
 $xoopsErrorHandler->activated = false;
 error_reporting(E_NONE);
@@ -54,13 +41,38 @@ while ($row = $GLOBALS['xoopsDB']->fetchArray($result)) {
     $row['start']   = $startD . ' ' . htmlentities($startM, ENT_QUOTES, 'UTF-8');
     $row['end']     = $endD . ' ' . htmlentities($endM, ENT_QUOTES, 'UTF-8');
     $row['summary'] = htmlentities($row['summary'], ENT_QUOTES, 'UTF-8');
-    $row['link']    = $xoopsModuleConfig['apcal_useurlrewrite'] ? XOOPS_URL . '/modules/APCal/' . $row['shortsummary'] . '-' . date('j-n-Y', $start) : XOOPS_URL . '/modules/APCal/?event_id=' . $row['id'];
+    $row['link']    = $xoopsModuleConfig['apcal_useurlrewrite'] ? XOOPS_URL . '/modules/apcal/' . $row['shortsummary'] . '-' . date('j-n-Y', $start) : XOOPS_URL
+                                                                                                                                                       . '/modules/apcal/?event_id='
+                                                                                                                                                       . $row['id'];
     $array[]        = $row;
 }
-$c = $_GET['c'] > 0 ? htmlentities($GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->queryF("SELECT cat_title FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$_GET['c']} LIMIT 0,1"))->cat_title, ENT_QUOTES, 'UTF-8') : '';
-$l = '</dl><div class="APfooter">' . _APCAL_PROVIDEDBY . ' <a href="' . XOOPS_URL . '" title="' . htmlentities($xoopsConfig['sitename'], ENT_QUOTES, 'UTF-8') . '" target="_blank">' . htmlentities($xoopsConfig['sitename'], ENT_QUOTES, 'UTF-8') . '</a><br /><a href="' . _APCAL_APURL . '" title="' . _APCAL_AP . '" target="_blank">APCal</a> ' . _APCAL_X . ' <a href="' . _APCAL_APURL2 . '" title="' . _APCAL_AP . '" target="_blank">AP</a></div>';
+$c = $_GET['c']
+     > 0 ? htmlentities($GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->queryF("SELECT cat_title FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$_GET['c']} LIMIT 0,1"))->cat_title,
+                        ENT_QUOTES, 'UTF-8') : '';
+$l = '</dl><div class="APfooter">'
+     . _APCAL_PROVIDEDBY
+     . ' <a href="'
+     . XOOPS_URL
+     . '" title="'
+     . htmlentities($xoopsConfig['sitename'], ENT_QUOTES, 'UTF-8')
+     . '" target="_blank">'
+     . htmlentities($xoopsConfig['sitename'], ENT_QUOTES, 'UTF-8')
+     . '</a><br><a href="'
+     . _APCAL_APURL
+     . '" title="'
+     . _APCAL_AP
+     . '" target="_blank">APCal</a> '
+     . _APCAL_X
+     . ' <a href="'
+     . _APCAL_APURL2
+     . '" title="'
+     . _APCAL_AP
+     . '" target="_blank">AP</a></div>';
 echo check() ? json_encode(array($array, $l, '<div class="APtitle">' . $c . '</div>')) : '';
 
+/**
+ * Class apcal_locale
+ */
 class apcal_locale
 {
     public $hour_names_24;
@@ -78,17 +90,18 @@ class apcal_locale
     public $byday2langday_w;
     public $byday2langday_m;
 
+    /**
+     * apcal_locale constructor.
+     */
     public function __construct()
     {
-        include XOOPS_ROOT_PATH . '/modules/APCal/language/' . $GLOBALS['xoopsConfig']['language'] . '/apcal_vars.phtml';
-    }
-
-    public function apcal_locale()
-    {
-        self::__construct();
+        include XOOPS_ROOT_PATH . '/modules/apcal/language/' . $GLOBALS['xoopsConfig']['language'] . '/apcal_vars.phtml';
     }
 }
 
+/**
+ * @return int
+ */
 function check()
 {
     global $l;

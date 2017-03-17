@@ -1,38 +1,25 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
  * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-require(dirname(dirname(__DIR__)) . '/mainfile.php');
-require_once(XOOPS_ROOT_PATH . '/class/template.php');
+require_once __DIR__ . '/../../mainfile.php';
+require_once XOOPS_ROOT_PATH . '/class/template.php';
 
 error_reporting(0);
 $xoopsLogger->activated = false;
@@ -52,8 +39,8 @@ $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
 
 // ���饹������ɤ߹���
 if (!class_exists('APCal_xoops')) {
-    require_once("$mod_path/class/APCal.php");
-    require_once("$mod_path/class/APCal_xoops.php");
+    require_once "$mod_path/class/APCal.php";
+    require_once "$mod_path/class/APCal_xoops.php";
 }
 
 // creating an instance of APCal
@@ -61,7 +48,7 @@ $cal = new APCal_xoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
-include("$mod_path/include/read_configs.php");
+include "$mod_path/include/read_configs.php";
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -69,11 +56,11 @@ $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
 // Include our module's language file
 if (file_exists(XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/main.php')) {
-    require_once(XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/main.php');
-    require_once(XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/modinfo.php');
+    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/main.php';
+    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/' . $xoopsConfig['language'] . '/modinfo.php';
 } else {
-    require_once(XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/english/main.php');
-    require_once(XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/english/modinfo.php');
+    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/english/main.php';
+    require_once XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/language/english/modinfo.php';
 }
 
 $myts = MyTextSanitizer::getInstance();
@@ -97,29 +84,29 @@ if (!empty($_GET['event_id'])) {
     $tpl->assign('contents', $cal->get_schedule_view_html(true));
 } else {
     switch ($_GET['smode']) {
-        case 'Yearly' :
+        case 'Yearly':
             $tpl->assign('for_event_list', false);
             $tpl->assign('contents', $cal->get_yearly('', '', true));
             break;
-        case 'Weekly' :
+        case 'Weekly':
             $tpl->assign('for_event_list', false);
             $tpl->assign('contents', $cal->get_weekly('', '', true));
             break;
-        case 'Daily' :
+        case 'Daily':
             $tpl->assign('for_event_list', false);
             $tpl->assign('contents', $cal->get_daily('', '', true));
             break;
-        case 'List' :
+        case 'List':
             $tpl->assign('for_event_list', true);
             $cal->assign_event_list($tpl);
             break;
-        case 'Monthly' :
-        default :
+        case 'Monthly':
+        default:
             $tpl->assign('for_event_list', false);
             $tpl->assign('contents', $cal->get_monthly('', '', true));
             break;
     }
 }
 
-echo '<link rel="stylesheet" type="text/css" href="' . XOOPS_URL . '/modules/APCal/assets/css/apcal.css" />';
+echo '<link rel="stylesheet" type="text/css" href="' . XOOPS_URL . '/modules/apcal/assets/css/apcal.css" />';
 $tpl->display('db:apcal_print.tpl');

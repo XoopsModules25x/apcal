@@ -1,74 +1,71 @@
 <{*
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
- * @copyright   XOOPS Project (http://xoops.org)
- * @license     http://www.fsf.org/copyleft/gpl.html GNU public license
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @copyright    {@link http://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.gnu.org/licenses/gpl-2.0.html GNU GPL 2 or later}
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
  *}>
 
 <{if $block.num_rows == 0}>
-  <{$block.lang_APCAL_MB_APCALNOEVENT}>
+    <{$block.lang_APCAL_MB_APCALNOEVENT}>
 <{/if}>
 
 <dl>
-  <{foreach item=event from=$block.events}>
+    <{foreach item=event from=$block.events}>
 
-    <{if $event.allday == 0}>
-
-      <dt>
-        <{if $event.is_start_date == true}>
-          <font size='2'><img border='0' src='<{$block.images_url}>/<{$event.dot_gif}>' />&nbsp;&nbsp;<{$event.start_desc}> - <{$event.end_desc}></font>
+        <{if $event.allday == 0}>
+            <dt>
+                <{if $event.is_start_date == true}>
+                    <span style='font-size: x-small; '><img border='0'
+                                        src='<{$block.images_url}>/<{$event.dot_gif}>'/>&nbsp;&nbsp;<{$event.start_desc}>
+                        - <{$event.end_desc}></span>
+                <{else}>
+                    <span style='font-size: x-small; '><img border='0'
+                                        src='<{$block.images_url}>/<{$event.dot_gif}>'/>&nbsp;&nbsp;<{$block.lang_APCAL_MB_APCALCONTINUING}>
+                        - <{$event.end_desc}></span>
+                <{/if}>
+            </dt>
+            <dd style='margin-left:20px;'>
+                <span style='font-size: x-small; '><a
+                            href='<{$block.get_target}>?smode=Daily&amp;action=View&amp;event_id=<{$event.id}>&amp;caldate=<{$block.caldate}>'
+                            class='calsummary'><{$event.summary}></a></span>
+            </dd>
         <{else}>
-           <font size='2'><img border='0' src='<{$block.images_url}>/<{$event.dot_gif}>' />&nbsp;&nbsp;<{$block.lang_APCAL_MB_APCALCONTINUING}> - <{$event.end_desc}></font>
+            <dt>
+                <span style='font-size: x-small; '><img border='0'
+                                    src='<{$block.images_url}>/<{$event.dot_gif}>'/>&nbsp;&nbsp;<{$block.lang_APCAL_MB_APCALALLDAY_EVENT}>
+                </span>
+            </dt>
+            <dd style='margin-left:20px;'>
+                <a href='<{$block.get_target}>?smode=Daily&amp;action=View&amp;event_id=<{$event.id}>&amp;caldate=<{$block.caldate}>'
+                   class='calsummary_allday'><{$event.summary}></a>
+            </dd>
         <{/if}>
-      </dt>
-      <dd style='margin-left:20px;'>
-        <font size='2'><a href='<{$block.get_target}>?smode=Daily&amp;action=View&amp;event_id=<{$event.id}>&amp;caldate=<{$block.caldate}>' class='calsummary'><{$event.summary}></a></font>
-      </dd>
 
-    <{else}>
-
-      <dt>
-        <font size='2'><img border='0' src='<{$block.images_url}>/<{$event.dot_gif}>' />&nbsp;&nbsp;<{$block.lang_APCAL_MB_APCALALLDAY_EVENT}></font>
-      </dt>
-      <dd style='margin-left:20px;'>
-        <a href='<{$block.get_target}>?smode=Daily&amp;action=View&amp;event_id=<{$event.id}>&amp;caldate=<{$block.caldate}>' class='calsummary_allday'><{$event.summary}></a>
-      </dd>
-    <{/if}>
-
-  <{/foreach}>
+    <{/foreach}>
 
 </dl>
 
-  <{if $block.insertable <> false}>
+<{if $block.insertable <> false}>
     <dl>
-      <dt>
-        &nbsp; <font size='2'><a href='<{$block.get_target}>?smode=Daily&amp;action=Edit&amp;caldate=<{$block.caldate}>'><img src='<{$block.images_url}>/addevent.gif' border='0' width='14' height='12' /><{$block.lang_APCAL_MB_APCALADDEVENT}></a></font>
-      </dt>
+        <dt>
+            &nbsp; <span style='font-size: x-small; '><a
+                        href='<{$block.get_target}>?smode=Daily&amp;action=Edit&amp;caldate=<{$block.caldate}>'><img
+                            src='<{$block.images_url}>/addevent.gif' border='0' width='14'
+                            height='12'/><{$block.lang_APCAL_MB_APCALADDEVENT}></a></span>
+        </dt>
     </dl>
-  <{/if}>
+<{/if}>

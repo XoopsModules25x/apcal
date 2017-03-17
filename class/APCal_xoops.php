@@ -1,40 +1,34 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      Antiques Promotion (http://www.antiquespromotion.ca)
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
 if (!class_exists('APCal_xoops')) {
+    /**
+     * Class APCal_xoops
+     */
     class APCal_xoops extends APCal
     {
+        /**
+         * @param $data
+         * @return mixed
+         */
         public function textarea_sanitizer_for_sql($data)
         {
             //  preventing double-addslashes()
@@ -43,6 +37,10 @@ if (!class_exists('APCal_xoops')) {
             return $data;
         }
 
+        /**
+         * @param $data
+         * @return mixed
+         */
         public function textarea_sanitizer_for_show($data)
         {
             $myts = MyTextSanitizer::getInstance();
@@ -50,6 +48,10 @@ if (!class_exists('APCal_xoops')) {
             return $myts->displayTarea($data);
         }
 
+        /**
+         * @param $data
+         * @return mixed
+         */
         public function textarea_sanitizer_for_edit($data)
         {
             $myts = MyTextSanitizer::getInstance();
@@ -57,6 +59,10 @@ if (!class_exists('APCal_xoops')) {
             return $myts->makeTareaData4Edit($data);
         }
 
+        /**
+         * @param $data
+         * @return mixed
+         */
         public function textarea_sanitizer_for_export_ics($data)
         {
             $myts = MyTextSanitizer::getInstance();
@@ -64,6 +70,10 @@ if (!class_exists('APCal_xoops')) {
             return $myts->displayTarea($data);
         }
 
+        /**
+         * @param $data
+         * @return mixed
+         */
         public function text_sanitizer_for_show($data)
         {
             $myts = MyTextSanitizer::getInstance();
@@ -71,6 +81,10 @@ if (!class_exists('APCal_xoops')) {
             return $myts->htmlSpecialChars($data);
         }
 
+        /**
+         * @param $data
+         * @return mixed
+         */
         public function text_sanitizer_for_edit($data)
         {
             $myts = MyTextSanitizer::getInstance();
@@ -78,14 +92,20 @@ if (!class_exists('APCal_xoops')) {
             return $myts->makeTboxData4Edit($data);
         }
 
+        /**
+         * @param         $name
+         * @param         $ymd
+         * @param  string $long_ymdn
+         * @return string
+         */
         public function get_formtextdateselect($name, $ymd, $long_ymdn = '')
         {
-            include_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
+            require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
             // day of week starting
             $first_day = $this->week_start ? 1 : 0;
 
-            if ($this->jscalendar == 'xoops') {
+            if ($this->jscalendar === 'xoops') {
                 $jstime = formatTimestamp($this->unixtime, 'F j Y, H:i:s');
 
                 if ($this->week_start) {
@@ -143,6 +163,10 @@ if (!class_exists('APCal_xoops')) {
             }
         }
 
+        /**
+         * @param $uid
+         * @return string
+         */
         public function get_submitter_info($uid)
         {
             if ($uid <= 0) {
@@ -156,7 +180,7 @@ if (!class_exists('APCal_xoops')) {
                 return '';
             }
 
-            if ($this->nameoruname == 'uname') {
+            if ($this->nameoruname === 'uname') {
                 $name = $poster->uname();
             } else {
                 $name = trim($poster->name());
@@ -169,6 +193,15 @@ if (!class_exists('APCal_xoops')) {
         }
 
         // XOOPS���?�Х븡�����
+
+        /**
+         * @param $keywords
+         * @param $andor
+         * @param $limit
+         * @param $offset
+         * @param $uid
+         * @return array
+         */
         public function get_xoops_search_result($keywords, $andor, $limit, $offset, $uid)
         {
             // �����׻�
@@ -183,21 +216,21 @@ if (!class_exists('APCal_xoops')) {
             // ʸ�������
             if (!empty($keywords)) {
                 switch (strtolower($andor)) {
-                    case 'and' :
+                    case 'and':
                         $whr_text = '';
                         foreach ($keywords as $keyword) {
                             $whr_text .= "CONCAT(summary,' ',description) LIKE '%$keyword%' AND ";
                         }
                         $whr_text = substr($whr_text, 0, -5);
                         break;
-                    case 'or' :
+                    case 'or':
                         $whr_text = '';
                         foreach ($keywords as $keyword) {
                             $whr_text .= "CONCAT(summary,' ',description) LIKE '%$keyword%' OR ";
                         }
                         $whr_text = substr($whr_text, 0, -4);
                         break;
-                    default :
+                    default:
                         $whr_text = "CONCAT(summary,'  ',description) LIKE '%{$keywords[0]}%'";
                         break;
                 }
@@ -258,7 +291,8 @@ if (!class_exists('APCal_xoops')) {
                     'title'   => "[$date_desc] $event->summary",
                     'time'    => $event->udtstamp,
                     'uid'     => $uid,
-                    'context' => $context);
+                    'context' => $context
+                );
             }
 
             return $ret;
@@ -266,6 +300,10 @@ if (!class_exists('APCal_xoops')) {
 
         // Notifications
         // triggerEvent ���Ϥ�URI�ϡ�& �Ƕ��ڤ� (&amp; �ǤϤʤ�)
+        /**
+         * @param $event_id
+         * @return bool
+         */
         public function notify_new_event($event_id)
         {
             $rs    = $GLOBALS['xoopsDB']->query("SELECT summary,admission,categories,class,uid,groupid FROM $this->table WHERE id='$event_id'");
@@ -277,10 +315,10 @@ if (!class_exists('APCal_xoops')) {
             }
 
             // Private events
-            if ($event->class == 'PRIVATE') {
+            if ($event->class === 'PRIVATE') {
                 if ($event->groupid > 0) {
-                    $member_handler = xoops_getHandler('member');
-                    $user_list      = $member_handler->getUsersByGroup($event->groupid);
+                    $memberHandler = xoops_getHandler('member');
+                    $user_list      = $memberHandler->getUsersByGroup($event->groupid);
                 } else {
                     $user_list = array($event->uid);
                 }
@@ -288,20 +326,24 @@ if (!class_exists('APCal_xoops')) {
                 $user_list = array();
             }
 
-            $notification_handler = xoops_getHandler('notification');
+            $notificationHandler = xoops_getHandler('notification');
 
             // �����٥�Ȥ���Ͽ�������ƥ��꡼�ˤΥȥꥬ��
-            $notification_handler->triggerEvent('global', 0, 'new_event', array('EVENT_SUMMARY' => $event->summary, 'EVENT_URI' => "$this->base_url/index.php?action=View&event_id=$event_id"), $user_list, null, 0);
+            $notificationHandler->triggerEvent('global', 0, 'new_event', array(
+                'EVENT_SUMMARY' => $event->summary,
+                'EVENT_URI'     => "$this->base_url/index.php?action=View&event_id=$event_id"
+            ), $user_list, null, 0);
 
             // �����٥�Ȥ���Ͽ�ʥ��ƥ��꡼��ˤΥȥꥬ��
             $cids = explode(',', $event->categories);
             foreach ($cids as $cid) {
                 $cid = (int)$cid;
                 if (isset($this->categories[$cid])) {
-                    $notification_handler->triggerEvent('category', $cid, 'new_event', array(
+                    $notificationHandler->triggerEvent('category', $cid, 'new_event', array(
                         'EVENT_SUMMARY'  => $event->summary,
                         'CATEGORY_TITLE' => $this->text_sanitizer_for_show($this->categories[$cid]->cat_title),
-                        'EVENT_URI'      => "$this->base_url/index.php?smode=List&cid=$cid"), $user_list, null, 0);
+                        'EVENT_URI'      => "$this->base_url/index.php?smode=List&cid=$cid"
+                    ), $user_list, null, 0);
                 }
             }
 
@@ -309,6 +351,11 @@ if (!class_exists('APCal_xoops')) {
         }
 
         // $this->caldate���ͽ��֥�å�������֤�
+
+        /**
+         * @param  string $get_target
+         * @return array
+         */
         public function get_blockarray_date_event($get_target = '')
         {
             // if( $get_target == '' ) $get_target = $_SERVER['SCRIPT_NAME'] ;
@@ -338,7 +385,8 @@ if (!class_exists('APCal_xoops')) {
                 'lang_APCAL_MB_APCALCONTINUING'   => _APCAL_MB_APCALCONTINUING,
                 'lang_APCAL_MB_APCALNOEVENT'      => _APCAL_MB_APCALNOEVENT,
                 'lang_APCAL_MB_APCALADDEVENT'     => _APCAL_MB_APCALADDEVENT,
-                'lang_APCAL_MB_APCALALLDAY_EVENT' => _APCAL_MB_APCALALLDAY_EVENT);
+                'lang_APCAL_MB_APCALALLDAY_EVENT' => _APCAL_MB_APCALALLDAY_EVENT
+            );
 
             while ($event = $GLOBALS['xoopsDB']->fetchObject($yrs)) {
                 if (!$event->allday) {
@@ -389,7 +437,8 @@ if (!class_exists('APCal_xoops')) {
                         'uid'           => $event->uid,
                         'dot_gif'       => $dot,
                         'is_start_date' => $event->is_start_date,
-                        'is_end_date'   => $event->is_end_date);
+                        'is_end_date'   => $event->is_end_date
+                    );
                 } else {
                     // ����٥�Ȥ����󥻥å�
                     $block['events'][] = array(
@@ -404,7 +453,8 @@ if (!class_exists('APCal_xoops')) {
                         'uid'           => $event->uid,
                         'dot_gif'       => 'dot_allday.gif',
                         'is_start_date' => $event->is_start_date,
-                        'is_end_date'   => $event->is_end_date);
+                        'is_end_date'   => $event->is_end_date
+                    );
                 }
             }
 
@@ -412,6 +462,14 @@ if (!class_exists('APCal_xoops')) {
         }
 
         // $this->caldate�ʹߤ�ͽ��֥�å�������֤�
+
+        /**
+         * @param  string $get_target
+         * @param  int    $num
+         * @param  bool   $for_coming
+         * @param  int    $untildays
+         * @return array
+         */
         public function get_blockarray_coming_event($get_target = '', $num = 5, $for_coming = false, $untildays = 0)
         {
             // if( $get_target == '' ) $get_target = $_SERVER['SCRIPT_NAME'] ;
@@ -437,20 +495,17 @@ if (!class_exists('APCal_xoops')) {
             $whr_class = $this->get_where_about_class();
 
             // ����μ���
-//            $yrs      = $xoopsDB->query("SELECT COUNT(*) FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class)");
-//            $num_rows = mysql_result($yrs, 0, 0);
-//            $yrs = $xoopsDB->query("SELECT start,end,summary,id,uid,allday,location,contact,description,mainCategory FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start LIMIT $num");
+            //            $yrs      = $xoopsDB->query("SELECT COUNT(*) FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class)");
+            //            $num_rows = mysql_result($yrs, 0, 0);
+            //            $yrs = $xoopsDB->query("SELECT start,end,summary,id,uid,allday,location,contact,description,mainCategory FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start LIMIT $num");
 
-
-            $yrs        = $GLOBALS['xoopsDB']->query("SELECT COUNT(*) FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class)");
+            $yrs       = $GLOBALS['xoopsDB']->query("SELECT COUNT(*) FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class)");
             $numrows   = 0;
             $resultRow = $GLOBALS['xoopsDB']->fetchRow($yrs);
             if (false !== $resultRow && isset($resultRow[$field])) {
                 $numrows = $resultRow[0];
             }
             $yrs = $GLOBALS['xoopsDB']->query("SELECT start,end,summary,id,uid,allday,location,contact,description,mainCategory FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start LIMIT $num");
-            
-            
 
             $block = array(
                 'insertable'                       => $this->insertable,
@@ -463,10 +518,11 @@ if (!class_exists('APCal_xoops')) {
                 'lang_APCAL_MB_APCALADDEVENT'      => _APCAL_MB_APCALADDEVENT,
                 'lang_APCAL_MB_APCALRESTEVENT_PRE' => _APCAL_MB_APCALRESTEVENT_PRE,
                 'lang_APCAL_MB_APCALRESTEVENT_SUF' => _APCAL_MB_APCALRESTEVENT_SUF,
-                'lang_APCAL_MB_APCALALLDAY_EVENT'  => _APCAL_MB_APCALALLDAY_EVENT);
+                'lang_APCAL_MB_APCALALLDAY_EVENT'  => _APCAL_MB_APCALALLDAY_EVENT
+            );
 
             $count = 0;
-//            while ($event = $xoopsDB->fetchObject($yrs)) {
+            //            while ($event = $xoopsDB->fetchObject($yrs)) {
             while ($event = $GLOBALS['xoopsDB']->fetchObject($yrs)) {
                 if (++$count > $num) {
                     break;
@@ -557,7 +613,8 @@ if (!class_exists('APCal_xoops')) {
                     'distance'    => $distance,
                     'multiday'    => $multiday,
                     'picture'     => $pic ? $pic->picture : '',
-                    'mainCat'     => $cat ? htmlentities($cat->cat_title, ENT_QUOTES, 'UTF-8') : '');
+                    'mainCat'     => $cat ? htmlentities($cat->cat_title, ENT_QUOTES, 'UTF-8') : ''
+                );
             }
 
             $block['num_rows_rest'] = $num_rows - $count;
@@ -566,6 +623,12 @@ if (!class_exists('APCal_xoops')) {
         }
 
         // ��������Ͽ���줿ͽ��֥�å�������֤�
+
+        /**
+         * @param  string $get_target
+         * @param  int    $num
+         * @return array
+         */
         public function get_blockarray_new_event($get_target = '', $num = 5)
         {
             // if( $get_target == '' ) $get_target = $_SERVER['SCRIPT_NAME'] ;
@@ -595,7 +658,8 @@ if (!class_exists('APCal_xoops')) {
                 'lang_APCAL_MB_APCALADDEVENT'      => _APCAL_MB_APCALADDEVENT,
                 'lang_APCAL_MB_APCALRESTEVENT_PRE' => _APCAL_MB_APCALRESTEVENT_PRE,
                 'lang_APCAL_MB_APCALRESTEVENT_SUF' => _APCAL_MB_APCALRESTEVENT_SUF,
-                'lang_APCAL_MB_APCALALLDAY_EVENT'  => _APCAL_MB_APCALALLDAY_EVENT);
+                'lang_APCAL_MB_APCALALLDAY_EVENT'  => _APCAL_MB_APCALALLDAY_EVENT
+            );
 
             $count = 0;
             while ($event = $GLOBALS['xoopsDB']->fetchObject($yrs)) {
@@ -630,7 +694,8 @@ if (!class_exists('APCal_xoops')) {
                     'date_desc'  => $date_desc,
                     'post_date'  => formatTimestamp($event->udtstamp),
                     'uid'        => $event->uid,
-                    'id'         => $event->id);
+                    'id'         => $event->id
+                );
             }
 
             $block['num_rows_rest'] = $num_rows - $count;
@@ -639,12 +704,18 @@ if (!class_exists('APCal_xoops')) {
         }
 
         // Get the events list view
+
+        /**
+         * @param         $tpl
+         * @param  string $get_target
+         * @return bool
+         */
         public function assign_event_list(&$tpl, $get_target = '')
         {
             $pos = isset($_GET['pos']) ? (int)$_GET['pos'] : 0;
             $num = isset($_GET['num']) ? (int)$_GET['num'] : 20;
 
-            $roimage = XOOPS_URL . '/modules/APCal/assets/images/regonline/regonline.png'; // added by goffy: image for online registration
+            $roimage = XOOPS_URL . '/modules/apcal/assets/images/regonline/regonline.png'; // added by goffy: image for online registration
 
             // �����Ƚ�
             $orders = array(
@@ -655,7 +726,8 @@ if (!class_exists('APCal_xoops')) {
                 'dtstamp'      => _APCAL_TH_LASTMODIFIED . ' ' . _APCAL_MB_APCALORDER_ASC,
                 'dtstamp DESC' => _APCAL_TH_LASTMODIFIED . ' ' . _APCAL_MB_APCALORDER_DESC,
                 'uid'          => _APCAL_TH_SUBMITTER . ' ' . _APCAL_MB_APCALORDER_ASC,
-                'uid DESC'     => _APCAL_TH_SUBMITTER . ' ' . _APCAL_MB_APCALORDER_DESC);
+                'uid DESC'     => _APCAL_TH_SUBMITTER . ' ' . _APCAL_MB_APCALORDER_DESC
+            );
             if (isset($_GET['order']) && isset($orders[$_GET['order']])) {
                 $order = $_GET['order'];
             } else {
@@ -665,7 +737,8 @@ if (!class_exists('APCal_xoops')) {
             // tzoffset
             $tzoffset = ($this->user_TZ - $this->server_TZ) * 3600;
 
-            $cat_desc = !empty($this->now_cid) && !empty($this->categories[$this->now_cid]) ? $this->textarea_sanitizer_for_show($this->categories[$this->now_cid]->cat_desc) : '';
+            $cat_desc = !empty($this->now_cid)
+                        && !empty($this->categories[$this->now_cid]) ? $this->textarea_sanitizer_for_show($this->categories[$this->now_cid]->cat_desc) : '';
 
             $whr_categories = $this->get_where_about_categories();
             $whr_class      = $this->get_where_about_class();
@@ -676,27 +749,33 @@ if (!class_exists('APCal_xoops')) {
                 'after'  => _APCAL_MB_APCALOP_AFTER,
                 'on'     => _APCAL_MB_APCALOP_ON,
                 'before' => _APCAL_MB_APCALOP_BEFORE,
-                'all'    => _APCAL_MB_APCALOP_ALL);
+                'all'    => _APCAL_MB_APCALOP_ALL
+            );
 
             $op             = empty($_GET['op']) ? '' : preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['op']);
             $tzoffset       = (int)(($this->user_TZ - $this->server_TZ) * 3600);
             $toptime_of_day = $this->unixtime + $this->day_start;
             switch ($op) {
-                case 'all' :
+                case 'all':
                     $whr_term = '1';
                     break;
-                case 'before' :
+                case 'before':
                     $whr_term = "(allday AND start<='$this->unixtime') || ( ! allday AND start<='" . ($toptime_of_day + 86400 - $tzoffset) . "')";
                     //$whr_term = "start<$this->unixtime" ;
                     break;
-                default :
-                case 'after' :
+                default:
+                case 'after':
                     $op       = 'after';
                     $whr_term = "(allday AND end>'$this->unixtime') || ( ! allday AND end>'" . ($toptime_of_day - $tzoffset) . "')";
                     //$whr_term = "end>$this->unixtime" ;
                     break;
-                case 'on' :
-                    $whr_term = "(allday AND start<='$this->unixtime' AND end>'$this->unixtime') || ( ! allday AND start<='" . ($toptime_of_day + 86400 - $tzoffset) . "' AND end>'" . ($toptime_of_day - $tzoffset) . "')";
+                case 'on':
+                    $whr_term = "(allday AND start<='$this->unixtime' AND end>'$this->unixtime') || ( ! allday AND start<='"
+                                . ($toptime_of_day + 86400 - $tzoffset)
+                                . "' AND end>'"
+                                . ($toptime_of_day
+                                   - $tzoffset)
+                                . "')";
                     break;
             }
 
@@ -704,7 +783,7 @@ if (!class_exists('APCal_xoops')) {
             $op_options = '';
             foreach ($ops as $op_id => $op_title) {
                 if ($op_id == $op) {
-                    $op_options .= "\t\t\t<option value='$op_id' selected='selected'>$op_title</option>\n";
+                    $op_options .= "\t\t\t<option value='$op_id' selected>$op_title</option>\n";
                 } else {
                     $op_options .= "\t\t\t<option value='$op_id'>$op_title</option>\n";
                 }
@@ -714,7 +793,7 @@ if (!class_exists('APCal_xoops')) {
             $year_options = '';
             for ($y = 2001; $y <= 2020; ++$y) {
                 if ($y == $this->year) {
-                    $year_options .= "\t\t\t<option value='$y' selected='selected'>" . sprintf(strip_tags(_APCAL_FMT_YEAR), $y) . "</option>\n";
+                    $year_options .= "\t\t\t<option value='$y' selected>" . sprintf(strip_tags(_APCAL_FMT_YEAR), $y) . "</option>\n";
                 } else {
                     $year_options .= "\t\t\t<option value='$y'>" . sprintf(strip_tags(_APCAL_FMT_YEAR), $y) . "</option>\n";
                 }
@@ -724,7 +803,7 @@ if (!class_exists('APCal_xoops')) {
             $month_options = '';
             for ($m = 1; $m <= 12; ++$m) {
                 if ($m == $this->month) {
-                    $month_options .= "\t\t\t<option value='$m' selected='selected'>{$this->month_short_names[$m]}</option>\n";
+                    $month_options .= "\t\t\t<option value='$m' selected>{$this->month_short_names[$m]}</option>\n";
                 } else {
                     $month_options .= "\t\t\t<option value='$m'>{$this->month_short_names[$m]}</option>\n";
                 }
@@ -734,13 +813,14 @@ if (!class_exists('APCal_xoops')) {
             $date_options = '';
             for ($d = 1; $d <= 31; ++$d) {
                 if ($d == $this->date) {
-                    $date_options .= "\t\t\t<option value='$d' selected='selected'>{$this->date_short_names[$d]}</option>\n";
+                    $date_options .= "\t\t\t<option value='$d' selected>{$this->date_short_names[$d]}</option>\n";
                 } else {
                     $date_options .= "\t\t\t<option value='$d'>{$this->date_short_names[$d]}</option>\n";
                 }
             }
 
-            $ymdo_selects = sprintf(_APCAL_FMT_YMDO, "<select name='apcal_year'>$year_options</select>", "<select name='apcal_month'>$month_options</select>", "<select name='apcal_date'>$date_options</select>", "<select name='op'>$op_options</select>");
+            $ymdo_selects = sprintf(_APCAL_FMT_YMDO, "<select name='apcal_year'>$year_options</select>", "<select name='apcal_month'>$month_options</select>",
+                                    "<select name='apcal_date'>$date_options</select>", "<select name='op'>$op_options</select>");
 
             // �쥳���ɿ��μ���
             $whr      = "($whr_term) AND ($whr_categories) AND ($whr_class)";
@@ -751,7 +831,7 @@ if (!class_exists('APCal_xoops')) {
             $yrs = $GLOBALS['xoopsDB']->query("SELECT *,UNIX_TIMESTAMP(dtstamp) AS udtstamp , start, end, allday, start_date, end_date, extkey0 FROM $this->table WHERE $whr ORDER BY $order LIMIT $pos,$num");
 
             // �ڡ���ʬ�����
-            include_once(XOOPS_ROOT_PATH . '/class/pagenav.php');
+            require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
             $nav      = new XoopsPageNav($num_rows, $num, $pos, 'pos', "smode=List&amp;cid=$this->now_cid&amp;num=$num&amp;order=$order&amp;op=$op&amp;caldate=$this->caldate");
             $nav_html = $nav->renderNav(10);
             if ($num_rows <= 0) {
@@ -779,7 +859,9 @@ if (!class_exists('APCal_xoops')) {
                              'op'                    => $op,
                              'order'                 => $order,
                              'user_can_output_ics'   => $this->can_output_ics,
-                             'print_link'            => "$this->base_url/print.php?cid=$this->now_cid&amp;smode=List&amp;num=$num&amp;pos=$pos&amp;order=" . urlencode($order) . "&amp;caldate=$this->caldate",
+                             'print_link'            => "$this->base_url/print.php?cid=$this->now_cid&amp;smode=List&amp;num=$num&amp;pos=$pos&amp;order="
+                                                        . urlencode($order)
+                                                        . "&amp;caldate=$this->caldate",
                              'apcal_copyright'       => _AM_APCAL_COPYRIGHT,
                              'ymdo_selects'          => $ymdo_selects,
                              'calhead_bgcolor'       => $this->calhead_bgcolor,
@@ -809,14 +891,23 @@ if (!class_exists('APCal_xoops')) {
                              'lang_lastmodified'     => _APCAL_TH_LASTMODIFIED,
                              'lang_cursortedby'      => _APCAL_MB_APCALCURSORTEDBY,
                              'lang_sortby'           => _APCAL_MB_APCALSORTBY,
-                             'ro_image'              => $roimage));
+                             'ro_image'              => $roimage
+                         ));
 
             // ���٥�ȥ�������롼��
             $count  = 0;
             $events = array();
             while ($event = $GLOBALS['xoopsDB']->fetchObject($yrs)) {
                 if ($event->gmlat > 0 || $event->gmlong > 0) {
-                    $this->gmPoints[] = array('summary' => $event->summary, 'gmlat' => $event->gmlat, 'gmlong' => $event->gmlong, 'location' => $event->location, 'contact' => $event->contact, 'startDate' => date('j', $event->start), 'event_id' => $event->id);
+                    $this->gmPoints[] = array(
+                        'summary'   => $event->summary,
+                        'gmlat'     => $event->gmlat,
+                        'gmlong'    => $event->gmlong,
+                        'location'  => $event->location,
+                        'contact'   => $event->contact,
+                        'startDate' => date('j', $event->start),
+                        'event_id'  => $event->id
+                    );
                 }
                 if (++$count > $num) {
                     break;
@@ -869,7 +960,7 @@ if (!class_exists('APCal_xoops')) {
                 $eventURL         = $this->make_event_link($event->id, $get_target, date('Y-n-j', $event->start));
                 // Get picture
                 $pic     = $GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->query("SELECT picture FROM {$this->pic_table} WHERE event_id={$event->id} AND main_pic=1 LIMIT 0,1"));
-                $picture = $pic && $this->showPicList ? "<img src='" . XOOPS_UPLOAD_URL . "/APCal/{$pic->picture}' alt='{$summary}' height='50' style='vertical-align: middle;' />" : '';
+                $picture = $pic && $this->showPicList ? "<img src='" . XOOPS_UPLOAD_URL . "/apcal/{$pic->picture}' alt='{$summary}' height='50' style='vertical-align: middle;' />" : '';
 
                 $events[] = array(
                     'count'           => $count,
@@ -905,12 +996,19 @@ if (!class_exists('APCal_xoops')) {
             $tpl->assign('WEEKLYVIEW', $this->make_cal_link($get_target, 'Weekly', $this->now_cid, $this->caldate));
             $tpl->assign('DAILYVIEW', $this->make_cal_link($get_target, 'Daily', $this->now_cid, $this->caldate));
             $tpl->assign('isAdmin', $this->isadmin);
-            $tpl->assign('showSubmitter', $this->nameoruname == 'none' ? false : true);
+            $tpl->assign('showSubmitter', $this->nameoruname === 'none' ? false : true);
 
             return true;
         }
 
         // get public ICS via snoopy
+
+        /**
+         * @param         $uri
+         * @param  bool   $force_http
+         * @param  string $user_uri
+         * @return string
+         */
         public function import_ics_via_fopen($uri, $force_http = true, $user_uri = '')
         {
             $user_uri = empty($user_uri) ? '' : $uri;
@@ -918,7 +1016,7 @@ if (!class_exists('APCal_xoops')) {
             $uri = str_replace('webcal://', 'http://', $uri);
 
             if ($force_http) {
-                if (substr($uri, 0, 7) != 'http://') {
+                if (0 !== strpos($uri, 'http://')) {
                     $uri = 'http://' . $uri;
                 }
             }
@@ -930,7 +1028,7 @@ if (!class_exists('APCal_xoops')) {
             $error_level_stored = error_reporting();
             error_reporting($error_level_stored & ~E_NOTICE);
             // includes Snoopy class for remote file access
-            require_once(XOOPS_ROOT_PATH . '/class/snoopy.php');
+            require_once XOOPS_ROOT_PATH . '/class/snoopy.php';
             $snoopy = new Snoopy;
             // TIMEOUT from config
             // $snoopy->read_timeout = $config['snoopy_timeout'] ;
@@ -966,6 +1064,13 @@ if (!class_exists('APCal_xoops')) {
         }
 
         // returns assigned array for extensible mini calendar block
+
+        /**
+         * @param  int   $gifaday
+         * @param  int   $just1gif
+         * @param  array $plugins
+         * @return array
+         */
         public function get_minical_ex($gifaday = 2, $just1gif = 0, $plugins = array())
         {
             $db   = XoopsDatabaseFactory::getDatabaseConnection();
@@ -994,7 +1099,8 @@ if (!class_exists('APCal_xoops')) {
                 'lang_next_month'  => _APCAL_MB_APCALNEXT_MONTH,
 
                 'calhead_bgcolor' => $this->calhead_bgcolor,
-                'calhead_color'   => $this->calhead_color,);
+                'calhead_color'   => $this->calhead_color
+            );
 
             $first_date = getdate(mktime(0, 0, 0, $this->month, 1, $this->year));
             $date       = (-$first_date['wday'] + $this->week_start - 7) % 7;
@@ -1021,7 +1127,8 @@ if (!class_exists('APCal_xoops')) {
                 $daynames[] = array(
                     'bgcolor' => $bgcolor,
                     'color'   => $color,
-                    'dayname' => $this->week_short_names[$wday % 7],);
+                    'dayname' => $this->week_short_names[$wday % 7]
+                );
             }
             $block['daynames'] = $daynames;
 
@@ -1050,7 +1157,8 @@ if (!class_exists('APCal_xoops')) {
                     if (!checkdate($this->month, $date, $this->year)) {
                         $days[] = array(
                             'date' => date('j', $time),
-                            'type' => 0);
+                            'type' => 0
+                        );
                         continue;
                     }
 
@@ -1091,7 +1199,8 @@ if (!class_exists('APCal_xoops')) {
                         'link'    => $link,
                         'date'    => $date,
                         'type'    => 1,
-                        'ex'      => $ex);
+                        'ex'      => $ex
+                    );
                 }
                 $weeks[] = $days;
             }
@@ -1101,6 +1210,11 @@ if (!class_exists('APCal_xoops')) {
         }
 
         // ���ꤵ�줿type�Υץ饰����������֤�
+
+        /**
+         * @param $type
+         * @return array
+         */
         public function get_plugins($type)
         {
             global $xoopsDB, $xoopsUser;
@@ -1109,13 +1223,15 @@ if (!class_exists('APCal_xoops')) {
             $myts = MyTextSanitizer::getInstance();
 
             // allowed modules
-            $moduleperm_handler = xoops_getHandler('groupperm');
+            $modulepermHandler = xoops_getHandler('groupperm');
             $groups             = is_object($xoopsUser) ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS;
-            $allowed_mids       = $moduleperm_handler->getItemIds('module_read', $groups);
+            $allowed_mids       = $modulepermHandler->getItemIds('module_read', $groups);
 
             // plugins
             $plugins = array();
-            $prs     = $GLOBALS['xoopsDB']->query("SELECT pi_title,pi_dirname AS dirname,pi_file AS file,pi_dotgif AS dotgif,pi_options AS options FROM $this->plugin_table WHERE pi_type='" . addslashes($type) . "' AND pi_enabled ORDER BY pi_weight");
+            $prs     = $GLOBALS['xoopsDB']->query("SELECT pi_title,pi_dirname AS dirname,pi_file AS file,pi_dotgif AS dotgif,pi_options AS options FROM $this->plugin_table WHERE pi_type='"
+                                                  . addslashes($type)
+                                                  . "' AND pi_enabled ORDER BY pi_weight");
             while ($plugin = $GLOBALS['xoopsDB']->fetchArray($prs)) {
                 $dirname4sql = addslashes($plugin['dirname']);
                 $mrs         = $GLOBALS['xoopsDB']->query('SELECT mid,name FROM ' . $GLOBALS['xoopsDB']->prefix('modules') . " WHERE dirname='$dirname4sql'");

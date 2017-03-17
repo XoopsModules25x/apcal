@@ -120,7 +120,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED')) {
     define('_APCAL_ERR_INVALID_EVENT_ID', 'Error: EventID not found');
     define('_APCAL_ERR_NOPERM_TO_SHOW', "Error: You don't have a permission to view this");
     define('_APCAL_ERR_NOPERM_TO_OUTPUTICS', "Error: You don't have a permission to output iCalendar");
-    define('_APCAL_ERR_LACKINDISPITEM', 'Item %s is blank.<br />Push the Back button of your browser!');
+    define('_APCAL_ERR_LACKINDISPITEM', 'Item %s is blank.<br>Push the Back button of your browser!');
 
     define('_APCAL_BTN_JUMP', 'Jump');
     define('_APCAL_BTN_NEWINSERTED', 'New Insert');
@@ -161,8 +161,8 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED')) {
     define('_APCAL_RR_PERWEEK', 'every %s weeks');
     define('_APCAL_RR_PERMONTH', 'every %s months');
     define('_APCAL_RR_PERYEAR', 'every %s years');
-    define('_APCAL_RR_COUNT', '<br />%s times');
-    define('_APCAL_RR_UNTIL', '<br />until %s');
+    define('_APCAL_RR_COUNT', '<br>%s times');
+    define('_APCAL_RR_UNTIL', '<br>until %s');
     define('_APCAL_RR_R_NORRULE', 'Recur No');
     define('_APCAL_RR_R_YESRRULE', 'Recur Yes');
     define('_APCAL_RR_OR', 'or');
@@ -223,7 +223,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED')) {
     define('_APCAL_RO_BTN_RO_EDIT', 'Edit online registration');
     define('_APCAL_RO_BTN_RO_DEACTIVATE', 'Delete online registration');
     define('_APCAL_RO_BTN_RO_ACTIVATE', 'Activate');
-    define('_APCAL_RO_QUANTITY', 'Maximum number of participants<br/>(0 means: no limit)');
+    define('_APCAL_RO_QUANTITY', 'Maximum number of participants<br>(0 means: no limit)');
     define('_APCAL_RO_QUANTITY2', 'Maximum number of participants');
     define('_APCAL_RO_DATELIMIT', 'Deadline for online registration');
     define('_APCAL_RO_EMAIL_NOTIFY', 'E-mail-address, which should be notified in case of (de-)registrations (keep blank, if you want no notifications)');
