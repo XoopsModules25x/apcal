@@ -1,34 +1,22 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
 if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
@@ -39,6 +27,10 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
         $GLOBALS['apcal_blockinstance_object'] = $this;
     }
 
+    /**
+     * @param $options
+     * @return array
+     */
     function apcal_thedays_schedule_show_tpl($options)
     {
         global $xoopsConfig, $xoopsDB;
@@ -52,8 +44,8 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
 
         // defining class of APCal
         if (!class_exists('APCal_xoops')) {
-            require_once("$mod_path/class/APCal.php");
-            require_once("$mod_path/class/APCal_xoops.php");
+            require_once "$mod_path/class/APCal.php";
+            require_once "$mod_path/class/APCal_xoops.php";
         }
 
         // creating an instance of APCal
@@ -64,7 +56,7 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
 
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
-        include("$mod_path/include/read_configs.php");
+        include "$mod_path/include/read_configs.php";
         $cal->base_url    = $mod_url;
         $cal->base_path   = $mod_path;
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -73,7 +65,8 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
         // ¥Ö¥í¥Ã¥¯ÇÛÎó¤Î¼«Ê¬¼«¿È¤ò½ñ¤­´¹¤¨¤ë title ¤Ë %s ¤ò´Þ¤á¤ë¤³¤È
         if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
             $title_fmt = $GLOBALS['apcal_blockinstance_object']->getVar('title');
-            $GLOBALS['apcal_blockinstance_object']->setVar('title', sprintf($title_fmt, sprintf(_APCAL_FMT_MD, $cal->month_short_names[date('n', $cal->unixtime)], $cal->date_short_names[date('j', $cal->unixtime)])));
+            $GLOBALS['apcal_blockinstance_object']->setVar('title', sprintf($title_fmt, sprintf(_APCAL_FMT_MD, $cal->month_short_names[date('n', $cal->unixtime)],
+                                                                                                $cal->date_short_names[date('j', $cal->unixtime)])));
         } else {
             global $block_arr, $i;
             if (is_object($block_arr[$i])) {
@@ -88,6 +81,10 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
         return $block;
     }
 
+    /**
+     * @param $options
+     * @return string
+     */
     function apcal_thedays_schedule_edit($options)
     {
         global $xoopsDB, $xoopsConfig;
@@ -100,8 +97,8 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
-        require_once("$mod_path/class/APCal.php");
-        require_once("$mod_path/class/APCal_xoops.php");
+        require_once "$mod_path/class/APCal.php";
+        require_once "$mod_path/class/APCal_xoops.php";
 
         // creating an instance of APCal
         $cal                = new APCal_xoops(date('Y-n-j'), $xoopsConfig['language'], true);
@@ -109,7 +106,7 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
 
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
-        include("$mod_path/include/read_configs.php");
+        include "$mod_path/include/read_configs.php";
         $cal->base_url    = $mod_url;
         $cal->base_path   = $mod_path;
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -121,10 +118,10 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
         $ret .= _MB_APCAL_CATSEL . ':';
         $ret .= "<select name='options[1]'>\n<option value='0'>" . _ALL . "</option>\n";
         foreach ($cal->categories as $cid => $cat) {
-            $selected       = $now_cid == $cid ? "selected='selected'" : '';
+            $selected       = $now_cid == $cid ? 'selected' : '';
             $depth_desc     = str_repeat('-', (int)$cat->cat_depth);
             $cat_title4show = $cal->text_sanitizer_for_show($cat->cat_title);
-            $ret .= "\t<option value='$cid' $selected>$depth_desc $cat_title4show</option>\n";
+            $ret            .= "\t<option value='$cid' $selected>$depth_desc $cat_title4show</option>\n";
         }
         $ret .= "</select>\n";
 

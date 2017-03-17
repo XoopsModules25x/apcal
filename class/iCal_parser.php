@@ -1,35 +1,22 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      Antiques Promotion (http://www.antiquespromotion.ca)
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
 // ORIGINAL: PHP iCalendar  (http://phapcalendar.sourceforge.net/)
@@ -51,12 +38,18 @@
 
 // mb_internal_encoding¤Î¥¨¥ß¥å¥ì¡¼¥È (¾ï¤ËASCII¤òÊÖ¤¹)
 if (!function_exists('mb_internal_encoding')) {
+    /**
+     * @return string
+     */
     function mb_internal_encoding()
     {
         return 'ASCII';
     }
 }
 
+/**
+ * Class iCal_parser
+ */
 class iCal_parser
 {
     public $week_start_day = 'Sunday';
@@ -553,13 +546,19 @@ class iCal_parser
         'US/Pacific'                   => array('-0800', '-0700'),
         'US/Samoa'                     => array('-1100', '-1100'),
         'W-SU'                         => array('+0300', '+0400'),
-        'WET'                          => array('+0000', '+0100'));
+        'WET'                          => array('+0000', '+0100')
+    );
 
     // From date_functions.php
 
     // takes iCalendar 2 day format and makes it into 3 characters
     // if $txt is true, it returns the 3 letters, otherwise it returns the
     // integer of that day; 0=Sun, 1=Mon, etc.
+    /**
+     * @param         $day
+     * @param  bool   $txt
+     * @return string
+     */
     public function two2threeCharDays($day, $txt = true)
     {
         switch ($day) {
@@ -582,6 +581,11 @@ class iCal_parser
 
     // dateOfWeek() takes a date in Ymd and a day of week in 3 letters or more
     // and returns the date of that day. (ie: "sun" or "sunday" would be acceptable values of $day but not "su")
+    /**
+     * @param $Ymd
+     * @param $day
+     * @return bool|string
+     */
     public function dateOfWeek($Ymd, $day)
     {
         if (!isset($this->week_start_day)) {
@@ -599,6 +603,11 @@ class iCal_parser
 
     // function to compare to dates in Ymd and return the number of weeks
     // that differ between them. requires dateOfWeek()
+    /**
+     * @param $now
+     * @param $then
+     * @return float
+     */
     public function weekCompare($now, $then)
     {
         $sun_now      = $this->dateOfWeek($now, $this->week_start_day);
@@ -616,6 +625,11 @@ class iCal_parser
 
     // function to compare to dates in Ymd and return the number of days
     // that differ between them.
+    /**
+     * @param $now
+     * @param $then
+     * @return float
+     */
     public function dayCompare($now, $then)
     {
         $seconds_now  = strtotime($now);
@@ -630,6 +644,11 @@ class iCal_parser
 
     // function to compare to dates in Ymd and return the number of months
     // that differ between them.
+    /**
+     * @param $now
+     * @param $then
+     * @return int
+     */
     public function monthCompare($now, $then)
     {
         preg_match('/([0-9]{4})([0-9]{2})([0-9]{2})/', $now, $date_now);
@@ -637,7 +656,7 @@ class iCal_parser
         $diff_years  = $date_now[1] - $date_then[1];
         $diff_months = $date_now[2] - $date_then[2];
         if ($date_now[2] < $date_then[2]) {
-            $diff_years -= 1;
+            --$diff_years;
             $diff_months = ($diff_months + 12) % 12;
         }
         $diff_months = ($diff_years * 12) + $diff_months;
@@ -645,6 +664,11 @@ class iCal_parser
         return $diff_months;
     }
 
+    /**
+     * @param $now
+     * @param $then
+     * @return mixed
+     */
     public function yearCompare($now, $then)
     {
         preg_match('/([0-9]{4})([0-9]{2})([0-9]{2})/', $now, $date_now);
@@ -675,6 +699,10 @@ class iCal_parser
 
     }*/
     // calcOffset takes an offset (ie, -0500) and returns it in the number of seconds
+    /**
+     * @param $offset_str
+     * @return int
+     */
     public function calcOffset($offset_str)
     {
         $sign  = substr($offset_str, 0, 1);
@@ -692,19 +720,29 @@ class iCal_parser
     // $have is the current offset (ie, '-0500')
     // $want is the wanted offset (ie, '-0700')
     // $time is the unixtime relative to $have
+    /**
+     * @param $have
+     * @param $want
+     * @param $time
+     * @return int
+     */
     public function calcTime($have, $want, $time)
     {
-        if ($have == 'none' || $want == 'none') {
+        if ($have === 'none' || $want === 'none') {
             return $time;
         }
         $have_secs = $this->calcOffset($have);
         $want_secs = $this->calcOffset($want);
         $diff      = $want_secs - $have_secs;
-        $time += $diff;
+        $time      += $diff;
 
         return $time;
     }
 
+    /**
+     * @param $time
+     * @return string
+     */
     public function chooseOffset($time)
     {
         return $this->timezone;
@@ -731,19 +769,29 @@ class iCal_parser
     }
 
     // ¥³¥ó¥¹¥È¥é¥¯¥¿
-    public function ical_parser()
+
+    /**
+     * iCal_parser constructor.
+     */
+    public function __construct()
     {
     }
 
     // ¥Õ¥¡¥¤¥ë¤ò¥Ñ¡¼¥¹¤·¤Æ¡¢ÆâÉôÊÑ¿ô¤Ë¼è¤ê¹þ¤à
+
+    /**
+     * @param $filename
+     * @param $calendar_name
+     * @return string
+     */
     public function parse($filename, $calendar_name)
     {
         $ifile = @fopen($filename, 'r');
-        if ($ifile == false) {
+        if ($ifile === false) {
             return "-1: File cannot open. filename: $filename";
         }
         $nextline = fgets($ifile, 1024);
-        if (trim($nextline) != 'BEGIN:VCALENDAR') {
+        if (trim($nextline) !== 'BEGIN:VCALENDAR') {
             return "-2: This file is not iCalendar(RFC2445). filename: $filename";
         }
 
@@ -767,13 +815,13 @@ class iCal_parser
             $line     = $nextline;
             $nextline = fgets($ifile, 1024);
             $nextline = preg_replace("/[\r\n]/", '', $nextline);
-            while (substr($nextline, 0, 1) == ' ') {
-                $line     = $line . substr($nextline, 1);
+            while (substr($nextline, 0, 1) === ' ') {
+                $line     .= substr($nextline, 1);
                 $nextline = fgets($ifile, 1024);
                 $nextline = preg_replace("/[\r\n]/", '', $nextline);
             }
             $line = trim($line);
-            if ($line == 'BEGIN:VEVENT') {
+            if ($line === 'BEGIN:VEVENT') {
                 // each of these vars were being set to an empty string
                 unset($start_time, $end_time, $start_date, $end_date, $summary, $allday_start, $allday_end, $start, $end, $the_duration, $beginning, $rrule, $start_of_vevent, $description, $status, $class, $categories, $contact, $location, $dtstamp, $sequence, $tz_dtstart, $tz_dtend, $event_tz, $valarm_description, $start_unixtime, $end_unixtime, $recurrence_id, $uid, $uid_valid);
 
@@ -782,7 +830,7 @@ class iCal_parser
                 $first_duration = true;
                 $count          = 1000000;
                 $valarm_set     = false;
-            } elseif ($line == 'END:VEVENT') {
+            } elseif ($line === 'END:VEVENT') {
                 // make sure we have some value for $uid
                 if (!isset($uid)) {
                     $uid = $uid_counter;
@@ -825,7 +873,8 @@ class iCal_parser
                     }
                 }
 
-                $this->events[$uid] = compact('start_unixtime', 'end_unixtime', 'summary', 'description', 'status', 'class', 'categories', 'contact', 'location', 'dtstamp', 'sequence', 'allday_start', 'allday_end', 'tz_dtstart', 'tz_dtend', 'event_tz', 'rrule', 'uid_valid');    // GIJ added 03/05/27
+                $this->events[$uid] = compact('start_unixtime', 'end_unixtime', 'summary', 'description', 'status', 'class', 'categories', 'contact', 'location', 'dtstamp', 'sequence', 'allday_start',
+                                              'allday_end', 'tz_dtstart', 'tz_dtend', 'event_tz', 'rrule', 'uid_valid');    // GIJ added 03/05/27
 
                 // Begin VTODO Support
                 /*      } elseif ($line == 'END:VTODO') {
@@ -978,7 +1027,7 @@ class iCal_parser
 
                     case 'DTSTART':
                         $zulu_time = false;
-                        if (substr($data, -1) == 'Z') {
+                        if (substr($data, -1) === 'Z') {
                             $zulu_time = true;
                         }
                         $data  = preg_replace('/T/', '', $data);
@@ -1029,7 +1078,7 @@ class iCal_parser
 
                     case 'DTEND':
                         $zulu_time = false;
-                        if (substr($data, -1) == 'Z') {
+                        if (substr($data, -1) === 'Z') {
                             $zulu_time = true;
                         }
                         $data  = preg_replace('/T/', '', $data);
@@ -1124,7 +1173,7 @@ class iCal_parser
                         break;
 
                     /*              case 'DURATION':
-                                        if (($first_duration == TRUE) && (!stristr($field, '=DURATION'))) {
+                                        if (($first_duration === true) && (!stristr($field, '=DURATION'))) {
                                             preg_match('/^P([0-9]{1,2})?([W,D]{0,1}[T])?([0-9]{1,2}[H])?([0-9]{1,2}[M])?([0-9]{1,2}[S])?/', $data, $duration);
                                             if ($duration[2] = 'W') {
                                                 $weeks = $duration[1];
@@ -1164,6 +1213,10 @@ class iCal_parser
     }
 
     // ¥Ñ¡¼¥¹¤·¤¿iCalendar¥Ç¡¼¥¿¤«¤é¡¢INSERT,UPDATEÍÑ¤ÎSETÊ¸ÇÛÎó¤òÀ¸À®¤¹¤ë´Ø¿ô
+
+    /**
+     * @return array
+     */
     public function output_setsqls()
     {
         $rets = array();
@@ -1232,8 +1285,9 @@ class iCal_parser
                 'categories'  => '255:J:0',
                 'rrule'       => '255:E:0', /* "dtstamp" => "14:E:0" ,*/
                 'sequence'    => 'I:N:0',
-                'description' => 'A:J:0');
-            $ret .= $this->get_sql_set($event, $cols);
+                'description' => 'A:J:0'
+            );
+            $ret  .= $this->get_sql_set($event, $cols);
 
             $rets[] = $ret;
         }
@@ -1242,6 +1296,12 @@ class iCal_parser
     }
 
     // Ï¢ÁÛÇÛÎó¤ò°ú¿ô¤Ë¼è¤ê¡¢$event¤«¤éINSERT,UPDATEÍÑ¤ÎSETÊ¸¤òÀ¸À®¤¹¤ë¥¯¥é¥¹´Ø¿ô
+
+    /**
+     * @param $event
+     * @param $cols
+     * @return string
+     */
     public function get_sql_set($event, $cols)
     {
         $ret = '';
@@ -1253,26 +1313,26 @@ class iCal_parser
 
             // ¸À¸ì¡¦¿ô»ú¤Ê¤É¤ÎÊÌ¤Ë¤è¤ë½èÍý
             switch ($lang) {
-                case 'N' :    // ¿ôÃÍ (·å¼è¤ê¤Î , ¤ò¼è¤ë)
+                case 'N':    // ¿ôÃÍ (·å¼è¤ê¤Î , ¤ò¼è¤ë)
                     $data = str_replace(',', '', $data);
                     break;
-                case 'J' :    // ÆüËÜ¸ì¥Æ¥­¥¹¥È (È¾³Ñ¥«¥Ê¢ªÁ´³Ñ¤«¤Ê)
+                case 'J':    // ÆüËÜ¸ì¥Æ¥­¥¹¥È (È¾³Ñ¥«¥Ê¢ªÁ´³Ñ¤«¤Ê)
                     $data = $this->mb_convert_kana($data, 'KV');
                     break;
-                case 'E' :    // È¾³Ñ±Ñ¿ô»ú¤Î¤ß (Á´³Ñ±Ñ¿ô¢ªÈ¾³Ñ±Ñ¿ô)
+                case 'E':    // È¾³Ñ±Ñ¿ô»ú¤Î¤ß (Á´³Ñ±Ñ¿ô¢ªÈ¾³Ñ±Ñ¿ô)
                     $data = $this->mb_convert_kana($data, 'as');
                     break;
             }
 
             // ¥Õ¥£¡¼¥ë¥É¤Î·¿¤Ë¤è¤ë½èÍý
             switch ($field) {
-                case 'A' :    // textarea
+                case 'A':    // textarea
                     $data = $this->textarea_sanitizer_for_sql($data);
                     break;
-                case 'I' :    // integer
+                case 'I':    // integer
                     $data = (int)$data;
                     break;
-                default :    // varchar(¥Ç¥Õ¥©¥ë¥È)¤Ï¿ôÃÍ¤Ë¤è¤ëÊ¸»ú¿ô»ØÄê
+                default:    // varchar(¥Ç¥Õ¥©¥ë¥È)¤Ï¿ôÃÍ¤Ë¤è¤ëÊ¸»ú¿ô»ØÄê
                     $data = $this->text_sanitizer_for_sql($data);
                     if ($field < 1) {
                         $field = 255;
@@ -1293,6 +1353,12 @@ class iCal_parser
     }
 
     // mb_convert_kana¤Î½èÍý
+
+    /**
+     * @param $str
+     * @param $option
+     * @return string
+     */
     public function mb_convert_kana($str, $option)
     {
         // convert_kana ¤Î½èÍý¤Ï¡¢ÆüËÜ¸ì¤Ç¤Î¤ß¹Ô¤¦
@@ -1305,6 +1371,10 @@ class iCal_parser
 
     // ¥µ¥Ë¥¿¥¤¥º´ØÏ¢¤Î´Ø¿ô (¥µ¥Ö¥¯¥é¥¹¤òºîÀ®¤¹¤ë»þ¤ÎOverrideÂÐ¾Ý)
 
+    /**
+     * @param $data
+     * @return string
+     */
     public function textarea_sanitizer_for_sql($data)
     {
         // '\n' ¤ò "\n" ¤Ë¤¹¤ë
@@ -1314,10 +1384,12 @@ class iCal_parser
             // XOOPS¤Î¥µ¥Ë¥¿¥¤¥¶¥¯¥é¥¹¤¬¤¢¤ì¤Ð¡¢¸ÄÊÌ¤Ëbb code¥¿¥°¤Ø¤ÎÊÑ´¹¤ò¤·¤Æ¤ß¤ë
             $search  = array(
                 "/mailto:(\S+)(\s)/i",
-                "/http:\/\/(\S+)(\s)/i");
+                "/http:\/\/(\S+)(\s)/i"
+            );
             $replace = array(
                 "[email]\\1[/email]\\2",
-                "[url=\\1]\\1[/url]\\2");
+                "[url=\\1]\\1[/url]\\2"
+            );
             $data    = preg_replace($search, $replace, $data);
 
             return strip_tags($data);
@@ -1327,6 +1399,10 @@ class iCal_parser
         }
     }
 
+    /**
+     * @param $data
+     * @return string
+     */
     public function text_sanitizer_for_sql($data)
     {
         // Á´¥¿¥°¤òÌµ¸ú¤È¤¹¤ësanitize

@@ -1,79 +1,116 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  *              (based on Marijuana's Oreteki XOOPS)
  *              nobunobu's suggestions are applied
  */
 
 if (!class_exists('XoopsGTicket')) {
+    /**
+     * Class XoopsGTicket
+     */
     class XoopsGTicket
     {
         public $_errors       = array();
         public $_latest_token = '';
 
         // render form as plain html
+
+        /**
+         * @param  string $salt
+         * @param  int    $timeout
+         * @param  string $area
+         * @return string
+         */
         public function getTicketHtml($salt = '', $timeout = 1800, $area = '')
         {
             return '<input type="hidden" name="XOOPS_G_TICKET" value="' . $this->issue($salt, $timeout, $area) . '" />';
         }
 
         // returns an object of XoopsFormHidden including theh ticket
+
+        /**
+         * @param  string $salt
+         * @param  int    $timeout
+         * @param  string $area
+         * @return XoopsFormHidden
+         */
         public function getTicketXoopsForm($salt = '', $timeout = 1800, $area = '')
         {
             return new XoopsFormHidden('XOOPS_G_TICKET', $this->issue($salt, $timeout, $area));
         }
 
         // add a ticket as Hidden Element into XoopsForm
+
+        /**
+         * @param        $form
+         * @param string $salt
+         * @param int    $timeout
+         * @param string $area
+         */
         public function addTicketXoopsFormElement(&$form, $salt = '', $timeout = 1800, $area = '')
         {
             $form->addElement(new XoopsFormHidden('XOOPS_G_TICKET', $this->issue($salt, $timeout, $area)));
         }
 
         // returns an array for xoops_confirm() ;
+
+        /**
+         * @param  string $salt
+         * @param  int    $timeout
+         * @param  string $area
+         * @return array
+         */
         public function getTicketArray($salt = '', $timeout = 1800, $area = '')
         {
             return array('XOOPS_G_TICKET' => $this->issue($salt, $timeout, $area));
         }
 
         // return GET parameter string.
+
+        /**
+         * @param  string $salt
+         * @param  bool   $noamp
+         * @param  int    $timeout
+         * @param  string $area
+         * @return string
+         */
         public function getTicketParamString($salt = '', $noamp = false, $timeout = 1800, $area = '')
         {
             return ($noamp ? '' : '&amp;') . 'XOOPS_G_TICKET=' . $this->issue($salt, $timeout, $area);
         }
 
         // issue a ticket
+
+        /**
+         * @param  string $salt
+         * @param  int    $timeout
+         * @param  string $area
+         * @return string
+         */
         public function issue($salt = '', $timeout = 1800, $area = '')
         {
             global $xoopsModule;
-
+            if ('' === $salt) {
+                // $salt = '$2y$07$' . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+                $salt = '$2y$07$' . str_replace('+', '.', base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)));
+            }
             // create a token
             list($usec, $sec) = explode(' ', microtime());
             $appendix_salt       = empty($_SERVER['PATH']) ? XOOPS_DB_NAME : $_SERVER['PATH'];
@@ -102,13 +139,20 @@ if (!class_exists('XoopsGTicket')) {
                 'expire'  => time() + $timeout,
                 'referer' => $referer,
                 'area'    => $area,
-                'token'   => $token);
+                'token'   => $token
+            );
 
             // paid md5ed token as a ticket
             return md5($token . XOOPS_DB_PREFIX);
         }
 
         // check a ticket
+
+        /**
+         * @param  bool   $post
+         * @param  string $area
+         * @return bool
+         */
         public function check($post = true, $area = '')
         {
             global $xoopsModule;
@@ -203,6 +247,10 @@ if (!class_exists('XoopsGTicket')) {
         }
 
         // Ticket Using
+
+        /**
+         * @return bool
+         */
         public function using()
         {
             if (!empty($_SESSION['XOOPS_G_STUBS'])) {
@@ -213,12 +261,17 @@ if (!class_exists('XoopsGTicket')) {
         }
 
         // return errors
+
+        /**
+         * @param  bool $ashtml
+         * @return array|string
+         */
         public function getErrors($ashtml = true)
         {
             if ($ashtml) {
                 $ret = '';
                 foreach ($this->_errors as $msg) {
-                    $ret .= "$msg<br />\n";
+                    $ret .= "$msg<br>\n";
                 }
             } else {
                 $ret = $this->_errors;
@@ -237,6 +290,10 @@ if (!class_exists('XoopsGTicket')) {
 if (!function_exists('admin_refcheck')) {
 
     //Admin Referer Check By Marijuana(Rev.011)
+    /**
+     * @param  string $chkref
+     * @return bool
+     */
     function admin_refcheck($chkref = '')
     {
         if (empty($_SERVER['HTTP_REFERER'])) {

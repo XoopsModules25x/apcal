@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @param $strcontact
+ * @return string
+ */
 function convertmycontacts($strcontact)
 {
     // Ermitteln aller einzelnen Wörter von Kontakt aus Termin piCal
@@ -12,7 +16,7 @@ function convertmycontacts($strcontact)
     $pos2 = strpos($strcontact, $strsearch, $pos1);
 
     if ($pos2 === false) {
-        //echo "<br/>kein leerzeichen";
+        //echo "<br>kein leerzeichen";
         $struser = $strcontact;
         $struid  = getuid($struser);
         if ($struid == -1) {
@@ -46,7 +50,7 @@ function convertmycontacts($strcontact)
             $struser = substr($strcontact, $pos1);
             $struid  = getuid($struser);
             if ($struid == -1) {
-                $strnew = $strnew . $struser;
+                $strnew .= $struser;
             } else {
                 $strnew = $strnew . "<a href='" . XOOPS_URL . '/userinfo.php?uid=' . $struid . "' title='" . $struser . "'>" . $struser . '</a>';
             }
@@ -57,11 +61,15 @@ function convertmycontacts($strcontact)
     return $strnew;
 }
 
+/**
+ * @param $UserName
+ * @return int
+ */
 function getuid($UserName)
 {
     $rc  = -1;
-    $db  = xoopsDatabaseFactory::getDatabaseConnection();
-    $sql = 'Select uid from ' . $db->prefix('users') . " where uname = '" . $UserName . "' LIMIT 0,1";
+    $db  = XoopsDatabaseFactory::getDatabaseConnection();
+    $sql = 'SELECT uid FROM ' . $db->prefix('users') . " WHERE uname = '" . $UserName . "' LIMIT 0,1";
 
     $result = $db->query($sql);
     if ($result) {

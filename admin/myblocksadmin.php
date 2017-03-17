@@ -1,46 +1,33 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-include_once(dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php');
+require_once __DIR__ . '/../../../include/cp_header.php';
 
 if (substr(XOOPS_VERSION, 6, 3) > 2.0) {
     include __DIR__ . '/myblocksadmin2.php';
     exit;
 }
 
-include_once('mygrouppermform.php');
-include_once(XOOPS_ROOT_PATH . '/class/xoopsblock.php');
-include_once '../include/gtickets.php';// GIJ
+require_once __DIR__ . '/mygrouppermform.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsblock.php';
+require_once __DIR__ . '/../include/gtickets.php';// GIJ
 
 $xoops_system_path = XOOPS_ROOT_PATH . '/modules/system';
 
@@ -52,9 +39,9 @@ if (!file_exists("$xoops_system_path/language/$language/admin/blocksadmin.php"))
 
 // to prevent from notice that constants already defined
 $error_reporting_level = error_reporting(0);
-include_once("$xoops_system_path/constants.php");
-include_once("$xoops_system_path/language/$language/admin.php");
-include_once("$xoops_system_path/language/$language/admin/blocksadmin.php");
+require_once "$xoops_system_path/constants.php";
+require_once "$xoops_system_path/language/$language/admin.php";
+require_once "$xoops_system_path/language/$language/admin/blocksadmin.php";
 error_reporting($error_reporting_level);
 
 $group_defs = file("$xoops_system_path/language/$language/admin/groups.php");
@@ -70,11 +57,12 @@ if (!is_object($xoopsModule)) {
 }
 
 // set target_module if specified by $_GET['dirname']
-$module_handler = xoops_getHandler('module');
+/** @var XoopsModuleHandler $moduleHandler */
+$moduleHandler = xoops_getHandler('module');
 if (!empty($_GET['dirname'])) {
-    $target_module = $module_handler->getByDirname($_GET['dirname']);
+    $target_module = $moduleHandler->getByDirname($_GET['dirname']);
 }/* else if ( ! empty( $_GET['mid'] ) ) {
-    $target_module = $module_handler->get( (int)( $_GET['mid'] ) );
+    $target_module = $moduleHandler->get( (int)( $_GET['mid'] ) );
 }*/
 
 if (!empty($target_module) && is_object($target_module)) {
@@ -93,8 +81,8 @@ if (!empty($target_module) && is_object($target_module)) {
 }
 
 // check access right (needs system_admin of BLOCK)
-$sysperm_handler = xoops_getHandler('groupperm');
-if (!$sysperm_handler->checkRight('system_admin', XOOPS_SYSTEM_BLOCK, $xoopsUser->getGroups())) {
+$syspermHandler = xoops_getHandler('groupperm');
+if (!$syspermHandler->checkRight('system_admin', XOOPS_SYSTEM_BLOCK, $xoopsUser->getGroups())) {
     redirect_header(XOOPS_URL . '/user.php', 1, _NOPERM);
 }
 
@@ -113,7 +101,19 @@ function list_blocks()
     global $query4redirect, $block_arr, $xoopsGTicket;
 
     // cachetime options
-    $cachetimes = array('0' => _NOCACHE, '30' => sprintf(_SECONDS, 30), '60' => _MINUTE, '300' => sprintf(_MINUTES, 5), '1800' => sprintf(_MINUTES, 30), '3600' => _HOUR, '18000' => sprintf(_HOURS, 5), '86400' => _DAY, '259200' => sprintf(_DAYS, 3), '604800' => _WEEK, '2592000' => _MONTH);
+    $cachetimes = array(
+        '0'       => _NOCACHE,
+        '30'      => sprintf(_SECONDS, 30),
+        '60'      => _MINUTE,
+        '300'     => sprintf(_MINUTES, 5),
+        '1800'    => sprintf(_MINUTES, 30),
+        '3600'    => _HOUR,
+        '18000'   => sprintf(_HOURS, 5),
+        '86400'   => _DAY,
+        '259200'  => sprintf(_DAYS, 3),
+        '604800'  => _WEEK,
+        '2592000' => _MONTH
+    );
 
     // displaying TH
     echo "
@@ -143,29 +143,29 @@ function list_blocks()
 
         // visible and side
         if ($block_arr[$i]->getVar('visible') != 1) {
-            $sseln = " checked='checked'";
+            $sseln = ' checked';
             $scoln = '#FF0000';
         } else {
             switch ($block_arr[$i]->getVar('side')) {
-                default :
-                case XOOPS_SIDEBLOCK_LEFT :
-                    $ssel0 = " checked='checked'";
+                default:
+                case XOOPS_SIDEBLOCK_LEFT:
+                    $ssel0 = ' checked';
                     $scol0 = '#00FF00';
                     break;
-                case XOOPS_SIDEBLOCK_RIGHT :
-                    $ssel1 = " checked='checked'";
+                case XOOPS_SIDEBLOCK_RIGHT:
+                    $ssel1 = ' checked';
                     $scol1 = '#00FF00';
                     break;
-                case XOOPS_CENTERBLOCK_LEFT :
-                    $ssel2 = " checked='checked'";
+                case XOOPS_CENTERBLOCK_LEFT:
+                    $ssel2 = ' checked';
                     $scol2 = '#00FF00';
                     break;
-                case XOOPS_CENTERBLOCK_RIGHT :
-                    $ssel4 = " checked='checked'";
+                case XOOPS_CENTERBLOCK_RIGHT:
+                    $ssel4 = ' checked';
                     $scol4 = '#00FF00';
                     break;
-                case XOOPS_CENTERBLOCK_CENTER :
-                    $ssel3 = " checked='checked'";
+                case XOOPS_CENTERBLOCK_CENTER:
+                    $ssel3 = ' checked';
                     $scol3 = '#00FF00';
                     break;
             }
@@ -175,7 +175,7 @@ function list_blocks()
         $cachetime_options = '';
         foreach ($cachetimes as $cachetime => $cachetime_name) {
             if ($bcachetime == $cachetime) {
-                $cachetime_options .= "<option value='$cachetime' selected='selected'>$cachetime_name</option>\n";
+                $cachetime_options .= "<option value='$cachetime' selected>$cachetime_name</option>\n";
             } else {
                 $cachetime_options .= "<option value='$cachetime'>$cachetime_name</option>\n";
             }
@@ -188,17 +188,18 @@ function list_blocks()
         while (list($selected_mid) = $db->fetchRow($result)) {
             $selected_mids[] = (int)$selected_mid;
         }
-        $module_handler = xoops_getHandler('module');
-        $criteria       = new CriteriaCompo(new Criteria('hasmain', 1));
+        /** @var XoopsModuleHandler $moduleHandler */
+        $moduleHandler = xoops_getHandler('module');
+        $criteria      = new CriteriaCompo(new Criteria('hasmain', 1));
         $criteria->add(new Criteria('isactive', 1));
-        $module_list     = $module_handler->getList($criteria);
+        $module_list     = $moduleHandler->getList($criteria);
         $module_list[-1] = _AM_APCAL_TOPPAGE;
         $module_list[0]  = _AM_APCAL_ALLPAGES;
         ksort($module_list);
         $module_options = '';
         foreach ($module_list as $mid => $mname) {
             if (in_array($mid, $selected_mids)) {
-                $module_options .= "<option value='$mid' selected='selected'>$mname</option>\n";
+                $module_options .= "<option value='$mid' selected>$mname</option>\n";
             } else {
                 $module_options .= "<option value='$mid'>$mname</option>\n";
             }
@@ -206,7 +207,7 @@ function list_blocks()
 
         // delete link if it is cloned block
         if ($block_arr[$i]->getVar('block_type') == 'D' || $block_arr[$i]->getVar('block_type') == 'C') {
-            $delete_link = "<br /><a href='admin.php?fct=blocksadmin&amp;op=delete&amp;bid=$bid'>" . _DELETE . '</a>';
+            $delete_link = "<br><a href='admin.php?fct=blocksadmin&amp;op=delete&amp;bid=$bid'>" . _DELETE . '</a>';
         } else {
             $delete_link = '';
         }
@@ -218,7 +219,10 @@ function list_blocks()
         } else {
             $can_clone = false;
             foreach ($block_configs as $bconf) {
-                if ($block_arr[$i]->getVar('show_func') == $bconf['show_func'] && $block_arr[$i]->getVar('func_file') == $bconf['file'] && (empty($bconf['template']) || $block_arr[$i]->getVar('template') == $bconf['template'])) {
+                if ($block_arr[$i]->getVar('show_func') == $bconf['show_func']
+                    && $block_arr[$i]->getVar('func_file') == $bconf['file']
+                    && (empty($bconf['template']) || $block_arr[$i]->getVar('template') == $bconf['template'])
+                ) {
                     if (!empty($bconf['can_clone'])) {
                         $can_clone = true;
                     }
@@ -226,7 +230,7 @@ function list_blocks()
             }
         }
         if ($can_clone) {
-            $clone_link = "<br /><a href='admin.php?fct=blocksadmin&amp;op=clone&amp;bid=$bid'>" . _CLONE . '</a>';
+            $clone_link = "<br><a href='admin.php?fct=blocksadmin&amp;op=clone&amp;bid=$bid'>" . _CLONE . '</a>';
         } else {
             $clone_link = '';
         }
@@ -236,7 +240,7 @@ function list_blocks()
         <tr valign='middle'>
             <td class='$class'>
                 $name
-                <br />
+                <br>
                 <input type='text' name='title[$bid]' value='$title' size='20' />
             </td>
             <td class='$class' align='center' nowrap='nowrap' width='125px'>
@@ -257,8 +261,8 @@ function list_blocks()
                 <div style='float:left;background-color:$scol1;'>
                     <input type='radio' name='side[$bid]' value='" . XOOPS_SIDEBLOCK_RIGHT . "' style='background-color:$scol1;' $ssel1 />
                 </div>
-                <br />
-                <br />
+                <br>
+                <br>
                 <div style='float:left;width:40px;'>&nbsp;</div>
                 <div style='float:left;background-color:$scoln;'>
                     <input type='radio' name='side[$bid]' value='-1' style='background-color:$scoln;' $sseln />
@@ -301,13 +305,16 @@ function list_blocks()
     </form>\n";
 }
 
+/**
+ * @return array
+ */
 function get_block_configs()
 {
     $error_reporting_level = error_reporting(0);
     if (preg_match('/^[.0-9a-zA-Z_-]+$/', @$_GET['dirname'])) {
-        include dirname(dirname(__DIR__)) . '/' . $_GET['dirname'] . '/xoops_version.php';
+        include __DIR__ . '/../../' . $_GET['dirname'] . '/xoops_version.php';
     } else {
-        include dirname(__DIR__) . '/xoops_version.php';
+        include __DIR__ . '/../xoops_version.php';
     }
     error_reporting($error_reporting_level);
     if (empty($modversion['blocks'])) {
@@ -342,7 +349,7 @@ if (!empty($_POST['submit'])) {
         redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
     }
 
-    include('mygroupperm.php');
+    include __DIR__ . '/mygroupperm.php';
     redirect_header(XOOPS_URL . '/modules/' . $xoopsModule->dirname() . "/admin/myblocksadmin.php$query4redirect", 1, _AM_APCALAM_APCALDBUPDATED);
 }
 

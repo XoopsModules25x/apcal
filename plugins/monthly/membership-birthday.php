@@ -1,44 +1,29 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      Antiques Promotion (http://www.antiquespromotion.ca)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
  * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @author      Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
 // DEC 20050908
 // a plugin for membership that extracts birthdays
 // based on mylinks plugin
 
-if (!defined('XOOPS_ROOT_PATH')) {
-    exit;
-}
+defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 /*
     $db : db instance
@@ -62,7 +47,7 @@ if (!defined('XOOPS_ROOT_PATH')) {
 // setting absurd range allows all member's birthdays to show in every year
 $range_start_s = '1904-01-01';
 $range_end_s   = '2030-01-01';
-//print_r($range_start_s . "<BR>");
+//print_r($range_start_s . "<br>");
 //print_r($range_end_s);
 // query (added 86400 second margin "begin" & "end")
 $result = $db->query('SELECT lastname,uid,birth_date FROM ' . $db->prefix('membership_info') . " WHERE birth_date >= '$range_start_s' AND birth_date < '$range_end_s'");
@@ -86,7 +71,8 @@ while (list($lastname, $id, $server_time) = $db->fetchRow($result)) {
         'server_time' => $server_time,
         'user_time'   => $user_time,
         'name'        => 'lastname',
-        'title'       => $myts->htmlSpecialChars($lastname));
+        'title'       => $myts->htmlSpecialChars($lastname)
+    );
     if ($just1gif) {
         // just 1 gif per a plugin & per a day
         $plugin_returns[$target_date][$plugin['dirname']] = $tmp_array;

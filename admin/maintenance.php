@@ -1,34 +1,22 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
- * @copyright   {@link http://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @copyright    {@link http://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @param $msg
  */
 
 function error_halt($msg)
@@ -43,9 +31,10 @@ function error_halt($msg)
     xoops_cp_footer();
 }
 
-require_once(dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php');
-require_once(dirname(__DIR__) . '/class/APCal.php');
-require_once(dirname(__DIR__) . '/class/APCal_xoops.php');
+require_once __DIR__ . '/admin_header.php';
+//require_once __DIR__ . '/../../../include/cp_header.php';
+require_once __DIR__ . '/../class/APCal.php';
+require_once __DIR__ . '/../class/APCal_xoops.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
@@ -54,7 +43,7 @@ if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
 }
 $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
 
-require_once(XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php");
+require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
 // setting physical & virtual paths
 $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
@@ -70,7 +59,7 @@ $cal = new APCal_xoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $conn = $GLOBALS['xoopsDB']->conn;
-include(dirname(__DIR__) . '/include/read_configs.php');
+include __DIR__ . '/../include/read_configs.php';
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -144,8 +133,8 @@ if (!empty($_POST['do_04to06'])) {
   ismenuitem tinyint NOT NULL default 0,
   enabled tinyint NOT NULL default 1,
   cat_title varchar(255) NOT NULL default '',
-  cat_desc text NOT NULL default '',
-  dtstamp TIMESTAMP(14) NOT NULL,
+  cat_desc text NULL,
+  dtstamp timestamp(6) NOT NULL,
   cat_extkey0 INT(10) unsigned zerofill NOT NULL DEFAULT 0,
   cat_depth INT(10) unsigned zerofill NOT NULL DEFAULT 0,
   cat_style varchar(255) NOT NULL default '',
@@ -153,7 +142,7 @@ if (!empty($_POST['do_04to06'])) {
   KEY (weight),
   KEY (cat_extkey0),
   PRIMARY KEY (cid)
-) TYPE=MyISAM";
+) ENGINE=MyISAM";
     $rs  = $GLOBALS['xoopsDB']->query($sql);
 
     xoops_cp_header();
@@ -209,7 +198,7 @@ if (!$is_040) {
     OpenTable();
     echo _AM_APCAL_ALRT_OLDTABLE;
     echo "
-        <br />(0.4x, 0.5x -> 0.6)
+        <br>(0.4x, 0.5x -> 0.6)
         <form action='' method='post'>
             " . $xoopsGTicket->getTicketHtml(__LINE__) . "
             <input type='submit' name='do_04to06' value='" . _GO . "' />
@@ -219,7 +208,7 @@ if (!$is_040) {
     OpenTable();
     echo _AM_APCAL_ALRT_CATTABLENOTEXIST;
     echo "
-        <br />
+        <br>
         <form action='' method='post'>
             " . $xoopsGTicket->getTicketHtml(__LINE__) . "
             <input type='submit' name='create_cat' value='" . _GO . "' />
@@ -266,7 +255,7 @@ if (!$is_040) {
 
         /*      printf( _AM_APCAL_FMT_WRONGSTZ , $wrong_stzs ) ;
                 echo "
-                    <br />
+                    <br>
                         <input type='submit' name='repair_stz' value='"._GO."' />
                     </form>\n" ;
         */

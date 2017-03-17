@@ -1,34 +1,22 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       Antiques Promotion (http://www.antiquespromotion.ca)
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
 if (!defined('APCAL_BLOCK_MINICAL_EX')) {
@@ -39,6 +27,10 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         $GLOBALS['apcal_blockinstance_id'] = $this->getVar('instanceid');
     }
 
+    /**
+     * @param $options
+     * @return array|mixed
+     */
     function apcal_minical_ex_show($options)
     {
         global $xoopsConfig, $xoopsDB, $xoopsUser;
@@ -75,7 +67,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         $additional_get = '';
         if (!$robots_mode) {
             foreach ($_GET as $g_key => $g_val) {
-                if ($g_key == 'caldate' || $g_key == session_name()) {
+                if ($g_key === 'caldate' || $g_key == session_name()) {
                     continue;
                 }
                 if ((int)$g_val != $g_val) {
@@ -88,7 +80,10 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         }
 
         // cache enable or not
-        if (empty($_POST['apcal_jumpcaldate']) && (empty($_GET['caldate']) || in_array(substr($_GET['caldate'], 0, 4), array(date('Y'), date('Y') - 1)))) {
+        if (empty($_POST['apcal_jumpcaldate'])
+            && (empty($_GET['caldate'])
+                || in_array(substr($_GET['caldate'], 0, 4), array(date('Y'), date('Y') - 1)))
+        ) {
             $enable_cache = true;
             //      $enable_cache = false ;
         } else {
@@ -144,8 +139,8 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
 
         // defining class of APCal
         if (!class_exists('APCal_xoops')) {
-            require_once("$mod_path/class/APCal.php");
-            require_once("$mod_path/class/APCal_xoops.php");
+            require_once "$mod_path/class/APCal.php";
+            require_once "$mod_path/class/APCal_xoops.php";
         }
 
         // creating an instance of APCal
@@ -156,7 +151,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
 
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
-        include("$mod_path/include/read_configs.php");
+        include "$mod_path/include/read_configs.php";
         $cal->base_url    = $mod_url;
         $cal->base_path   = $mod_path;
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -189,14 +184,18 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         return $block;
     }
 
+    /**
+     * @param $options
+     * @return string
+     */
     function apcal_minical_ex_edit($options)
     {
         global $xoopsDB, $xoopsConfig;
 
         $moduleDirName      = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
         $gifaday            = empty($options[1]) ? 2 : (int)$options[1];
-        $just1gif_radio_yes = empty($options[2]) ? '' : 'checked="checked"';
-        $just1gif_radio_no  = empty($options[2]) ? 'checked="checked"' : '';
+        $just1gif_radio_yes = empty($options[2]) ? '' : 'checked';
+        $just1gif_radio_no  = empty($options[2]) ? 'checked' : '';
         //$plugins4disp = empty( $options[3] ) ? '' : htmlspecialchars( str_replace( array( ' ' , "\t" , "\0" ) , '' ,  $options[3] ) , ENT_QUOTES ) ;
 
         // setting physical & virtual paths
@@ -204,8 +203,8 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
-        require_once("$mod_path/class/APCal.php");
-        require_once("$mod_path/class/APCal_xoops.php");
+        require_once "$mod_path/class/APCal.php";
+        require_once "$mod_path/class/APCal_xoops.php";
 
         // creating an instance of APCal
         $cal                = new APCal_xoops(date('Y-n-j'), $xoopsConfig['language'], true);
@@ -213,7 +212,7 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
 
         // setting properties of APCal
         $cal->conn = $GLOBALS['xoopsDB']->conn;
-        include("$mod_path/include/read_configs.php");
+        include "$mod_path/include/read_configs.php";
         $cal->base_url    = $mod_url;
         $cal->base_path   = $mod_path;
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -223,12 +222,12 @@ if (!defined('APCAL_BLOCK_MINICAL_EX')) {
 
         // max dotgifs a day
         $ret .= _MB_APCAL_MAXGIFSADAY . ':';
-        $ret .= "<input type='text' size='4' name='options[1]' value='$gifaday' style='text-align:right;' /><br />\n";
+        $ret .= "<input type='text' size='4' name='options[1]' value='$gifaday' style='text-align:right;' /><br>\n";
 
         // disallow multi gifs per a plugin per a day
         $ret .= _MB_APCAL_JUSTONCEADAYAPLUGIN . ':';
         $ret .= "<input type='radio' name='options[2]' value='1' $just1gif_radio_yes />" . _YES . "&nbsp;\n";
-        $ret .= "<input type='radio' name='options[2]' value='0' $just1gif_radio_no />" . _NO . "<br />\n";
+        $ret .= "<input type='radio' name='options[2]' value='0' $just1gif_radio_no />" . _NO . "<br>\n";
 
         return $ret;
     }

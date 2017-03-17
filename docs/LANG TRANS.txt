@@ -48,9 +48,9 @@ define('_MI_APCAL_MAP', 'Google Map');
 define('_MI_APCAL_COMMENTSNOT', 'Comments & Notifications');
 
 modinfo.php (line 115)
-define("_MI_APCAL_DESCUSEURLREWRITE" , "<b>In order to make it works, copy /modules/APCal/doc/.htaccess to /modules/APCal/.</b><br /><br />N.B.: If you don't have the apache \"mod_rewrite\" installed on your server, it might not work. Please contact your system admin for details." ) ;
+define("_MI_APCAL_DESCUSEURLREWRITE" , "<b>In order to make it works, copy /modules/apcal/doc/.htaccess to /modules/apcal/.</b><br><br>N.B.: If you don't have the apache \"mod_rewrite\" installed on your server, it might not work. Please contact your system admin for details." ) ;
 define("_MI_APCAL_WIDERWEEKENDDESC" , "Hold down the \"Ctrl\" key on your keyboard while you click to select more than one day." );
-define('_MI_APCAL_THMORDEFAULTDESC', 'Theme: Give your main css filename in the next field. (Recommended)<br />Custom: Fill up the next 13 fields.<br />Default: Use the default colors.');
+define('_MI_APCAL_THMORDEFAULTDESC', 'Theme: Give your main css filename in the next field. (Recommended)<br>Custom: Fill up the next 13 fields.<br>Default: Use the default colors.');
 
 modinfo.php (line 140)
 define('_MI_APCAL_OPT_THM', 'Theme');
@@ -228,7 +228,7 @@ define('_APCAL_RO_TITLE2','Activate online registration for this event');
 define('_APCAL_RO_BTN_RO_EDIT','Edit online registration');
 define('_APCAL_RO_BTN_RO_DEACTIVATE','Delete online registration');
 define('_APCAL_RO_BTN_RO_ACTIVATE','Activate');
-define('_APCAL_RO_QUANTITY','Maximum number of participants<br/>(0 means: no limit)');
+define('_APCAL_RO_QUANTITY','Maximum number of participants<br>(0 means: no limit)');
 define('_APCAL_RO_QUANTITY2','Maximum number of participants');
 define('_APCAL_RO_DATELIMIT','Deadline for online registration');
 define('_APCAL_RO_EMAIL_NOTIFY','E-mail-address, which should be notified in case of (de-)registrations (keep blank, if you want no notifications)');

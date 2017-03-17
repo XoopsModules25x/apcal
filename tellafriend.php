@@ -1,14 +1,14 @@
 <?php
 
-require_once dirname(dirname(__DIR__)) . '/mainfile.php';
+require_once __DIR__ . '/../../mainfile.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 
 $mod_path = XOOPS_ROOT_PATH . '/modules/' . basename(__DIR__);
 if (!class_exists('APCal')) {
-    require_once($mod_path . '/class/APCal.php');
+    require_once $mod_path . '/class/APCal.php';
 }
 $cal = new APCal('', $xoopsConfig['language'], true);
-include($mod_path . '/include/read_configs.php');
+include $mod_path . '/include/read_configs.php';
 
 if ($cal->enabletellafriend) {
     require_once XOOPS_ROOT_PATH . '/header.php';
@@ -41,7 +41,7 @@ if ($cal->enabletellafriend) {
         $tpl->assign('captchaMsg', !$verify && $xoopsCaptcha ? $xoopsCaptcha->getMessage() : '');
         $tpl->assign('vars', $_POST);
 
-        echo $tpl->fetch(XOOPS_ROOT_PATH . '/modules/APCal/templates/apcal_tellafriend.tpl');
+        echo $tpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/apcal_tellafriend.tpl');
     }
 
     require_once XOOPS_ROOT_PATH . '/footer.php';

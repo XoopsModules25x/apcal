@@ -1,35 +1,23 @@
-<?PHP
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+<?php
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
+
 if (!class_exists('patTemplate')) {
 
     /**
@@ -77,7 +65,7 @@ if (!class_exists('patTemplate')) {
      * @access       public
      * @author       Stephan Schmidt <schst@php-tools.de>
      */
-    class    patTemplate
+    class patTemplate
     {
         /**
          * Constructor
@@ -215,7 +203,8 @@ if (!class_exists('patTemplate')) {
         {
             $this->createTemplate($name, array(
                 'type'     => 'file',
-                'filename' => $filename));
+                'filename' => $filename
+            ));
             //  Store the filename
             $this->filenames[$name] = $filename;
         }
@@ -234,7 +223,8 @@ if (!class_exists('patTemplate')) {
          */
         public function addTemplates($templates)
         {
-            while (list($name, $file) = each($templates)) {
+            //            while (list($name, $file) = each($templates)) {
+            foreach ($templates as $name => $file) {
                 $this->addTemplate($name, $file);
             }
         }
@@ -266,7 +256,8 @@ if (!class_exists('patTemplate')) {
                 'loop'       => 1,
                 'visibility' => 'visible',
                 'unusedvars' => 'strip',
-                'type'       => 'STANDARD');
+                'type'       => 'STANDARD'
+            );
             $this->iteration[$name]  = 0;
 
             //  No vars are set for this template
@@ -342,6 +333,7 @@ if (!class_exists('patTemplate')) {
          * @param array  $attributes attribute/value pairs
          * @access   public
          * @see      setAttribute(), getAttribute(), clearAttribute()
+         * @return bool
          */
         public function setAttributes($template, $attributes)
         {
@@ -351,7 +343,8 @@ if (!class_exists('patTemplate')) {
 
             $template = strtoupper($template);
 
-            while (list($attribute, $value) = each($attributes)) {
+//            while (list($attribute, $value) = each($attributes)) {
+            foreach ($attributes as $attribute => $value) {
                 $attribute                               = strtolower($attribute);
                 $this->attributes[$template][$attribute] = $value;
             }
@@ -501,10 +494,10 @@ if (!class_exists('patTemplate')) {
 
                     if ($attributes[keep] > 0) {
                         //  create new attribute
-                        $newkeep = $attributes[keep] > 1 ? " keep=\"" . ($attributes[keep] - 1) . "\"" : '';
+                        $newkeep = $attributes[keep] > 1 ? ' keep="' . ($attributes[keep] - 1) . '"' : '';
 
                         //  replace old attribute with new attribute
-                        $newline = str_replace(" keep=\"" . $attributes[keep] . "\"", $newkeep, $line);
+                        $newline = str_replace(' keep="' . $attributes[keep] . '"', $newkeep, $line);
 
                         //  use this line as data
                         $this->dataHandler($fname, $newline, $lineno);
@@ -756,7 +749,9 @@ if (!class_exists('patTemplate')) {
                 case 'tmpl':
                     //  If the current template is a standard template, store all content
                     //  found between <patTemplate> Tags
-                    if ($this->template_types[$this->depth] == 'STANDARD' || $this->template_types[$this->depth] == 'SIMPLECONDITION') {
+                    if ($this->template_types[$this->depth] == 'STANDARD'
+                        || $this->template_types[$this->depth] == 'SIMPLECONDITION'
+                    ) {
                         $this->setPlainContent($this->template_names[$this->depth], $this->template_data[$this->depth]);
                     }
 
@@ -793,7 +788,7 @@ if (!class_exists('patTemplate')) {
          * @param string $fname name of the file where the tag was found (kind of parser id)
          * @param string $data  all cdata that was found
          */
-        public function DataHandler($fname, $data)
+        public function dataHandler($fname, $data)
         {
             $this->template_data[$this->depth] .= $data;
         }
@@ -841,6 +836,7 @@ if (!class_exists('patTemplate')) {
          * @param string $prefix    prefix for all variable names
          * @access   public
          * @see      addVar(), addRows(), addGlobalVar(), addGlobalVars()
+         * @return bool
          */
         public function addVars($template, $variables, $prefix = '')
         {
@@ -850,7 +846,8 @@ if (!class_exists('patTemplate')) {
             }
 
             //  Add all vars
-            while (list($name, $value) = each($variables)) {
+//            while (list($name, $value) = each($variables)) {
+            foreach ($variables as $name => $value) {
                 if (!is_int($name)) {
                     $this->addVar($template, $prefix . $name, $value);
                 }
@@ -883,7 +880,8 @@ if (!class_exists('patTemplate')) {
                 for ($i = 0; $i < $cnt_rows; ++$i) {
                     if (is_array($rows[$i])) {
                         //  Get key and value
-                        while (list($key, $value) = each($rows[$i])) {
+//                        while (list($key, $value) = each($rows[$i])) {
+                        foreach ($rows[$i] as $key => $value) {
                             //  check if the array key is an int value => skip it
                             if (!is_int($key)) {
                                 //  prepend prefix and store the value
@@ -926,7 +924,8 @@ if (!class_exists('patTemplate')) {
          */
         public function addGlobalVars($variables, $prefix = '')
         {
-            while (list($variable, $value) = each($variables)) {
+            //            while (list($variable, $value) = each($variables)) {
+            foreach ($variables as $variable => $value) {
                 $this->globals[strtoupper($prefix . $variable)] = (string)$value;
             }
         }
@@ -956,6 +955,7 @@ if (!class_exists('patTemplate')) {
          * @access     private
          * @deprecated 2.4 2001/11/05
          * @see        addTemplate(), addTemplates();
+         * @return bool
          */
         public function loadTemplate($name)
         {
@@ -1046,7 +1046,8 @@ if (!class_exists('patTemplate')) {
 
             $vars                                                    = $this->getVars($name);
             $vars[$this->tag_start . 'PAT_ROW_VAR' . $this->tag_end] = 1;
-            while (list($tag, $value) = each($vars)) {
+//            while (list($tag, $value) = each($vars)) {
+            foreach ($vars as $tag => $value) {
                 if (is_array($value)) {
                     $value = $value[0];
                 }
@@ -1098,7 +1099,8 @@ if (!class_exists('patTemplate')) {
                 $current = $this->getTemplateContent($name);
 
                 $vars = $this->getVars($name);
-                while (list($tag, $value) = each($vars)) {
+//                while (list($tag, $value) = each($vars)) {
+                foreach ($vars as $tag => $value) {
                     $current = str_replace($tag, $value, $current);
                 }
 
@@ -1138,7 +1140,8 @@ if (!class_exists('patTemplate')) {
                 //  Pointer im Array auf 0 setzen
                 reset($this->variables[$template]);
 
-                while (list($variable, $value) = each($this->variables[$template])) {
+//                while (list($variable, $value) = each($this->variables[$template])) {
+                foreach ($this->variables[$template] as $variable => $value) {
                     $tag = $this->tag_start . $variable . $this->tag_end;
 
                     //  if the variable is an array, use the index
@@ -1153,7 +1156,8 @@ if (!class_exists('patTemplate')) {
             if ($scope = strtoupper($this->getAttribute($template, 'varscope'))) {
                 $parentVars = $this->getVars($scope);
                 reset($parentVars);
-                while (list($var, $value) = each($parentVars)) {
+//                while (list($var, $value) = each($parentVars)) {
+                foreach ($parentVars as $var => $value) {
                     if (!$vars[$var]) {
                         $vars[$var] = $value;
                     }
@@ -1182,7 +1186,8 @@ if (!class_exists('patTemplate')) {
             if (is_array($this->globals)) {
                 reset($this->globals);
 
-                while (list($variable, $value) = each($this->globals)) {
+//                while (list($variable, $value) = each($this->globals)) {
+                foreach ($this->globals as $variable => $value) {
                     $tag  = $this->tag_start . $variable . $this->tag_end;
                     $temp = str_replace($tag, $value, $temp);
                 }
@@ -1226,6 +1231,7 @@ if (!class_exists('patTemplate')) {
          *
          * @param string $name  name of the template
          * @param string &$temp content of the parsed Template
+         * @param string $mode
          * @access   private
          * @see      addDependency()
          */
@@ -1241,7 +1247,9 @@ if (!class_exists('patTemplate')) {
                 //  Get the parsed child template and replace it
                 $temp = str_replace($tag, $this->getParsedTemplate($this->dependencies[$name][$i]), $temp);
 
-                if (($type == patTEMPLATE_TYPE_CONDITION || $type == patTEMPLATE_TYPE_SIMPLECONDITION) && $mode == 'w') {
+                if (($type == patTEMPLATE_TYPE_CONDITION || $type == patTEMPLATE_TYPE_SIMPLECONDITION)
+                    && $mode == 'w'
+                ) {
                     unset($this->parsed_templates[$this->dependencies[$name][$i]]);
                 }
             }
@@ -1444,7 +1452,7 @@ if (!class_exists('patTemplate')) {
 
             $pairs = explode(' ', $string);
             for ($i = 0, $iMax = count($pairs); $i < $iMax; ++$i) {
-                $pair = explode('=', trim(str_replace("\"", '', $pairs[$i])));
+                $pair = explode('=', trim(str_replace('"', '', $pairs[$i])));
 
                 if (count($pair) == 1) {
                     $pair[1] = 'yes';
@@ -1461,9 +1469,9 @@ if (!class_exists('patTemplate')) {
          *
          * return value depends on iteration value
          *
-         * @param  string $name  name of the template
-         * @param  int    $index iteration number
+         * @param  string $name name of the template
          * @return string $content    plain content of the template
+         * @internal param int $index iteration number
          * @access   private
          */
         public function getTemplateContent($name)
@@ -1482,7 +1490,9 @@ if (!class_exists('patTemplate')) {
                     $conditionval = $this->getVar($name, $this->conditionvars[$name]);
 
                     //  check, if conditionvalue is empty
-                    if (!isset($conditionval) || (is_string($conditionval) && $conditionval == '') || $conditionval === false) {
+                    if (!isset($conditionval) || (is_string($conditionval) && $conditionval == '')
+                        || $conditionval === false
+                    ) {
                         $conditionval = 'empty';
                     }
 
@@ -1524,10 +1534,10 @@ if (!class_exists('patTemplate')) {
         /**
          *   get the value of a variable
          *
-         * @param  string  $template name of the template
-         * @param  string  $var      name of the variable
-         * @param  integer $index    no of repetition
-         * @return mixed   $value      value of the variable / false if it doesn't exist
+         * @param  string $template name of the template
+         * @param  string $var      name of the variable
+         * @return mixed  $value      value of the variable / false if it doesn't exist
+         * @internal param int $index no of repetition
          */
         public function getVar($template, $var)
         {
@@ -1545,7 +1555,7 @@ if (!class_exists('patTemplate')) {
             }
 
             //  check, if global var should be used
-            if (!$val && $this->getAttribute($template, 'useglobals') == 'yes') {
+            if (!$val && $this->getAttribute($template, 'useglobals') === 'yes') {
                 $val = $this->globals[$var];
             }
 
@@ -1579,7 +1589,7 @@ if (!class_exists('patTemplate')) {
                 //  Template name
                 echo "   <tr bgcolor=\"#EEEEEE\">\n";
                 echo "       <td class=\"head\" valign=\"top\">Template</td>\n";
-                echo "       <td class=\"head\" valign=\"top\">" . $name . "</td>\n";
+                echo '       <td class="head" valign="top">' . $name . "</td>\n";
                 echo "   </tr>\n";
 
                 $fname = $this->basedir != '' ? $this->basedir . '/' . $this->filenames[$name] : $this->filenames[$name];
@@ -1587,7 +1597,7 @@ if (!class_exists('patTemplate')) {
                 //  Template file
                 echo "   <tr>\n";
                 echo "       <td class=\"mid\" valign=\"top\"><b>Filename</b></td>\n";
-                echo "       <td class=\"text\" valign=\"top\">" . $fname . "</td>\n";
+                echo '       <td class="text" valign="top">' . $fname . "</td>\n";
                 echo "   </tr>\n";
 
                 //  Template Attributes
@@ -1599,11 +1609,12 @@ if (!class_exists('patTemplate')) {
                 echo "           <table border=\"0\" cellpadding=\"0\" cellspacing=\"1\">\n";
 
                 //  Display all Attributes in table
-                while (list($key, $value) = each($this->attributes[$name])) {
+//                while (list($key, $value) = each($this->attributes[$name])) {
+                foreach ($this->attributes[$name] as $key => $value) {
                     echo "               <tr>\n";
-                    echo "                   <td class=\"text\"><b>" . $key . "</b></td>\n";
+                    echo '                   <td class="text"><b>' . $key . "</b></td>\n";
                     echo "                   <td class=\"text\"> : </td>\n";
-                    echo "                   <td class=\"text\">" . $value . "</td>\n";
+                    echo '                   <td class="text">' . $value . "</td>\n";
                     echo "               </tr>\n";
                 }
                 echo "           </table>\n";
@@ -1619,7 +1630,7 @@ if (!class_exists('patTemplate')) {
                     //  display template Data
                     echo "   <tr>\n";
                     echo "       <td class=\"mid\" valign=\"top\"><b>Template Data:</b></td>\n";
-                    echo "       <td class=\"text\" valign=\"top\">Amount of subtemplates: " . $this->cnt_subtemplates[$name] . "</td>\n";
+                    echo '       <td class="text" valign="top">Amount of subtemplates: ' . $this->cnt_subtemplates[$name] . "</td>\n";
                     echo "   </tr>\n";
 
                     //  Display all Subtemplates
@@ -1627,12 +1638,12 @@ if (!class_exists('patTemplate')) {
                         $condition = $this->subtemplate_conditions[$name][$j];
                         echo "               <tr bgcolor=\"#DDDDDD\">\n";
                         echo "                   <td class=\"text\"><b>Condition</b></td>\n";
-                        echo "                   <td class=\"text\">" . $condition . "</td>\n";
+                        echo '                   <td class="text">' . $condition . "</td>\n";
                         echo "               </tr>\n";
 
                         echo "               <tr>\n";
                         echo "                   <td class=\"text\" valign=\"top\"><b>Template Data</b></td>\n";
-                        echo "                   <td class=\"text\" valign=\"top\"><pre>" . htmlspecialchars($this->getPlainSubTemplate($name, $condition)) . "</pre></td>\n";
+                        echo '                   <td class="text" valign="top"><pre>' . htmlspecialchars($this->getPlainSubTemplate($name, $condition)) . "</pre></td>\n";
                         echo "               </tr>\n";
 
                         unset($matches);
@@ -1644,8 +1655,10 @@ if (!class_exists('patTemplate')) {
 
                         if (is_array($matches[0]) && count($matches[0]) > 0) {
                             //  Check, wether variable is unused
-                            for ($k = 0; $k <= count($matches[0]); ++$k) {
-                                if ($matches[1][$k] != '' && !isset($this->variables[$name][$matches[1][$k]]) && !isset($this->globals[$matches[1][$k]])) {
+                            for ($k = 0, $kMax = count($matches[0]); $k <= $kMax; ++$k) {
+                                if ($matches[1][$k] != '' && !isset($this->variables[$name][$matches[1][$k]])
+                                    && !isset($this->globals[$matches[1][$k]])
+                                ) {
                                     $unused[] = $matches[0][$k];
                                 }
                             }
@@ -1659,10 +1672,10 @@ if (!class_exists('patTemplate')) {
                             echo "           <table border=\"0\" cellpadding=\"0\" cellspacing=\"1\">\n";
 
                             //  Display all Variables in table
-                            for ($k = 0; $k <= count($unused); ++$k) {
+                            for ($k = 0, $kMax = count($unused); $k <= $kMax; ++$k) {
                                 {
                                     echo "               <tr>\n";
-                                    echo "                   <td class=\"text\">" . $unused[$k] . "</td>\n";
+                                    echo '                   <td class="text">' . $unused[$k] . "</td>\n";
                                     echo "               </tr>\n";
                                 }
                             }
@@ -1694,8 +1707,10 @@ if (!class_exists('patTemplate')) {
 
                     if (is_array($matches[0]) && count($matches[0]) > 0) {
                         //  Check, wether variable is unused
-                        for ($k = 0; $k < count($matches[0]); ++$k) {
-                            if ($matches[1][$k] != '' && !isset($this->variables[$name][$matches[1][$k]]) && !isset($this->globals[$matches[1][$k]])) {
+                        for ($k = 0, $kMax = count($matches[0]); $k < $kMax; ++$k) {
+                            if ($matches[1][$k] != '' && !isset($this->variables[$name][$matches[1][$k]])
+                                && !isset($this->globals[$matches[1][$k]])
+                            ) {
                                 $unused[] = $matches[0][$k];
                             }
                         }
@@ -1709,10 +1724,10 @@ if (!class_exists('patTemplate')) {
                         echo "           <table border=\"0\" cellpadding=\"0\" cellspacing=\"1\">\n";
 
                         //  Display all Variables in table
-                        for ($k = 0; $k <= count($unused); ++$k) {
+                        for ($k = 0, $kMax = count($unused); $k <= $kMax; ++$k) {
                             {
                                 echo "               <tr>\n";
-                                echo "                   <td class=\"text\">" . $unused[$k] . "</td>\n";
+                                echo '                   <td class="text">' . $unused[$k] . "</td>\n";
                                 echo "               </tr>\n";
                             }
                         }
@@ -1735,15 +1750,16 @@ if (!class_exists('patTemplate')) {
                     echo "           <table border=\"0\" cellpadding=\"0\" cellspacing=\"1\">\n";
 
                     //  Display all Variables in table
-                    while (list($key, $value) = each($this->variables[$name])) {
+//                    while (list($key, $value) = each($this->variables[$name])) {
+                    foreach ($this->variables[$name] as $key => $value) {
                         if (is_array($value)) {
                             $value = implode(', ', $value);
                         }
 
                         echo "               <tr>\n";
-                        echo "                   <td class=\"text\"><b>" . $this->tag_start . $key . $this->tag_end . "</b></td>\n";
+                        echo '                   <td class="text"><b>' . $this->tag_start . $key . $this->tag_end . "</b></td>\n";
                         echo "                   <td class=\"text\"> => </td>\n";
-                        echo "                   <td class=\"text\">" . $value . "</td>\n";
+                        echo '                   <td class="text">' . $value . "</td>\n";
                         echo "               </tr>\n";
                     }
                     echo "           </table>\n";

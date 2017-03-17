@@ -1,34 +1,28 @@
 <?php
-
-//  ------------------------------------------------------------------------ //
-//                XOOPS - PHP Content Management System                      //
-//                  Copyright (c) 2000-2016 XOOPS.org                        //
-//                       <http://xoops.org/>                             //
-//  ------------------------------------------------------------------------ //
-//  This program is free software; you can redistribute it and/or modify     //
-//  it under the terms of the GNU General Public License as published by     //
-//  the Free Software Foundation; either version 2 of the License, or        //
-//  (at your option) any later version.                                      //
-//                                                                           //
-//  You may not change or alter any portion of this comment or credits       //
-//  of supporting developers from this source code or any supporting         //
-//  source code which is considered copyrighted (c) material of the          //
-//  original comment or credit authors.                                      //
-//                                                                           //
-//  This program is distributed in the hope that it will be useful,          //
-//  but WITHOUT ANY WARRANTY; without even the implied warranty of           //
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            //
-//  GNU General Public License for more details.                             //
-//                                                                           //
-//  You should have received a copy of the GNU General Public License        //
-//  along with this program; if not, write to the Free Software              //
-//  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
-//  ------------------------------------------------------------------------ //
+/*
+ * You may not change or alter any portion of this comment or credits
+ * of supporting developers from this source code or any supporting source code
+ * which is considered copyrighted (c) material of the original comment or credit authors.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
 
 /**
  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @package
+ * @since
+ * @author       XOOPS Development Team,
+ * @author       Antiques Promotion (http://www.antiquespromotion.ca)
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ */
+
+/**
+ * @param $cat
+ * @param $form_title
+ * @param $action
  */
 
 function display_edit_form($cat, $form_title, $action)
@@ -46,7 +40,7 @@ function display_edit_form($cat, $form_title, $action)
     $form->addElement(new XoopsFormText(_AM_APCAL_CAT_TH_TITLE, 'cat_title', 60, 128, htmlspecialchars($cat->cat_title, ENT_QUOTES)), true);
 
     // Description
-    $tarea_tray = new XoopsFormElementTray(_AM_APCAL_CAT_TH_DESC, '<br />');
+    $tarea_tray = new XoopsFormElementTray(_AM_APCAL_CAT_TH_DESC, '<br>');
     if (class_exists('XoopsFormEditor')) {
         $configs = array(
             'name'   => 'cat_desc',
@@ -55,7 +49,8 @@ function display_edit_form($cat, $form_title, $action)
             'cols'   => 60,
             'width'  => '100%',
             'height' => '400px',
-            'editor' => 'tinymce');
+            'editor' => 'tinymce'
+        );
         $tarea_tray->addElement(new XoopsFormEditor('', 'cat_desc', $configs, false, $onfailure = 'textarea'));
     } else {
         $tarea_tray->addElement(new XoopsFormDhtmlTextArea('', 'cat_desc', htmlspecialchars($cat->cat_desc, ENT_QUOTES), 15, 60));
@@ -73,7 +68,7 @@ function display_edit_form($cat, $form_title, $action)
     $form->addElement(new XoopsFormText(_AM_APCAL_CAT_TH_WEIGHT, 'weight', 6, 6, (int)$cat->weight), true);
 
     // Options
-    $checkbox_tray       = new XoopsFormElementTray(_AM_APCAL_CAT_TH_OPTIONS, '<br />');
+    $checkbox_tray       = new XoopsFormElementTray(_AM_APCAL_CAT_TH_OPTIONS, '<br>');
     $ismenuitem_checkbox = new XoopsFormCheckBox('', 'ismenuitem', (int)$cat->ismenuitem);
     $ismenuitem_checkbox->addOption(1, _AM_APCAL_CAT_TH_SUBMENU);
     $checkbox_tray->addElement($ismenuitem_checkbox);
@@ -103,6 +98,9 @@ function display_edit_form($cat, $form_title, $action)
 }
 
 // �ĥ꡼��ˤʤ�褦�ˡ�weight��Ʒ׻������ĥ꡼�ο�����¬�äƤ���
+/**
+ * @param $cat_table
+ */
 function rebuild_cat_tree($cat_table)
 {
     global $conn, $xoopsDB;
@@ -156,13 +154,14 @@ function rebuild_cat_tree($cat_table)
     }
 }
 
-require_once(dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php');
-require_once(dirname(__DIR__) . '/class/APCal.php');
-require_once(dirname(__DIR__) . '/class/APCal_xoops.php');
+require_once __DIR__ . '/admin_header.php';
+//require_once __DIR__ . '/../../../include/cp_header.php';
+require_once __DIR__ . '/../class/APCal.php';
+require_once __DIR__ . '/../class/APCal_xoops.php';
 
 require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopslists.php';
-require_once(XOOPS_ROOT_PATH . '/class/xoopstree.php');
+require_once XOOPS_ROOT_PATH . '/class/xoopstree.php';
 
 // for "Duplicatable"
 $moduleDirName = basename(dirname(__DIR__));
@@ -171,7 +170,7 @@ if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
 }
 $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
 
-require_once(XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php");
+require_once XOOPS_ROOT_PATH . "/modules/$moduleDirName/include/gtickets.php";
 
 // SERVER, GET �ѿ��μ���
 $action = isset($_POST['action']) ? preg_replace('/[^a-zA-Z0-9_-]/', '', $_POST['action']) : '';
@@ -191,7 +190,7 @@ $cal = new APCal_xoops('', $xoopsConfig['language'], true);
 
 // setting properties of APCal
 $cal->conn = $conn;
-include(dirname(__DIR__) . '/include/read_configs.php');
+include __DIR__ . '/../include/read_configs.php';
 $cal->base_url    = $mod_url;
 $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
@@ -200,10 +199,10 @@ $cal->images_path = "$mod_path/assets/images/$skin_folder";
 // XOOPS��Ϣ�ν��
 $myts          = MyTextSanitizer::getInstance();
 $cattree       = new XoopsTree($cal->cat_table, 'cid', 'pid');
-$gperm_handler = xoops_getHandler('groupperm');
+$gpermHandler = xoops_getHandler('groupperm');
 
 // �ǡ����١��������ʤɤ���������
-if ($action == 'insert') {
+if ($action === 'insert') {
 
     // Ticket Check
     if (!$xoopsGTicket->check()) {
@@ -212,18 +211,25 @@ if ($action == 'insert') {
 
     // ������Ͽ
     $sql  = "INSERT INTO $cal->cat_table SET ";
-    $cols = array('weight' => 'I:N:0', 'ismenuitem' => 'I:N:0', 'canbemain' => 'I:N:0', 'cat_title' => '255:J:1', 'cat_desc' => 'A:J:0', 'pid' => 'I:N:0');
-    $sql .= $cal->get_sql_set($cols);
-    $sql .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
-    $sql .= ",color='" . $_POST['color'] . '\'';
+    $cols = array(
+        'weight'     => 'I:N:0',
+        'ismenuitem' => 'I:N:0',
+        'canbemain'  => 'I:N:0',
+        'cat_title'  => '255:J:1',
+        'cat_desc'   => 'A:J:0',
+        'pid'        => 'I:N:0'
+    );
+    $sql  .= $cal->get_sql_set($cols);
+    $sql  .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
+    $sql  .= ",color='" . $_POST['color'] . '\'';
     if (!$GLOBALS['xoopsDB']->query($sql)) {
-        die(mysqli_error());
+        die($GLOBALS['xoopsDB']->error());
     }
     rebuild_cat_tree($cal->cat_table);
     $mes = urlencode(_AM_APCAL_MB_CAT_INSERTED);
     $cal->redirect("done=inserted&mes=$mes");
     exit;
-} elseif ($action == 'update' && $_POST['cid'] > 0) {
+} elseif ($action === 'update' && $_POST['cid'] > 0) {
 
     // Ticket Check
     if (!$xoopsGTicket->check()) {
@@ -233,13 +239,20 @@ if ($action == 'insert') {
     // ����
     $cid  = (int)$_POST['cid'];
     $sql  = "UPDATE $cal->cat_table SET ";
-    $cols = array('weight' => 'I:N:0', 'ismenuitem' => 'I:N:0', 'canbemain' => 'I:N:0', 'cat_title' => '255:J:1', 'cat_desc' => 'A:J:0', 'pid' => 'I:N:0');
-    $sql .= $cal->get_sql_set($cols);
-    $sql .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
-    $sql .= ",color='" . $_POST['color'] . '\'';
-    $sql .= "WHERE cid='$cid'";
+    $cols = array(
+        'weight'     => 'I:N:0',
+        'ismenuitem' => 'I:N:0',
+        'canbemain'  => 'I:N:0',
+        'cat_title'  => '255:J:1',
+        'cat_desc'   => 'A:J:0',
+        'pid'        => 'I:N:0'
+    );
+    $sql  .= $cal->get_sql_set($cols);
+    $sql  .= ",cat_shorttitle='" . $cal->makeShort(utf8_decode($_POST['cat_title'])) . "'";
+    $sql  .= ",color='" . $_POST['color'] . '\'';
+    $sql  .= "WHERE cid='$cid'";
     if (!$GLOBALS['xoopsDB']->query($sql)) {
-        die(mysqli_error());
+        die($GLOBALS['xoopsDB']->error());
     }
     rebuild_cat_tree($cal->cat_table);
     $mes = urlencode(_AM_APCAL_MB_CAT_UPDATED);
@@ -260,7 +273,7 @@ if ($action == 'insert') {
     $criteria = new CriteriaCompo(new Criteria('gperm_modid', $xoopsModule->mid()));
     $criteria->add(new Criteria('gperm_name', 'apcal_cat'));
     $criteria->add(new Criteria('gperm_itemid', (int)$cid));
-    $gperm_handler->deleteAll($criteria);
+    $gpermHandler->deleteAll($criteria);
 
     // Category Notify �κ��
     // (ɬ�פǤ���г������٥�Ⱥ��ε�ǽ��)
@@ -276,13 +289,13 @@ if ($action == 'insert') {
         $criteria = new CriteriaCompo(new Criteria('gperm_modid', $xoopsModule->mid()));
         $criteria->add(new Criteria('gperm_name', 'apcal_cat'));
         $criteria->add(new Criteria('gperm_itemid', (int)$child));
-        $gperm_handler->deleteAll($criteria);
+        $gpermHandler->deleteAll($criteria);
     }
     $whr .= "$cid)";
 
     // cat�ơ��֥뤫��κ��
     if (!$GLOBALS['xoopsDB']->query("DELETE FROM $cal->cat_table WHERE $whr")) {
-        die(mysqli_error());
+        die($GLOBALS['xoopsDB']->error());
     }
     rebuild_cat_tree($cal->cat_table);
     $mes = urlencode(sprintf(_AM_APCAL_FMT_CAT_DELETED, mysqli_affected_rows()));
@@ -302,7 +315,7 @@ if ($action == 'insert') {
         $cid     = (int)$cid;
         $enabled = !empty($_POST['enabled'][$cid]) ? 1 : 0;
         if (!$GLOBALS['xoopsDB']->query("UPDATE $cal->cat_table SET weight='$weight', enabled='$enabled' WHERE cid=$cid")) {
-            die(mysqli_error());
+            die($GLOBALS['xoopsDB']->error());
         }
         $affected += mysqli_affected_rows();
     }
@@ -316,19 +329,22 @@ if ($action == 'insert') {
 
 // �ᥤ�������
 xoops_cp_header();
-require_once XOOPS_ROOT_PATH . '/modules/APCal/admin/displayMenu.php';
-
+$adminObject->displayNavigation(basename(__FILE__));
 // ɽ������ο���ʬ��
-if ($disp == 'edit' && $cid > 0) {
+if ($disp === 'edit' && $cid > 0) {
 
     // ����оݥ��ƥ��꡼�ǡ����μ���
     $sql = "SELECT *,UNIX_TIMESTAMP(dtstamp) AS udtstamp FROM $cal->cat_table WHERE cid='$cid'";
     $crs = $GLOBALS['xoopsDB']->query($sql);
     $cat = $GLOBALS['xoopsDB']->fetchObject($crs);
     display_edit_form($cat, _AM_APCAL_MENU_CAT_EDIT, 'update');
-} elseif ($disp == 'new') {
+} elseif ($disp === 'new') {
 
     // ��������Ʊ�����Υ��֥������Ȥ��Ѱ�
+
+    /**
+     * Class Dummy
+     */
     class Dummy
     {
         public $cid        = 0;
@@ -349,7 +365,7 @@ if ($disp == 'edit' && $cid > 0) {
     echo '<h4>' . _AM_APCAL_MENU_CATEGORIES . "</h4>\n";
 
     if (!empty($_GET['mes'])) {
-        echo "<p><font color='blue'>" . htmlspecialchars($_GET['mes'], ENT_QUOTES) . '</font></p>';
+        echo "<p><style='color: blue; '>" . htmlspecialchars($_GET['mes'], ENT_QUOTES) . '</style></p>';
     }
 
     echo "<p><a href='?disp=new&cid=0'>" . _AM_APCAL_MB_MAKETOPCAT . "<img src='../assets/images/cat_add.gif' width='18' height='15' alt='' /></a></p>\n";
@@ -374,11 +390,11 @@ if ($disp == 'edit' && $cid > 0) {
     // �ꥹ�Ƚ�����
     $oddeven = 'odd';
     foreach ($cat_tree_array as $cat_node) {
-        $oddeven = ($oddeven == 'odd' ? 'even' : 'odd');
+        $oddeven = ($oddeven === 'odd' ? 'even' : 'odd');
         extract($cat_node);
 
         $prefix         = str_replace('.', '&nbsp;--', substr($prefix, 1));
-        $enable_checked = $enabled ? "checked='checked'" : '';
+        $enable_checked = $enabled ? 'checked' : '';
         $cid            = (int)$cid;
         $cat_title      = $myts->htmlSpecialChars($cat_title);
         $del_confirm    = 'confirm("' . sprintf(_AM_APCAL_FMT_CATDELCONFIRM, $cat_title) . '")';
@@ -412,4 +428,4 @@ if ($disp == 'edit' && $cid > 0) {
     ';
 }
 
-xoops_cp_footer();
+require_once __DIR__ . '/admin_footer.php';

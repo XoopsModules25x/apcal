@@ -1,10 +1,19 @@
 <?php
 
-class thumb
+/**
+ * Class thumb
+ */
+class Thumb
 {
+    /**
+     * @param $filename
+     * @param $maxWidth
+     * @param $maxHeight
+     * @return array
+     */
     public static function make($filename, $maxWidth, $maxHeight)
     {
-        $imgPath = XOOPS_UPLOAD_PATH . '/APCal/' . $filename;
+        $imgPath = XOOPS_UPLOAD_PATH . '/apcal/' . $filename;
 
         $imgInfo = getimagesize($imgPath);
         $oWidth  = $imgInfo[0];
@@ -24,10 +33,15 @@ class thumb
         return array('width' => $nWidth, 'height' => $nHeight);
     }
 
+    /**
+     * @param $filename
+     * @param $maxWidth
+     * @param $maxHeight
+     */
     public static function save($filename, $maxWidth, $maxHeight)
     {
-        $thumbPath = XOOPS_UPLOAD_PATH . '/APCal/thumbs/' . $filename;
-        $imgPath   = XOOPS_UPLOAD_PATH . '/APCal/' . $filename;
+        $thumbPath = XOOPS_UPLOAD_PATH . '/apcal/thumbs/' . $filename;
+        $imgPath   = XOOPS_UPLOAD_PATH . '/apcal/' . $filename;
         $nSize     = self::make($filename, $maxWidth, $maxHeight);
         $imgInfo   = getimagesize($imgPath);
         $oWidth    = $imgInfo[0];
@@ -66,8 +80,12 @@ class thumb
         }
     }
 
+    /**
+     * @param $filename
+     * @return bool
+     */
     public static function exists($filename)
     {
-        return file_exists(XOOPS_UPLOAD_PATH . '/APCal/thumbs/' . $filename);
+        return file_exists(XOOPS_UPLOAD_PATH . '/apcal/thumbs/' . $filename);
     }
 }

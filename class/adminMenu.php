@@ -9,7 +9,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
- * @copyright   {@link http://xoops.org/ XOOPS Project}
+  * @copyright   {@link http://xoops.org/ XOOPS Project}
  * @license     GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
  * @author      John Neill (AKA Catzwolf)
  * @author      Andricq Nicolas (AKA MusS)
@@ -17,6 +17,9 @@
 
 defined('XOOPS_ROOT_PATH') || die();
 
+/**
+ * Class APCalAdminMenuHandler
+ */
 class APCalAdminMenuHandler
 {
     /**
@@ -35,14 +38,21 @@ class APCalAdminMenuHandler
     public function __construct()
     {
         global $xoopsModule;
-        $this->_obj =& $xoopsModule;
+        $this->_obj = $xoopsModule;
     }
 
+    /**
+     * @param $addon
+     */
     public function getAddon($addon)
     {
-        $this->_obj =& $addon;
+        $this->_obj = $addon;
     }
 
+    /**
+     * @param        $value
+     * @param string $name
+     */
     public function addMenuTop($value, $name = '')
     {
         if ($name != '') {
@@ -52,10 +62,14 @@ class APCalAdminMenuHandler
         }
     }
 
+    /**
+     * @param      $options
+     * @param bool $multi
+     */
     public function addMenuTopArray($options, $multi = true)
     {
         if (is_array($options)) {
-            if ($multi == true) {
+            if ($multi === true) {
                 foreach ($options as $k => $v) {
                     $this->addOptionTop($k, $v);
                 }
@@ -67,6 +81,10 @@ class APCalAdminMenuHandler
         }
     }
 
+    /**
+     * @param        $value
+     * @param string $name
+     */
     public function addMenuTabs($value, $name = '')
     {
         if ($name != '') {
@@ -76,10 +94,14 @@ class APCalAdminMenuHandler
         }
     }
 
+    /**
+     * @param      $options
+     * @param bool $multi
+     */
     public function addMenuTabsArray($options, $multi = true)
     {
         if (is_array($options)) {
-            if ($multi == true) {
+            if ($multi === true) {
                 foreach ($options as $k => $v) {
                     $this->addMenuTabsTop($k, $v);
                 }
@@ -91,16 +113,26 @@ class APCalAdminMenuHandler
         }
     }
 
+    /**
+     * @param $value
+     */
     public function addHeader($value)
     {
         $this->_header = $value;
     }
 
+    /**
+     * @param $value
+     */
     public function addSubHeader($value)
     {
         $this->_subheader = $value;
     }
 
+    /**
+     * @param  string $basename
+     * @return string
+     */
     public function breadcrumb_nav($basename = 'Home')
     {
         global $bc_site, $bc_label;
@@ -114,16 +146,21 @@ class APCalAdminMenuHandler
         if ($num > 1) {
             foreach ($arr as $val) {
                 $return_str .= ' &gt; <a href="' . $site . $val . '/">' . $bc_label[$val] . '</a>';
-                $site .= $val . '/';
+                $site       .= $val . '/';
             }
         } elseif ($num == 1) {
-            $arr = $str;
+            $arr        = $str;
             $return_str .= ' &gt; <a href="' . $bc_site . $arr . '/">' . $bc_label[$arr] . '</a>';
         }
 
         return $return_str;
     }
 
+    /**
+     * @param  int  $currentoption
+     * @param  bool $display
+     * @return string
+     */
     public function render($currentoption = 1, $display = true)
     {
         global $modversion;
@@ -139,7 +176,7 @@ class APCalAdminMenuHandler
         $breadcrumb                = $menuItems[$currentoption];
         $menuItems[$currentoption] = 'current';
         //Not the best method of adding CSS but the only method available at the moment since xoops is shitty with the backend
-        $menu = "<style type=\"text/css\" media=\"screen\">@import \"" . XOOPS_URL . '/modules/' . $this->_obj->getVar('dirname') . "/css/menu.css\";</style>";
+        $menu = '<style type="text/css" media="screen">@import "' . XOOPS_URL . '/modules/' . $this->_obj->getVar('dirname') . '/css/menu.css";</style>';
         $menu .= "<div id='buttontop_mod'>";
         $menu .= "<table style='width: 100%; padding: 0;' cellspacing='0'>\n<tr>";
         $menu .= "<td style='font-size: 10px; text-align: left; color: #2F5376; padding: 0 6px; line-height: 18px;'>";
@@ -177,7 +214,7 @@ class APCalAdminMenuHandler
         }
         $menu .= '<div class="clear">&nbsp;</div>';
         unset($this->_obj);
-        if ($display == true) {
+        if ($display === true) {
             echo $menu;
         } else {
             return $menu;

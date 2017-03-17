@@ -1,10 +1,10 @@
 <?php
 
-require_once(dirname(dirname(__DIR__)) . '/mainfile.php');
-require_once(XOOPS_ROOT_PATH . '/header.php');
+require_once __DIR__ . '/../../mainfile.php';
+require_once XOOPS_ROOT_PATH . '/header.php';
 //XoopsMailer
-include_once XOOPS_ROOT_PATH . '/class/xoopsmailer.php';
-include_once XOOPS_ROOT_PATH . '/modules/APCal/language/' . $GLOBALS['xoopsConfig']['language'] . '/apcal_constants.php';
+require_once XOOPS_ROOT_PATH . '/class/xoopsmailer.php';
+require_once XOOPS_ROOT_PATH . '/modules/apcal/language/' . $GLOBALS['xoopsConfig']['language'] . '/apcal_constants.php';
 
 //this should be replace by module preferences
 $mail_sender     = 'webmaster@mydomain.com';
@@ -12,12 +12,12 @@ $mail_sendername = 'Calendar of AP';
 $mail_signature  = 'Your AP team';
 
 //images
-$roimageedit     = XOOPS_URL . '/modules/APCal/assets/images/regonline/edit.png';
-$roimagedelete   = XOOPS_URL . '/modules/APCal/assets/images/regonline/delete.png';
-$roimagesave     = XOOPS_URL . '/modules/APCal/assets/images/regonline/save.png';
-$roimagesavemore = XOOPS_URL . '/modules/APCal/assets/images/regonline/savemore.png';
-$roimagecancel   = XOOPS_URL . '/modules/APCal/assets/images/regonline/cancel.png';
-$roimagesend     = XOOPS_URL . '/modules/APCal/assets/images/regonline/sendmail.png';
+$roimageedit     = XOOPS_URL . '/modules/apcal/assets/images/regonline/edit.png';
+$roimagedelete   = XOOPS_URL . '/modules/apcal/assets/images/regonline/delete.png';
+$roimagesave     = XOOPS_URL . '/modules/apcal/assets/images/regonline/save.png';
+$roimagesavemore = XOOPS_URL . '/modules/apcal/assets/images/regonline/savemore.png';
+$roimagecancel   = XOOPS_URL . '/modules/apcal/assets/images/regonline/cancel.png';
+$roimagesend     = XOOPS_URL . '/modules/apcal/assets/images/regonline/sendmail.png';
 
 $show_form_activate = false;
 if (isset($_POST['form_activate'])) {
@@ -63,7 +63,13 @@ if ($show_form_activate) {
     $email5 = '';
 
     //read data from apcal_ro_events
-    $query    = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ".roe_eventid)=$eventid)";
+    $query    = 'SELECT '
+                . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+                . '.* FROM '
+                . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+                . ' WHERE (('
+                . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+                . ".roe_eventid)=$eventid)";
     $res      = $GLOBALS['xoopsDB']->query($query);
     $num_rows = mysqli_num_rows($res);
 
@@ -83,7 +89,13 @@ if ($show_form_activate) {
     }
 
     //read data from apcal_ro_notify
-    $query    = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ".ron_eventid)=$eventid)";
+    $query    = 'SELECT '
+                . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
+                . '.* FROM '
+                . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
+                . ' WHERE (('
+                . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
+                . ".ron_eventid)=$eventid)";
     $res      = $GLOBALS['xoopsDB']->query($query);
     $num_rows = mysqli_num_rows($res);
 
@@ -92,7 +104,7 @@ if ($show_form_activate) {
         //no data, use email from actual user
     } else {
         while ($ron_result = $GLOBALS['xoopsDB']->fetchObject($res)) {
-            $i = $i + 1;
+            ++$i;
             switch ($i) {
                 case 1:
                     $email1 = $ron_result->ron_email;
@@ -176,7 +188,7 @@ if ($show_form_activate) {
                     </td>
                 </tr>
             </table>
-            <br /><br />
+            <br><br>
             <div align='center'>";
 
     if ($typeedit == '0') {
@@ -224,7 +236,11 @@ if (isset($_POST['activate_x'])) {
 
         //insert or update data in table apcal_ro_events
         if ($typeedit == '0') {
-            $query = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . " (roe_submitter, roe_eventid, roe_datelimit, roe_number, roe_date_created) values ($uid, $eventid, $datelimit, $number, " . time() . ')';
+            $query = 'Insert into '
+                     . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+                     . " (roe_submitter, roe_eventid, roe_datelimit, roe_number, roe_date_created) values ($uid, $eventid, $datelimit, $number, "
+                     . time()
+                     . ')';
         } else {
             $query = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ' SET ';
             $query .= $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ".roe_submitter = $uid, ";
@@ -239,7 +255,13 @@ if (isset($_POST['activate_x'])) {
         }
 
         //update data in table apcal_events
-        $query = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('apcal_event') . ' SET ' . $GLOBALS['xoopsDB']->prefix('apcal_event') . '.extkey0 = 1 WHERE (((' . $GLOBALS['xoopsDB']->prefix('apcal_event') . ".id)=$eventid))";
+        $query = 'UPDATE '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
+                 . ' SET '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
+                 . '.extkey0 = 1 WHERE ((('
+                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
+                 . ".id)=$eventid))";
         $res   = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
             //echo $query;
@@ -249,7 +271,13 @@ if (isset($_POST['activate_x'])) {
         //update date in apcal_ro_notify
         if ($typeedit == '1') {
             //delete old data in apcal_ro_notify
-            $query = 'DELETE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ".ron_eventid)=$eventid)";
+            $query = 'DELETE '
+                     . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
+                     . '.* FROM '
+                     . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
+                     . ' WHERE (('
+                     . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
+                     . ".ron_eventid)=$eventid)";
             $res   = $GLOBALS['xoopsDB']->query($query);
         }
         if (!$email1 == '') {
@@ -298,25 +326,49 @@ if (isset($_POST['deactivate_x'])) {
         $url     = $_POST['eventurl'];
 
         //delete data in table apcal_ro_members
-        $query = 'DELETE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ".rom_eventid)=$eventid)";
+        $query = 'DELETE '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . '.* FROM '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . ' WHERE (('
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . ".rom_eventid)=$eventid)";
         $res   = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
             redirect_header($url, 3, _APCAL_RO_ERROR_RO_DEACTIVATE);
         }
 
         //delete data in table apcal_ro_notify
-        $query = 'DELETE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . ".ron_eventid)=$eventid)";
+        $query = 'DELETE '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
+                 . '.* FROM '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
+                 . ' WHERE (('
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
+                 . ".ron_eventid)=$eventid)";
         $res   = $GLOBALS['xoopsDB']->query($query);
 
         //delete data in table apcal_ro_events
-        $query = 'DELETE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ".roe_eventid)=$eventid)";
+        $query = 'DELETE '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+                 . '.* FROM '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+                 . ' WHERE (('
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+                 . ".roe_eventid)=$eventid)";
         $res   = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
             redirect_header($url, 3, _APCAL_RO_ERROR_RO_DEACTIVATE);
         }
 
         //update data in table apcal_event
-        $query = 'UPDATE ' . $GLOBALS['xoopsDB']->prefix('apcal_event') . ' SET ' . $GLOBALS['xoopsDB']->prefix('apcal_event') . '.extkey0 = 0 WHERE (((' . $GLOBALS['xoopsDB']->prefix('apcal_event') . ".id)=$eventid))";
+        $query = 'UPDATE '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
+                 . ' SET '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
+                 . '.extkey0 = 0 WHERE ((('
+                 . $GLOBALS['xoopsDB']->prefix('apcal_event')
+                 . ".id)=$eventid))";
         $res   = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
             redirect_header($url, 3, _APCAL_RO_ERROR_RO_DEACTIVATE);
@@ -400,7 +452,7 @@ if (isset($_REQUEST['form_add'])) {
                         <td class='odd'>
                             <input type='text' name='email' disabled='disabled' value='$email' size='100' />
                             <input type='hidden' name='email' value='$email' />
-                            <br/>" . _APCAL_RO_SEND_CONF3 . "
+                            <br>" . _APCAL_RO_SEND_CONF3 . "
                             <input type='radio' name='sendconf' value='yes' checked> " . _APCAL_RO_RADIO_YES . "
                             <input type='radio' name='sendconf' value='no'> " . _APCAL_RO_RADIO_NO . '
                         </td>
@@ -443,7 +495,7 @@ if (isset($_REQUEST['form_add'])) {
         $ret .= '
                 </table>
                 * ' . _APCAL_RO_OBLIGATORY . "
-                <br /><br />
+                <br><br>
                 <div align='center'>
                     <input type='image' src='$roimagesave' name='add_member' alt='" . _APCAL_RO_BTN_CONF_ADD . "' title='" . _APCAL_RO_BTN_CONF_ADD . "' height='32px'/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -453,7 +505,7 @@ if (isset($_REQUEST['form_add'])) {
                 </div>
             </form>
             </td></tr>
-        </table>\n<br /><br />";
+        </table>\n<br><br>";
 
         $query = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.* ';
         $query .= 'FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members');
@@ -533,7 +585,7 @@ if (isset($_REQUEST['form_add'])) {
                             <input type='image' src='$roimagedelete' name='remove_member' alt='" . _APCAL_RO_BTN_REMOVE . "' title='" . _APCAL_RO_BTN_REMOVE . "'  height='32px' />
 
                         </form>";
-                $ret2 .= "<tr>
+                $ret2           .= "<tr>
                                 <td class='$classname'>$romfirstname</td>
                                 <td class='$classname'>$romlastname</td>
                                 <td class='$classname'>$romemail</td>";
@@ -564,7 +616,7 @@ if (isset($_REQUEST['form_add'])) {
                 <input type='image' src='$roimagecancel' name='goback' alt='" . _APCAL_RO_BTN_BACK . "' title='" . _APCAL_RO_BTN_BACK . "' height='32px'/>
                 </div>
             </form></p>\n";
-            $ret2 .= '<br /><br />';
+            $ret2 .= '<br><br>';
         } else {
             $ret2 = '';
         }
@@ -619,7 +671,13 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
         }
 
         //read data from apcal_ro_events
-        $query    = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . '.roe_number, roe_datelimit FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ".roe_eventid)=$eventid)";
+        $query    = 'SELECT '
+                    . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+                    . '.roe_number, roe_datelimit FROM '
+                    . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+                    . ' WHERE (('
+                    . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+                    . ".roe_eventid)=$eventid)";
         $res      = $GLOBALS['xoopsDB']->query($query);
         $num_rows = mysqli_num_rows($res);
         if ($num_rows == 0) {
@@ -640,7 +698,13 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
         //check limit number registrations
         if ($number_allowed > 0) {
             //get existing registrations
-            $query    = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.rom_id FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ".rom_eventid)=$eventid)";
+            $query    = 'SELECT '
+                        . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                        . '.rom_id FROM '
+                        . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                        . ' WHERE (('
+                        . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                        . ".rom_eventid)=$eventid)";
             $res      = $GLOBALS['xoopsDB']->query($query);
             $num_rows = mysqli_num_rows($res);
             if ($num_rows == 0) {
@@ -663,15 +727,19 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
             $confirmto = '-';
         }
 
-        $query = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . " (rom_submitter, rom_eventid, rom_firstname, rom_lastname, rom_email, rom_extrainfo1, rom_extrainfo2, rom_extrainfo3, rom_extrainfo4, rom_extrainfo5, rom_date_created) values ($uid, $eventid, '$firstname', '$lastname', '$email', '$extrainfo1', '$extrainfo2', '$extrainfo3', '$extrainfo4', '$extrainfo5', " . time() . ' )';
+        $query = 'Insert into '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . " (rom_submitter, rom_eventid, rom_firstname, rom_lastname, rom_email, rom_extrainfo1, rom_extrainfo2, rom_extrainfo3, rom_extrainfo4, rom_extrainfo5, rom_date_created) values ($uid, $eventid, '$firstname', '$lastname', '$email', '$extrainfo1', '$extrainfo2', '$extrainfo3', '$extrainfo4', '$extrainfo5', "
+                 . time()
+                 . ' )';
         $res   = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
             redirect_header($url, 3, _APCAL_RO_ERROR_ADD);
         } else {
             //send email of responsible persons
-            $query = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . '.* ';
-            $query .= 'FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify');
-            $query .= " WHERE (((ron_eventid)=$eventid))";
+            $query    = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . '.* ';
+            $query    .= 'FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify');
+            $query    .= " WHERE (((ron_eventid)=$eventid))";
             $res      = $GLOBALS['xoopsDB']->query($query);
             $num_rows = mysqli_num_rows($res);
             if ($num_rows == 0) {
@@ -780,7 +848,13 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
             $confirmto = '-';
         }
 
-        $query = 'DELETE ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ' WHERE ((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ".rom_id)=$rom_id)";
+        $query = 'DELETE '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . '.* FROM '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . ' WHERE (('
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . ".rom_id)=$rom_id)";
 
         $res = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
@@ -902,7 +976,23 @@ if (isset($_REQUEST['list'])) {
         $url .= "&eventurl=$eventurl";
 
         $title = $summary . ' (' . $date . ' ' . $location . ')';
-        $query = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('users') . '.uname, ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.* FROM ' . $GLOBALS['xoopsDB']->prefix('users') . ' INNER JOIN ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ' ON ' . $GLOBALS['xoopsDB']->prefix('users') . '.uid = ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.rom_submitter WHERE (((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ".rom_eventid)=$eventid)) ORDER BY " . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.rom_date_created';
+        $query = 'SELECT '
+                 . $GLOBALS['xoopsDB']->prefix('users')
+                 . '.uname, '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . '.* FROM '
+                 . $GLOBALS['xoopsDB']->prefix('users')
+                 . ' INNER JOIN '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . ' ON '
+                 . $GLOBALS['xoopsDB']->prefix('users')
+                 . '.uid = '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . '.rom_submitter WHERE ((('
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . ".rom_eventid)=$eventid)) ORDER BY "
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . '.rom_date_created';
 
         $res      = $GLOBALS['xoopsDB']->query($query);
         $num_rows = mysqli_num_rows($res);
@@ -973,9 +1063,9 @@ if (isset($_REQUEST['list'])) {
                 if (!_APCAL_RO_EXTRAINFO5 == '') {
                     $ret .= "<td class='$classname'>$extrainfo5</td>";
                 }
-                $ret .= "<td class='$classname'>";
+                $ret       .= "<td class='$classname'>";
                 $unique_id = uniqid(mt_rand());
-                $ret .= "
+                $ret       .= "
                     <form method='post' action='ro_regonlinehandler.php' name='roformlist_" . $unique_id . "' style='margin:0px;'>
                         <input type='hidden' name='url' value='$url' />
                         <input type='hidden' name='rom_id' value='$rom_id' />
@@ -996,7 +1086,7 @@ if (isset($_REQUEST['list'])) {
                     </td>
                 </tr>";
             }
-            $ret .= "</table>\n<br />";
+            $ret .= "</table>\n<br>";
 
             $ret .= "
             <form method='post' action='ro_regonlinehandler.php' name='roformgoback' style='margin:0px;'>
@@ -1021,8 +1111,8 @@ if (isset($_REQUEST['list'])) {
                 }
             }
             $mailtext = _APCAL_RO_EVENT . ": $summary\n" . _APCAL_RO_DATE . ": $date\n" . _APCAL_RO_LOCATION . ": $location\n" . _APCAL_RO_LINK . ": $eventurl\n\n";
-            $ret .= "
-            <br /><br /><br />
+            $ret      .= "
+            <br><br><br>
             <table border='1' cellpadding='0' cellspacing='0' width='100%'>
                 <tr>
                     <td class='listeheader'>" . _APCAL_RO_TITLE4 . "</td>
@@ -1039,7 +1129,7 @@ if (isset($_REQUEST['list'])) {
                     <td class='odd'><input type='text' name='subject' size='70' value='" . _APCAL_RO_MAIL_SUBJ_TEXT . "'></td>
                 </tr>
                 <tr>
-                    <td class='even' width='200px'>" . _APCAL_RO_MAIL_BODY1 . ":<br/><br/><font size='1'>" . _APCAL_RO_MAIL_BODY2 . "</font></td>
+                    <td class='even' width='200px'>" . _APCAL_RO_MAIL_BODY1 . ":<br><br><font size='1'>" . _APCAL_RO_MAIL_BODY2 . "</font></td>
                     <td class='odd' height='200px' valign='top'>
                     <textarea rows='25' name='mailtext' cols='95'>$mailtext</textarea></td>
               </tr>
@@ -1138,7 +1228,7 @@ if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
         $ret .= '
                 </table>
                 * ' . _APCAL_RO_OBLIGATORY . "
-                <br /><br />
+                <br><br>
                 <div align='center'>
                     <input type='image' src='$roimagesave' name='edit_member' alt='" . _APCAL_RO_BTN_CONF_EDIT . "' title='" . _APCAL_RO_BTN_CONF_EDIT . "' height='32px'/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -1146,7 +1236,7 @@ if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
                 </div>
             </form>
             </td></tr>
-        </table>\n<br /><br />";
+        </table>\n<br><br>";
 
         echo $ret;
     }
@@ -1248,7 +1338,13 @@ if (isset($_POST['ro_notify_all']) || isset($_POST['ro_notify_all_x'])) {
         //$subject = utf8_encode($subject);
         //$mailtext = utf8_encode($mailtext);
 
-        $query = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . '.rom_email, rom_firstname, rom_lastname FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ' WHERE (((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_members') . ".rom_eventid)=$eventid) AND not(rom_email is null))";
+        $query = 'SELECT '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . '.rom_email, rom_firstname, rom_lastname FROM '
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . ' WHERE ((('
+                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                 . ".rom_eventid)=$eventid) AND not(rom_email is null))";
 
         $res      = $GLOBALS['xoopsDB']->query($query);
         $num_rows = mysqli_num_rows($res);
@@ -1262,7 +1358,7 @@ if (isset($_POST['ro_notify_all']) || isset($_POST['ro_notify_all_x'])) {
                 $lastname  = $member->rom_lastname;
 
                 if ($recipient != '-') {
-                    $counter = $counter + 1;
+                    ++$counter;
 
                     $xoopsMailer = xoops_getMailer();
                     $xoopsMailer->useMail();
@@ -1302,4 +1398,4 @@ if (isset($_POST['ro_notify_all']) || isset($_POST['ro_notify_all_x'])) {
     }
 }
 
-require(XOOPS_ROOT_PATH . '/footer.php');
+require XOOPS_ROOT_PATH . '/footer.php';
