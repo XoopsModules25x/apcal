@@ -228,14 +228,14 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
                             // generate compiled files for the new theme
                             // block files only for now..
                             $tplfileHandler = xoops_getHandler('tplfile');
-                            $dtemplates      =& $tplfileHandler->find('default', 'block');
+                            $dtemplates      = $tplfileHandler->find('default', 'block');
                             $dcount          = count($dtemplates);
 
                             // need to do this to pass to xoops_template_touch function
                             $GLOBALS['xoopsConfig']['template_set'] = $newtplset;
 
                             for ($j = 0; $j < $dcount; ++$j) {
-                                $found =& $tplfileHandler->find($newtplset, 'block', $dtemplates[$j]->getVar('tpl_refid'), null);
+                                $found = $tplfileHandler->find($newtplset, 'block', $dtemplates[$j]->getVar('tpl_refid'), null);
                                 if (count($found) > 0) {
                                     // template for the new theme found, compile it
                                     xoops_template_touch($found[0]->getVar('tpl_id'));

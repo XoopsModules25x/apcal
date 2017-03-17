@@ -18,7 +18,7 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-if (!class_exists('patTemplate')) {
+if (!class_exists('PatTemplate')) {
 
     /**
      * Variable prefix
@@ -61,18 +61,18 @@ if (!class_exists('patTemplate')) {
      * Features include: several templates in one file, automatic repetitions, global variables,
      * alternating lists, conditions, and much more
      *
-     * @package      patTemplate
+     * @package      PatTemplate
      * @access       public
      * @author       Stephan Schmidt <schst@php-tools.de>
      */
-    class patTemplate
+    class PatTemplate
     {
         /**
          * Constructor
          *
-         * Create new patTemplate object
+         * Create new PatTemplate object
          * You can choose between two outputs you want tp generate: html (default) or tex (LaTex).
-         * When "tex" is used the patTemplate markings used for variables are changed as LaTex makes use of the default patTemplate markings.
+         * When "tex" is used the PatTemplate markings used for variables are changed as LaTex makes use of the default PatTemplate markings.
          * You can also change the markings later by calling setTags();
          *
          * @access   public
@@ -436,7 +436,7 @@ if (!class_exists('patTemplate')) {
             $this->createParser($file);
 
             $open_tag = array_pop($this->last_opened);
-            if ($open_tag != null) {
+            if ($open_tag !== null) {
                 die("Error in template '" . $file . "': &lt;/" . $open_tag . '&gt; still open at end of file.');
             }
         }
@@ -531,7 +531,7 @@ if (!class_exists('patTemplate')) {
                     $keep = array_pop($this->last_keep);
                     if (!$keep) {
                         $last_opened = array_pop($this->last_opened);
-                        if ($last_opened == null) {
+                        if ($last_opened === null) {
                             die("Error in template '" . $fname . "': no opening tag found for &lt;/" . $tagname . '&gt; in line ' . $lineno);
                         }
 

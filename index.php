@@ -218,7 +218,7 @@ if ($action === 'Edit') {
     $HTTP_GET_VARS['event_id'] = $_GET['event_id'] = $cal->original_id;
     include XOOPS_ROOT_PATH . '/include/comment_view.php';
     // patch for commentAny
-    $commentany =& $xoopsTpl->get_template_vars('commentany');
+    $commentany = $xoopsTpl->get_template_vars('commentany');
     if (!empty($commentany['com_itemid'])) {
         $commentany['com_itemid'] = $cal->original_id;
         $xoopsTpl->assign('commentany', $commentany);
