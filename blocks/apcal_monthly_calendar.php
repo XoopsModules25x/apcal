@@ -29,7 +29,9 @@ if (!defined('APCAL_BLOCK_MONTHLY_CALENDAR_INCLUDED')) {
     {
         global $xoopsConfig, $xoopsDB;
 
+
         $moduleDirName = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
+        xoops_loadLanguage('main', $moduleDirName);
 
         // setting physical & virtual paths
         $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
