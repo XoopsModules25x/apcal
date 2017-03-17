@@ -41,7 +41,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
             header('Location: admin.php?fct=preferences');
             exit();
         }
-        $config =& $configHandler->getConfigs(new Criteria('conf_modid', $mod));
+        $config = $configHandler->getConfigs(new Criteria('conf_modid', $mod));
         $count  = count($config);
         if ($count < 1) {
             redirect_header('admin.php?fct=preferences', 1);
@@ -96,7 +96,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
                     break;
                 case 'select':
                     $ele     = new XoopsFormSelect($title, $config[$i]->getVar('conf_name'), $config[$i]->getConfValueForOutput());
-                    $options =& $configHandler->getConfigOptions(new Criteria('conf_id', $config[$i]->getVar('conf_id')));
+                    $options = $configHandler->getConfigOptions(new Criteria('conf_id', $config[$i]->getVar('conf_id')));
                     $opcount = count($options);
                     for ($j = 0; $j < $opcount; ++$j) {
                         $optval = defined($options[$j]->getVar('confop_value')) ? constant($options[$j]->getVar('confop_value')) : $options[$j]->getVar('confop_value');
@@ -106,7 +106,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
                     break;
                 case 'select_multi':
                     $ele     = new XoopsFormSelect($title, $config[$i]->getVar('conf_name'), $config[$i]->getConfValueForOutput(), 5, true);
-                    $options =& $configHandler->getConfigOptions(new Criteria('conf_id', $config[$i]->getVar('conf_id')));
+                    $options = $configHandler->getConfigOptions(new Criteria('conf_id', $config[$i]->getVar('conf_id')));
                     $opcount = count($options);
                     for ($j = 0; $j < $opcount; ++$j) {
                         $optval = defined($options[$j]->getVar('confop_value')) ? constant($options[$j]->getVar('confop_value')) : $options[$j]->getVar('confop_value');
@@ -192,8 +192,8 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
         $lang_updated     = false;
         if ($count > 0) {
             for ($i = 0; $i < $count; ++$i) {
-                $config    =& $configHandler->getConfig($conf_ids[$i]);
-                $new_value =& $_POST[$config->getVar('conf_name')];
+                $config    = $configHandler->getConfig($conf_ids[$i]);
+                $new_value = $_POST[$config->getVar('conf_name')];
                 if (is_array($new_value) || $new_value != $config->getVar('conf_value')) {
                     // if language has been changed
                     if (!$lang_updated && $config->getVar('conf_catid') == XOOPS_CONF

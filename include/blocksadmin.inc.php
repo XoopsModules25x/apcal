@@ -332,7 +332,7 @@ if ($op === 'delete_ok') {
     $myblock->delete();
     if ($myblock->getVar('template') != '' && !defined('XOOPS_ORETEKI')) {
         $tplfileHandler = xoops_getHandler('tplfile');
-        $btemplate       =& $tplfileHandler->find($GLOBALS['xoopsConfig']['template_set'], 'block', $bid);
+        $btemplate       = $tplfileHandler->find($GLOBALS['xoopsConfig']['template_set'], 'block', $bid);
         if (count($btemplate) > 0) {
             $tplman->delete($btemplate[0]);
         }
@@ -465,7 +465,7 @@ if ($op === 'clone_ok') {
     }
 
     // for backward compatibility
-    // $cblock =& $block->clone(); or $cblock =& $block->xoopsClone();
+    // $cblock = $block->clone(); or $cblock = $block->xoopsClone();
     $cblock = new XoopsBlock();
     foreach ($block->vars as $k => $v) {
         $cblock->assignVar($k, $v['value']);
@@ -495,10 +495,15 @@ if ($op === 'clone_ok') {
         exit();
     }
     /*  if ($cblock->getVar('template') != '') {
+<<<<<<< HEAD
             $tplfileHandler = xoops_getHandler('tplfile');
             $btemplate =& $tplfileHandler->find($GLOBALS['xoopsConfig']['template_set'], 'block', $bid);
+=======
+            $tplfile_handler = xoops_getHandler('tplfile');
+            $btemplate = $tplfile_handler->find($GLOBALS['xoopsConfig']['template_set'], 'block', $bid);
+>>>>>>> 9fcc5315d9bd17e3be14130e3b120079b50fe8d6
             if (count($btemplate) > 0) {
-                $tplclone =& $btemplate[0]->clone();
+                $tplclone = $btemplate[0]->clone();
                 $tplclone->setVar('tpl_id', 0);
                 $tplclone->setVar('tpl_refid', $newid);
                 $tplman->insert($tplclone);
@@ -512,7 +517,7 @@ if ($op === 'clone_ok') {
     }
 
     /*  global $xoopsUser;
-        $groups =& $xoopsUser->getGroups();
+        $groups = $xoopsUser->getGroups();
         $count = count($groups);
         for ($i = 0; $i < $count; ++$i) {
             $sql = "INSERT INTO ".$db->prefix('group_permission')." (gperm_groupid, gperm_itemid, gperm_modid, gperm_name) VALUES (".$groups[$i].", ".$newid.", 1, 'block_read')";
@@ -666,7 +671,11 @@ function myblocksadmin_update_blockinstance(
     $blockHandler    = xoops_getHandler('block');
     if ($id > 0) {
         // update
+<<<<<<< HEAD
         $instance =& $instanceHandler->get($id);
+=======
+        $instance = $instance_handler->get($id);
+>>>>>>> 9fcc5315d9bd17e3be14130e3b120079b50fe8d6
         if ($bside >= 0) {
             $instance->setVar('side', $bside);
         }
@@ -675,7 +684,11 @@ function myblocksadmin_update_blockinstance(
         }
     } else {
         // insert
+<<<<<<< HEAD
         $instance = $instanceHandler->create();
+=======
+        $instance = $instance_handler->create();
+>>>>>>> 9fcc5315d9bd17e3be14130e3b120079b50fe8d6
         $instance->setVar('bid', $bid);
         $instance->setVar('side', $bside);
         $block = $blockHandler->get($bid);

@@ -30,8 +30,8 @@ $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
 $conn = $GLOBALS['xoopsDB']->conn;
 
 // setting physical & virtual paths
-$mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-$mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+$mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+$mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
 // ¥¯¥é¥¹ÄêµÁ¤ÎÆÉ¤ß¹þ¤ß
 if (!class_exists('APCal_xoops')) {

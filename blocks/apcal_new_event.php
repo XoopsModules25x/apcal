@@ -35,8 +35,8 @@ if (!defined('APCAL_BLOCK_NEW_EVENT_INCLUDED')) {
         $now_cid       = empty($options[2]) ? 0 : (int)$options[2];
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         if (!class_exists('APCal_xoops')) {
@@ -77,8 +77,8 @@ if (!defined('APCAL_BLOCK_NEW_EVENT_INCLUDED')) {
         $now_cid       = empty($options[2]) ? 0 : (int)$options[2];
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         require_once "$mod_path/class/APCal.php";
