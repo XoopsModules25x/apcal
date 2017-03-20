@@ -1,5 +1,7 @@
 <?php
 
+use \Xmf\Request;
+
 require_once __DIR__ . '/../../mainfile.php';
 require_once XOOPS_ROOT_PATH . '/header.php';
 //XoopsMailer
@@ -23,12 +25,12 @@ $show_form_activate = false;
 if (isset($_POST['form_activate'])) {
     if (!empty($_POST['eventid'])) {
         //called from edit an event (activate or edit regonline)
-        $eventid   = $_POST['eventid'];
-        $url       = $_POST['url'];
-        $eventurl  = $_POST['eventurl'];
-        $event     = $_POST['title'];
-        $eventdate = $_POST['eventdate'];
-        $location  = $_POST['location'];
+        $eventid   = Request::getInt('eventid', 0, 'POST');
+        $url       = Request::getString('url', '', 'POST');
+        $eventurl  = Request::getString('eventurl', '', 'POST');
+        $event     = Request::getString('title', '', 'POST');
+        $eventdate = Request::getString('eventdate', '', 'POST');
+        $location  = Request::getString('location', '', 'POST');
 
         $show_form_activate = true;
     }
