@@ -374,7 +374,7 @@ if (!class_exists('APCal_xoops')) {
 
             // ����Υ������塼�����
             $yrs      = $GLOBALS['xoopsDB']->query("SELECT start,end,summary,id,uid,allday,location,contact,description,(start>='$toptime_of_day') AS is_start_date,(end<='$bottomtime_of_day') AS is_end_date FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start,end");
-            $num_rows = mysqli_num_rows($yrs);
+            $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
             $block = array(
                 'insertable'                      => $this->insertable,
@@ -645,7 +645,7 @@ if (!class_exists('APCal_xoops')) {
             // ��������˥������塼�����
             $yrs = $GLOBALS['xoopsDB']->query("SELECT id,uid,summary,UNIX_TIMESTAMP(dtstamp) AS udtstamp , start, end, allday, start_date, end_date FROM $this->table WHERE admission>0 AND ($whr_categories) AND ($whr_class) AND (rrule_pid=0 OR rrule_pid=id) ORDER BY dtstamp DESC");
 
-            $num_rows = mysqli_num_rows($yrs);
+            $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
             $block = array(
                 'insertable'                       => $this->insertable,
@@ -825,7 +825,7 @@ if (!class_exists('APCal_xoops')) {
             // �쥳���ɿ��μ���
             $whr      = "($whr_term) AND ($whr_categories) AND ($whr_class)";
             $yrs      = $GLOBALS['xoopsDB']->query("SELECT *,UNIX_TIMESTAMP(dtstamp) AS udtstamp , start, end, allday, start_date, end_date, extkey0 FROM $this->table WHERE $whr");
-            $num_rows = mysqli_num_rows($yrs);
+            $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
             // �ܥ�����
             $yrs = $GLOBALS['xoopsDB']->query("SELECT *,UNIX_TIMESTAMP(dtstamp) AS udtstamp , start, end, allday, start_date, end_date, extkey0 FROM $this->table WHERE $whr ORDER BY $order LIMIT $pos,$num");

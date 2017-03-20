@@ -286,7 +286,7 @@ if (!class_exists('APCal')) {
                 $cat = false;
             }
 
-            if ($cat && mysqli_num_rows($cat)) {
+            if ($cat && $GLOBALS['xoopsDB']->getRowsNum($cat)) {
                 $cat = $GLOBALS['xoopsDB']->fetchObject($cat);
                 $cat = urlencode(urlencode($cat->cat_shorttitle));
             } else {
@@ -333,7 +333,7 @@ if (!class_exists('APCal')) {
 
             $event = $GLOBALS['xoopsDB']->query("SELECT shortsummary, start FROM $this->table WHERE id=$event_id LIMIT 0,1");
 
-            if ($event && mysqli_num_rows($event)) {
+            if ($event && $GLOBALS['xoopsDB']->getRowsNum($event)) {
                 $event = $GLOBALS['xoopsDB']->fetchObject($event);
                 $date  = date('j-n-Y', $event->start);
                 $event = urlencode(urlencode($event->shortsummary));
@@ -582,7 +582,7 @@ if (!class_exists('APCal')) {
 
             // ï¿½ï¿½ï¿½ï¿½Î¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å¡¼ï¿½ï¿½ï¿½ï¿½ï¿½
             $yrs      = $GLOBALS['xoopsDB']->query("SELECT start,end,summary,id,allday FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start,end");
-            $num_rows = mysqli_num_rows($yrs);
+            $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
             if ($num_rows == 0) {
                 $ret .= _APCAL_MB_APCALNOEVENT . "\n";
@@ -662,7 +662,7 @@ if (!class_exists('APCal')) {
 
             // ï¿½ï¿½ï¿½ï¿½Ê¹ß¤Î¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½å¡¼ï¿½ï¿½ï¿½ï¿½ï¿½
             $yrs      = $GLOBALS['xoopsDB']->query("SELECT start,end,summary,id,allday FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start");
-            $num_rows = mysqli_num_rows($yrs);
+            $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
             if ($num_rows == 0) {
                 $ret .= _APCAL_MB_APCALNOEVENT . "\n";
@@ -1504,7 +1504,7 @@ if (!class_exists('APCal')) {
 
             // Get all events in the month in the category with the class
             $yrs         = $GLOBALS['xoopsDB']->query("SELECT id,start,end,summary,location,contact,id,allday,admission,uid,unique_id,mainCategory,categories,gmlat,gmlong,extkey0 FROM $this->table WHERE ({$whr_term}) AND ({$whr_categories}) AND ({$whr_class}) {$whr_admit} ORDER BY start");
-            $numrows_yrs = mysqli_num_rows($yrs);
+            $numrows_yrs = $GLOBALS['xoopsDB']->getRowsNum($yrs);
             $events      = array();
             $eventsids   = array();
             $slots       = 0;
@@ -1776,9 +1776,9 @@ if (!class_exists('APCal')) {
             $whr_class      = $this->get_where_about_class();
 
             $ars         = $GLOBALS['xoopsDB']->query("SELECT * FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start");
-            $numrows_ars = mysqli_num_rows($ars);
+            $numrows_ars = $GLOBALS['xoopsDB']->getRowsNum($ars);
             $wrs         = $GLOBALS['xoopsDB']->query("SELECT * FROM $this->table WHERE admission=0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start");
-            $numrows_wrs = mysqli_num_rows($wrs);
+            $numrows_wrs = $GLOBALS['xoopsDB']->getRowsNum($wrs);
 
             $now_date = $wtop_date;
             $wday_end = 7 + $this->week_start;
@@ -2067,7 +2067,7 @@ if (!class_exists('APCal')) {
 
             // MySQL Query
             $yrs      = $GLOBALS['xoopsDB']->query("SELECT *,(start>='$toptime_of_day') AS is_start_date,(end<='$bottomtime_of_day') AS is_end_date FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start,end");
-            $num_rows = mysqli_num_rows($yrs);
+            $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
             if ($num_rows == 0) {
                 $ret .= '<tr><td></td><td>' . _APCAL_MB_APCALNOEVENT . "</td></tr>\n";
@@ -2256,7 +2256,7 @@ if (!class_exists('APCal')) {
             }
             $this->original_id = $event_id = (int)$_GET['event_id'];
             $yrs               = $GLOBALS['xoopsDB']->query("SELECT *,UNIX_TIMESTAMP(dtstamp) AS udtstamp FROM $this->table WHERE id='$event_id' AND ($whr_categories) AND ($whr_class)");
-            if (mysqli_num_rows($yrs) < 1) {
+            if ($GLOBALS['xoopsDB']->getRowsNum($yrs) < 1) {
                 die(_APCAL_ERR_INVALID_EVENT_ID);
             }
             $event = $GLOBALS['xoopsDB']->fetchObject($yrs);
@@ -2266,7 +2266,7 @@ if (!class_exists('APCal')) {
                 if ($event->rrule_pid != $event->id) {
                     $event->id = $event->rrule_pid;
                     $yrs       = $GLOBALS['xoopsDB']->query("SELECT id,start,start_date FROM $this->table WHERE id='$event->rrule_pid' AND ($whr_categories) AND ($whr_class)");
-                    if (mysqli_num_rows($yrs) >= 1) {
+                    if ($GLOBALS['xoopsDB']->getRowsNum($yrs) >= 1) {
                         $event->id           = $event->rrule_pid;
                         $parent_event        = $GLOBALS['xoopsDB']->fetchObject($yrs);
                         $this->original_id   = $parent_event->id;
@@ -2508,7 +2508,7 @@ if (!class_exists('APCal')) {
                                                             . '.rom_eventid)='
                                                             . $event->id
                                                             . ')) GROUP BY 1,2');
-                    $num_rows  = mysqli_num_rows($result_ro);
+                    $num_rows  = $GLOBALS['xoopsDB']->getRowsNum($result_ro);
                     $baseurl   = XOOPS_URL;
 
                     while ($row = mysqli_fetch_row($result_ro)) {
@@ -2730,7 +2730,7 @@ if (!class_exists('APCal')) {
 
                 $event_id = (int)$_GET['event_id'];
                 $yrs      = $GLOBALS['xoopsDB']->query("SELECT * FROM $this->table WHERE id='$event_id'");
-                if (mysqli_num_rows($yrs) < 1) {
+                if ($GLOBALS['xoopsDB']->getRowsNum($yrs) < 1) {
                     die(_APCAL_ERR_INVALID_EVENT_ID);
                 }
                 $event = $GLOBALS['xoopsDB']->fetchObject($yrs);
@@ -4530,7 +4530,7 @@ END:VTIMEZONE\r\n";
                 //                $rs        = $xoopsDB->query("SELECT summary AS udtstmp FROM $this->table WHERE id='$event_id'");
                 $rs = $GLOBALS['xoopsDB']->query("SELECT summary AS udtstmp FROM $this->table WHERE id='$event_id'");
 
-                if (mysqli_num_rows($rs) < 1) {
+                if ($GLOBALS['xoopsDB']->getRowsNum($rs) < 1) {
                     die(_APCAL_ERR_INVALID_EVENT_ID);
                 }
                 //                $summary = mysql_result($rs, 0, 0);
@@ -5295,7 +5295,7 @@ END:VEVENT\r\n";
         public function rrule_extract($event_id)
         {
             $yrs = $GLOBALS['xoopsDB']->query("SELECT *,TO_DAYS(end_date)-TO_DAYS(start_date) AS date_diff FROM $this->table WHERE id='$event_id'");
-            if (mysqli_num_rows($yrs) < 1) {
+            if ($GLOBALS['xoopsDB']->getRowsNum($yrs) < 1) {
                 return;
             }
             $event = $GLOBALS['xoopsDB']->fetchObject($yrs);

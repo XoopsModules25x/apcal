@@ -73,7 +73,7 @@ if ($show_form_activate) {
                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
                 . ".roe_eventid)=$eventid)";
     $res      = $GLOBALS['xoopsDB']->query($query);
-    $num_rows = mysqli_num_rows($res);
+    $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
     if ($num_rows == 0) {
         //edit new item, make preselection
@@ -99,7 +99,7 @@ if ($show_form_activate) {
                 . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify')
                 . ".ron_eventid)=$eventid)";
     $res      = $GLOBALS['xoopsDB']->query($query);
-    $num_rows = mysqli_num_rows($res);
+    $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
     $i = 0;
     if ($num_rows == 0) {
@@ -514,7 +514,7 @@ if (isset($_REQUEST['form_add'])) {
         $query .= " WHERE (((rom_eventid)=$eventid) AND ((rom_submitter)=$uid))";
 
         $res      = $GLOBALS['xoopsDB']->query($query);
-        $num_rows = mysqli_num_rows($res);
+        $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
         if ($num_rows > 0) {
             $ret2 .= "
@@ -681,7 +681,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
                     . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
                     . ".roe_eventid)=$eventid)";
         $res      = $GLOBALS['xoopsDB']->query($query);
-        $num_rows = mysqli_num_rows($res);
+        $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
         if ($num_rows == 0) {
             $number_allowed = 0;
         } else {
@@ -708,11 +708,11 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
                         . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
                         . ".rom_eventid)=$eventid)";
             $res      = $GLOBALS['xoopsDB']->query($query);
-            $num_rows = mysqli_num_rows($res);
+            $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
             if ($num_rows == 0) {
                 $number_total = 0;
             } else {
-                $number_total = mysqli_num_rows($res);
+                $number_total = $GLOBALS['xoopsDB']->getRowsNum($res);
             }
 
             if ($number_total >= $number_allowed) {
@@ -743,7 +743,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
             $query    .= 'FROM ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify');
             $query    .= " WHERE (((ron_eventid)=$eventid))";
             $res      = $GLOBALS['xoopsDB']->query($query);
-            $num_rows = mysqli_num_rows($res);
+            $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
             if ($num_rows == 0) {
                 //nothing to do
             } else {
@@ -869,7 +869,7 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
             $query .= " WHERE (((ron_eventid)=$eventid))";
 
             $res      = $GLOBALS['xoopsDB']->query($query);
-            $num_rows = mysqli_num_rows($res);
+            $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
             if ($num_rows == 0) {
                 //nothing to do
             } else {
@@ -997,7 +997,7 @@ if (isset($_REQUEST['list'])) {
                  . '.rom_date_created';
 
         $res      = $GLOBALS['xoopsDB']->query($query);
-        $num_rows = mysqli_num_rows($res);
+        $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
         if ($num_rows == 0) {
             $ret = _APCAL_RO_NOMEMBERS;
@@ -1103,7 +1103,7 @@ if (isset($_REQUEST['list'])) {
             $query .= ' WHERE (((' . $GLOBALS['xoopsDB']->prefix('users') . ".uid)=$uid))";
 
             $res      = $GLOBALS['xoopsDB']->query($query);
-            $num_rows = mysqli_num_rows($res);
+            $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
             if ($num_rows == 0) {
                 $sender = '';
@@ -1349,7 +1349,7 @@ if (isset($_POST['ro_notify_all']) || isset($_POST['ro_notify_all_x'])) {
                  . ".rom_eventid)=$eventid) AND not(rom_email is null))";
 
         $res      = $GLOBALS['xoopsDB']->query($query);
-        $num_rows = mysqli_num_rows($res);
+        $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
 
         if ($num_rows == 0) {
             //no action

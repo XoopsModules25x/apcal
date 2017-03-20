@@ -26,7 +26,7 @@ if ((!isset($_GET['action']) || $_GET['action'] == '') && isset($_GET['cid']) &&
     $cat_title = addslashes($_GET['cid']);
     $cat       = $GLOBALS['xoopsDB']->queryF("SELECT cid FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cat_shorttitle LIKE '$cat_title' LIMIT 0,1");
 
-    if ($cat && mysqli_num_rows($cat)) {
+    if ($cat && $GLOBALS['xoopsDB']->getRowsNum($cat)) {
         $cat         = $GLOBALS['xoopsDB']->fetchObject($cat);
         $_GET['cid'] = $cat->cid;
     }
@@ -37,7 +37,7 @@ if ((!isset($_GET['action']) || $_GET['action'] == '') && isset($_GET['cid']) &&
     $date    = isset($_GET['date']) ? strtotime($_GET['date']) : time();
     $event   = $GLOBALS['xoopsDB']->queryF("SELECT id FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE shortsummary='$summary' AND UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(start)))=$date LIMIT 0,1");
 
-    if ($event && mysqli_num_rows($event)) {
+    if ($event && $GLOBALS['xoopsDB']->getRowsNum($event)) {
         $event            = $GLOBALS['xoopsDB']->fetchObject($event);
         $_GET['event_id'] = $event->id;
     }
