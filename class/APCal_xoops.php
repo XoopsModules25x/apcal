@@ -862,7 +862,7 @@ if (!class_exists('APCal_xoops')) {
                              'print_link'            => "$this->base_url/print.php?cid=$this->now_cid&amp;smode=List&amp;num=$num&amp;pos=$pos&amp;order="
                                                         . urlencode($order)
                                                         . "&amp;caldate=$this->caldate",
-                             'apcal_copyright'       => _AM_APCAL_COPYRIGHT,
+                             'apcal_copyright'       => _MD_APCAL_COPYRIGHT,
                              'ymdo_selects'          => $ymdo_selects,
                              'calhead_bgcolor'       => $this->calhead_bgcolor,
                              'calhead_color'         => $this->calhead_color,

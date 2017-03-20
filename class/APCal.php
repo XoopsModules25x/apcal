@@ -1315,7 +1315,7 @@ if (!class_exists('APCal')) {
             $ret['DISP_DAY']   = "({$this->week_middle_names[ $this->day ]})";
             list($bgcolor, $color) = $this->daytype_to_colors($this->daytype);
             $ret['DISP_DAY_COLOR'] = $color;
-            $ret['COPYRIGHT']      = _AM_APCAL_COPYRIGHT;
+            $ret['COPYRIGHT']      = _MD_APCAL_COPYRIGHT;
 
             // ï¿½Ø¥Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¥ï¿½ï¿½é¡¼
             $ret['CALHEAD_BGCOLOR'] = $this->calhead_bgcolor;
@@ -2704,7 +2704,7 @@ if (!class_exists('APCal')) {
         <td><img src='$this->images_url/spacer.gif' alt='' width='150' height='4' /></td>       <td width='100%'></td>
     </tr>
     <tr>
-        <td width='100%' align='right' colspan='2'>" . _AM_APCAL_COPYRIGHT . "</td>
+        <td width='100%' align='right' colspan='2'>" . _MD_APCAL_COPYRIGHT . "</td>
     </tr>
     </table>
     \n";
@@ -3279,7 +3279,7 @@ if (!class_exists('APCal')) {
             } // splitted and added one line by goffy
             $ret .= "<table>
         <tr><td><img src='$this->images_url/spacer.gif' alt='' height='4' /></td></tr>
-        <tr><td width='100%' align='right'>" . _AM_APCAL_COPYRIGHT . '</td></tr>
+        <tr><td width='100%' align='right'>" . _MD_APCAL_COPYRIGHT . '</td></tr>
     </table>';
 
             $ret .= "

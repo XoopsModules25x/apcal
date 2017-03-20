@@ -361,15 +361,7 @@ if ($action === 'View') {
         //<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
     }
     if ($cal->enablesharing && $smode !== 'List') {
-        echo '<div class="share"><a href="'
-             . XOOPS_URL
-             . '/modules/apcal/shareCalendar.php" title="'
-             . _APCAL_SHARECALENDAR
-             . '"><img src="'
-             . XOOPS_URL
-             . '/modules/apcal/assets/images/share.png" /><span style="line-height: 32px; margin-bottom: 15px;">'
-             . _APCAL_SHARECALENDAR
-             . '</span></a></div>';
+        echo '<div class="share"><a href="' . XOOPS_URL . '/modules/apcal/shareCalendar.php" title="' . _APCAL_SHARECALENDAR . '"><img src="' . XOOPS_URL . '/modules/apcal/assets/images/share.png" /><span style="line-height: 32px; margin-bottom: 15px;">' . _APCAL_SHARECALENDAR . '</span></a></div>';
     }
 }
 
