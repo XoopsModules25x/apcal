@@ -26,7 +26,7 @@ if ((!isset($_GET['action']) || $_GET['action'] == '') && isset($_GET['cid']) &&
     $cat_title = addslashes($_GET['cid']);
     $cat       = $GLOBALS['xoopsDB']->queryF("SELECT cid FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cat_shorttitle LIKE '$cat_title' LIMIT 0,1");
 
-    if ($cat && mysqli_num_rows($cat)) {
+    if ($cat && $GLOBALS['xoopsDB']->getRowsNum($cat)) {
         $cat         = $GLOBALS['xoopsDB']->fetchObject($cat);
         $_GET['cid'] = $cat->cid;
     }
@@ -37,7 +37,7 @@ if ((!isset($_GET['action']) || $_GET['action'] == '') && isset($_GET['cid']) &&
     $date    = isset($_GET['date']) ? strtotime($_GET['date']) : time();
     $event   = $GLOBALS['xoopsDB']->queryF("SELECT id FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} WHERE shortsummary='$summary' AND UNIX_TIMESTAMP(DATE(FROM_UNIXTIME(start)))=$date LIMIT 0,1");
 
-    if ($event && mysqli_num_rows($event)) {
+    if ($event && $GLOBALS['xoopsDB']->getRowsNum($event)) {
         $event            = $GLOBALS['xoopsDB']->fetchObject($event);
         $_GET['event_id'] = $event->id;
     }
@@ -361,15 +361,7 @@ if ($action === 'View') {
         //<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
     }
     if ($cal->enablesharing && $smode !== 'List') {
-        echo '<div class="share"><a href="'
-             . XOOPS_URL
-             . '/modules/apcal/shareCalendar.php" title="'
-             . _APCAL_SHARECALENDAR
-             . '"><img src="'
-             . XOOPS_URL
-             . '/modules/apcal/assets/images/share.png" /><span style="line-height: 32px; margin-bottom: 15px;">'
-             . _APCAL_SHARECALENDAR
-             . '</span></a></div>';
+        echo '<div class="share"><a href="' . XOOPS_URL . '/modules/apcal/shareCalendar.php" title="' . _APCAL_SHARECALENDAR . '"><img src="' . XOOPS_URL . '/modules/apcal/assets/images/share.png" /><span style="line-height: 32px; margin-bottom: 15px;">' . _APCAL_SHARECALENDAR . '</span></a></div>';
     }
 }
 
