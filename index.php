@@ -10,13 +10,13 @@
  */
 
 /**
- * @copyright   {@link http://xoops.org/ XOOPS Project}
- * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @copyright    {@link http://xoops.org/ XOOPS Project}
+ * @license      {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
  * @package
  * @since
  * @author       XOOPS Development Team,
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
 require_once __DIR__ . '/../../mainfile.php';
@@ -255,9 +255,11 @@ if ($action === 'View') {
     $cats       = explode(',', $event['categories']);
     $categories = array();
     foreach ($cats as $cat) {
-        $title = $GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->queryF("SELECT cat_title FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$cat} LIMIT 0,1"));
-        if ($title) {
-            $categories[] = $title->cat_title;
+        if ('' !== $cat) {
+            $title = $GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->queryF("SELECT cat_title FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$cat} LIMIT 0,1"));
+            if ($title) {
+                $categories[] = $title->cat_title;
+            }
         }
     }
 
@@ -315,9 +317,9 @@ if ($action === 'View') {
         $tpl->assign('GMheight', $cal->gmheight . 'px');
         $tpl->assign('GMPoints', $cal->gmPoints);
         if ($smode === 'List') {
-            $xoopsTpl->assign('map', $tpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/googlemap.tpl'));
+            $xoopsTpl->assign('map', $tpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/apcal_googlemap.tpl'));
         } else {
-            $tpl->display(XOOPS_ROOT_PATH . '/modules/apcal/templates/googlemap.tpl');
+            $tpl->display(XOOPS_ROOT_PATH . '/modules/apcal/templates/apcal_googlemap.tpl');
         }
     }
     if ($cal->enablesocial && $smode !== 'List') {

@@ -34,8 +34,8 @@ if (!defined('APCAL_BLOCK_MAP_INCLUDED')) {
         $moduleDirName = empty($options[0]) ? basename(dirname(__DIR__)) : $options[0];
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
-        $mod_url  = XOOPS_URL . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
+        $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
         if (!class_exists('APCal_xoops')) {
@@ -58,6 +58,12 @@ if (!defined('APCAL_BLOCK_MAP_INCLUDED')) {
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
         $cal->get_monthly_html("$mod_url");
+
+        if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
+        } else {
+            $moduleHelper = Xmf\Module\Helper::getHelper('system');
+        }
+
         $block = array();
         if (is_array($cal->gmPoints) && !empty($cal->gmPoints)) {
             $tpl = new XoopsTpl();
@@ -66,7 +72,8 @@ if (!defined('APCAL_BLOCK_MAP_INCLUDED')) {
             $tpl->assign('GMzoom', $cal->gmzoom);
             $tpl->assign('GMheight', $cal->gmheight . 'px');
             $tpl->assign('GMPoints', $cal->gmPoints);
-            $block['map'] = $tpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/googlemap.tpl');
+            $tpl->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
+            $block['map'] = $tpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/apcal_googlemap.tpl');
         }
 
         error_reporting($original_level);

@@ -783,7 +783,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
                 }
             }
 
-            //confirmation mail to registrated person
+            //confirmation mail to registered person
             if ($confirmto == '-') {
                 //echo "option not selected or no email-address available";
             } else {
@@ -909,7 +909,7 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
                 }
             }
 
-            //confirmation mail to registrated person
+            //confirmation mail to registered person
             if ($confirmto == '-') {
                 //echo "option not selected or no email-address available";
             } else {

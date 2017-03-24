@@ -72,7 +72,7 @@ div .navResults {
 
 #buttonbar_mod a {
     float: left;
-    background: url(../assets/images/admin/menu/bg_tabs1.gif) no-repeat 0% -34px;
+    background: url(../assets/images/admin/menu/bg_tabs1.gif) no-repeat 0 -34px;
     margin: 0;
     padding: 0 0 0 9px;
     text-decoration: none;

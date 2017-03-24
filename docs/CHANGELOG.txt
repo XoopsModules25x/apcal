@@ -32,6 +32,11 @@ Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
     - updated addInfoBoxLine entries (mamba)
     - displayNavigation(basename(__FILE__))  (mamba)
     - changed to ->displayButton('left') (mamba)
+- mysqli_ conversion to XOOPS (mamba)
+- Issues in bootstrap themes (cesagonchu/geekwright)
+- fix English (mamba)
+- added Google Maps API Key field (mamba)
+
 
 2.22 Beta 1  2016-03-30
 ---------------------------------------

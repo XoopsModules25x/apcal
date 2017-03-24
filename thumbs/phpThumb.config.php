@@ -17,6 +17,7 @@ if (!file_exists(__DIR__ . '/phpthumb.functions.php') || !require_once __DIR__ .
 }
 ob_end_clean();
 
+include_once XOOPS_ROOT_PATH . '/modules/publisher/include/common.php';
 // START USER CONFIGURATION SECTION:
 
 // * DocumentRoot configuration

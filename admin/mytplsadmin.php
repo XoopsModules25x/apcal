@@ -311,7 +311,7 @@ while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
                 $style                      = $fingerprint_styles[$fingerprint_style_count];
                 $fingerprints[$fingerprint] = $style;
             }
-            echo "<td class='$evenodd' style='$style'>"
+            echo "<td class='$evenodd' style='$style;'>"
                  . formatTimestamp($tpl['tpl_lastmodified'], 'm')
                  . '<br>'
                  . substr($fingerprint, 0, 16)

@@ -137,7 +137,7 @@ if (isset($_POST['http_import']) && !empty($_POST['import_uri'])) {
         }
         $sql = "DELETE FROM $cal->table WHERE ($whr 0) AND (rrule_pid=0 OR rrule_pid=id)";
         $GLOBALS['xoopsDB']->query($sql);
-        $records = mysqli_affected_rows($conn);
+        $records = $GLOBALS['xoopsDB']->getAffectedRows($conn);
         $sql     = "DELETE FROM $cal->table WHERE $whr 0 ";
         if (!$GLOBALS['xoopsDB']->query($sql)) {
             echo $GLOBALS['xoopsDB']->error();
