@@ -298,7 +298,7 @@ if ($action === 'insert') {
         die($GLOBALS['xoopsDB']->error());
     }
     rebuild_cat_tree($cal->cat_table);
-    $mes = urlencode(sprintf(_AM_APCAL_FMT_CAT_DELETED, mysqli_affected_rows()));
+    $mes = urlencode(sprintf(_AM_APCAL_FMT_CAT_DELETED, $GLOBALS['xoopsDB']->getAffectedRows()));
     $cal->redirect("done=deleted&mes=$mes");
     exit;
 } elseif (!empty($_POST['batch_update'])) {
@@ -317,7 +317,7 @@ if ($action === 'insert') {
         if (!$GLOBALS['xoopsDB']->query("UPDATE $cal->cat_table SET weight='$weight', enabled='$enabled' WHERE cid=$cid")) {
             die($GLOBALS['xoopsDB']->error());
         }
-        $affected += mysqli_affected_rows();
+        $affected += $GLOBALS['xoopsDB']->getAffectedRows();
     }
     if ($affected > 0) {
         rebuild_cat_tree($cal->cat_table);

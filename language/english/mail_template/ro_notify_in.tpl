@@ -1,4 +1,4 @@
-{UNAME} registrated {NAME} for following event:
+{UNAME} registered {NAME} for following event:
 Event: {SUMMARY}
 Location: {LOCATION}
 Date: {DATE}

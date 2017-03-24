@@ -815,6 +815,15 @@ if (substr(XOOPS_VERSION, 6) >= '2.5.0') {
 }
 ++$c;
 $modversion['config'][$c] = array(
+    'name'        => 'apcal_mapsapi',
+    'title'       => '_MI_APCAL_GMAPS_API',
+    'description' => '_MI_APCAL_GMAPS_API_DESC',
+    'formtype'    => 'textbox',
+    'valuetype'   => 'text',
+    'default'     => 'no key'
+);
+++$c;
+$modversion['config'][$c] = array(
     'name'        => 'apcal_enablecalmap',
     'title'       => '_MI_APCAL_ENABLECALMAP',
     'description' => '',

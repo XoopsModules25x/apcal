@@ -25,7 +25,7 @@ function deletePic(url, p, e, m, n) {
             else
                 deleteOther(p, n - 1 - xmlhttp.responseText);
         }
-    }
+    };
 
     xmlhttp.open("GET", url + "/modules/apcal/ajax/pictures.php?p=" + p + "&e=" + e, true);
     xmlhttp.send();

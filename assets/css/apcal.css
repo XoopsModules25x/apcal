@@ -75,7 +75,7 @@ div.socialNetworks span.googleplus div {
 
 /*span.print {float: right; vertical-align: top;}*/
 
-div.tooltip {
+div.apcaltooltip {
     display: none;
     position: absolute;
     border: 2px solid;
@@ -84,29 +84,29 @@ div.tooltip {
     z-index: 100;
 }
 
-div.tooltip div.summary {
+div.apcaltooltip div.summary {
     padding: 10px;
     color: #fff;
 }
 
-div.tooltip div.details {
+div.apcaltooltip div.details {
     padding: 10px;
     color: #000;
 }
 
-div.tooltip div.details div.info {
-    white-space: nowrap;
+div.apcaltooltip div.details div.info {
+    white-space: normal;
     padding: 0 0 10px 0;
 }
 
-div.tooltip div.details img {
+div.apcaltooltip div.details img {
     float: left;
     width: 50px;
     margin: 0 10px 10px 0;
     border: 1px solid #999;
 }
 
-div.tooltip div.details div.click {
+div.apcaltooltip div.details div.click {
     border-top: 1px solid #aaa;
 }
 

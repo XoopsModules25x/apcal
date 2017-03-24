@@ -2,7 +2,7 @@
     function showBox(id) {
         var box = document.getElementById(id);
         box.style.display = "inline";
-        moveBox(id);
+        //moveBox(id);
     }
 
     function hideBox(id) {
@@ -128,8 +128,7 @@
                             <td class="noevent" style="<{$frame_css}>">&nbsp;</td>
                         <{elseif $e[$day][$slot].first}>
                             <td colspan="<{$e[$day][$slot].duration}>" class="event" style="<{$frame_css}>"
-                                onmouseover="showBox('<{$id}>');" onmouseout="hideBox('<{$id}>');"
-                                onmousemove="moveBox('<{$id}>');">
+                                onmouseover="showBox('<{$id}>');" onmouseout="hideBox('<{$id}>');">
                                 <a href="<{$events[$id].link}>"
                                    style="border-left-color: <{$cats_color[$event.cat]}>; border-bottom-color: <{$cats_color[$event.cat]}>; background: <{$event_bgcolor}>; color: <{$event_color}>;">
                                     <{if $events[$id].extkey0 == 1}><img src="<{$ro_image}>" height="12px"
@@ -138,7 +137,7 @@
                                     <{$events[$id].summary}>
                                 </a>
                                 <{if !$for_print}>
-                                    <div id="<{$id}>" class="tooltip"
+                                    <div id="<{$id}>" class="apcaltooltip"
                                          style="border-color: <{$cats_color[$event.cat]}>;">
                                         <div class="summary" style="background: <{$cats_color[$event.cat]}>;">
                                             <{if $events[$id].extkey0 == 1}><img src="<{$ro_image}>" height="15px"

@@ -48,7 +48,7 @@
 </div>
 <div style="margin-right: <{$picsMargin}>;">
     <{if $showMap == 1}>
-        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=<{$api_key}>&callback=initMap" type="text/javascript"></script>
         <script type="text/javascript">
             var GMlat = <{$GMLat}>;
             var GMlong = <{$GMLong}>;

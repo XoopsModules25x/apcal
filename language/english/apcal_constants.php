@@ -180,15 +180,15 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED')) {
 
     define('_APCAL_RO_ONLINE_POSS', 'For these events online registration is possible. ');
     define('_APCAL_RO_ONLINE_POSS_2', 'For this event online registration is possible. ');
-    define('_APCAL_RO_ONLY_MEMBERS', 'Online registration is only possible for registrated users. ');
+    define('_APCAL_RO_ONLY_MEMBERS', 'Online registration is only possible for registered users. ');
     define('_APCAL_RO_ONLINE_NO', 'Online registration is not activated for this event');
     define('_APCAL_RO_ONLINE_YES', 'Online registration is activated for this event');
     define('_APCAL_RO_ONLINE_ACTIVATE', 'Activate online registration for this event');
     define('_APCAL_RO_ONLINE_DEACTIVATE', 'Do not use online registration for this event');
     define('_APCAL_RO_ONLINE', 'Registrations');
-    define('_APCAL_RO_BTN_ADD', 'registrate');
+    define('_APCAL_RO_BTN_ADD', 'register');
     define('_APCAL_RO_BTN_ADDMORE', 'Edit or add further registrations');
-    define('_APCAL_RO_BTN_REMOVE', 'deregistrate');
+    define('_APCAL_RO_BTN_REMOVE', 'de-register');
     define('_APCAL_RO_ENABLE_ONLINE', 'Online registration');
     define('_APCAL_RO_NOMEMBERS', 'There are no registrations for this event');
     define('_APCAL_RO_BTN_LISTMEMBERS', 'List of participants');
@@ -205,7 +205,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED')) {
     define('_APCAL_RO_EXTRAINFO5', ''); //use it as you want, if you keep it blank, it will be invisible
 
     define('_APCAL_RO_BTN_CONF_ADD', 'Confirm registration');
-    define('_APCAL_RO_BTN_CONF_ADD_MORE', 'Confirm registration and registrate further persons');
+    define('_APCAL_RO_BTN_CONF_ADD_MORE', 'Confirm registration and register more people');
     define('_APCAL_RO_BTN_CONF_REMOVE', 'Confirm de-registration');
     define('_APCAL_RO_BTN_CANCEL', 'Cancel');
     define('_APCAL_RO_EVENT', 'Event');

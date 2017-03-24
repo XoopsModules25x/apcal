@@ -70,14 +70,14 @@ if ($admintest != 0) {
             $category        = !empty($modversion['category']) ? (int)$modversion['category'] : 0;
             unset($modversion);
             if ($category > 0) {
-                $groups = $xoopsUser->getGroups();
+                $groups =& $xoopsUser->getGroups();
                 if (in_array(XOOPS_GROUP_ADMIN, $groups)
                     || false !== $syspermHandler->checkRight('system_admin', $category, $groups, $xoopsModule->getVar('mid'))
                 ) {
                     //                  if (file_exists(XOOPS_ROOT_PATH."/modules/system/admin/".$fct."/main.php")) {
                     //                      require_once XOOPS_ROOT_PATH."/modules/system/admin/".$fct."/main.php"; GIJ
                     if (file_exists("../include/{$fct}.inc.php")) {
-                        require_once "../include/{$fct}.inc.php";
+                        require_once __DIR__ . "/../include/{$fct}.inc.php";
                     } else {
                         $error = true;
                     }
@@ -106,7 +106,7 @@ if (false !== $error) {
     echo '<h4>System Configuration</h4>';
     echo '<table class="outer" cellpadding="4" cellspacing="1">';
     echo '<tr>';
-    $groups = $xoopsUser->getGroups();
+    $groups =& $xoopsUser->getGroups();
     $all_ok = false;
     if (!in_array(XOOPS_GROUP_ADMIN, $groups)) {
         $syspermHandler = xoops_getHandler('groupperm');

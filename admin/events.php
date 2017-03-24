@@ -133,7 +133,7 @@ if (isset($_POST['delete'])) {
         }
         $sql = "DELETE FROM $cal->table WHERE ($whr 0) AND (rrule_pid=0 OR rrule_pid=id)";
         $GLOBALS['xoopsDB']->query($sql);
-        $records = mysqli_affected_rows($conn);
+        $records = $GLOBALS['xoopsDB']->getAffectedRows($conn);
         $sql     = "DELETE FROM $cal->table WHERE $whr 0 ";
         if (!$GLOBALS['xoopsDB']->query($sql)) {
             echo $GLOBALS['xoopsDB']->error();
@@ -163,7 +163,7 @@ if (isset($_POST['delete'])) {
     if (!$GLOBALS['xoopsDB']->query($sql)) {
         echo $GLOBALS['xoopsDB']->error();
     }
-    $records = mysqli_affected_rows($conn);
+    $records = $GLOBALS['xoopsDB']->getAffectedRows($conn);
     $mes     = urlencode("$records " . _AM_APCAL_MES_EVENTLINKTOCAT);
     $cal->redirect("cid=$cid&num=$num&tz=$tz&done=copied&mes=$mes");
     exit;
@@ -189,7 +189,7 @@ if (isset($_POST['delete'])) {
     if (!$GLOBALS['xoopsDB']->query($sql)) {
         echo $GLOBALS['xoopsDB']->error();
     }
-    $records = mysqli_affected_rows($conn);
+    $records = $GLOBALS['xoopsDB']->getAffectedRows($conn);
     if ($cid > 0) {
         $mes = urlencode("$records " . _AM_APCAL_MES_EVENTLINKTOCAT);
     } else {
@@ -327,7 +327,7 @@ while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     $summary4disp = $myts->htmlSpecialChars($event->summary);
     echo "
   <tr>
-    <td class='$oddeven'>" . $xoopsUser->getUnameFromId($event->uid) . "</td>
+    <td class='$oddeven'>" . XoopsUser::getUnameFromId($event->uid) . "</td>
     <td class='$oddeven' nowrap='nowrap'>$start_desc</td>
     <td class='$oddeven' nowrap='nowrap'>$end_desc</td>
     <td class='$oddeven'><a href='$mod_url/index.php?action=View&amp;event_id=$event->id'>$summary4disp</a></td>

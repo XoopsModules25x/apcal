@@ -42,6 +42,8 @@ $moduleHelper->loadLanguage('admin');
 $moduleHelper->loadLanguage('modinfo');
 $moduleHelper->loadLanguage('main');
 
+$skin_folder   = $moduleHelper->getConfig('skin_folder');
+
 $myts = MyTextSanitizer::getInstance();
 
 if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl)) {
@@ -49,6 +51,7 @@ if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl))
     $xoopsTpl = new XoopsTpl();
 }
 
+$GLOBALS['xoopsTpl']->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
 //Module specific elements
 //require_once $GLOBALS['xoops']->path("modules/{$moduleDirName}/include/functions.php");
 //require_once $GLOBALS['xoops']->path("modules/{$moduleDirName}/include/config.php");

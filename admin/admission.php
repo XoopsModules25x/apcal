@@ -128,7 +128,7 @@ if (isset($_POST['admit']) && isset($_POST['ids']) && is_array($_POST['ids'])) {
         }
         $sql = "DELETE FROM $cal->table WHERE ($whr 0) && (rrule_pid=0 OR rrule_pid=id)";
         $GLOBALS['xoopsDB']->query($sql);
-        $records = mysqli_affected_rows($conn);
+        $records = $GLOBALS['xoopsDB']->getAffectedRows($conn);
         $sql     = "DELETE FROM $cal->table WHERE $whr 0 ";
         if (!$GLOBALS['xoopsDB']->query($sql)) {
             echo $GLOBALS['xoopsDB']->error();
@@ -239,7 +239,7 @@ while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     $summary4disp = $myts->htmlSpecialChars($event->summary);
     echo "
   <tr>
-    <td class='$oddeven'>" . $xoopsUser->getUnameFromId($event->uid) . "</td>
+    <td class='$oddeven'>" . XoopsUser::getUnameFromId($event->uid) . "</td>
     <td class='$oddeven' nowrap='nowrap'>$start_desc</td>
     <td class='$oddeven' nowrap='nowrap'>$end_desc</td>
     <td class='$oddeven'><a href='$mod_url/index.php?action=View&amp;event_id=$event->id'>$summary4disp</a></td>

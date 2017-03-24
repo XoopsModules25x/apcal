@@ -775,7 +775,7 @@ if (!class_exists('APCal')) {
 
             // ï¿½ï¿½ï¿½ï¿½Ù¥ï¿½È°Ê³ï¿½ï¿½Î½ï¿½ï¿½ï¿½
             $result = $GLOBALS['xoopsDB']->query("SELECT summary,id,start,location,contact,gmlat,gmlong FROM $this->table WHERE admission > 0 AND start >= $range_start_s AND start < $range_end_s AND ($whr_categories) AND ($whr_class) AND allday <= 0");
-            while (list($title, $id, $server_time, $location, $contact, $gmlat, $gmlong) = mysqli_fetch_row($result)) {
+            while (list($title, $id, $server_time, $location, $contact, $gmlat, $gmlong) = $GLOBALS['xoopsDB']->fetchRow($result)) {
                 if ($mode == 'NO_YEAR' && ($gmlat > 0 || $gmlong > 0)) {
                     $this->gmPoints[] = array(
                         'summary'   => $title,
@@ -797,7 +797,7 @@ if (!class_exists('APCal')) {
             // ï¿½ï¿½ï¿½ï¿½Ù¥ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¤Î½ï¿½ï¿½ï¿½
             $result = $GLOBALS['xoopsDB']->query("SELECT summary,id,start,end,location,contact,gmlat,gmlong FROM $this->table WHERE admission > 0 AND start >= $range_start_s AND start < $range_end_s AND ($whr_categories) AND ($whr_class) AND allday > 0");
 
-            while (list($title, $id, $start_s, $end_s, $location, $contact, $gmlat, $gmlong) = mysqli_fetch_row($result)) {
+            while (list($title, $id, $start_s, $end_s, $location, $contact, $gmlat, $gmlong) = $GLOBALS['xoopsDB']->fetchRow($result)) {
                 if ($start_s < $range_start_s) {
                     $start_s = $range_start_s;
                 }
@@ -2459,7 +2459,7 @@ if (!class_exists('APCal')) {
                 $result_ro  = $GLOBALS['xoopsDB']->query('SELECT ' . XOOPS_DB_PREFIX . $this->table_ro_events . '.roe_number
                 FROM ' . XOOPS_DB_PREFIX . $this->table_ro_events . '
                 WHERE (((roe_eventid)=' . $event->id . '))');
-                $row        = mysqli_fetch_row($result_ro);
+                $row        = $GLOBALS['xoopsDB']->fetchRow($result_ro);
                 $itemstotal = $row[0];
                 if ($itemstotal == 0) {
                     //$eventmembersall = "No limit for online registration";
@@ -2470,7 +2470,7 @@ if (!class_exists('APCal')) {
                 $result_ro  = $GLOBALS['xoopsDB']->query('SELECT Count(rom_id) AS countevents
                 FROM ' . XOOPS_DB_PREFIX . $this->table_ro_members . '
                 WHERE (((rom_eventid)=' . $event->id . '))');
-                $row        = mysqli_fetch_row($result_ro);
+                $row        = $GLOBALS['xoopsDB']->fetchRow($result_ro);
                 $itemstotal = $row[0];
                 if ($itemstotal == 0) {
                     $eventmembersall .= _APCAL_RO_NOMEMBERS;
@@ -2511,7 +2511,7 @@ if (!class_exists('APCal')) {
                     $num_rows  = $GLOBALS['xoopsDB']->getRowsNum($result_ro);
                     $baseurl   = XOOPS_URL;
 
-                    while ($row = mysqli_fetch_row($result_ro)) {
+                    while ($row = $GLOBALS['xoopsDB']->fetchRow($result_ro)) {
                         $uname        = $row[0];
                         $uid          = $row[1];
                         $counter      = $row[2];
@@ -3526,7 +3526,7 @@ if (!class_exists('APCal')) {
                     echo $GLOBALS['xoopsDB']->error();
                 }
                 // unique_id,rrule_pid
-                $event_id  = mysqli_insert_id($this->conn);
+                $event_id  = $GLOBALS['xoopsDB']->getInsertId($this->conn);
                 $unique_id = 'apcal060-' . md5("{$_SERVER['HTTP_HOST']}{$_SERVER['PHP_SELF']}$event_id");
                 $rrule_pid = $rrule ? $event_id : 0;
                 $GLOBALS['xoopsDB']->query("UPDATE $this->table SET unique_id='$unique_id',rrule_pid='$rrule_pid' WHERE id='$event_id'");
@@ -3601,7 +3601,7 @@ if (!class_exists('APCal')) {
                         echo $GLOBALS['xoopsDB']->error();
                     }
                     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É²Ã½ï¿½ï¿½ï¿½ï¿½evalï¿½Ç¼ï¿½ï¿½ï¿½ï¿½ï¿½ (XOOPSï¿½Ç¤Ï¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤Îºï¿½ï¿½ï¿½
-                    if (mysqli_affected_rows() > 0 && isset($eval_after)) {
+                    if ($GLOBALS['xoopsDB']->getAffectedRows() > 0 && isset($eval_after)) {
                         $id = $event->rrule_pid;
                         eval($eval_after);
                     }
@@ -3610,7 +3610,7 @@ if (!class_exists('APCal')) {
                         echo $GLOBALS['xoopsDB']->error();
                     }
                     // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É²Ã½ï¿½ï¿½ï¿½ï¿½evalï¿½Ç¼ï¿½ï¿½ï¿½ï¿½ï¿½ (XOOPSï¿½Ç¤Ï¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¤Îºï¿½ï¿½ï¿½
-                    if (mysqli_affected_rows() == 1 && isset($eval_after)) {
+                    if ($GLOBALS['xoopsDB']->getAffectedRows() == 1 && isset($eval_after)) {
                         $id = $event_id;
                         eval($eval_after);
                     }
@@ -4742,7 +4742,7 @@ END:VEVENT\r\n";
                 if (!$GLOBALS['xoopsDB']->query($sql)) {
                     die($GLOBALS['xoopsDB']->error());
                 }
-                $this->update_record_after_import(mysqli_insert_id($this->conn));
+                $this->update_record_after_import($GLOBALS['xoopsDB']->getInsertId($this->conn));
 
                 ++$count;
             }
@@ -4775,7 +4775,7 @@ END:VEVENT\r\n";
                 if (!$GLOBALS['xoopsDB']->query($sql)) {
                     die($GLOBALS['xoopsDB']->error());
                 }
-                $this->update_record_after_import(mysqli_insert_id($this->conn));
+                $this->update_record_after_import($GLOBALS['xoopsDB']->getInsertId($this->conn));
 
                 ++$count;
             }
