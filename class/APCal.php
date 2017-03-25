@@ -3150,7 +3150,7 @@ if (!class_exists('APCal')) {
         <td class='even' valign='top'>
                     <a href='' onclick=\"window.open('"
                        . XOOPS_URL
-                       . "/modules/apcal/getCoords.html', '_blank', 'height=450,width=450,modal=yes,alwaysRaised=yes');return false;\">
+                       . "/modules/apcal/getCoords.php', '_blank', 'height=450,width=550,modal=yes,alwaysRaised=yes');return false;\">
                         <img src='"
                        . XOOPS_URL
                        . "/modules/apcal/assets/images/gmap.png' />"

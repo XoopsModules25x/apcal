@@ -356,7 +356,7 @@ if ($phpThumb->config_mysql_query) {
         if ($found_missing_function) {
             $phpThumb->ErrorImage('SQL function unavailable: ' . $found_missing_function);
         } else {
-            if ($cid = @mysql_connect($phpThumb->config_mysql_hostname, $phpThumb->config_mysql_username, $phpThumb->config_mysql_password)) {
+            if ($cid = @mysqli_connect($phpThumb->config_mysql_hostname, $phpThumb->config_mysql_username, $phpThumb->config_mysql_password)) {
                 if (@mysqli_select_db($GLOBALS['xoopsDB']->conn, $phpThumb->config_mysql_database, $cid)) {
                     if ($result = @$GLOBALS['xoopsDB']->queryF($phpThumb->config_mysql_query, $cid)) {
                         if ($row = @$GLOBALS['xoopsDB']->fetchBoth($result)) {

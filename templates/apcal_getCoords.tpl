@@ -1,6 +1,7 @@
 <!-- author: Antiques Promotion (http://www.antiquespromotion.ca) -->
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmi4Y8bQWaalNbkchPx_cFgiQMxKwb3cA&callback=initMap" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<{$api_key}>&callback=initMap" type="text/javascript"></script>
+
 <script type="text/javascript">
     var map;
     var geocoder;

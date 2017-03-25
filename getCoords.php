@@ -10,17 +10,18 @@
  */
 
 /**
- * @copyright    XOOPS Project http://xoops.org/
- * @license      GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
- * @package
+ * @copyright   {@link http://xoops.org/ XOOPS Project}
+ * @license     {@link http://www.fsf.org/copyleft/gpl.html GNU public license}
+ * @package      AM Reviews
  * @since
- * @author     XOOPS Development Team
+ * @author       XOOPS Development Team, GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
 
-include XOOPS_ROOT_PATH . '/header.php';
+include __DIR__ . '/../../mainfile.php';
+require_once XOOPS_ROOT_PATH . '/class/template.php';
 
 if (!isset($moduleDirName)) {
-    $moduleDirName = basename(dirname(__DIR__));
+    $moduleDirName = basename(__DIR__);
 }
 
 if (false !== ($moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName))) {
@@ -33,13 +34,6 @@ if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl))
     $xoopsTpl = new XoopsTpl();
 }
 
-$GLOBALS['xoopsTpl']->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
-
-$skin_folder   = $moduleHelper->getConfig('skin_folder');
-
-
-
-
-
-
-
+$tpl = new XoopsTpl();
+$tpl->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
+$tpl->display('db:apcal_getCoords.tpl');

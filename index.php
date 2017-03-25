@@ -20,6 +20,7 @@
  */
 
 require_once __DIR__ . '/../../mainfile.php';
+require_once __DIR__ . '/header.php';
 $original_level = error_reporting(E_ALL ^ E_NOTICE);
 
 if ((!isset($_GET['action']) || $_GET['action'] == '') && isset($_GET['cid']) && !is_numeric($_GET['cid'])) {

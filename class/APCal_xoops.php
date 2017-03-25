@@ -56,7 +56,7 @@ if (!class_exists('APCal_xoops')) {
         {
             $myts = MyTextSanitizer::getInstance();
 
-            return $myts->makeTareaData4Edit($data);
+            return $myts->htmlSpecialChars($data);
         }
 
         /**
@@ -89,7 +89,7 @@ if (!class_exists('APCal_xoops')) {
         {
             $myts = MyTextSanitizer::getInstance();
 
-            return $myts->makeTboxData4Edit($data);
+            return $myts->htmlSpecialChars($data);
         }
 
         /**
