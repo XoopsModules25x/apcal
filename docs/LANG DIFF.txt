@@ -2,7 +2,7 @@ Module Name : APCal
 Version Number : 2.2.0
 Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
 
-Feel free to translate to your own language and send us your changes. 
+Feel free to translate to your own language and send us your changes.
 
 Done for:
 up to v2.1.0:  English, French, German

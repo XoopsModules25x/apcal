@@ -34,7 +34,7 @@ if (!defined('APCAL_BLOCK_TODAYS_SCHEDULE_INCLUDED')) {
         $now_cid       = empty($options[1]) ? 0 : (int)$options[1];
 
         // setting physical & virtual paths
-        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName ";
+        $mod_path = XOOPS_ROOT_PATH . "/modules/$moduleDirName";
         $mod_url  = XOOPS_URL . "/modules/$moduleDirName";
 
         // defining class of APCal
@@ -94,7 +94,7 @@ if (!defined('APCAL_BLOCK_TODAYS_SCHEDULE_INCLUDED')) {
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName ' />\n";
+        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName' />\n";
 
         // ¥«¥Æ¥´¥ê¡¼ÁªÂò¥Ü¥Ã¥¯¥¹¤ÎÀ¸À®
         $ret .= _MB_APCAL_CATSEL . ':';

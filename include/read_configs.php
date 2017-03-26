@@ -38,7 +38,7 @@ global $xoopsDB, $xoopsUser, $xoopsConfig;
 //restore_error_handler() ;
 
 // get my mid
-$rs = $GLOBALS['xoopsDB']->query('SELECT mid FROM ' . $GLOBALS['xoopsDB']->prefix('modules') . " WHERE dirname='$moduleDirName '");
+$rs = $GLOBALS['xoopsDB']->query('SELECT mid FROM ' . $GLOBALS['xoopsDB']->prefix('modules') . " WHERE dirname='$moduleDirName'");
 list($mid) = $GLOBALS['xoopsDB']->fetchRow($rs);
 
 // read from xoops_config

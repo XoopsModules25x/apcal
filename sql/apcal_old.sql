@@ -25,7 +25,7 @@
 
 
 # @copyright   XOOPS Project (http://xoops.org)
-# @license     http://www.fsf.org/copyleft/gpl.html GNU public license
+# @license     http://www.fsf.org/copyleft/ gpl.html GNU public license
 # @author      Antiques Promotion (http://www.antiquespromotion.ca)
 
 CREATE TABLE `apcal_cat` (

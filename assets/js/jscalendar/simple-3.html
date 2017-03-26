@@ -83,15 +83,15 @@
     ;
 
     Calendar.setup(
-            {
-                flat: "calendar-container", // ID of the parent element
-                flatCallback: dateChanged,          // our callback function
-                dateStatusFunc: function (date, y, m, d) {
-                    if (dateIsSpecial(y, m, d)) return "special";
-                    else return false; // other dates are enabled
-                    // return true if you want to disable other dates
-                }
+        {
+            flat: "calendar-container", // ID of the parent element
+            flatCallback: dateChanged,          // our callback function
+            dateStatusFunc: function (date, y, m, d) {
+                if (dateIsSpecial(y, m, d)) return "special";
+                else return false; // other dates are enabled
+                // return true if you want to disable other dates
             }
+        }
     );
 </script>
 

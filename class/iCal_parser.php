@@ -1362,7 +1362,7 @@ class iCal_parser
     public function mb_convert_kana($str, $option)
     {
         // convert_kana ¤Î½èÍý¤Ï¡¢ÆüËÜ¸ì¤Ç¤Î¤ß¹Ô¤¦
-        if ($this->language != 'japanese' || !function_exists('mb_convert_kana')) {
+        if ($this->language !== 'japanese' || !function_exists('mb_convert_kana')) {
             return $str;
         } else {
             return mb_convert_kana($str, $option);

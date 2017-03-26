@@ -112,7 +112,7 @@ if (!defined('APCAL_BLOCK_THEDAYS_SCHEDULE_INCLUDED')) {
         $cal->images_url  = "$mod_url/assets/images/$skin_folder";
         $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName ' />\n";
+        $ret = "<input type='hidden' name='options[0]' value='$moduleDirName' />\n";
 
         // ¥«¥Æ¥´¥ê¡¼ÁªÂò¥Ü¥Ã¥¯¥¹¤ÎÀ¸À®
         $ret .= _MB_APCAL_CATSEL . ':';

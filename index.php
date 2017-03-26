@@ -20,6 +20,7 @@
  */
 
 require_once __DIR__ . '/../../mainfile.php';
+require_once __DIR__ . '/header.php';
 $original_level = error_reporting(E_ALL ^ E_NOTICE);
 
 if ((!isset($_GET['action']) || $_GET['action'] == '') && isset($_GET['cid']) && !is_numeric($_GET['cid'])) {
@@ -107,7 +108,7 @@ if (isset($_POST['update'])) {
 } elseif (isset($_POST['insert']) || isset($_POST['saveas'])) {
     // saveas �ޤ��� ������Ͽ
     if (!$insertable) {
-        die(_MB_APCAL_ERR_NOPERMTOINSERT);
+        die(_MD_APCAL_ERR_NOPERMTOINSERT);
     }
     $_POST['event_oldid'] = $_POST['event_id'];
     $_POST['event_id']    = '';
@@ -119,7 +120,7 @@ if (isset($_POST['update'])) {
 } elseif (!empty($_POST['delete'])) {
     // ���
     if (!$deletable) {
-        die(_MB_APCAL_ERR_NOPERMTODELETE);
+        die(_MD_APCAL_ERR_NOPERMTODELETE);
     }
     // Ticket Check
     if (!$xoopsGTicket->check()) {
@@ -129,7 +130,7 @@ if (isset($_POST['update'])) {
 } elseif (!empty($_POST['delete_one'])) {
     // �����
     if (!$deletable) {
-        die(_MB_APCAL_ERR_NOPERMTODELETE);
+        die(_MD_APCAL_ERR_NOPERMTODELETE);
     }
     // Ticket Check
     if (!$xoopsGTicket->check()) {
@@ -214,7 +215,7 @@ if ($action === 'Edit') {
     $xoopsTpl->assign('xoops_default_comment_title', 'Re: ' . $cal->last_summary);
     $xoopsTpl->assign('print_link', "$mod_url/print.php?event_id={$_GET['event_id']}&amp;action=View");
     $xoopsTpl->assign('skinpath', "$cal->images_url");
-    $xoopsTpl->assign('lang_print', _MB_APCAL_ALT_PRINTTHISEVENT);
+    $xoopsTpl->assign('lang_print', _MD_APCAL_ALT_PRINTTHISEVENT);
     $HTTP_GET_VARS['event_id'] = $_GET['event_id'] = $cal->original_id;
     include XOOPS_ROOT_PATH . '/include/comment_view.php';
     // patch for commentAny

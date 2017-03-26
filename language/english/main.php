@@ -8,9 +8,9 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_MB_APCALLOADED')) {
     define('_APCAL_APURL', 'http://xoops.antiquespromotion.ca');
     define('_APCAL_APURL2', 'http://www.antiquespromotion.ca');
     define('_MD_APCAL_COPYRIGHT', '<a href="http://xoops.antiquespromotion.ca" title="Calendar for Xoops" target="_blank">APCal</a> by <a href="http://www.antiquespromotion.ca" title="Antiques Promotion Canada" target="_blank">AP</a>');
-    define('_MB_APCAL_ERR_NOPERMTOINSERT', 'You do not have permission to create events');
-    define('_MB_APCAL_ERR_NOPERMTODELETE', 'You do not have permission to delete events');
-    define('_MB_APCAL_ALT_PRINTTHISEVENT', 'Print this event');
+    define('_MD_APCAL_ERR_NOPERMTOINSERT', 'You do not have permission to create events');
+    define('_MD_APCAL_ERR_NOPERMTODELETE', 'You do not have permission to delete events');
+    define('_MD_APCAL_ALT_PRINTTHISEVENT', 'Print this event');
     define('_APCAL_CALENDAR', 'Calendar');
 
     // print.php
@@ -82,5 +82,23 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_MB_APCALLOADED')) {
     // Share
     define('_APCAL_FB_LNG', 'en_US');
     define('_APCAL_GPLUS_LNG', 'en');
-    define('_MD_APCALAM_APCALDBUPDATED', 'Database Updated');
+    define('_MD_APCAL_DBUPDATED', 'Database Updated');
+
+    define('_MD_APCAL_ERR_NOPERMTOINSERT', 'en_US');
+
+    define('_MD_APCAL_MODCONFIG', _MD_AM_MODCONFIG); //'Module Config Options'
+    define('_MD_APCAL_TPLSETS', _AM_SYSTEM_TPLSETS); //'Templates'
+    define('_MD_APCAL_FILENAME', 'File Name');
+    define('_MD_APCAL_GENERATE', 'Generate');
+
+    define('_MD_APCAL_PERMADDNG', _MD_AM_PERMADDNG);
+    define('_MD_APCAL_PERMADDNGP', _MD_AM_PERMADDNGP);
+    define('_MD_APCAL_PERMADDOK', _MD_AM_PERMADDOK);
+    define('_MD_APCAL_PERMRESETNG', _MD_AM_PERMRESETNG);
+
+//    define('_MD_AM_PERMADDNG', 'Could not add %s permission to %s for group %s');
+//    define('_MD_AM_PERMADDOK', 'Added %s permission to %s for group %s');
+//    define('_MD_AM_PERMRESETNG', 'Could not reset group permission for module %s');
+//    define('_MD_AM_PERMADDNGP', 'All parent items must be selected.');
+
 }

@@ -48,7 +48,7 @@ ORIGINAL FEATURES:
   - Option : Display title of categories in H1.
 - Events
   - Empty fields doesn't display in the event view.
-  - Option : Choose which category will be used for an event (as we keep multi-category feature). 
+  - Option : Choose which category will be used for an event (as we keep multi-category feature).
   - Option : Choose different hours for the same event (if multiple days are selected).
   - Option : Navigation menu to see previous and next event.
 
@@ -61,7 +61,7 @@ ORIGINAL PICAL FEATURES
 - Export to ICS format.
 
 LICENSE
-This module is released under the GPL license. See LICENSE.txt for details. 
+This module is released under the GPL license. See LICENSE.txt for details.
 
 LANGUAGES
 up to v2.1.1:  English, French, German
@@ -77,7 +77,7 @@ Testing by Antiques Promotion.
 Translation by:
     Antiques Promotion    English           (up to v2.1.1)
     Antiques Promotion    French            (up to v2.1.1)
-    Goffy                 German            (up to v2.1.1)   
+    Goffy                 German            (up to v2.1.1)
     marpe                 Spanish           (up to v2.0.4)
     Chimpel               Nederlands        (before v1.0.0)
     FrenchmaN             Russian           (before v1.0.0)
@@ -85,7 +85,7 @@ Translation by:
     Leif Madsen           Swedish           (before v1.0.0)
     Olivier               Portuguese        (before v1.0.0)
     Marcelo Yuji Himoro   Brasil Portuguese (before v1.0.0)
-    Cubiq                 Italian           (before v1.0.0)   
+    Cubiq                 Italian           (before v1.0.0)
     kurak_bu              Polish            (before v1.0.0)
 
 REFERENCES

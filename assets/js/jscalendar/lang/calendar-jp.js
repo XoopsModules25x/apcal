@@ -12,13 +12,13 @@
 // full day names
 Calendar._DN = new Array
 ("ÆüÍËÆü",
- "·îÍËÆü",
- "²ÐÍËÆü",
- "¿åÍËÆü",
- "ÌÚÍËÆü",
- "¶âÍËÆü",
- "ÅÚÍËÆü",
- "ÆüÍËÆü");
+    "·îÍËÆü",
+    "²ÐÍËÆü",
+    "¿åÍËÆü",
+    "ÌÚÍËÆü",
+    "¶âÍËÆü",
+    "ÅÚÍËÆü",
+    "ÆüÍËÆü");
 
 // Please note that the following array of short day names (and the same goes
 // for short month names, _SMN) isn't absolutely necessary.  We give it here
@@ -35,13 +35,13 @@ Calendar._DN = new Array
 // short day names
 Calendar._SDN = new Array
 ("Æü",
- "·î",
- "²Ð",
- "¿å",
- "ÌÚ",
- "¶â",
- "ÅÚ",
- "Æü");
+    "·î",
+    "²Ð",
+    "¿å",
+    "ÌÚ",
+    "¶â",
+    "ÅÚ",
+    "Æü");
 
 // First day of the week. "0" means display Sunday first, "1" means display
 // Monday first, etc.
@@ -50,56 +50,56 @@ Calendar._FD = 0;
 // full month names
 Calendar._MN = new Array
 ("1·î",
- "2·î",
- "3·î",
- "4·î",
- "5·î",
- "6·î",
- "7·î",
- "8·î",
- "9·î",
- "10·î",
- "11·î",
- "12·î");
+    "2·î",
+    "3·î",
+    "4·î",
+    "5·î",
+    "6·î",
+    "7·î",
+    "8·î",
+    "9·î",
+    "10·î",
+    "11·î",
+    "12·î");
 
 // short month names
 Calendar._SMN = new Array
 ("1·î",
- "2·î",
- "3·î",
- "4·î",
- "5·î",
- "6·î",
- "7·î",
- "8·î",
- "9·î",
- "10·î",
- "11·î",
- "12·î");
+    "2·î",
+    "3·î",
+    "4·î",
+    "5·î",
+    "6·î",
+    "7·î",
+    "8·î",
+    "9·î",
+    "10·î",
+    "11·î",
+    "12·î");
 
 // tooltips
 Calendar._TT = {};
 Calendar._TT["INFO"] = "¤³¤Î¥«¥ì¥ó¥À¡¼¤Ë¤Ä¤¤¤Æ";
 
 Calendar._TT["ABOUT"] =
-"DHTML Date/Time Selector\n" +
-"(c) dynarch.com 2002-2005 / Author: Mihai Bazon\n" + // don't translate this this ;-)
-"For latest version visit: http://www.dynarch.com/projects/calendar/\n" +
-"Distributed under GNU LGPL.  See http://gnu.org/licenses/lgpl.html for details." +
-"\n\n" +
-"ÆüÉÕÁªÂòÊýË¡:\n" +
-"- \xab, \xbb ¤ÇÇ¯¤òÁªÂò\n" +
-"- " + String.fromCharCode(0x2039) + ", " + String.fromCharCode(0x203a) + " ¤Ç·î¤òÁªÂò\n" +
-"- ³Æ¥Ü¥¿¥ó¤òÄ¹²¡¤·¤¹¤ë¤³¤È¤Ç¡¢Ä¾ÀÜÁªÂò¤¹¤ë¤³¤È¤â²ÄÇ½¤Ç¤¹\n" +
-"- ¥­¡¼¥Ü¡¼¥É¤Ç¤ÎÁàºî¤â²ÄÇ½¤Ç¤¹\n" +
-"- ¥«¡¼¥½¥ë¥­¡¼¤ÇÆüÉÕÊÑ¹¹¡¢CTRL+¥«¡¼¥½¥ë¥­¡¼¤ÇÇ¯·îÊÑ¹¹\n" +
-"- ¥¹¥Ú¡¼¥¹¤Çº£Æü¡¦ENTER¤Ç³ÎÄê¡¦ESC¤Ç¥­¥ã¥ó¥»¥ë¤Ç¤¹\n";
+    "DHTML Date/Time Selector\n" +
+    "(c) dynarch.com 2002-2005 / Author: Mihai Bazon\n" + // don't translate this this ;-)
+    "For latest version visit: http://www.dynarch.com/projects/calendar/\n" +
+    "Distributed under GNU LGPL.  See http://gnu.org/licenses/lgpl.html for details." +
+    "\n\n" +
+    "ÆüÉÕÁªÂòÊýË¡:\n" +
+    "- \xab, \xbb ¤ÇÇ¯¤òÁªÂò\n" +
+    "- " + String.fromCharCode(0x2039) + ", " + String.fromCharCode(0x203a) + " ¤Ç·î¤òÁªÂò\n" +
+    "- ³Æ¥Ü¥¿¥ó¤òÄ¹²¡¤·¤¹¤ë¤³¤È¤Ç¡¢Ä¾ÀÜÁªÂò¤¹¤ë¤³¤È¤â²ÄÇ½¤Ç¤¹\n" +
+    "- ¥­¡¼¥Ü¡¼¥É¤Ç¤ÎÁàºî¤â²ÄÇ½¤Ç¤¹\n" +
+    "- ¥«¡¼¥½¥ë¥­¡¼¤ÇÆüÉÕÊÑ¹¹¡¢CTRL+¥«¡¼¥½¥ë¥­¡¼¤ÇÇ¯·îÊÑ¹¹\n" +
+    "- ¥¹¥Ú¡¼¥¹¤Çº£Æü¡¦ENTER¤Ç³ÎÄê¡¦ESC¤Ç¥­¥ã¥ó¥»¥ë¤Ç¤¹\n";
 
 Calendar._TT["ABOUT_TIME"] = "\n\n" +
-"»þ´ÖÁªÂòÊýË¡:\n" +
-"- »þ¡¦Ê¬¤ò¥¯¥ê¥Ã¥¯¤¹¤ë¤³¤È¤Ç£±¤º¤ÄÁý¤¨¤Þ¤¹\n" +
-"- ¥·¥Õ¥È¥¯¥ê¥Ã¥¯¤¹¤ì¤Ð¡¢£±¤º¤Ä¸º¤ê¤Þ¤¹\n" +
-"- ´·¤ì¤Æ¤­¤¿¤é¡¢¥É¥é¥Ã¥°¤¹¤ë¤³¤È¤ÇÁÇÁá¤¤ÊÑ¹¹¤â²ÄÇ½¤Ç¤¹\n";
+    "»þ´ÖÁªÂòÊýË¡:\n" +
+    "- »þ¡¦Ê¬¤ò¥¯¥ê¥Ã¥¯¤¹¤ë¤³¤È¤Ç£±¤º¤ÄÁý¤¨¤Þ¤¹\n" +
+    "- ¥·¥Õ¥È¥¯¥ê¥Ã¥¯¤¹¤ì¤Ð¡¢£±¤º¤Ä¸º¤ê¤Þ¤¹\n" +
+    "- ´·¤ì¤Æ¤­¤¿¤é¡¢¥É¥é¥Ã¥°¤¹¤ë¤³¤È¤ÇÁÇÁá¤¤ÊÑ¹¹¤â²ÄÇ½¤Ç¤¹\n";
 
 Calendar._TT["PREV_YEAR"] = "Á°Ç¯";
 Calendar._TT["PREV_MONTH"] = "Á°·î";

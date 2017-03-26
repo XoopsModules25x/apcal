@@ -307,7 +307,7 @@ while ($plugin = $GLOBALS['xoopsDB']->fetchObject($prs)) {
 
     $pi_id           = (int)$plugin->pi_id;
     $enable_checked  = $plugin->pi_enabled ? 'checked' : '';
-    $pi_title        = $myts->makeTBoxData4Edit($plugin->pi_title);
+    $pi_title        = $myts->htmlSpecialChars($plugin->pi_title);
     $del_confirm     = 'confirm("' . sprintf(_AM_APCAL_FMT_CATDELCONFIRM, $pi_title) . '")';
     $pi_options4disp = htmlspecialchars($plugin->pi_options, ENT_QUOTES);
     echo "

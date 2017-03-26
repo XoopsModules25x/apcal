@@ -880,13 +880,26 @@ $modversion['comments']['callbackFile']        = 'include/comment_functions.php'
 $modversion['comments']['callback']['approve'] = 'apcal_comments_approve';
 $modversion['comments']['callback']['update']  = 'apcal_comments_update';
 
-// Templates
-$modversion['templates'][1]['file']        = "apcal{$mydirnumber}_event_detail.tpl";
-$modversion['templates'][1]['description'] = '';
-$modversion['templates'][2]['file']        = "apcal{$mydirnumber}_print.tpl";
-$modversion['templates'][2]['description'] = '';
-$modversion['templates'][3]['file']        = "apcal{$mydirnumber}_event_list.tpl";
-$modversion['templates'][3]['description'] = '';
+// ------------------- Templates ------------------- //
+
+$modversion['templates'] = [
+    // User
+    ['file' => "apcal{$mydirnumber}_event_detail.tpl", 'description' => ''],
+    ['file' => "apcal{$mydirnumber}_print.tpl", 'description' => ''],
+    ['file' => "apcal{$mydirnumber}_event_list.tpl", 'description' => ''],
+
+    ['file' => "apcal{$mydirnumber}_getCoords.tpl", 'description' => ''],
+    ['file' => "apcal_getCoords.tpl", 'description' => '']
+//    ['file' => "apcal{$mydirnumber}_shareCalendar.tpl", 'description' => ''],
+//    ['file' => "apcal{$mydirnumber}_googlemap.tpl", 'description' => '']
+];
+
+//$modversion['templates'][1]['file']        = "apcal{$mydirnumber}_event_detail.tpl";
+//$modversion['templates'][1]['description'] = '';
+//$modversion['templates'][2]['file']        = "apcal{$mydirnumber}_print.tpl";
+//$modversion['templates'][2]['description'] = '';
+//$modversion['templates'][3]['file']        = "apcal{$mydirnumber}_event_list.tpl";
+//$modversion['templates'][3]['description'] = '';
 
 // Notification
 $modversion['hasNotification']             = 1;

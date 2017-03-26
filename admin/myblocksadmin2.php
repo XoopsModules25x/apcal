@@ -161,7 +161,7 @@ function list_blockinstances()
         $title      = $instances[$i]->getVar('title');
         $bcachetime = $instances[$i]->getVar('bcachetime');
         $bid        = $instances[$i]->getVar('bid');
-        $name       = $myts->makeTboxData4Edit($block_arr[$bid]['name']);
+        $name       = $myts->htmlSpecialChars($block_arr[$bid]['name']);
 
         $visiblein = $instances[$i]->getVisibleIn();
 
@@ -293,7 +293,7 @@ function list_blockinstances()
         echo "
         <tr>
             <td class='$class' align='left'>
-                " . $myts->makeTboxData4Edit($block['name']) . "
+                " . $myts->htmlSpecialChars($block['name']) . "
             </td>
             <td class='$class' align='left' colspan='4'>
                 $description4show

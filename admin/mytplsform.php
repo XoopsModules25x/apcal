@@ -101,7 +101,7 @@ if (file_exists('./mymenu.php')) {
 }
 
 echo "<h3 style='text-align:left;'>"
-     . _MD_APCALAM_APCALTPLSETS
+     . _MD_APCAL_TPLSETS
      . ' : '
      . htmlspecialchars($tpl['tpl_type'], ENT_QUOTES)
      . ' : '

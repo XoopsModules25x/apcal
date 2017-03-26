@@ -152,7 +152,7 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_AM_APCAL_LOADED')) {
     define('_AM_APCAL_ACTIVERIGHTS', 'Module administration rights');
     define('_AM_APCAL_ACCESSRIGHTS', 'Module access rights');
     define('_AM_APCAL_BADMIN', 'Blocks administration');
-    //define('_AM_APCAL_ADGS', 'Groups');
+    define('_AM_APCAL_ADGS', 'Groups');
 
     define('_AM_APCALAM_APCALDBUPDATED', 'Database Updated');
 
@@ -163,4 +163,23 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_AM_APCAL_LOADED')) {
     define('_AM_APCAL_ERROR_BAD_XOOPS', 'This module requires XOOPS %s+ (%s installed)');
     define('_AM_APCAL_ERROR_BAD_PHP', 'This module requires PHP version %s+ (%s installed)');
     define('_AM_APCAL_ERROR_TAG_REMOVAL', 'Could not remove tags from Tag Module');
+
+    define('_AM_APCAL_ADMINBLOCK', 'Admin Frontpage');
+    define('_AM_APCAL_ALLMODULEPAGES', 'All module pages');
+    define('_AM_APCAL_ALLPAGES', 'All Frontside Pages');
+    define('_AM_APCAL_CLONEBLOCK', 'Clone Block');
+    define('_AM_APCAL_CUSTOMHTML', 'HTML');
+    define('_AM_APCAL_CUSTOMNOSMILE', 'No Smile');
+    define('_AM_APCAL_CUSTOMPHP', 'PHP');
+    define('_AM_APCAL_CUSTOMSMILE', 'Smilie');
+    define('_AM_APCAL_DBUPDATED', 'Database Updated');
+    define('_AM_APCAL_EDITBLOCK', 'Edit a block');
+    define('_AM_APCAL_MODULECANT', 'This block cannot be deleted directly! If you wish to disable this block, deactivate the module.');
+    define('_AM_APCAL_RUSUREDEL', 'Are you sure you want to delete block <b>%s</b>?');
+    define('_AM_APCAL_SYSTEM_HELP', 'System Help');
+    define('_AM_APCAL_SYSTEMCANT', 'System blocks cannot be deleted!');
+    define('_AM_APCAL_SYSTEMLEVEL', 'System Level');
+    define('_AM_APCAL_TOPPAGE', 'Top Page');
+
+
 }
