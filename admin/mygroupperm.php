@@ -80,8 +80,8 @@ if (is_array($_POST['perms']) && !empty($_POST['perms'])) {
                             foreach ($parent_ids as $pid) {
                                 if ($pid != 0 && !in_array($pid, array_keys($item_ids))) {
                                     // one of the parent items were not selected, so skip this item
-                                    $msg[] = sprintf(_MD_APCALAM_APCALPERMADDNG, '<b>' . $perm_name . '</b>', '<b>' . $perm_data['itemname'][$item_id] . '</b>',
-                                                     '<b>' . $group_list[$group_id] . '</b>') . ' (' . _MD_APCALAM_APCALPERMADDNGP . ')';
+                                    $msg[] = sprintf(_MD_APCAL_PERMADDNG, '<b>' . $perm_name . '</b>', '<b>' . $perm_data['itemname'][$item_id] . '</b>',
+                                                     '<b>' . $group_list[$group_id] . '</b>') . ' (' . _MD_APCAL_PERMADDNGP . ')';
                                     continue 2;
                                 }
                             }
@@ -92,15 +92,15 @@ if (is_array($_POST['perms']) && !empty($_POST['perms'])) {
                         $gperm->setVar('gperm_modid', $modid);
                         $gperm->setVar('gperm_itemid', $item_id);
                         if (!$gpermHandler->insert($gperm)) {
-                            $msg[] = sprintf(_MD_APCALAM_APCALPERMADDNG, '<b>' . $perm_name . '</b>', '<b>' . $perm_data['itemname'][$item_id] . '</b>', '<b>' . $group_list[$group_id] . '</b>');
+                            $msg[] = sprintf(_MD_APCAL_PERMADDNG, '<b>' . $perm_name . '</b>', '<b>' . $perm_data['itemname'][$item_id] . '</b>', '<b>' . $group_list[$group_id] . '</b>');
                         } else {
-                            $msg[] = sprintf(_MD_APCALAM_APCALPERMADDOK, '<b>' . $perm_name . '</b>', '<b>' . $perm_data['itemname'][$item_id] . '</b>', '<b>' . $group_list[$group_id] . '</b>');
+                            $msg[] = sprintf(_MD_APCAL_PERMADDOK, '<b>' . $perm_name . '</b>', '<b>' . $perm_data['itemname'][$item_id] . '</b>', '<b>' . $group_list[$group_id] . '</b>');
                         }
                         unset($gperm);
                     }
                 }
             } else {
-                $msg[] = sprintf(_MD_APCALAM_APCALPERMRESETNG, $module->getVar('name'));
+                $msg[] = sprintf(_MD_APCAL_PERMRESETNG, $module->getVar('name'));
             }
         }
     }

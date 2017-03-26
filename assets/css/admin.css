@@ -33,7 +33,7 @@
     line-height: 15px; /* Safari */
 }
 
-*:first-child+html button[type] {
+*:first-child + html button[type] {
     padding: 3px 8px 4px 5px; /* IE7 */
 }
 

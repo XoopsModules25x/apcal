@@ -492,12 +492,12 @@ if (!class_exists('PatTemplate')) {
                     $tagname    = strtolower($regs[1]);
                     $attributes = $this->parseAttributes($regs[2]);
 
-                    if ($attributes[keep] > 0) {
+                    if ($attributes['keep'] > 0) {
                         //  create new attribute
-                        $newkeep = $attributes[keep] > 1 ? ' keep="' . ($attributes[keep] - 1) . '"' : '';
+                        $newkeep = $attributes['keep'] > 1 ? ' keep="' . ($attributes['keep'] - 1) . '"' : '';
 
                         //  replace old attribute with new attribute
-                        $newline = str_replace(' keep="' . $attributes[keep] . '"', $newkeep, $line);
+                        $newline = str_replace(' keep="' . $attributes['keep'] . '"', $newkeep, $line);
 
                         //  use this line as data
                         $this->dataHandler($fname, $newline, $lineno);

@@ -47,7 +47,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
             redirect_header('admin.php?fct=preferences', 1);
         }
         require_once XOOPS_ROOT_PATH . '/class/xoopsformloader.php';
-        $form = new XoopsThemeForm(_MD_APCALAM_APCALMODCONFIG, 'pref_form', 'admin.php?fct=preferences');
+        $form = new XoopsThemeForm(_MD_APCAL_MODCONFIG, 'pref_form', 'admin.php?fct=preferences');
         /** @var XoopsModuleHandler $moduleHandler */
         $moduleHandler = xoops_getHandler('module');
         $module        = $moduleHandler->get($mod);
@@ -287,9 +287,9 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
             setcookie($_POST['session_name'], session_id(), time()+(60*(int)($_POST['session_expire'])), '/',  '', 0);
         } */
         if (!empty($_POST['redirect'])) {
-            redirect_header($_POST['redirect'], 2, _MD_APCALAM_APCALDBUPDATED);
+            redirect_header($_POST['redirect'], 2, _MD_APCAL_DBUPDATED);
         } else {
-            redirect_header('admin.php?fct=preferences', 2, _MD_APCALAM_APCALDBUPDATED);
+            redirect_header('admin.php?fct=preferences', 2, _MD_APCAL_DBUPDATED);
         }
     }
 }

@@ -7,7 +7,7 @@ Follow this link to view the event:
 
 -----------
 
-You are receiving this message because you selected to be notified 
+You are receiving this message because you selected to be notified
 when new events are added to our site.
 
 If this is an error or you wish not to receive further such notifications,
@@ -18,6 +18,6 @@ Please do not reply to this message.
 
 -----------
 
-{X_SITENAME} ({X_SITEURL}) 
+{X_SITENAME} ({X_SITEURL})
 webmaster
 {X_ADMINMAIL}

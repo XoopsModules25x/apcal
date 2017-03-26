@@ -228,7 +228,7 @@ $frs = $db->query($sql);
 
 xoops_cp_header();
 
-echo "<h3 style='text-align:left;'>" . _MD_APCALAM_APCALTPLSETS . " : $target_mname</h3>\n";
+echo "<h3 style='text-align:left;'>" . _MD_APCAL_TPLSETS . " : $target_mname</h3>\n";
 
 // beggining of table & form
 echo "
@@ -236,7 +236,7 @@ echo "
     " . $xoopsGTicket->getTicketHtml(__LINE__) . "
     <table class='outer'>
         <tr>
-            <th>" . _MD_APCALFILENAME . "</th>
+            <th>" . _MD_APCAL_FILENAME . "</th>
             <th>type</th>
             <th><input type='checkbox' onclick=\"with(document.MainForm){for (i=0;i<length;i++) {if(elements[i].type=='checkbox'&&elements[i].name.indexOf('basecheck')>=0) {elements[i].checked=this.checked;}}}\" />file</th>
             $tplsets_th4disp
@@ -336,7 +336,7 @@ echo "
      . _CLONE
      . ": <br>
             <select name='clone_tplset_from'>$tplset_options</select>-&gt;<input type='text' name='clone_tplset_to' size='8' /><input type='submit' name='clone_tplset_do' value='"
-     . _MD_APCALGENERATE
+     . _MD_APCAL_GENERATE
      . "' />
         </td>
         <td class='head'></td>

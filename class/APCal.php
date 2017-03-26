@@ -1530,7 +1530,7 @@ if (!class_exists('APCal')) {
                     if ($event->admission) {
                         // Put markers on map
                         if ($event->gmlat > 0 || $event->gmlong > 0) {
-                            $this->gmPoints[$event->id . startDay] = array(
+                            $this->gmPoints[$event->id.startDay] = array(
                                 'summary'   => $event->summary,
                                 'gmlat'     => $event->gmlat,
                                 'gmlong'    => $event->gmlong,

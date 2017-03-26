@@ -15,7 +15,7 @@
  * @package
  * @since
  * @author       XOOPS Development Team,
- * @author      GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
+ * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  * @author       Antiques Promotion (http://www.antiquespromotion.ca)
  */
 
@@ -103,7 +103,7 @@ if (isset($_POST['previewblock'])) {
     $block['bid'] = $bid;
 
     if ($op === 'clone_ok') {
-        $block['form_title']    = _AM_APCAL_CLONEBLOCK;
+        $block['form_title']    = _AM_CLONEBLOCK;
         $block['submit_button'] = _CLONE;
         $myblock                = new XoopsBlock();
         $myblock->setVar('block_type', 'C');
@@ -267,7 +267,7 @@ if ($op === 'order2') {
     }
 
     $query4redirect = '?dirname=' . urlencode(strip_tags(substr($_POST['query4redirect'], 9)));
-    redirect_header("myblocksadmin.php$query4redirect", 1, _MD_APCALAM_APCALDBUPDATED);
+    redirect_header("myblocksadmin.php$query4redirect", 1, _MD_APCAL_DBUPDATED);
     exit;
 }
 
@@ -416,7 +416,7 @@ if ($op === 'clone') {
     }
     $is_custom = ($myblock->getVar('block_type') === 'C' || $myblock->getVar('block_type') === 'E') ? true : false;
     $block     = array(
-        'form_title'    => _AM_APCAL_CLONEBLOCK,
+        'form_title'    => _AM_CLONEBLOCK,
         'name'          => $myblock->getVar('name'),
         'side'          => $myblock->getVar('side'),
         'weight'        => $myblock->getVar('weight'),
@@ -434,7 +434,7 @@ if ($op === 'clone') {
         'options'       => $myblock->getVar('options'),
         'submit_button' => _CLONE
     );
-    echo '<a href="myblocksadmin.php">' . _AM_APCAL_BADMIN . '</a>&nbsp;<span style="font-weight:bold;">&raquo;&raquo;</span>&nbsp;' . _AM_APCAL_CLONEBLOCK . '<br><br>';
+    echo '<a href="myblocksadmin.php">' . _AM_APCAL_BADMIN . '</a>&nbsp;<span style="font-weight:bold;">&raquo;&raquo;</span>&nbsp;' . _AM_CLONEBLOCK . '<br><br>';
     include __DIR__ . '/../admin/myblockform.php';
     $xoopsGTicket->addTicketXoopsFormElement($form, __LINE__, 1800, 'myblocksadmin'); //GIJ
     $form->display();
@@ -708,7 +708,7 @@ function myblocksadmin_update_blockinstance(
                                        . ')');
         }
 
-        return _MD_APCALAM_APCALDBUPDATED;
+        return _MD_APCAL_DBUPDATED;
     }
 
     return 'Failed update of block instance. ID:' . $id;
