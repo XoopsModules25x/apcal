@@ -84,21 +84,15 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_MB_APCALLOADED')) {
     define('_APCAL_GPLUS_LNG', 'en');
     define('_MD_APCAL_DBUPDATED', 'Database Updated');
 
-    define('_MD_APCAL_ERR_NOPERMTOINSERT', 'en_US');
+//    define('_MD_APCAL_ERR_NOPERMTOINSERT', 'en_US');
 
-    define('_MD_APCAL_MODCONFIG', _MD_AM_MODCONFIG); //'Module Config Options'
-    define('_MD_APCAL_TPLSETS', _AM_SYSTEM_TPLSETS); //'Templates'
+    define('_MD_APCAL_MODCONFIG', 'Module Config Options');
+    define('_MD_APCAL_TPLSETS', 'Templates'); //
     define('_MD_APCAL_FILENAME', 'File Name');
     define('_MD_APCAL_GENERATE', 'Generate');
 
-    define('_MD_APCAL_PERMADDNG', _MD_AM_PERMADDNG);
-    define('_MD_APCAL_PERMADDNGP', _MD_AM_PERMADDNGP);
-    define('_MD_APCAL_PERMADDOK', _MD_AM_PERMADDOK);
-    define('_MD_APCAL_PERMRESETNG', _MD_AM_PERMRESETNG);
-
-//    define('_MD_AM_PERMADDNG', 'Could not add %s permission to %s for group %s');
-//    define('_MD_AM_PERMADDOK', 'Added %s permission to %s for group %s');
-//    define('_MD_AM_PERMRESETNG', 'Could not reset group permission for module %s');
-//    define('_MD_AM_PERMADDNGP', 'All parent items must be selected.');
-
+    define('_MD_APCAL_PERMADDNG', 'Could not add %s permission to %s for group %s');
+    define('_MD_APCAL_PERMADDNGP', 'All parent items must be selected.');
+    define('_MD_APCAL_PERMADDOK', 'Added %s permission to %s for group %s');
+    define('_MD_APCAL_PERMRESETNG', 'Could not reset group permission for module %s');
 }
