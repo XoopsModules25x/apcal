@@ -86,7 +86,7 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
             array_walk($lines, array(&$this, '_encode'));
         }
 
-        if ($this->_split_level == 'words') {
+        if ($this->_split_level === 'words') {
             return implode('', $lines);
         } else {
             return implode("\n", $lines) . "\n";
@@ -129,10 +129,10 @@ class Text_Diff_Renderer_inline extends Text_Diff_Renderer
     {
         /* If we've already split on words, don't try to do so again - just
          * display. */
-        if ($this->_split_level == 'words') {
+        if ($this->_split_level === 'words') {
             $prefix = '';
-            while ($orig[0] !== false && $final[0] !== false && substr($orig[0], 0, 1) == ' '
-                   && substr($final[0], 0, 1) == ' ') {
+            while ($orig[0] !== false && $final[0] !== false && substr($orig[0], 0, 1) === ' '
+                   && substr($final[0], 0, 1) === ' ') {
                 $prefix   .= substr($orig[0], 0, 1);
                 $orig[0]  = substr($orig[0], 1);
                 $final[0] = substr($final[0], 1);

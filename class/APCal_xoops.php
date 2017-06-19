@@ -176,7 +176,7 @@ if (!class_exists('APCal_xoops')) {
             $poster = new XoopsUser($uid);
 
             // check if invalid uid
-            if ($poster->uname() == '') {
+            if ($poster->uname() === '') {
                 return '';
             }
 
@@ -184,7 +184,7 @@ if (!class_exists('APCal_xoops')) {
                 $name = $poster->uname();
             } else {
                 $name = trim($poster->name());
-                if ($name == '') {
+                if ($name === '') {
                     $name = $poster->uname();
                 }
             }
@@ -592,7 +592,7 @@ if (!class_exists('APCal_xoops')) {
                     $end_desc   = $this->get_middle_md($end_for_date);
                 }
 
-                $multiday = ((int)date('j', $end_for_time) > (int)date('j', $start_for_time)) ? true : false;
+                $multiday = (int)date('j', $end_for_time) > (int)date('j', $start_for_time);
 
                 $pic = $GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->query("SELECT picture FROM {$this->pic_table} WHERE event_id={$event->id} AND main_pic=1 LIMIT 0,1"));
                 $cat = $GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->query("SELECT cat_title FROM {$this->cat_table} WHERE cid={$event->mainCategory} LIMIT 0,1"));
@@ -996,7 +996,7 @@ if (!class_exists('APCal_xoops')) {
             $tpl->assign('WEEKLYVIEW', $this->make_cal_link($get_target, 'Weekly', $this->now_cid, $this->caldate));
             $tpl->assign('DAILYVIEW', $this->make_cal_link($get_target, 'Daily', $this->now_cid, $this->caldate));
             $tpl->assign('isAdmin', $this->isadmin);
-            $tpl->assign('showSubmitter', $this->nameoruname === 'none' ? false : true);
+            $tpl->assign('showSubmitter', $this->nameoruname !== 'none');
 
             return true;
         }

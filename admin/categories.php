@@ -97,7 +97,7 @@ function display_edit_form($cat, $form_title, $action)
     $form->display();
 }
 
-// �ĥ꡼��ˤʤ�褦�ˡ�weight��Ʒ׻������ĥ꡼�ο�����¬�äƤ���
+// ツリー順になるように、weightを再計算し、ツリーの深さも測っておく
 /**
  * @param $cat_table
  */
@@ -196,12 +196,12 @@ $cal->base_path   = $mod_path;
 $cal->images_url  = "$mod_url/assets/images/$skin_folder";
 $cal->images_path = "$mod_path/assets/images/$skin_folder";
 
-// XOOPS��Ϣ�ν��
+// XOOPS関連の初期化
 $myts          = MyTextSanitizer::getInstance();
 $cattree       = new XoopsTree($cal->cat_table, 'cid', 'pid');
 $gpermHandler = xoops_getHandler('groupperm');
 
-// �ǡ����١��������ʤɤ���������
+// データベース更新などがからむ処理
 if ($action === 'insert') {
 
     // Ticket Check
@@ -209,7 +209,7 @@ if ($action === 'insert') {
         redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
     }
 
-    // ������Ͽ
+    // 新規登録
     $sql  = "INSERT INTO $cal->cat_table SET ";
     $cols = array(
         'weight'     => 'I:N:0',
@@ -275,16 +275,16 @@ if ($action === 'insert') {
     $criteria->add(new Criteria('gperm_itemid', (int)$cid));
     $gpermHandler->deleteAll($criteria);
 
-    // Category Notify �κ��
-    // (ɬ�פǤ���г������٥�Ⱥ��ε�ǽ��)
+    // Category Notify の削除
+    // (必要であれば該当イベント削除の機能も)
 
-    // �оݥ��ƥ��꡼�λҶ���WHERE����ɲä���Cat2Group Permission����
+    // 対象カテゴリーの子供をWHERE節に追加し、Cat2Group Permissionを削除
     $children = $cattree->getAllChildId($cid);
     $whr      = 'cid IN (';
     foreach ($children as $child) {
         // WHERE��ؤ��ɲ�
         $whr .= "$child,";
-        // Category2Group permission �κ�� (2.0.3 �����Ǥ⤦�ޤ�ư���褦��)
+        // Category2Group permission の削除 (2.0.3 以前でもうまく動くように)
         // xoops_groupperm_deletebymoditem( $xoopsModule->mid() , 'apcal_cat' , $child ) ;
         $criteria = new CriteriaCompo(new Criteria('gperm_modid', $xoopsModule->mid()));
         $criteria->add(new Criteria('gperm_name', 'apcal_cat'));
@@ -308,7 +308,7 @@ if ($action === 'insert') {
         redirect_header(XOOPS_URL . '/', 3, $xoopsGTicket->getErrors());
     }
 
-    // �Хå����åץǡ���
+    // バッチアップデート
     $affected = 0;
     foreach ($_POST['weights'] as $cid => $weight) {
         $weight  = (int)$weight;
@@ -327,10 +327,10 @@ if ($action === 'insert') {
     exit;
 }
 
-// �ᥤ�������
+// メイン出力部
 xoops_cp_header();
 $adminObject->displayNavigation(basename(__FILE__));
-// ɽ������ο���ʬ��
+// 表示処理の振り分け
 if ($disp === 'edit' && $cid > 0) {
 
     // ����оݥ��ƥ��꡼�ǡ����μ���

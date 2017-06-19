@@ -1,6 +1,6 @@
 <?php
 
-use \Xmf\Request;
+use Xmf\Request;
 
 require_once __DIR__ . '/../../mainfile.php';
 require_once XOOPS_ROOT_PATH . '/header.php';
@@ -36,7 +36,7 @@ if (isset($_POST['form_activate'])) {
     }
 }
 if (isset($_GET['op'])) {
-    if ($_GET['op'] == 'show_form_activate') {
+    if ($_GET['op'] === 'show_form_activate') {
         //called after automatically redirect after add new event
         if (isset($_GET['eventid'])) {
             $eventid = $_GET['eventid'];
@@ -225,14 +225,14 @@ if (isset($_POST['activate_x'])) {
         $typeedit  = $_POST['typeedit'];
 
         //default-values
-        if ($datelimit == '') {
+        if ($datelimit === '') {
             $datelimit = 0;
         }
         if ($datelimit > 0) {
             $datelimit = strtotime($datelimit);
         }
 
-        if ($number == '') {
+        if ($number === '') {
             $number = '0';
         }
 
@@ -282,7 +282,7 @@ if (isset($_POST['activate_x'])) {
                      . ".ron_eventid)=$eventid)";
             $res   = $GLOBALS['xoopsDB']->query($query);
         }
-        if (!$email1 == '') {
+        if (!$email1 === '') {
             $submitter = $xoopsUser->getVar('uid');
             $query     = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . " (ron_eventid, ron_email, ron_submitter) values ($eventid, '$email1', $submitter)";
             $res       = $GLOBALS['xoopsDB']->query($query);
@@ -290,28 +290,28 @@ if (isset($_POST['activate_x'])) {
                 redirect_header($eventurl, 3, _APCAL_RO_ERROR_RO_ACTIVATE);
             }
         }
-        if (!$email2 == '') {
+        if (!$email2 === '') {
             $query = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . " (ron_eventid, ron_email, ron_submitter) values ($eventid, '$email2', $submitter)";
             $res   = $GLOBALS['xoopsDB']->query($query);
             if (!$res) {
                 redirect_header($eventurl, 3, _APCAL_RO_ERROR_RO_ACTIVATE);
             }
         }
-        if (!$email3 == '') {
+        if (!$email3 === '') {
             $query = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . " (ron_eventid, ron_email, ron_submitter) values ($eventid, '$email3', $submitter)";
             $res   = $GLOBALS['xoopsDB']->query($query);
             if (!$res) {
                 redirect_header($eventurl, 3, _APCAL_RO_ERROR_RO_ACTIVATE);
             }
         }
-        if (!$email4 == '') {
+        if (!$email4 === '') {
             $query = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . " (ron_eventid, ron_email, ron_submitter) values ($eventid, '$email4', $submitter)";
             $res   = $GLOBALS['xoopsDB']->query($query);
             if (!$res) {
                 redirect_header($eventurl, 3, _APCAL_RO_ERROR_RO_ACTIVATE);
             }
         }
-        if (!$email5 == '') {
+        if (!$email5 === '') {
             $query = 'Insert into ' . $GLOBALS['xoopsDB']->prefix('apcal_ro_notify') . " (ron_eventid, ron_email, ron_submitter) values ($eventid, '$email5', $submitter)";
             $res   = $GLOBALS['xoopsDB']->query($query);
             if (!$res) {
@@ -459,35 +459,35 @@ if (isset($_REQUEST['form_add'])) {
                             <input type='radio' name='sendconf' value='no'> " . _APCAL_RO_RADIO_NO . '
                         </td>
                     </tr>';
-        if (_APCAL_RO_EXTRAINFO1 != '') {
+        if (_APCAL_RO_EXTRAINFO1 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO1 . ":</td>
                         <td class='odd'><input type='text' name='extrainfo1' value='' size='100' /></td>
                     </tr>";
         }
-        if (_APCAL_RO_EXTRAINFO2 != '') {
+        if (_APCAL_RO_EXTRAINFO2 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO2 . ":</td>
                         <td class='odd'><input type='text' name='extrainfo2' value='' size='100' /></td>
                     </tr>";
         }
-        if (_APCAL_RO_EXTRAINFO3 != '') {
+        if (_APCAL_RO_EXTRAINFO3 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO3 . ":</td>
                         <td class='odd'><input type='text' name='extrainfo3' value='' size='100' /></td>
                     </tr>";
         }
-        if (_APCAL_RO_EXTRAINFO4 != '') {
+        if (_APCAL_RO_EXTRAINFO4 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO4 . ":</td>
                         <td class='odd'><input type='text' name='extrainfo4' value='' size='100' /></td>
                     </tr>";
         }
-        if (_APCAL_RO_EXTRAINFO5 != '') {
+        if (_APCAL_RO_EXTRAINFO5 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO5 . ":</td>
@@ -526,19 +526,19 @@ if (isset($_REQUEST['form_add'])) {
                         <td class='even'>" . _APCAL_RO_FIRSTNAME . "</td>
                         <td class='even'>" . _APCAL_RO_LASTNAME . "</td>
                         <td class='even'>" . _APCAL_RO_EMAIL . '</td>';
-            if (_APCAL_RO_EXTRAINFO1 != '') {
+            if (_APCAL_RO_EXTRAINFO1 !== '') {
                 $ret2 .= "<td class='even'>" . _APCAL_RO_EXTRAINFO1 . '</td>';
             }
-            if (_APCAL_RO_EXTRAINFO2 != '') {
+            if (_APCAL_RO_EXTRAINFO2 !== '') {
                 $ret2 .= "<td class='even'>" . _APCAL_RO_EXTRAINFO2 . '</td>';
             }
-            if (_APCAL_RO_EXTRAINFO3 != '') {
+            if (_APCAL_RO_EXTRAINFO3 !== '') {
                 $ret2 .= "<td class='even'>" . _APCAL_RO_EXTRAINFO3 . '</td>';
             }
-            if (_APCAL_RO_EXTRAINFO4 != '') {
+            if (_APCAL_RO_EXTRAINFO4 !== '') {
                 $ret2 .= "<td class='even'>" . _APCAL_RO_EXTRAINFO4 . '</td>';
             }
-            if (_APCAL_RO_EXTRAINFO5 != '') {
+            if (_APCAL_RO_EXTRAINFO5 !== '') {
                 $ret2 .= "<td class='even'>" . _APCAL_RO_EXTRAINFO5 . '</td>';
             }
             $ret2 .= "
@@ -591,19 +591,19 @@ if (isset($_REQUEST['form_add'])) {
                                 <td class='$classname'>$romfirstname</td>
                                 <td class='$classname'>$romlastname</td>
                                 <td class='$classname'>$romemail</td>";
-                if (_APCAL_RO_EXTRAINFO1 != '') {
+                if (_APCAL_RO_EXTRAINFO1 !== '') {
                     $ret2 .= "<td class='$classname'>$romextrainfo1</td>";
                 }
-                if (_APCAL_RO_EXTRAINFO2 != '') {
+                if (_APCAL_RO_EXTRAINFO2 !== '') {
                     $ret2 .= "<td class='$classname'>$romextrainfo2</td>";
                 }
-                if (_APCAL_RO_EXTRAINFO3 != '') {
+                if (_APCAL_RO_EXTRAINFO3 !== '') {
                     $ret2 .= "<td class='$classname'>$romextrainfo3</td>";
                 }
-                if (_APCAL_RO_EXTRAINFO4 != '') {
+                if (_APCAL_RO_EXTRAINFO4 !== '') {
                     $ret2 .= "<td class='$classname'>$romextrainfo4</td>";
                 }
-                if (_APCAL_RO_EXTRAINFO5 != '') {
+                if (_APCAL_RO_EXTRAINFO5 !== '') {
                     $ret2 .= "<td class='$classname'>$romextrainfo5</td>";
                 }
                 $ret2 .= "
@@ -611,7 +611,7 @@ if (isset($_REQUEST['form_add'])) {
                             </tr>";
             }
             $ret2 .= '</table></td></tr></table>';
-            $ret2 .= "<p style='text-align:center;align:center'>
+            $ret2 .= "<p style='text-align:center;align:center;'>
             <form method='post' action='ro_regonlinehandler.php' name='roformgoback' style='margin:0px;'>
                 <input type='hidden' name='eventurl' value='$eventurl' />
                 <div align='center'>
@@ -647,28 +647,28 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
         $location   = $_POST['location'];
         $sendconf   = $_POST['sendconf'];
 
-        if ($firstname == '') {
+        if ($firstname === '') {
             $firstname = '-';
         }
-        if ($lastname == '') {
+        if ($lastname === '') {
             $lastname = '-';
         }
-        if ($email == '') {
+        if ($email === '') {
             $email = '-';
         }
-        if ($extrainfo1 == '') {
+        if ($extrainfo1 === '') {
             $extrainfo1 = '-';
         }
-        if ($extrainfo2 == '') {
+        if ($extrainfo2 === '') {
             $extrainfo2 = '-';
         }
-        if ($extrainfo3 == '') {
+        if ($extrainfo3 === '') {
             $extrainfo3 = '-';
         }
-        if ($extrainfo4 == '') {
+        if ($extrainfo4 === '') {
             $extrainfo4 = '-';
         }
-        if ($extrainfo5 == '') {
+        if ($extrainfo5 === '') {
             $extrainfo5 = '-';
         }
 
@@ -722,10 +722,10 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
 
         $confirmto = $email;
         // check whether email is available and confirmation is selected
-        if ($confirmto == '') {
+        if ($confirmto === '') {
             $confirmto = '-';
         }
-        if ($sendconf == 'no') {
+        if ($sendconf === 'no') {
             $confirmto = '-';
         }
 
@@ -846,7 +846,7 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
         $num_members = $_POST['num_members'];
 
         // check whether confirmation mail should be send
-        if ($confirmto == '') {
+        if ($confirmto === '') {
             $confirmto = '-';
         }
 
@@ -1009,19 +1009,19 @@ if (isset($_REQUEST['list'])) {
                <td width='100px' class='listeheader'>" . _APCAL_RO_FIRSTNAME . "</td>
                <td width='100px' class='listeheader'>" . _APCAL_RO_LASTNAME . "</td>
                <td class='listeheader'>" . _APCAL_RO_EMAIL . '</td>';
-            if (!_APCAL_RO_EXTRAINFO1 == '') {
+            if (!_APCAL_RO_EXTRAINFO1 === '') {
                 $ret .= "<td class='listeheader'>" . _APCAL_RO_EXTRAINFO1 . '</td>';
             }
-            if (!_APCAL_RO_EXTRAINFO2 == '') {
+            if (!_APCAL_RO_EXTRAINFO2 === '') {
                 $ret .= "<td class='listeheader'>" . _APCAL_RO_EXTRAINFO2 . '</td>';
             }
-            if (!_APCAL_RO_EXTRAINFO3 == '') {
+            if (!_APCAL_RO_EXTRAINFO3 === '') {
                 $ret .= "<td class='listeheader'>" . _APCAL_RO_EXTRAINFO3 . '</td>';
             }
-            if (!_APCAL_RO_EXTRAINFO4 == '') {
+            if (!_APCAL_RO_EXTRAINFO4 === '') {
                 $ret .= "<td class='listeheader'>" . _APCAL_RO_EXTRAINFO4 . '</td>';
             }
-            if (!_APCAL_RO_EXTRAINFO5 == '') {
+            if (!_APCAL_RO_EXTRAINFO5 === '') {
                 $ret .= "<td class='listeheader'>" . _APCAL_RO_EXTRAINFO5 . '</td>';
             }
             $ret .= "
@@ -1050,19 +1050,19 @@ if (isset($_REQUEST['list'])) {
                     <td class='$classname'>$firstname</td>
                     <td class='$classname'>$lastname</td>
                     <td class='$classname'>$email</td>";
-                if (!_APCAL_RO_EXTRAINFO1 == '') {
+                if (!_APCAL_RO_EXTRAINFO1 === '') {
                     $ret .= "<td class='$classname'>$extrainfo1</td>";
                 }
-                if (!_APCAL_RO_EXTRAINFO2 == '') {
+                if (!_APCAL_RO_EXTRAINFO2 === '') {
                     $ret .= "<td class='$classname'>$extrainfo2</td>";
                 }
-                if (!_APCAL_RO_EXTRAINFO3 == '') {
+                if (!_APCAL_RO_EXTRAINFO3 === '') {
                     $ret .= "<td class='$classname'>$extrainfo3</td>";
                 }
-                if (!_APCAL_RO_EXTRAINFO4 == '') {
+                if (!_APCAL_RO_EXTRAINFO4 === '') {
                     $ret .= "<td class='$classname'>$extrainfo4</td>";
                 }
-                if (!_APCAL_RO_EXTRAINFO5 == '') {
+                if (!_APCAL_RO_EXTRAINFO5 === '') {
                     $ret .= "<td class='$classname'>$extrainfo5</td>";
                 }
                 $ret       .= "<td class='$classname'>";
@@ -1080,7 +1080,7 @@ if (isset($_REQUEST['list'])) {
                         <input type='hidden' name='extrainfo4' value='$extrainfo4' />
                         <input type='hidden' name='extrainfo5' value='$extrainfo5' />
                         <input type='hidden' name='num_members' value='$num_rows' />
-                        <div style='display:inline'>
+                        <div style='display:inline;'>
                             <input type='image' src='$roimageedit' name='form_edit' alt='" . _APCAL_RO_BTN_EDIT . "' title='" . _APCAL_RO_BTN_EDIT . "'  height='22px' />
                             <input type='image' src='$roimagedelete' name='remove_member' alt='" . _APCAL_RO_BTN_REMOVE . "' title='" . _APCAL_RO_BTN_REMOVE . "'  height='22px' />
                         </div>
@@ -1192,35 +1192,35 @@ if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
                         <td class='even' width='120px'>" . _APCAL_RO_EMAIL . ":</td>
                         <td class='odd'><input type='text' name='email' value='$email' size='100' /></td>
                     </tr>";
-        if (_APCAL_RO_EXTRAINFO1 != '') {
+        if (_APCAL_RO_EXTRAINFO1 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO1 . ":</td>
                         <td class='odd'><input type='text' name='extrainfo1' value='$extrainfo1' size='100' /></td>
                     </tr>";
         }
-        if (_APCAL_RO_EXTRAINFO2 != '') {
+        if (_APCAL_RO_EXTRAINFO2 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO2 . ":</td>
                         <td class='odd'><input type='text' name='extrainfo2' value='$extrainfo2' size='100' /></td>
                     </tr>";
         }
-        if (_APCAL_RO_EXTRAINFO3 != '') {
+        if (_APCAL_RO_EXTRAINFO3 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO3 . ":</td>
                         <td class='odd'><input type='text' name='extrainfo3' value='$extrainfo3' size='100' /></td>
                     </tr>";
         }
-        if (_APCAL_RO_EXTRAINFO4 != '') {
+        if (_APCAL_RO_EXTRAINFO4 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO4 . ":</td>
                         <td class='odd'><input type='text' name='extrainfo4' value='$extrainfo4' size='100' /></td>
                     </tr>";
         }
-        if (_APCAL_RO_EXTRAINFO5 != '') {
+        if (_APCAL_RO_EXTRAINFO5 !== '') {
             $ret .= "
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_EXTRAINFO5 . ":</td>
@@ -1265,28 +1265,28 @@ if (isset($_POST['edit_member']) || isset($_POST['edit_member_x'])) {
         $location   = $_POST['location'];
         $sendconf   = $_POST['sendconf'];
 
-        if ($firstname == '') {
+        if ($firstname === '') {
             $firstname = '-';
         }
-        if ($lastname == '') {
+        if ($lastname === '') {
             $lastname = '-';
         }
-        if ($email == '') {
+        if ($email === '') {
             $email = '-';
         }
-        if ($extrainfo1 == '') {
+        if ($extrainfo1 === '') {
             $extrainfo1 = '-';
         }
-        if ($extrainfo2 == '') {
+        if ($extrainfo2 === '') {
             $extrainfo2 = '-';
         }
-        if ($extrainfo3 == '') {
+        if ($extrainfo3 === '') {
             $extrainfo3 = '-';
         }
-        if ($extrainfo4 == '') {
+        if ($extrainfo4 === '') {
             $extrainfo4 = '-';
         }
-        if ($extrainfo5 == '') {
+        if ($extrainfo5 === '') {
             $extrainfo5 = '-';
         }
 

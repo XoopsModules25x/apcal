@@ -54,7 +54,7 @@ if (!empty($target_module) && is_object($target_module)) {
     $target_mid     = $target_module->getVar('mid');
     $target_mname   = $target_module->getVar('name') . '&nbsp;' . sprintf('(%2.2f)', $target_module->getVar('version') / 100.0);
     $query4redirect = '?dirname=' . urlencode(strip_tags($_GET['dirname']));
-} elseif (isset($_GET['mid']) && $_GET['mid'] == 0 || $xoopsModule->getVar('dirname') == 'blocksadmin') {
+} elseif (isset($_GET['mid']) && $_GET['mid'] == 0 || $xoopsModule->getVar('dirname') === 'blocksadmin') {
     $target_mid     = 0;
     $target_mname   = '';
     $query4redirect = '?mid=0';
@@ -134,7 +134,7 @@ function list_blockinstances()
     $criteria->add(new Criteria('isactive', 1));
     /** @var XoopsModuleHandler $moduleHandler */
     $moduleHandler = xoops_getHandler('module');
-    $module_main   = $moduleHandler->getObjects($criteria, true, true);
+    $module_main   = $moduleHandler->getObjects($criteria, true);
     if (count($module_main) > 0) {
         foreach (array_keys($module_main) as $mid) {
             $module_list[$module_main[$mid]->getVar('name')][$mid . '-0'] = _AM_APCAL_ALLMODULEPAGES;
@@ -274,7 +274,7 @@ function list_blockinstances()
             </td>
         </tr>\n";
 
-        $class = ($class == 'even') ? 'odd' : 'even';
+        $class = ($class === 'even') ? 'odd' : 'even';
     }
 
     // list block classes for add (not instances)
@@ -303,7 +303,7 @@ function list_blockinstances()
             </td>
         </tr>
         \n";
-        $class = ($class == 'even') ? 'odd' : 'even';
+        $class = ($class === 'even') ? 'odd' : 'even';
     }
 
     echo "

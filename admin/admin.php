@@ -52,7 +52,7 @@ if (is_object($xoopsUser)) {
 require_once XOOPS_ROOT_PATH . '/modules/system/constants.php';
 $error = false;
 if ($admintest != 0) {
-    if (isset($fct) && $fct != '') {
+    if (isset($fct) && $fct !== '') {
         if (file_exists(XOOPS_ROOT_PATH . '/modules/system/admin/' . $fct . '/xoops_version.php')) {
             if (file_exists(XOOPS_ROOT_PATH . '/modules/system/language/' . $xoopsConfig['language'] . '/admin.php')) {
                 include XOOPS_ROOT_PATH . '/modules/system/language/' . $xoopsConfig['language'] . '/admin.php';

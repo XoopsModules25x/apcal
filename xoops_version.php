@@ -25,7 +25,7 @@ if (!preg_match('/^(\D+)(\d*)$/', $moduleDirName, $regs)) {
     echo('invalid dirname: ' . htmlspecialchars($moduleDirName));
 }
 $mydirnumber = $regs[2] === '' ? '' : (int)$regs[2];
-if (isset($_GET['fct']) && $_GET['fct'] == 'preferences') {
+if (isset($_GET['fct']) && $_GET['fct'] === 'preferences') {
     echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">' . "\r\n";
     echo '<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xml:lang="en" lang="en"><head>' . "\r\n";
     echo '<script type="text/javascript">var xoops_url = \'' . XOOPS_URL . '\';</script>';
@@ -34,7 +34,7 @@ if (isset($_GET['fct']) && $_GET['fct'] == 'preferences') {
 $localesdir  = scandir(XOOPS_ROOT_PATH . '/modules/' . $moduleDirName . '/locales');
 $locales[''] = '';
 foreach ($localesdir as $locale) {
-    if (substr($locale, -4, 4) == '.php') {
+    if (substr($locale, -4, 4) === '.php') {
         $locales[substr($locale, 0, -4)] = substr($locale, 0, -4);
     }
 }
@@ -166,7 +166,7 @@ $modversion['hasMain'] = 1;
 
 $subcount = 1;
 global $cal;
-if (isset($cal) && strtolower(get_class($cal)) == 'apcal_xoops') {
+if (isset($cal) && strtolower(get_class($cal)) === 'apcal_xoops') {
     if ($cal->insertable) {
         $modversion['sub'][$subcount]['name']  = _MI_APCAL_SM_SUBMIT;
         $modversion['sub'][$subcount++]['url'] = "index.php?action=Edit&amp;caldate=$cal->caldate";
@@ -889,7 +889,7 @@ $modversion['templates'] = [
     ['file' => "apcal{$mydirnumber}_event_list.tpl", 'description' => ''],
 
     ['file' => "apcal{$mydirnumber}_getCoords.tpl", 'description' => ''],
-    ['file' => "apcal_getCoords.tpl", 'description' => '']
+    ['file' => 'apcal_getCoords.tpl', 'description' => '']
 //    ['file' => "apcal{$mydirnumber}_shareCalendar.tpl", 'description' => ''],
 //    ['file' => "apcal{$mydirnumber}_googlemap.tpl", 'description' => '']
 ];
@@ -944,8 +944,8 @@ $modversion['onInstall'] = 'include/oninstall.php';
 $modversion['onUpdate']  = 'include/onupdate.php';
 
 // Keep the values of block's options when module is updated (by nobunobu)
-if (!empty($_POST['fct']) && !empty($_POST['op']) && !empty($_POST['diranme']) && $_POST['fct'] == 'modulesadmin'
-    && $_POST['op'] == 'update_ok'
+if (!empty($_POST['fct']) && !empty($_POST['op']) && !empty($_POST['diranme']) && $_POST['fct'] === 'modulesadmin'
+    && $_POST['op'] === 'update_ok'
     && $_POST['dirname'] == $modversion['dirname']
 ) {
     include __DIR__ . '/include/onupdate.inc.php';

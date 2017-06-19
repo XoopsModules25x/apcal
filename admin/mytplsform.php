@@ -111,7 +111,7 @@ echo "<h3 style='text-align:left;'>"
      . ")</h3>\n";
 
 // diff from file to selected DB template
-$basefilepath        = XOOPS_ROOT_PATH . '/modules/' . $tpl['tpl_module'] . '/templates/' . ($tpl['tpl_type'] == 'block' ? 'blocks/' : '') . $tpl['tpl_file'];
+$basefilepath        = XOOPS_ROOT_PATH . '/modules/' . $tpl['tpl_module'] . '/templates/' . ($tpl['tpl_type'] === 'block' ? 'blocks/' : '') . $tpl['tpl_file'];
 $diff_from_file4disp = '';
 if (file_exists($basefilepath)) {
     $diff     = new Text_Diff(file($basefilepath), explode("\n", $tpl['tpl_source']));
@@ -130,7 +130,7 @@ if (file_exists($basefilepath)) {
 
 // diff from DB-default to selected DB template
 $diff_from_default4disp = '';
-if ($tpl['tpl_tplset'] != 'default') {
+if ($tpl['tpl_tplset'] !== 'default') {
     list($default_source) = $db->fetchRow($db->query('SELECT tpl_source FROM '
                                                      . $db->prefix('tplfile')
                                                      . ' NATURAL LEFT JOIN '

@@ -93,7 +93,7 @@ if (!empty($_POST['update'])) {
 
     // new
     if (!empty($_POST['pi_types'][0])) {
-        if ($_POST['pi_types'][0] == 'all') {
+        if ($_POST['pi_types'][0] === 'all') {
             $types = array('monthly', 'weekly', 'daily');
             foreach ($mcx_blocks as $bid => $title) {
                 $types[] = "mcx{$bid}";
@@ -150,7 +150,7 @@ if (!empty($_POST['update'])) {
     // remove cache of APCal minical_ex
     if ($handler = opendir(XOOPS_CACHE_PATH . '/')) {
         while (($file = readdir($handler)) !== false) {
-            if (substr($file, 0, 16) == 'APCal_minical_ex') {
+            if (substr($file, 0, 16) === 'APCal_minical_ex') {
                 @unlink(XOOPS_CACHE_PATH . '/' . $file);
             }
         }
@@ -199,7 +199,7 @@ $valid_files  = array();
 while (($file = readdir($dir_handle)) !== false) {
     if (is_file("$plugins_dir/$file")) {
         list($node, $ext) = explode('.', $file);
-        if ($ext != 'php') {
+        if ($ext !== 'php') {
             continue;
         }
         $valid_files[] = $file;
@@ -219,10 +219,10 @@ $valid_images   = array();
 while (($file = readdir($dir_handle)) !== false) {
     if (is_file("$cal->images_path/$file")) {
         list($node, $ext) = explode('.', $file);
-        if ($ext != 'gif' && $ext != 'png' && $ext != 'jpg') {
+        if ($ext !== 'gif' && $ext !== 'png' && $ext !== 'jpg') {
             continue;
         }
-        if (substr($node, 0, 3) != 'dot') {
+        if (substr($node, 0, 3) !== 'dot') {
             continue;
         }
         $valid_images[] = $file;
@@ -303,7 +303,7 @@ echo "
 // ¥ê¥¹¥È½ÐÎÏÉô
 $oddeven = 'odd';
 while ($plugin = $GLOBALS['xoopsDB']->fetchObject($prs)) {
-    $oddeven = ($oddeven == 'odd' ? 'even' : 'odd');
+    $oddeven = ($oddeven === 'odd' ? 'even' : 'odd');
 
     $pi_id           = (int)$plugin->pi_id;
     $enable_checked  = $plugin->pi_enabled ? 'checked' : '';

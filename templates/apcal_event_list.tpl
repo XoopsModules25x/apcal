@@ -57,7 +57,7 @@
                 </span>
                                     <span class="googleplus">
                     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{
-                            lang: '<{$smarty.const._APCAL_GPLUS_LNG}>'
+                            '<{$smarty.const._APCAL_GPLUS_LNG}>'
                         }</script>
                     <g:plusone size="medium" count="false" href="<{$xoops_url}>/modules/APCal"></g:plusone>
                 </span>
@@ -107,7 +107,7 @@
                                         style='vertical-align:middle;'>
                                         <img src='<{$images_url}>/spacer.gif' alt='' width='350' height='4'/><br>
                                         <form action='<{$get_target}>?smode=List&amp;num=<{$num}>&amp;cid=<{$now_cid}>&amp;order=<{$order}>'
-                                              method='POST' style='margin:0px;'>
+                                              method='POST' style='margin:0;'>
                                             <span style="font-size: medium; color: <{$calhead_color}>; "><span
                                                         class='calhead'><{$ymdo_selects}><input type='submit'
                                                                                                 name='apcal_jumpcaldate'
@@ -198,7 +198,7 @@
             </td>
         </tr>
     </table>
-    <form name='MainForm' action='<{$mod_url}>/index.php' target='_blank' method='post' style='margin:0px;'>
+    <form name='MainForm' action='<{$mod_url}>/index.php' target='_blank' method='post' style='margin:0;'>
         <table width="100%" cellspacing="0" cellpadding="10" border="0">
             <tr>
                 <td width="100%" align="center" valign="top">
