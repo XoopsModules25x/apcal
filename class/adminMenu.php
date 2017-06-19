@@ -55,7 +55,7 @@ class APCalAdminMenuHandler
      */
     public function addMenuTop($value, $name = '')
     {
-        if ($name != '') {
+        if ($name !== '') {
             $this->_menutop[$value] = $name;
         } else {
             $this->_menutop[$value] = $value;
@@ -87,7 +87,7 @@ class APCalAdminMenuHandler
      */
     public function addMenuTabs($value, $name = '')
     {
-        if ($name != '') {
+        if ($name !== '') {
             $this->_menutabs[$value] = $name;
         } else {
             $this->_menutabs[$value] = $value;

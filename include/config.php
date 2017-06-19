@@ -23,7 +23,7 @@ $moduleDirName = basename(dirname(__DIR__));
 $capsDirName = strtoupper($moduleDirName);
 
 if (!defined($capsDirName . '_DIRNAME')) {
-//if (!defined(constant($capsDirName . '_DIRNAME'))) {
+//if (!defined(($capsDirName . '_DIRNAME'))) {
     define($capsDirName . '_DIRNAME', $GLOBALS['xoopsModule']->dirname());
     define($capsDirName . '_PATH', XOOPS_ROOT_PATH . '/modules/' . constant($capsDirName . '_DIRNAME'));
     define($capsDirName . '_URL', XOOPS_URL . '/modules/' . constant($capsDirName . '_DIRNAME'));

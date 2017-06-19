@@ -176,7 +176,7 @@ if (is_array(@$_POST['del_do'])) {
             }
 
             $tplset_from = $myts->stripSlashesGPC($tplset_from_tmp);
-            if ($tplset_from == 'default') {
+            if ($tplset_from === 'default') {
                 die("You can't remove 'default' template.");
             }
 
@@ -256,7 +256,7 @@ $fingerprint_styles = array(
 
 // template ROWS
 while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
-    $evenodd                 = @$evenodd == 'even' ? 'odd' : 'even';
+    $evenodd                 = @$evenodd === 'even' ? 'odd' : 'even';
     $fingerprint_style_count = 0;
 
     // information about the template
@@ -271,7 +271,7 @@ while (list($tpl_file, $tpl_desc, $type, $count) = $db->fetchRow($frs)) {
             <td class='$evenodd'>" . $type . '<br>(' . $count . ")</td>\n";
 
     // the base file template column
-    $basefilepath = XOOPS_ROOT_PATH . '/modules/' . $target_dirname . '/templates/' . ($type == 'block' ? 'blocks/' : '') . $tpl_file;
+    $basefilepath = XOOPS_ROOT_PATH . '/modules/' . $target_dirname . '/templates/' . ($type === 'block' ? 'blocks/' : '') . $tpl_file;
     if (file_exists($basefilepath)) {
         $fingerprint                = get_fingerprint(file($basefilepath));
         $fingerprints[$fingerprint] = 1;
@@ -348,7 +348,7 @@ echo "
 foreach ($tplsets as $tplset) {
     $tplset4disp = htmlspecialchars($tplset, ENT_QUOTES);
     echo "\t\t<td class='head'>
-            " . ($tplset == 'default' ? '' : "<input name='del_do[{$tplset4disp}]' type='submit' value='" . _DELETE . "' onclick='return confirm(\"" . _DELETE . " OK?\");' /><br>") . "
+            " . ($tplset === 'default' ? '' : "<input name='del_do[{$tplset4disp}]' type='submit' value='" . _DELETE . "' onclick='return confirm(\"" . _DELETE . " OK?\");' /><br>") . "
             <input name='copy_do[{$tplset4disp}]' type='submit' value='copy to-&gt;' /><br>
             <select name='copy_to[{$tplset4disp}]'>$tplset_options</select>
         </td>\n";
@@ -455,7 +455,7 @@ function copy_templates_f2db($tplset_to, $whr_append = '1')
     $result = $db->query('SELECT * FROM ' . $db->prefix('tplfile') . "  WHERE tpl_tplset='default' AND ($whr_append)");
 
     while ($row = $db->fetchArray($result)) {
-        $basefilepath = XOOPS_ROOT_PATH . '/modules/' . $row['tpl_module'] . '/templates/' . ($row['tpl_type'] == 'block' ? 'blocks/' : '') . $row['tpl_file'];
+        $basefilepath = XOOPS_ROOT_PATH . '/modules/' . $row['tpl_module'] . '/templates/' . ($row['tpl_type'] === 'block' ? 'blocks/' : '') . $row['tpl_file'];
 
         $tpl_source   = rtrim(implode('', file($basefilepath)));
         $lastmodified = filemtime($basefilepath);

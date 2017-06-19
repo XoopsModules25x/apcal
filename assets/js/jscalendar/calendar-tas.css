@@ -63,7 +63,7 @@ div.calendar {
 
 .calendar thead .active { /* Active (pressed) buttons in header */
     background-color: #c77;
-    padding: 2px 0px 0px 2px;
+    padding: 2px 0 0 2px;
 }
 
 .calendar thead .daynames { /* Row <TR> containing the day names */
@@ -110,7 +110,7 @@ div.calendar {
 
 .calendar tbody td.active { /* Active (pressed) cells <TD> */
     background: #ddc;
-    padding: 2px 2px 0px 2px;
+    padding: 2px 2px 0 2px;
 }
 
 .calendar tbody td.selected { /* Cell showing today date */
@@ -165,7 +165,7 @@ div.calendar {
 
 .calendar tfoot .active { /* Active (pressed) style for buttons in footer */
     background: #c77;
-    padding: 2px 0px 0px 2px;
+    padding: 2px 0 0 2px;
 }
 
 /* Combo boxes (menus that display months/years for direct selection) */
@@ -173,8 +173,8 @@ div.calendar {
 .combo {
     position: absolute;
     display: none;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 4em;
     cursor: default;
     border: 1px solid #655;
@@ -207,7 +207,7 @@ div.calendar {
 
 .calendar td.time {
     border-top: 1px solid #a88;
-    padding: 1px 0px;
+    padding: 1px 0;
     text-align: center;
     background-color: #fed;
 }
@@ -215,7 +215,7 @@ div.calendar {
 .calendar td.time .hour,
 .calendar td.time .minute,
 .calendar td.time .ampm {
-    padding: 0px 3px 0px 4px;
+    padding: 0 3px 0 4px;
     border: 1px solid #988;
     font-weight: bold;
     background-color: #fff;
@@ -226,7 +226,7 @@ div.calendar {
 }
 
 .calendar td.time .colon {
-    padding: 0px 2px 0px 3px;
+    padding: 0 2px 0 3px;
     font-weight: bold;
 }
 

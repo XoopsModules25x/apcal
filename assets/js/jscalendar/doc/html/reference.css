@@ -1,6 +1,6 @@
 html {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     background-color: #08f;
     color: #444;
     font-family: georgia, serif;
@@ -96,12 +96,12 @@ h1.title {
     font-size: 90%;
     font-style: italic;
     font-family: georgia, "times new roman", serif;
-    margin: 0px 3em;
+    margin: 0 3em;
 }
 
 .footnote sup {
     font-size: 120%;
-    padding: 0px 0.3em;
+    padding: 0 0.3em;
     position: relative;
     top: -0.2em;
 }

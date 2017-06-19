@@ -330,7 +330,7 @@ if ($op === 'delete_ok') {
         redirect_header('myblocksadmin.php', 4, 'Invalid block');
     }
     $myblock->delete();
-    if ($myblock->getVar('template') != '' && !defined('XOOPS_ORETEKI')) {
+    if ($myblock->getVar('template') !== '' && !defined('XOOPS_ORETEKI')) {
         $tplfileHandler = xoops_getHandler('tplfile');
         $btemplate       = $tplfileHandler->find($GLOBALS['xoopsConfig']['template_set'], 'block', $bid);
         if (count($btemplate) > 0) {
@@ -373,7 +373,7 @@ if ($op === 'edit') {
     while ($row = $db->fetchArray($result)) {
         $modules[] = (int)$row['module_id'];
     }
-    $is_custom = ($myblock->getVar('block_type') === 'C' || $myblock->getVar('block_type') === 'E') ? true : false;
+    $is_custom = ($myblock->getVar('block_type') === 'C' || $myblock->getVar('block_type') === 'E');
     $block     = array(
         'form_title'    => _AM_APCAL_EDITBLOCK,
         'name'          => $myblock->getVar('name'),
@@ -414,7 +414,7 @@ if ($op === 'clone') {
     while ($row = $db->fetchArray($result)) {
         $modules[] = (int)$row['module_id'];
     }
-    $is_custom = ($myblock->getVar('block_type') === 'C' || $myblock->getVar('block_type') === 'E') ? true : false;
+    $is_custom = ($myblock->getVar('block_type') === 'C' || $myblock->getVar('block_type') === 'E');
     $block     = array(
         'form_title'    => _AM_CLONEBLOCK,
         'name'          => $myblock->getVar('name'),
@@ -611,7 +611,7 @@ function myblocksadmin_update_block(
         require_once XOOPS_ROOT_PATH . '/class/template.php';
         $xoopsTpl = new XoopsTpl();
         $xoopsTpl->xoops_setCaching(2);
-        if ($myblock->getVar('template') != '') {
+        if ($myblock->getVar('template') !== '') {
             if ($xoopsTpl->is_cached('db:' . $myblock->getVar('template'))) {
                 if (!$xoopsTpl->clear_cache('db:' . $myblock->getVar('template'))) {
                     $msg = 'Unable to clear cache for block ID' . $bid;

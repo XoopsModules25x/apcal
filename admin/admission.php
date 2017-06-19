@@ -151,14 +151,14 @@ if ($cid > 0) {
     $whr .= "AND categories=''";
 }
 
-if ($txt != '') {
+if ($txt !== '') {
     $keywords = explode(' ', $cal->mb_convert_kana($txt, 's'));
     foreach ($keywords as $keyword) {
         $whr .= "AND (CONCAT( summary , description , location , contact ) LIKE '%" . addslashes($keyword) . "%') ";
     }
 }
 
-// ������
+// クエリ
 //$rs     = $xoopsDB->query("SELECT COUNT(id) FROM $cal->table WHERE $whr");
 //$numrows = mysql_result($rs, 0, 0);
 //$rs     = $xoopsDB->query("SELECT * FROM $cal->table WHERE $whr ORDER BY start,end LIMIT $pos,$num");
@@ -171,7 +171,7 @@ if (false !== $resultRow && isset($resultRow[0])) {
 }
 $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY start,end LIMIT $pos,$num");
 
-// �ڡ���ʬ�����
+// ページ分割処理
 include XOOPS_ROOT_PATH . '/class/pagenav.php';
 $nav      = new XoopsPageNav($numrows, $num, $pos, 'pos', "cid=$cid&amp;tz=$tz&amp;num=$num&amp;txt=" . urlencode($txt));
 $nav_html = $nav->renderNav(10);

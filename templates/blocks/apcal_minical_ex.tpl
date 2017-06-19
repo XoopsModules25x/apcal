@@ -20,11 +20,11 @@
  *}>
 
 <{strip}>
-    <table border="0" cellspacing="0" cellpadding="0" width="150" style="width:150px;line-height:normal;margin:0px;">
+    <table border="0" cellspacing="0" cellpadding="0" width="150" style="width:150px;line-height:normal;margin:0;">
         <tr>
             <td width="150" class="calframe" style="<{$block.frame_css}>">
                 <table border="0" cellspacing="0" cellpadding="0" width="100%"
-                       style="border-collapse:collapse;margin:0px;">
+                       style="border-collapse:collapse;margin:0;">
 
                     <!-- header part -->
                     <tr>

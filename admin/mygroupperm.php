@@ -75,7 +75,7 @@ if (is_array($_POST['perms']) && !empty($_POST['perms'])) {
                     $selected = isset($item_ids[$item_id]) ? $item_ids[$item_id] : 0;
                     if ($selected == 1) {
                         // make sure that all parent ids are selected as well
-                        if ($perm_data['parents'][$item_id] != '') {
+                        if ($perm_data['parents'][$item_id] !== '') {
                             $parent_ids = explode(':', $perm_data['parents'][$item_id]);
                             foreach ($parent_ids as $pid) {
                                 if ($pid != 0 && !in_array($pid, array_keys($item_ids))) {

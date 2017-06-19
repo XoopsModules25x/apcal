@@ -223,7 +223,7 @@ if ($cid > 0) {
 }
 
 // �ե꡼��ɸ���
-if ($txt != '') {
+if ($txt !== '') {
     $whr_txt = '';
     if (get_magic_quotes_gpc()) {
         $txt = stripslashes($txt);
@@ -239,7 +239,7 @@ if ($txt != '') {
 
 $whr = "$whr_cid AND $whr_txt AND $whr_pf AND rrule_pid=0 OR $whr_cid AND $whr_txt AND rrule_pid=id";
 
-// ������
+// Main query
 //$rs      = $xoopsDB->query("SELECT COUNT(id) FROM $cal->table WHERE $whr");
 //$numrows = mysql_result($rs, 0, 0);
 //$rs      = $xoopsDB->query("SELECT * FROM $cal->table WHERE $whr ORDER BY start,end LIMIT $pos,$num");
@@ -252,7 +252,7 @@ if (false !== $resultRow && isset($resultRow[0])) {
 }
 $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY start,end LIMIT $pos,$num");
 
-// �ڡ���ʬ�����
+// Page Navigation
 include XOOPS_ROOT_PATH . '/class/pagenav.php';
 $nav      = new XoopsPageNav($numrows, $num, $pos, 'pos', "cid=$cid&amp;tz=$tz&amp;num=$num&amp;pf=$pf&amp;txt=" . urlencode($txt));
 $nav_html = $nav->renderNav(10);
@@ -264,7 +264,7 @@ if ($numrows <= 0) {
     $nav_num_info = ($pos + 1) . '-' . ($pos + $num) . '/' . $numrows;
 }
 
-// �ᥤ�������
+// メイン出力部
 xoops_cp_header();
 $adminObject->displayNavigation(basename(__FILE__));
 

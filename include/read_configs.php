@@ -79,7 +79,7 @@ if (is_object($xoopsUser)) {
         $cal->set_date(date('Y-n-j', time() + $tzoffset));
     }
     $user_id = $xoopsUser->uid();
-    $isadmin = $xoopsUser->isadmin($mid);
+    $isadmin = $xoopsUser->isAdmin($mid);
 
     $memberHandler = xoops_getHandler('member');
     $system_groups  = $memberHandler->getGroupList();
@@ -209,7 +209,7 @@ if (is_object($xoopsUser)) {
     // �����ȤΥ��?�Х븢��
     $user_id              = 0;
     $isadmin              = false;
-    $insertable           = ($guests_authority & 1) ? true : false;
+    $insertable           = (bool)($guests_authority & 1);
     $editable             = false;        // �����ȤϾ���Խ����¤ʤ�
     $deletable            = false;    // �����ȤϾ�˺��¤ʤ�
     $admission_insert_sql = ',admission=' . (($guests_authority & 2) ? '1' : '0');

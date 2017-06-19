@@ -23,7 +23,7 @@ require_once __DIR__ . '/../../mainfile.php';
 require_once __DIR__ . '/header.php';
 $original_level = error_reporting(E_ALL ^ E_NOTICE);
 
-if ((!isset($_GET['action']) || $_GET['action'] == '') && isset($_GET['cid']) && !is_numeric($_GET['cid'])) {
+if ((!isset($_GET['action']) || $_GET['action'] === '') && isset($_GET['cid']) && !is_numeric($_GET['cid'])) {
     $cat_title = addslashes($_GET['cid']);
     $cat       = $GLOBALS['xoopsDB']->queryF("SELECT cid FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cat_shorttitle LIKE '$cat_title' LIMIT 0,1");
 
@@ -286,7 +286,7 @@ if ($action === 'View') {
     $xoopsTpl->assign('xoops_pagetitle', $title);
 
     $xoopsTpl->assign('showMap', $cal->enableeventmap);
-} elseif ($action == '') {
+} elseif ($action === '') {
     $cid          = isset($_GET['cid']) && $_GET['cid'] > 0 ? $_GET['cid'] : 0;
     $cat          = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT cat_title, cat_desc FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$cid} LIMIT 0,1"));
     $date         = isset($_GET['caldate']) ? $_GET['caldate'] : date('Y-n-j');
@@ -317,6 +317,8 @@ if ($action === 'View') {
         $tpl->assign('GMzoom', $cal->gmzoom);
         $tpl->assign('GMheight', $cal->gmheight . 'px');
         $tpl->assign('GMPoints', $cal->gmPoints);
+        $moduleHelper = Xmf\Module\Helper::getHelper($moduleDirName);
+        $tpl->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
         if ($smode === 'List') {
             $xoopsTpl->assign('map', $tpl->fetch(XOOPS_ROOT_PATH . '/modules/apcal/templates/apcal_googlemap.tpl'));
         } else {

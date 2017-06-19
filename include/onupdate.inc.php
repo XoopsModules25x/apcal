@@ -22,7 +22,7 @@ defined('XOOPS_ROOT_PATH') || exit('XOOPS Root Path not defined');
 
 // referer check
 $ref = xoops_getenv('HTTP_REFERER');
-if ($ref == '' || strpos($ref, XOOPS_URL . '/modules/system/admin.php') === 0) {
+if ($ref === '' || strpos($ref, XOOPS_URL . '/modules/system/admin.php') === 0) {
     /* module specific part */
     global $xoopsDB;
 

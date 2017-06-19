@@ -35,7 +35,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
         $confcat_id = (int)$_GET['confcat_id'];
     }
 
-    if ($op == 'showmod') {
+    if ($op === 'showmod') {
         $mod = isset($_GET['mod']) ? (int)$_GET['mod'] : 0;
         if (empty($mod)) {
             header('Location: admin.php?fct=preferences');
@@ -77,19 +77,19 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
         }
         for ($i = 0; $i < $count; ++$i) {
             $title4tray = (!defined($config[$i]->getVar('conf_desc'))
-                           || constant($config[$i]->getVar('conf_desc')) == '') ? constant($config[$i]->getVar('conf_title')) : constant($config[$i]->getVar('conf_title'))
-                                                                                                                                . '<br><br><span style="font-weight:normal;">'
-                                                                                                                                . constant($config[$i]->getVar('conf_desc'))
-                                                                                                                                . '</span>'; // GIJ
+                           || constant($config[$i]->getVar('conf_desc')) === '') ? constant($config[$i]->getVar('conf_title')) : constant($config[$i]->getVar('conf_title'))
+                                                                                                                                 . '<br><br><span style="font-weight:normal;">'
+                                                                                                                                 . constant($config[$i]->getVar('conf_desc'))
+                                                                                                                                 . '</span>'; // GIJ
             $title      = ''; // GIJ
             switch ($config[$i]->getVar('conf_formtype')) {
                 case 'textarea':
                     $myts = MyTextSanitizer::getInstance();
-                    if ($config[$i]->getVar('conf_valuetype') == 'array') {
+                    if ($config[$i]->getVar('conf_valuetype') === 'array') {
                         // this is exceptional.. only when value type is arrayneed a smarter way for this
-                        $ele = ($config[$i]->getVar('conf_value') != '') ? new XoopsFormTextArea($title, $config[$i]->getVar('conf_name'),
-                                                                                                 $myts->htmlspecialchars(implode('|', $config[$i]->getConfValueForOutput())), 5,
-                                                                                                 50) : new XoopsFormTextArea($title, $config[$i]->getVar('conf_name'), '', 5, 50);
+                        $ele = ($config[$i]->getVar('conf_value') !== '') ? new XoopsFormTextArea($title, $config[$i]->getVar('conf_name'),
+                                                                                                  $myts->htmlspecialchars(implode('|', $config[$i]->getConfValueForOutput())), 5,
+                                                                                                  50) : new XoopsFormTextArea($title, $config[$i]->getVar('conf_name'), '', 5, 50);
                     } else {
                         $ele = new XoopsFormTextArea($title, $config[$i]->getVar('conf_name'), $myts->htmlspecialchars($config[$i]->getConfValueForOutput()), 5, 50);
                     }
@@ -153,9 +153,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
             $ele_tray->addElement($ele);
             $ele_tray->addElement($hidden);
             $form->addElement($ele_tray);
-            unset($ele_tray);
-            unset($ele);
-            unset($hidden);
+            unset($ele_tray, $ele, $hidden);
         }
         $button_tray->addElement(new XoopsFormHidden('op', 'save'));
         $xoopsGTicket->addTicketXoopsFormElement($button_tray, __LINE__, 1800, 'mymenu');
@@ -170,7 +168,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
         exit();
     }
 
-    if ($op == 'save') {
+    if ($op === 'save') {
         //if ( !admin_refcheck("/modules/$admin_mydirname/admin/") ) {
         //  exit('Invalid referer');
         //}
@@ -197,7 +195,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
                 if (is_array($new_value) || $new_value != $config->getVar('conf_value')) {
                     // if language has been changed
                     if (!$lang_updated && $config->getVar('conf_catid') == XOOPS_CONF
-                        && $config->getVar('conf_name') == 'language'
+                        && $config->getVar('conf_name') === 'language'
                     ) {
                         // regenerate admin menu file
                         $xoopsConfig['language'] = $_POST[$config->getVar('conf_name')];
@@ -207,7 +205,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
 
                     // if default theme has been changed
                     if (!$theme_updated && $config->getVar('conf_catid') == XOOPS_CONF
-                        && $config->getVar('conf_name') == 'theme_set'
+                        && $config->getVar('conf_name') === 'theme_set'
                     ) {
                         $memberHandler = xoops_getHandler('member');
                         $memberHandler->updateUsersByField('theme', $_POST[$config->getVar('conf_name')]);
@@ -216,7 +214,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
 
                     // if default template set has been changed
                     if (!$tpl_updated && $config->getVar('conf_catid') == XOOPS_CONF
-                        && $config->getVar('conf_name') == 'template_set'
+                        && $config->getVar('conf_name') === 'template_set'
                     ) {
                         // clear cached/compiled files and regenerate them if default theme has been changed
                         if ($xoopsConfig['template_set'] != $_POST[$config->getVar('conf_name')]) {
@@ -261,7 +259,7 @@ if (!is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($
 
                     // add read permission for the start module to all groups
                     if (!$startmod_updated && $new_value != '--' && $config->getVar('conf_catid') == XOOPS_CONF
-                        && $config->getVar('conf_name') == 'startpage'
+                        && $config->getVar('conf_name') === 'startpage'
                     ) {
                         $memberHandler     = xoops_getHandler('member');
                         $groups             = $memberHandler->getGroupList();

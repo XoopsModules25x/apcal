@@ -158,7 +158,7 @@ if ($done === 'imported' && isset($_GET['mes'])) {
     $new_imported = 0;
 }
 
-// ������ʣ����ְ���Υ쥳���ɤ�����ɽ����
+// クエリ（１時間以内のレコードだけを表示）
 $older_limit = time() - 3600;
 $whr         = "UNIX_TIMESTAMP(dtstamp) > $older_limit AND (rrule_pid=0 OR rrule_pid=id)";
 
@@ -174,7 +174,7 @@ if (false !== $resultRow && isset($resultRow[0])) {
 }
 $rs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->table WHERE $whr ORDER BY  dtstamp DESC LIMIT $pos,$num");
 
-// �ڡ���ʬ�����
+// ページ分割処理
 include XOOPS_ROOT_PATH . '/class/pagenav.php';
 $nav      = new XoopsPageNav($numrows, $num, $pos, 'pos', "tz=$tz&amp;num=$num");
 $nav_html = $nav->renderNav(10);

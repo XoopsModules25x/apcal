@@ -76,7 +76,7 @@ div.calendar {
 .calendar thead .active { /* Active (pressed) buttons in header */
     background: url("active-bg.gif");
     color: #fff;
-    padding: 3px 1px 0px 3px;
+    padding: 3px 1px 0 3px;
     border-bottom: 1px solid #797979;
 }
 
@@ -125,7 +125,7 @@ div.calendar {
 }
 
 .calendar tbody td.active { /* Active (pressed) cells <TD> */
-    padding: 2px 2px 0px 2px;
+    padding: 2px 2px 0 2px;
 }
 
 .calendar tbody td.weekend { /* Cells showing weekend days */
@@ -175,7 +175,7 @@ div.calendar {
 
 .calendar tfoot .active { /* Active (pressed) style for buttons in footer */
     background: #7c7;
-    padding: 2px 0px 0px 2px;
+    padding: 2px 0 0 2px;
 }
 
 /* Combo boxes (menus that display months/years for direct selection) */
@@ -183,8 +183,8 @@ div.calendar {
 .calendar .combo {
     position: absolute;
     display: none;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 4em;
     cursor: default;
     border-width: 0 1px 1px 1px;
@@ -219,7 +219,7 @@ div.calendar {
 
 .calendar td.time {
     border-top: 1px solid #797979;
-    padding: 1px 0px;
+    padding: 1px 0;
     text-align: center;
     background: url("dark-bg.gif");
 }
@@ -227,7 +227,7 @@ div.calendar {
 .calendar td.time .hour,
 .calendar td.time .minute,
 .calendar td.time .ampm {
-    padding: 0px 5px 0px 6px;
+    padding: 0 5px 0 6px;
     font-weight: bold;
     background: url("normal-bg.gif");
     color: #000;
@@ -243,7 +243,7 @@ div.calendar {
 }
 
 .calendar td.time .colon {
-    padding: 0px 2px 0px 3px;
+    padding: 0 2px 0 3px;
     font-weight: bold;
 }
 

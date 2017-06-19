@@ -108,8 +108,10 @@ if (!class_exists('XoopsGTicket')) {
         {
             global $xoopsModule;
             if ('' === $salt) {
-                // $salt = '$2y$07$' . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
-                $salt = '$2y$07$' . str_replace('+', '.', base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)));
+                if (function_exists('mcrypt_create_iv') && !defined('PHALANGER')) {
+                    // $salt = '$2y$07$' . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+                    $salt = '$2y$07$' . str_replace('+', '.', base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)));
+                }
             }
             // create a token
             list($usec, $sec) = explode(' ', microtime());
@@ -302,7 +304,7 @@ if (!function_exists('admin_refcheck')) {
             $ref = $_SERVER['HTTP_REFERER'];
         }
         $cr = XOOPS_URL;
-        if ($chkref != '') {
+        if ($chkref !== '') {
             $cr .= $chkref;
         }
         if (strpos($ref, $cr) !== 0) {

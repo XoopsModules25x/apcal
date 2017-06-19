@@ -77,17 +77,17 @@ function xoops_module_install_apcal(XoopsModule $xoopsModule)
 //------------------------------------
     $ret    = true;
     $errors = transferTable('event');
-    if ($errors != '') {
+    if ($errors !== '') {
         $ret = false;
     }
     //echo $errors ? 'Error inserting these ids in event:<br>'.$errors : 'Insertion succesful!<br>';
     $errors = transferTable('cat');
-    if ($errors != '') {
+    if ($errors !== '') {
         $ret = false;
     }
     //echo $errors ? 'Error inserting these ids in cat:<br>'.$errors : 'Insertion succesful!<br>';
     $errors = transferTable('plugins');
-    if ($errors != '') {
+    if ($errors !== '') {
         $ret = false;
     }
     //echo $errors ? 'Error inserting these ids in plugins:<br>'.$errors : 'Insertion succesful!<br>';
@@ -160,7 +160,7 @@ function transferTable($tablename)
         $values  = '';
         $isFirst = true;
         foreach ($row as $field => $value) {
-            if ($field != 'id' && $field != 'start_date' && $field != 'end_date') {
+            if ($field !== 'id' && $field !== 'start_date' && $field !== 'end_date') {
                 $fields  .= ($isFirst ? '' : ', ') . $field;
                 $values  .= ($isFirst ? '' : ', ') . $GLOBALS['xoopsDB']->quote($value);
                 $isFirst = false;

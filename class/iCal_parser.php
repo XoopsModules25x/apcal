@@ -860,9 +860,9 @@ class iCal_parser
                 }
 
                 // Handling of the all day events¡ÊÁ´Æü¥¤¥Ù¥ó¥È¡Ë
-                if (isset($allday_start) && $allday_start != '') {
+                if (isset($allday_start) && $allday_start !== '') {
                     $start_unixtime = strtotime($allday_start);
-                    if (isset($allday_end) && $allday_end != '') {
+                    if (isset($allday_end) && $allday_end !== '') {
                         $end_unixtime = strtotime($allday_end);
                         if ($start_unixtime == $end_unixtime) {
                             $end_unixtime = $start_unixtime + 86400;
@@ -1252,7 +1252,7 @@ class iCal_parser
 
             // »þ´Ö¤Î¥»¥Ã¥È
             $ret .= "start='$start_unixtime',end='$end_unixtime',";
-            if (isset($allday_start) && $allday_start != '') {
+            if (isset($allday_start) && $allday_start !== '') {
                 // Á´Æü¥¤¥Ù¥ó¥È
                 $ret .= "allday='1',";
             } else {
@@ -1261,9 +1261,9 @@ class iCal_parser
             }
 
             // tzid ¤Îµ­Ï¿¡Ê°ì±þ¡Ë
-            if (isset($tz_dtstart) && $tz_dtstart != '') {
+            if (isset($tz_dtstart) && $tz_dtstart !== '') {
                 $ret .= "tzid='$tz_dtstart',";
-            } elseif (isset($tz_dtend) && $tz_dtend != '') {
+            } elseif (isset($tz_dtend) && $tz_dtend !== '') {
                 $ret .= "tzid='$tz_dtend',";
             }
 
@@ -1273,7 +1273,7 @@ class iCal_parser
             }
 
             // summary¤Î¥Á¥§¥Ã¥¯¡ÊÌ¤µ­Æþ¤Ê¤é¤½¤Î»Ý¤òÄÉ²Ã¡Ë
-            if (empty($summary) || $summary == '') {
+            if (empty($summary) || $summary === '') {
                 $event['summary'] = '¡Ê·ïÌ¾¤Ê¤·¡Ë';
             }
 
