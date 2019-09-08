@@ -585,7 +585,7 @@ if (!class_exists('APCal')) {
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
             if ($num_rows == 0) {
-                $ret .= _APCAL_MB_APCALNOEVENT . "\n";
+                $ret .= _APCAL_MB_NOEVENT . "\n";
             } else {
                 while ($event = $GLOBALS['xoopsDB']->fetchObject($yrs)) {
                     $summary = $this->text_sanitizer_for_show($event->summary);
@@ -622,7 +622,7 @@ if (!class_exists('APCal')) {
            <dl>
              <dt>
                &nbsp; <span style='font-size: x-small; '><a href='$get_target?smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"
-                        . _APCAL_MB_APCALADDEVENT
+                        . _APCAL_MB_ADDEVENT
                         . "</a></span>
              </dt>
            </dl>\n";
@@ -665,7 +665,7 @@ if (!class_exists('APCal')) {
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
             if ($num_rows == 0) {
-                $ret .= _APCAL_MB_APCALNOEVENT . "\n";
+                $ret .= _APCAL_MB_NOEVENT . "\n";
             } else {
                 for ($i = 0; $i < $num; ++$i) {
                     $event = $GLOBALS['xoopsDB']->fetchObject($yrs);
@@ -707,7 +707,7 @@ if (!class_exists('APCal')) {
                 $ret .= "
            <table border='0' cellspacing='0' cellpadding='0' width='100%'>
             <tr>
-             <td align='right'><small>" . _APCAL_MB_APCALRESTEVENT_PRE . ($num_rows - $num) . _APCAL_MB_APCALRESTEVENT_SUF . "</small></td>
+             <td align='right'><small>" . _APCAL_MB_RESTEVENT_PRE . ($num_rows - $num) . _APCAL_MB_RESTEVENT_SUF . "</small></td>
             </tr>
            </table>\n";
             }
@@ -718,7 +718,7 @@ if (!class_exists('APCal')) {
            <dl>
              <dt>
                &nbsp; <span style='font-size: x-small; '><a href='$get_target?smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"
-                        . _APCAL_MB_APCALADDEVENT
+                        . _APCAL_MB_ADDEVENT
                         . "</a></span>
              </dt>
            </dl>\n";
@@ -880,9 +880,9 @@ if (!class_exists('APCal')) {
             $tmpl->addVar('WholeBoard', 'GET_TARGET', $get_target);
             $tmpl->addVar('WholeBoard', 'QUERY_STRING', $query_string);
 
-            $tmpl->addVar('WholeBoard', 'MB_PREV_MONTH', _APCAL_MB_APCALPREV_MONTH);
-            $tmpl->addVar('WholeBoard', 'MB_NEXT_MONTH', _APCAL_MB_APCALNEXT_MONTH);
-            $tmpl->addVar('WholeBoard', 'MB_LINKTODAY', _APCAL_MB_APCALLINKTODAY);
+            $tmpl->addVar('WholeBoard', 'MB_PREV_MONTH', _APCAL_MB_PREV_MONTH);
+            $tmpl->addVar('WholeBoard', 'MB_NEXT_MONTH', _APCAL_MB_NEXT_MONTH);
+            $tmpl->addVar('WholeBoard', 'MB_LINKTODAY', _APCAL_MB_LINKTODAY);
 
             $tmpl->addVar('WholeBoard', 'SKINPATH', $this->images_url);
             $tmpl->addVar('WholeBoard', 'FRAME_CSS', $this->frame_css);
@@ -1150,7 +1150,7 @@ if (!class_exists('APCal')) {
             // legends of long events
             foreach ($this->long_event_legends as $bit => $legend) {
                 $tmpl->addVar('LongEventLegends', 'BIT_MASK', 1 << ($bit - 1));
-                $tmpl->addVar('LongEventLegends', 'LEGEND_ALT', _APCAL_MB_APCALALLDAY_EVENT . " $bit");
+                $tmpl->addVar('LongEventLegends', 'LEGEND_ALT', _APCAL_MB_ALLDAY_EVENT . " $bit");
                 $tmpl->addVar('LongEventLegends', 'LEGEND', $legend);
                 $tmpl->addVar('LongEventLegends', 'SKINPATH', $this->images_url);
                 $tmpl->parseTemplate('LongEventLegends', 'a');
@@ -1329,15 +1329,15 @@ if (!class_exists('APCal')) {
             $ret['ICON_YEARLY']  = _APCAL_ICON_YEARLY;
 
             // ï¿½ï¿½Ã¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¥ï¿½Ã¥ï¿½
-            $ret['MB_PREV_YEAR']  = _APCAL_MB_APCALPREV_YEAR;
-            $ret['MB_NEXT_YEAR']  = _APCAL_MB_APCALNEXT_YEAR;
-            $ret['MB_PREV_MONTH'] = _APCAL_MB_APCALPREV_MONTH;
-            $ret['MB_NEXT_MONTH'] = _APCAL_MB_APCALNEXT_MONTH;
-            $ret['MB_PREV_WEEK']  = _APCAL_MB_APCALPREV_WEEK;
-            $ret['MB_NEXT_WEEK']  = _APCAL_MB_APCALNEXT_WEEK;
-            $ret['MB_PREV_DATE']  = _APCAL_MB_APCALPREV_DATE;
-            $ret['MB_NEXT_DATE']  = _APCAL_MB_APCALNEXT_DATE;
-            $ret['MB_LINKTODAY']  = _APCAL_MB_APCALLINKTODAY;
+            $ret['MB_PREV_YEAR']  = _APCAL_MB_PREV_YEAR;
+            $ret['MB_NEXT_YEAR']  = _APCAL_MB_NEXT_YEAR;
+            $ret['MB_PREV_MONTH'] = _APCAL_MB_PREV_MONTH;
+            $ret['MB_NEXT_MONTH'] = _APCAL_MB_NEXT_MONTH;
+            $ret['MB_PREV_WEEK']  = _APCAL_MB_PREV_WEEK;
+            $ret['MB_NEXT_WEEK']  = _APCAL_MB_NEXT_WEEK;
+            $ret['MB_PREV_DATE']  = _APCAL_MB_PREV_DATE;
+            $ret['MB_NEXT_DATE']  = _APCAL_MB_NEXT_DATE;
+            $ret['MB_LINKTODAY']  = _APCAL_MB_LINKTODAY;
 
             // ï¿½ï¿½ï¿½ï¿½ï¿½Ø¤Î¥ï¿½ï¿½
             $ret['PREV_YEAR']  = date('Y-n-j', mktime(0, 0, 0, $this->month, $this->date, $this->year - 1));
@@ -1920,7 +1920,7 @@ if (!class_exists('APCal')) {
                         <td valign='top'>
                           $picture
                           <span style='font-size: x-small; '><a href='{$this->make_event_link($event->id, $get_target)}' class='$summary_class'><font color='#00FF00'>$summary("
-                                      . _APCAL_MB_APCALEVENT_NEEDADMIT
+                                      . _APCAL_MB_EVENT_NEEDADMIT
                                       . ')</a></span>';
                         if ($event->extkey0 == 1) {
                             $event_str .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "' />";
@@ -1950,7 +1950,7 @@ if (!class_exists('APCal')) {
                   <tr>
                     <td valign='bottom' colspan='2'>
                       &nbsp; <span style='font-size: x-small; '><a href='$get_target?cid=$this->now_cid&amp;smode=Weekly&amp;action=Edit&amp;caldate=$link'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"
-                                  . _APCAL_MB_APCALADDEVENT
+                                  . _APCAL_MB_ADDEVENT
                                   . "</a></span>
                     </td>
                   </tr>
@@ -2070,7 +2070,7 @@ if (!class_exists('APCal')) {
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
             if ($num_rows == 0) {
-                $ret .= '<tr><td></td><td>' . _APCAL_MB_APCALNOEVENT . "</td></tr>\n";
+                $ret .= '<tr><td></td><td>' . _APCAL_MB_NOEVENT . "</td></tr>\n";
             } else {
                 while ($event = $GLOBALS['xoopsDB']->fetchObject($yrs)) {
                     // Get picture
@@ -2144,7 +2144,7 @@ if (!class_exists('APCal')) {
                     if ($event->extkey0 == 1) {
                         $ret .= "&nbsp;&nbsp;<img src='{$roimage}' height='15px' alt='" . _APCAL_RO_ONLINE_POSS . "' title='" . _APCAL_RO_ONLINE_POSS . "'>";
                     }    // added by goffy: mark this event, that online registration is active
-                    $ret .= ' (' . _APCAL_MB_APCALEVENT_NEEDADMIT . ")
+                    $ret .= ' (' . _APCAL_MB_EVENT_NEEDADMIT . ")
              </td>
            </tr>\n";
                 }
@@ -2171,7 +2171,7 @@ if (!class_exists('APCal')) {
            <tr>
              <td valign='bottom' colspan='2'>
                &nbsp; <span style='font-size: x-small; '><a href='$get_target?cid=$this->now_cid&amp;smode=Daily&amp;action=Edit&amp;caldate=$this->caldate'><img src='$this->images_url/addevent.gif' border='0' width='14' height='12' />"
-                        . _APCAL_MB_APCALADDEVENT
+                        . _APCAL_MB_ADDEVENT
                         . "</a></span>
              </td>
            </tr>\n";
@@ -2293,7 +2293,7 @@ if (!class_exists('APCal')) {
 
             if ($editable && !$for_print) {
                 $edit_button = "
-            <form method='get' action='" . XOOPS_URL . "/modules/apcal/index.php' style='margin:0px;'>
+            <form class='apcalForm' method='get' action='" . XOOPS_URL . "/modules/apcal/index.php' style='margin:0px;'>
                 <input type='hidden' name='smode' value='$smode' />
                 <input type='hidden' name='action' value='Edit' />
                 <input type='hidden' name='event_id' value='$event->id' />
@@ -2306,9 +2306,9 @@ if (!class_exists('APCal')) {
 
             if ($deletable && !$for_print) {
                 $delete_button = "
-            <form method='post' action='"
+            <form class='apcalForm' method='post' action='"
                                  . XOOPS_URL
-                                 . "/modules/apcal/index.php' name='MainForm' style='margin:0px;'>
+                                 . "/modules/apcal/index.php' id='MainForm' name='MainForm' style='margin:0px;'>
                 <input type='hidden' name='smode' value='$smode' />
                 <input type='hidden' name='last_smode' value='$smode' />
                 <input type='hidden' name='event_id' value='$event->id' />
@@ -2356,7 +2356,7 @@ if (!class_exists('APCal')) {
             if ($event->allday) {
                 $tzoffset = (int)(($this->user_TZ - $this->server_TZ) * 3600);
                 //$event->end -= 300 ;
-                $start_time_str = /*"("._APCAL_MB_APCALALLDAY_EVENT.")"*/
+                $start_time_str = /*"("._APCAL_MB_ALLDAY_EVENT.")"*/
                     '';
                 $end_time_str   = '';
             } else {
@@ -2385,9 +2385,9 @@ if (!class_exists('APCal')) {
                     } else {
                         $parent_date_str = $this->get_long_ymdn($parent_event->start + $tzoffset);
                     }
-                    $rrule .= "<br><a href='?action=View&amp;event_id=$parent_event->id' target='_blank'>" . _APCAL_MB_APCALLINK_TO_RRULE1ST . " $parent_date_str</a>";
+                    $rrule .= "<br><a href='?action=View&amp;event_id=$parent_event->id' target='_blank'>" . _APCAL_MB_LINK_TO_RRULE1ST . " $parent_date_str</a>";
                 } else {
-                    $rrule .= '<br> ' . _APCAL_MB_APCALRRULE1ST;
+                    $rrule .= '<br> ' . _APCAL_MB_RRULE1ST;
                 }
             }
 
@@ -2414,12 +2414,12 @@ if (!class_exists('APCal')) {
                 } else {
                     $group = _APCAL_OPT_PRIVATEINVALID;
                 }
-                $class_status = _APCAL_MB_APCALPRIVATE . sprintf(_APCAL_MB_APCALPRIVATETARGET, $group);
+                $class_status = _APCAL_MB_PRIVATE . sprintf(_APCAL_MB_PRIVATETARGET, $group);
             } else {
-                $class_status = _APCAL_MB_APCALPUBLIC;
+                $class_status = _APCAL_MB_PUBLIC;
             }
 
-            $admission_status = $event->admission ? _APCAL_MB_APCALEVENT_ADMITTED : _APCAL_MB_APCALEVENT_NEEDADMIT;
+            $admission_status = $event->admission ? _APCAL_MB_EVENT_ADMITTED : _APCAL_MB_EVENT_NEEDADMIT;
             $last_modified    = $this->get_long_ymdn($event->udtstamp - (int)(($this->user_TZ - $this->server_TZ) * 3600));
             $description      = $this->textarea_sanitizer_for_show($event->description);
             $summary          = $this->text_sanitizer_for_show($event->summary);
@@ -2533,7 +2533,7 @@ if (!class_exists('APCal')) {
                     }
 
                     $eventmembers_form = "
-        <form method='post' action='ro_regonlinehandler.php' name='roformmembers1' style='margin:0px;'>
+        <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformmembers1' style='margin:0px;'>
             <input type='hidden' name='eventid' value='$event->id' />
             <input type='hidden' name='uid' value='$this->user_id' />
             <input type='hidden' name='eventurl' value='$this->redirecturl' />
@@ -2762,7 +2762,7 @@ if (!class_exists('APCal')) {
                 }
                 $groupid          = $event->groupid;
                 $rrule            = $event->rrule;
-                $admission_status = $event->admission ? _APCAL_MB_APCALEVENT_ADMITTED : _APCAL_MB_APCALEVENT_NEEDADMIT;
+                $admission_status = $event->admission ? _APCAL_MB_EVENT_ADMITTED : _APCAL_MB_EVENT_NEEDADMIT;
                 $update_button    = $editable ? "<input name='update' type='submit' value='" . _APCAL_BTN_SUBMITCHANGES . "' />" : '';
                 $insert_button    = "<input name='saveas' type='submit' value='" . _APCAL_BTN_SAVEAS . "' onclick='return confirm(\"" . _APCAL_CNFM_SAVEAS_YN . "\")' />";
                 $delete_button    = $deletable ? "<input name='delete' type='submit' value='" . _APCAL_BTN_DELETE . "' onclick='return confirm(\"" . _APCAL_CNFM_DELETE_YN . "\")' />" : '';
@@ -2780,7 +2780,7 @@ if (!class_exists('APCal')) {
                 $regonline_state = ($event->extkey0 == 1) ? _APCAL_RO_ONLINE_YES : _APCAL_RO_ONLINE_NO;
 
                 $regonline_state .= "
-        <form method='post' action='ro_regonlinehandler.php' name='roformactivate1' style='margin:0px;'>
+        <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformactivate1' style='margin:0px;'>
             <input type='hidden' name='eventid' value='$event->id' />
             <input type='hidden' name='uid' value='$this->user_id' />
             <input type='hidden' name='eventurl' value='$this->redirecturl' />
@@ -2913,7 +2913,7 @@ if (!class_exists('APCal')) {
                 $start_min                = 0;
                 $end_hour                 = 17;
                 $end_min                  = 0;
-                $admission_status         = _APCAL_MB_APCALEVENT_NOTREGISTER;
+                $admission_status         = _APCAL_MB_EVENT_NOTREGISTER;
                 $update_button            = '';
                 $insert_button            = "<input name='insert' type='submit' value='" . _APCAL_BTN_NEWINSERTED . "' />";
                 $delete_button            = '';
@@ -3072,11 +3072,11 @@ if (!class_exists('APCal')) {
             $caldate = strlen($caldate[0]) > 2 ? $caldate[0] . '-' . $caldate[1] . '-' . $caldate[2] : $caldate[2] . '-' . $caldate[1] . '-' . $caldate[0];
             $ret     = '
 <h2>'
-                       . _APCAL_MB_APCALTITLE_EVENTINFO
+                       . _APCAL_MB_TITLE_EVENTINFO
                        . ' <small>-'
-                       . _APCAL_MB_APCALSUBTITLE_EVENTEDIT
+                       . _APCAL_MB_SUBTITLE_EVENTEDIT
                        . "-</small></h2>
-<form action='{$this->make_cal_link('', $smode, 0, $caldate)}' method='post' name='MainForm' enctype='multipart/form-data'>
+<form class='apcalForm' action='{$this->make_cal_link('', $smode, 0, $caldate)}' method='post' id='MainForm' name='MainForm' enctype='multipart/form-data'>
     "
                        . $GLOBALS['xoopsGTicket']->getTicketHtml(__LINE__)
                        . "
@@ -3106,7 +3106,7 @@ if (!class_exists('APCal')) {
         <td class='even'>
             $textbox_start_date &nbsp;
             {$select_start_hour} {$select_start_min}"
-                       . _APCAL_MB_APCALMINUTE_SUF
+                       . _APCAL_MB_MINUTE_SUF
                        . "</select>
             <span id='start_datetime'>$startHours</span>
         </td>
@@ -3118,7 +3118,7 @@ if (!class_exists('APCal')) {
         <td class='even'>
             $textbox_end_date &nbsp;
             {$select_end_hour} {$select_end_min}"
-                       . _APCAL_MB_APCALMINUTE_SUF
+                       . _APCAL_MB_MINUTE_SUF
                        . "
             <span id='end_datetime'>$endHours</span>
         </td>
@@ -3129,7 +3129,7 @@ if (!class_exists('APCal')) {
                        . "</td>
         <td class='even'>
             <input type='radio' name='allday_bits[]' value='2' {$allday_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=true;enableSelects(true);' />"
-                       . _APCAL_MB_APCALALLDAY_EVENT
+                       . _APCAL_MB_ALLDAY_EVENT
                        . " &nbsp;
             <input type='radio' name='allday_bits[]' value='0' {$samehours_checkbox} onClick='document.MainForm.StartHour.disabled=document.MainForm.StartMin.disabled=document.MainForm.EndHour.disabled=document.MainForm.EndMin.disabled=false;enableSelects(true);' />"
                        . _APCAL_SAMEHOURS
@@ -3143,7 +3143,7 @@ if (!class_exists('APCal')) {
         <td class='head'>"
                        . _APCAL_TH_LOCATION
                        . "</td>
-        <td class='even'><input type='text' name='location' size='40' maxlength='250' value='$location' /></td>
+        <td class='even'><input type='text' id='location' name='location' size='40' maxlength='250' value='$location' /></td>
     </tr>
         <tr>
         <td class='head'></td>
@@ -3229,10 +3229,10 @@ if (!class_exists('APCal')) {
                        . _APCAL_TH_CLASS
                        . "</td>
         <td class='even'><input type='radio' name='class' value='PUBLIC' $class_public onClick='document.MainForm.groupid.disabled=true' />"
-                       . _APCAL_MB_APCALPUBLIC
+                       . _APCAL_MB_PUBLIC
                        . " &nbsp;  &nbsp; <input type='radio' name='class' value='PRIVATE' $class_private onClick='document.MainForm.groupid.disabled=false' />"
-                       . _APCAL_MB_APCALPRIVATE
-                       . sprintf(_APCAL_MB_APCALPRIVATETARGET, $select_private)
+                       . _APCAL_MB_PRIVATE
+                       . sprintf(_APCAL_MB_PRIVATETARGET, $select_private)
                        . "</td>
     </tr>
     <tr>
@@ -3365,7 +3365,7 @@ if (!class_exists('APCal')) {
         public function update_schedule($set_sql_append = '', $whr_sql_append = '', $notify_callback = null)
         {
             if ($_POST['summary'] === '') {
-                $_POST['summary'] = _APCAL_MB_APCALNOSUBJECT;
+                $_POST['summary'] = _APCAL_MB_NOSUBJECT;
             }
 
             list($start, $start_date, $use_default) = $this->parse_posted_date($this->mb_convert_kana($_POST['StartDate'], 'a'), $this->unixtime);
@@ -3849,12 +3849,12 @@ if (!class_exists('APCal')) {
             $ret .= "document.catSel.submit();\n";
             $ret .= "}\n";
             $ret .= "</script>\n";
-            $ret .= "<form action='$get_target' name='catSel' method='GET' style='margin:0px;'>\n";
+            $ret .= "<form class='apcalForm' action='$get_target' name='catSel' method='GET' style='margin:0px;'>\n";
             $ret .= "<input type='hidden' name='caldate' value='$this->caldate' />\n";
             $ret .= "<input type='hidden' name='smode' value='$smode' />\n";
             $ret .= "<input type='hidden' name='op' value='$op' />\n";
             $ret .= "<select name='cid' onchange='submitCat(document.catSel.cid.value, document.catSel.smode.value, document.catSel.caldate.value);'>\n";
-            $ret .= $this->useurlrewrite ? "\t<option value='All'>" . _APCAL_MB_APCALSHOWALLCAT . "</option>\n" : "\t<option value='0'>" . _APCAL_MB_APCALSHOWALLCAT . "</option>\n";
+            $ret .= $this->useurlrewrite ? "\t<option value='All'>" . _APCAL_MB_SHOWALLCAT . "</option>\n" : "\t<option value='0'>" . _APCAL_MB_SHOWALLCAT . "</option>\n";
             foreach ($this->categories as $cid => $cat) {
                 $selected       = $this->now_cid == $cid ? 'selected' : '';
                 $depth_desc     = str_repeat('-', (int)$cat->cat_depth);
@@ -4134,20 +4134,20 @@ END:VTIMEZONE\r\n";
                 if (!$dot) {
                     $dot = "<img border='0' src='$this->images_url/dot_today.gif' />";
                 }
-                $ret = "$dot <b>" . $this->get_middle_hi($start) . '</b>' . _APCAL_MB_APCALTIMESEPARATOR;
+                $ret = "$dot <b>" . $this->get_middle_hi($start) . '</b>' . _APCAL_MB_TIMESEPARATOR;
             } elseif ($start < $now) {
                 // ï¿½ï¿½ï¿½Ç¤Ë³ï¿½ï¿½Ï¤ï¿½ï¿½ì¤¿ï¿½ï¿½ï¿½Ù¥ï¿½ï¿½
                 if (!$dot) {
                     $dot = "<img border='0' src='$this->images_url/dot_started.gif' />";
                 }
-                $ret = "$dot " . _APCAL_MB_APCALCONTINUING;
+                $ret = "$dot " . _APCAL_MB_CONTINUING;
             } else {
                 // ï¿½ï¿½ï¿½ï¿½Ê¹ß¤Ë³ï¿½ï¿½Ï¤Ë¤Ê¤ë¥¤ï¿½Ù¥ï¿½ï¿½
                 if (!$dot) {
                     $dot = "<img border='0' src='$this->images_url/dot_future.gif' />";
                 }
-                //      $ret = "$dot " . date( "n/j H:i" , $start ) . _APCAL_MB_APCALTIMESEPARATOR ;
-                $ret = "$dot " . $this->get_middle_md($start) . ' ' . $this->get_middle_hi($start) . _APCAL_MB_APCALTIMESEPARATOR;
+                //      $ret = "$dot " . date( "n/j H:i" , $start ) . _APCAL_MB_TIMESEPARATOR ;
+                $ret = "$dot " . $this->get_middle_md($start) . ' ' . $this->get_middle_hi($start) . _APCAL_MB_TIMESEPARATOR;
             }
 
             return $ret;
@@ -4216,15 +4216,15 @@ END:VTIMEZONE\r\n";
 
             if ($is_start_date) {
                 if ($is_end_date) {
-                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . "{$end_desc}";
+                    $ret = "$dot {$start_desc}" . _APCAL_MB_TIMESEPARATOR . "{$end_desc}";
                 } else {
-                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . "{$stuffing}";
+                    $ret = "$dot {$start_desc}" . _APCAL_MB_TIMESEPARATOR . "{$stuffing}";
                 }
             } else {
                 if ($is_end_date) {
-                    $ret = "$dot {$stuffing}" . _APCAL_MB_APCALTIMESEPARATOR . "{$end_desc}";
+                    $ret = "$dot {$stuffing}" . _APCAL_MB_TIMESEPARATOR . "{$end_desc}";
                 } else {
-                    $ret = "$dot " . _APCAL_MB_APCALCONTINUING;
+                    $ret = "$dot " . _APCAL_MB_CONTINUING;
                 }
             }
 
@@ -4281,15 +4281,15 @@ END:VTIMEZONE\r\n";
 
             if ($event->is_start_date) {
                 if ($event->is_end_date) {
-                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . "{$end_desc}";
+                    $ret = "$dot {$start_desc}" . _APCAL_MB_TIMESEPARATOR . "{$end_desc}";
                 } else {
-                    $ret = "$dot {$start_desc}" . _APCAL_MB_APCALTIMESEPARATOR . "{$stuffing}";
+                    $ret = "$dot {$start_desc}" . _APCAL_MB_TIMESEPARATOR . "{$stuffing}";
                 }
             } else {
                 if ($event->is_end_date) {
-                    $ret = "$dot {$stuffing}" . _APCAL_MB_APCALTIMESEPARATOR . "{$end_desc}";
+                    $ret = "$dot {$stuffing}" . _APCAL_MB_TIMESEPARATOR . "{$end_desc}";
                 } else {
-                    $ret = "$dot " . _APCAL_MB_APCALCONTINUING;
+                    $ret = "$dot " . _APCAL_MB_CONTINUING;
                 }
             }
 
@@ -4491,17 +4491,17 @@ END:VTIMEZONE\r\n";
 
             // ï¿½ï¿½Ç§ï¿½Õ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½
             return "
-    <div style='text-align:center;width:100%;'>&nbsp;<br><b>" . _APCAL_MB_APCALICALSELECTPLATFORM . "</b><br>&nbsp;</div>
+    <div style='text-align:center;width:100%;'>&nbsp;<br><b>" . _APCAL_MB_ICALSELECTPLATFORM . "</b><br>&nbsp;</div>
     <table border='0' cellpadding='5' cellspacing='2' width='100%'>
     <tr>
     <td align='right' width='50%'>
-    <form action='$post_target?output_ics=1' method='post' target='$target'>
+    <form class='apcalForm' action='$post_target?output_ics=1' method='post' target='$target'>
         $hiddens
         <input type='submit' name='do_output' value='" . _APCAL_BTN_OUTPUTICS_WIN . "' />
     </form>
     </td>
     <td align='left' width='50%'>
-    <form action='$webcal_url?output_ics=1' method='post' target='$target'>
+    <form class='apcalForm' action='$webcal_url?output_ics=1' method='post' target='$target'>
         $hiddens
         <input type='submit' name='do_output' value='" . _APCAL_BTN_OUTPUTICS_MAC . "' />
     </form>

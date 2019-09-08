@@ -172,3 +172,31 @@ table.month td.spacer {
 div.eventPics img {
     border: 1px solid #999;
 }
+
+.apcalForm input[type="text"],
+.apcalForm select {
+    border-radius:5px;
+    padding:2px;
+    margin:3px;
+}
+.apcalForm input[type="checkbox"],
+.apcalForm input[type="radio"] {
+    margin:5px;
+}
+.apcalForm .head,
+.apcalForm .even {
+    vertical-align:top;
+}
+.apcalForm input[type="reset"],
+.apcalForm input[type="submit"] {
+    border-radius:5px;
+    padding:2px 20px;
+    margin:3px;
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.apcalEventlist th {
+    border-bottom:1px solid #337ab7;
+    margin-bottom:20px;
+}

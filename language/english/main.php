@@ -95,4 +95,6 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('APCAL_MB_APCALLOADED')) {
     define('_MD_APCAL_PERMADDNGP', 'All parent items must be selected.');
     define('_MD_APCAL_PERMADDOK', 'Added %s permission to %s for group %s');
     define('_MD_APCAL_PERMRESETNG', 'Could not reset group permission for module %s');
+    
+    define('_MD_APCAL_MAP_APPLY', 'Apply selected marker');    
 }

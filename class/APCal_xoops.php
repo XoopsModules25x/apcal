@@ -382,10 +382,10 @@ if (!class_exists('APCal_xoops')) {
                 'get_target'                      => $get_target,
                 'images_url'                      => $this->images_url,
                 'caldate'                         => $this->caldate,
-                'lang_APCAL_MB_APCALCONTINUING'   => _APCAL_MB_APCALCONTINUING,
-                'lang_APCAL_MB_APCALNOEVENT'      => _APCAL_MB_APCALNOEVENT,
-                'lang_APCAL_MB_APCALADDEVENT'     => _APCAL_MB_APCALADDEVENT,
-                'lang_APCAL_MB_APCALALLDAY_EVENT' => _APCAL_MB_APCALALLDAY_EVENT
+                'lang_APCAL_MB_CONTINUING'   => _APCAL_MB_CONTINUING,
+                'lang_APCAL_MB_NOEVENT'      => _APCAL_MB_NOEVENT,
+                'lang_APCAL_MB_ADDEVENT'     => _APCAL_MB_ADDEVENT,
+                'lang_APCAL_MB_ALLDAY_EVENT' => _APCAL_MB_ALLDAY_EVENT
             );
 
             while ($event = $GLOBALS['xoopsDB']->fetchObject($yrs)) {
@@ -513,12 +513,12 @@ if (!class_exists('APCal_xoops')) {
                 'get_target'                       => $get_target,
                 'images_url'                       => $this->images_url,
                 'caldate'                          => $this->caldate,
-                'lang_APCAL_MB_APCALCONTINUING'    => _APCAL_MB_APCALCONTINUING,
-                'lang_APCAL_MB_APCALNOEVENT'       => _APCAL_MB_APCALNOEVENT,
-                'lang_APCAL_MB_APCALADDEVENT'      => _APCAL_MB_APCALADDEVENT,
-                'lang_APCAL_MB_APCALRESTEVENT_PRE' => _APCAL_MB_APCALRESTEVENT_PRE,
-                'lang_APCAL_MB_APCALRESTEVENT_SUF' => _APCAL_MB_APCALRESTEVENT_SUF,
-                'lang_APCAL_MB_APCALALLDAY_EVENT'  => _APCAL_MB_APCALALLDAY_EVENT
+                'lang_APCAL_MB_CONTINUING'    => _APCAL_MB_CONTINUING,
+                'lang_APCAL_MB_NOEVENT'       => _APCAL_MB_NOEVENT,
+                'lang_APCAL_MB_ADDEVENT'      => _APCAL_MB_ADDEVENT,
+                'lang_APCAL_MB_RESTEVENT_PRE' => _APCAL_MB_RESTEVENT_PRE,
+                'lang_APCAL_MB_RESTEVENT_SUF' => _APCAL_MB_RESTEVENT_SUF,
+                'lang_APCAL_MB_ALLDAY_EVENT'  => _APCAL_MB_ALLDAY_EVENT
             );
 
             $count = 0;
@@ -653,12 +653,12 @@ if (!class_exists('APCal_xoops')) {
                 'get_target'                       => $get_target,
                 'images_url'                       => $this->images_url,
                 'caldate'                          => $this->caldate,
-                'lang_APCAL_MB_APCALCONTINUING'    => _APCAL_MB_APCALCONTINUING,
-                'lang_APCAL_MB_APCALNOEVENT'       => _APCAL_MB_APCALNOEVENT,
-                'lang_APCAL_MB_APCALADDEVENT'      => _APCAL_MB_APCALADDEVENT,
-                'lang_APCAL_MB_APCALRESTEVENT_PRE' => _APCAL_MB_APCALRESTEVENT_PRE,
-                'lang_APCAL_MB_APCALRESTEVENT_SUF' => _APCAL_MB_APCALRESTEVENT_SUF,
-                'lang_APCAL_MB_APCALALLDAY_EVENT'  => _APCAL_MB_APCALALLDAY_EVENT
+                'lang_APCAL_MB_CONTINUING'    => _APCAL_MB_CONTINUING,
+                'lang_APCAL_MB_NOEVENT'       => _APCAL_MB_NOEVENT,
+                'lang_APCAL_MB_ADDEVENT'      => _APCAL_MB_ADDEVENT,
+                'lang_APCAL_MB_RESTEVENT_PRE' => _APCAL_MB_RESTEVENT_PRE,
+                'lang_APCAL_MB_RESTEVENT_SUF' => _APCAL_MB_RESTEVENT_SUF,
+                'lang_APCAL_MB_ALLDAY_EVENT'  => _APCAL_MB_ALLDAY_EVENT
             );
 
             $count = 0;
@@ -719,14 +719,14 @@ if (!class_exists('APCal_xoops')) {
 
             // �����Ƚ�
             $orders = array(
-                'summary'      => _APCAL_TH_SUMMARY . ' ' . _APCAL_MB_APCALORDER_ASC,
-                'summary DESC' => _APCAL_TH_SUMMARY . ' ' . _APCAL_MB_APCALORDER_DESC,
-                'start'        => _APCAL_TH_STARTDATETIME . ' ' . _APCAL_MB_APCALORDER_ASC,
-                'start DESC'   => _APCAL_TH_STARTDATETIME . ' ' . _APCAL_MB_APCALORDER_DESC,
-                'dtstamp'      => _APCAL_TH_LASTMODIFIED . ' ' . _APCAL_MB_APCALORDER_ASC,
-                'dtstamp DESC' => _APCAL_TH_LASTMODIFIED . ' ' . _APCAL_MB_APCALORDER_DESC,
-                'uid'          => _APCAL_TH_SUBMITTER . ' ' . _APCAL_MB_APCALORDER_ASC,
-                'uid DESC'     => _APCAL_TH_SUBMITTER . ' ' . _APCAL_MB_APCALORDER_DESC
+                'summary'      => _APCAL_TH_SUMMARY . ' ' . _APCAL_MB_ORDER_ASC,
+                'summary DESC' => _APCAL_TH_SUMMARY . ' ' . _APCAL_MB_ORDER_DESC,
+                'start'        => _APCAL_TH_STARTDATETIME . ' ' . _APCAL_MB_ORDER_ASC,
+                'start DESC'   => _APCAL_TH_STARTDATETIME . ' ' . _APCAL_MB_ORDER_DESC,
+                'dtstamp'      => _APCAL_TH_LASTMODIFIED . ' ' . _APCAL_MB_ORDER_ASC,
+                'dtstamp DESC' => _APCAL_TH_LASTMODIFIED . ' ' . _APCAL_MB_ORDER_DESC,
+                'uid'          => _APCAL_TH_SUBMITTER . ' ' . _APCAL_MB_ORDER_ASC,
+                'uid DESC'     => _APCAL_TH_SUBMITTER . ' ' . _APCAL_MB_ORDER_DESC
             );
             if (isset($_GET['order']) && isset($orders[$_GET['order']])) {
                 $order = $_GET['order'];
@@ -746,10 +746,10 @@ if (!class_exists('APCal_xoops')) {
             $categories_selform = $this->get_categories_selform($get_target);
 
             $ops = array(
-                'after'  => _APCAL_MB_APCALOP_AFTER,
-                'on'     => _APCAL_MB_APCALOP_ON,
-                'before' => _APCAL_MB_APCALOP_BEFORE,
-                'all'    => _APCAL_MB_APCALOP_ALL
+                'after'  => _APCAL_MB_OP_AFTER,
+                'on'     => _APCAL_MB_OP_ON,
+                'before' => _APCAL_MB_OP_BEFORE,
+                'all'    => _APCAL_MB_OP_ALL
             );
 
             $op             = empty($_GET['op']) ? '' : preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['op']);
@@ -872,8 +872,8 @@ if (!class_exists('APCal_xoops')) {
                              'alt_monthly'           => _APCAL_ICON_MONTHLY,
                              'alt_yearly'            => _APCAL_ICON_YEARLY,
                              'alt_print'             => _APCAL_BTN_PRINT,
-                             'lang_checkeditems'     => _APCAL_MB_APCALLABEL_CHECKEDITEMS,
-                             'lang_icalendar_output' => _APCAL_MB_APCALLABEL_OUTPUTICS,
+                             'lang_checkeditems'     => _APCAL_MB_LABEL_CHECKEDITEMS,
+                             'lang_icalendar_output' => _APCAL_MB_LABEL_OUTPUTICS,
                              'lang_button_export'    => _APCAL_BTN_EXPORT,
                              'lang_button_jump'      => _APCAL_BTN_JUMP,
                              'lang_order'            => $orders[$order],
@@ -889,8 +889,8 @@ if (!class_exists('APCal_xoops')) {
                              'lang_rrule'            => _APCAL_TH_RRULE,
                              'lang_admissionstatus'  => _APCAL_TH_ADMISSIONSTATUS,
                              'lang_lastmodified'     => _APCAL_TH_LASTMODIFIED,
-                             'lang_cursortedby'      => _APCAL_MB_APCALCURSORTEDBY,
-                             'lang_sortby'           => _APCAL_MB_APCALSORTBY,
+                             'lang_cursortedby'      => _APCAL_MB_CURSORTEDBY,
+                             'lang_sortby'           => _APCAL_MB_SORTBY,
                              'ro_image'              => $roimage
                          ));
 
@@ -951,7 +951,7 @@ if (!class_exists('APCal_xoops')) {
                 }
 
                 // ����¾��ɽ����������
-                $admission_status = $event->admission ? _APCAL_MB_APCALEVENT_ADMITTED : _APCAL_MB_APCALEVENT_NEEDADMIT;
+                $admission_status = $event->admission ? _APCAL_MB_EVENT_ADMITTED : _APCAL_MB_EVENT_NEEDADMIT;
                 $last_modified    = $this->get_long_ymdn($event->udtstamp - (int)(($this->user_TZ - $this->server_TZ) * 3600));
                 $description      = $this->textarea_sanitizer_for_show($event->description);
                 $summary          = $this->text_sanitizer_for_show($event->summary);
@@ -1095,8 +1095,8 @@ if (!class_exists('APCal_xoops')) {
                 'year_month_title' => sprintf(_APCAL_FMT_YEAR_MONTH, $this->year, $this->month_middle_names[$this->month]),
                 'prev_month'       => $prev_month,
                 'next_month'       => $next_month,
-                'lang_prev_month'  => _APCAL_MB_APCALPREV_MONTH,
-                'lang_next_month'  => _APCAL_MB_APCALNEXT_MONTH,
+                'lang_prev_month'  => _APCAL_MB_PREV_MONTH,
+                'lang_next_month'  => _APCAL_MB_NEXT_MONTH,
 
                 'calhead_bgcolor' => $this->calhead_bgcolor,
                 'calhead_color'   => $this->calhead_color

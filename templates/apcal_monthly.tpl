@@ -102,7 +102,7 @@
                                         <{if $insertable}>
                                             <a href="<{$xoops_url}>/modules/apcal/?cid=<{$cid}>&smode=Monthly&action=Edit&caldate=<{$link}>">
                                                 <img src="<{$images_url}>/addevent.gif" border="0" width="14"
-                                                     height="12" alt="<{$smarty.const._APCAL_MB_APCALADDEVENT}>"/>
+                                                     height="12" alt="<{$smarty.const._APCAL_MB_ADDEVENT}>"/>
                                             </a>
                                         <{/if}>
                                     </td>
@@ -188,7 +188,7 @@
                 <a href="<{$cat->link}>"><{$cat->cat_title}></a>
             <{/foreach}>
             <span style="background: <{$cats_color.00000}>; border: 1px solid;">&nbsp;&nbsp;</span>
-            <a href="<{$cal->make_cal_link('', 'Monthly', 0, '')}>"><{$smarty.const._APCAL_MB_APCALSHOWALLCAT}></a>
+            <a href="<{$cal->make_cal_link('', 'Monthly', 0, '')}>"><{$smarty.const._APCAL_MB_SHOWALLCAT}></a>
         </td>
     </tr>
 </table>

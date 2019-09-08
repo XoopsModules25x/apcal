@@ -232,7 +232,7 @@ echo "<h3 style='text-align:left;'>" . _MD_APCAL_TPLSETS . " : $target_mname</h3
 
 // beggining of table & form
 echo "
-    <form name='MainForm' action='?dirname=" . htmlspecialchars($target_dirname, ENT_QUOTES) . "' method='post'>
+    <form class='apcalForm' id='MainForm' name='MainForm' action='?dirname=" . htmlspecialchars($target_dirname, ENT_QUOTES) . "' method='post'>
     " . $xoopsGTicket->getTicketHtml(__LINE__) . "
     <table class='outer'>
         <tr>

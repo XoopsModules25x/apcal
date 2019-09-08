@@ -1,0 +1,72 @@
+/* Style sheet for APCal (you can add embed css's here) */
+
+tr.apcal-monthly td { width: 90px; margin: 0; word-wrap:break-word; }
+tr.apcal-monthly td.apcal-weekmark { width: 10px; margin: 0; }
+
+table.apcal-categoryform { table-layout:fixed; }
+td.apcal-categoryform { margin: 4px 0; }
+
+table.apcalTabsTable {
+	width: 100%;
+	margin: 0px 0px 0px 0px;
+    padding: 0px;
+	border-top: 1px solid #E0B0B0;
+	border-right: 1px solid #C60000;
+	border-left: 1px solid #E0B0B0;
+	border-bottom: 1px solid #C60000;
+}
+td.apcalTabsLeft {
+	border-left: 1px solid #C60000;
+}
+td.apcalTabsRight {
+	border-right: 1px solid #C60000;
+}
+td.apcalTabs {
+	width: 110px;
+	height: 30px;
+	/* border: 0px; */
+	text-align:center;
+	vertical-align:middle;
+	color: black;
+	font-size: 14px;
+	margin: 0px 0px 0px 0px;
+}
+td.apcalTabs  a {
+	color: #ffffff;
+    font-weight: normal;
+}
+td.apcalTabs  a.apcalTabsActive {
+	color: #fff000;
+    font-weight: bold;
+}
+td.apcalTabs  a:hover {
+	color: #fff000;
+}
+/* Kalenderkopf */
+.calhead {
+	color: black;
+}
+/* Tabelleneinstelllungen */
+.calframe{
+	border-color: black;
+}
+/* Kalenderteil */
+.calbody {}
+/* nächsten Termine */
+.calsummary{}
+.calsummary_allday {}
+
+/* Wochentagsnamen */
+.calweekname {}
+
+.weekno {
+    text-align:center;
+}
+
+tr.apcal-monthly td { width: 90px; margin: 0; word-wrap:break-word; }
+
+tr.apcal-monthly td.apcal-weekmark { width: 10px; height: 20px; margin: 0; }
+/* 
+table.apcal-categoryform { table-layout:fixed; }
+Kategorien */
+td.apcal-categoryform { margin: 0px 0px 0px 0px;}

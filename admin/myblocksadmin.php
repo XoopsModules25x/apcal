@@ -117,7 +117,7 @@ function list_blocks()
 
     // displaying TH
     echo "
-    <form action='admin.php' name='blockadmin' method='post'>
+    <form class='apcalForm' action='admin.php' name='blockadmin' method='post'>
         <table width='95%' class='outer' cellpadding='4' cellspacing='1'>
         <tr valign='middle'>
             <th>" . _AM_APCAL_TITLE . "</th>

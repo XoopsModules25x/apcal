@@ -8,6 +8,8 @@ require_once XOOPS_ROOT_PATH . '/header.php';
 require_once XOOPS_ROOT_PATH . '/class/xoopsmailer.php';
 require_once XOOPS_ROOT_PATH . '/modules/apcal/language/' . $GLOBALS['xoopsConfig']['language'] . '/apcal_constants.php';
 
+$xoopsTpl->assign('xoops_module_header', '<link rel="stylesheet" type="text/css" href="' . XOOPS_URL . '/modules/apcal/assets/css/apcal.css" />' . $xoopsTpl->get_template_vars('xoops_module_header'));
+
 //this should be replace by module preferences
 $mail_sender     = 'webmaster@mydomain.com';
 $mail_sendername = 'Calendar of AP';
@@ -138,7 +140,7 @@ if ($show_form_activate) {
     <table border='0' width='100%'>
         <tr><td width='100%' class='itemHead'><span class='itemTitle'>" . _APCAL_RO_TITLE2 . "</span></td></tr>
         <tr><td width='100%'>
-        <form method='post' action='ro_regonlinehandler.php' name='roformactivate' style='margin:0px;'>
+        <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformactivate' style='margin:0px;'>
             <input type='hidden' name='eventid' value='$eventid' />
             <input type='hidden' name='uid' value='$uid' />
             <input type='hidden' name='eventurl' value='$eventurl' />
@@ -418,7 +420,7 @@ if (isset($_REQUEST['form_add'])) {
         <table border='0' width='100%'>
             <tr><td width='100%' class='itemHead'><span class='itemTitle'>" . _APCAL_RO_TITLE1 . "</span></td></tr>
             <tr><td width='100%'>
-            <form method='post' action='ro_regonlinehandler.php' name='roformaddmember' style='margin:0px;'>
+            <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformaddmember' style='margin:0px;'>
                 <input type='hidden' name='eventid' value='$eventid' />
                 <input type='hidden' name='uid' value='$uid' />
                 <input type='hidden' name='uname' value='$uname' />
@@ -564,7 +566,7 @@ if (isset($_REQUEST['form_add'])) {
                 }
                 $unique_id      = uniqid(mt_rand());
                 $formeditremove = "
-                        <form method='post' action='ro_regonlinehandler.php' name='roformeditremovemember_" . $unique_id . "' style='margin:0px;'>
+                        <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformeditremovemember_" . $unique_id . "' style='margin:0px;'>
                             <input type='hidden' name='eventid' value='$eventid' />
                             <input type='hidden' name='uid' value='$uid' />
                             <input type='hidden' name='uname' value='$uname' />
@@ -612,7 +614,7 @@ if (isset($_REQUEST['form_add'])) {
             }
             $ret2 .= '</table></td></tr></table>';
             $ret2 .= "<p style='text-align:center;align:center;'>
-            <form method='post' action='ro_regonlinehandler.php' name='roformgoback' style='margin:0px;'>
+            <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformgoback' style='margin:0px;'>
                 <input type='hidden' name='eventurl' value='$eventurl' />
                 <div align='center'>
                 <input type='image' src='$roimagecancel' name='goback' alt='" . _APCAL_RO_BTN_BACK . "' title='" . _APCAL_RO_BTN_BACK . "' height='32px'/>
@@ -1068,7 +1070,7 @@ if (isset($_REQUEST['list'])) {
                 $ret       .= "<td class='$classname'>";
                 $unique_id = uniqid(mt_rand());
                 $ret       .= "
-                    <form method='post' action='ro_regonlinehandler.php' name='roformlist_" . $unique_id . "' style='margin:0px;'>
+                    <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformlist_" . $unique_id . "' style='margin:0px;'>
                         <input type='hidden' name='url' value='$url' />
                         <input type='hidden' name='rom_id' value='$rom_id' />
                         <input type='hidden' name='firstname' value='$firstname' />
@@ -1091,7 +1093,7 @@ if (isset($_REQUEST['list'])) {
             $ret .= "</table>\n<br>";
 
             $ret .= "
-            <form method='post' action='ro_regonlinehandler.php' name='roformgoback' style='margin:0px;'>
+            <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformgoback' style='margin:0px;'>
                 <input type='hidden' name='eventurl' value='$eventurl' />
                 <div align='center'>
                 <input type='image' src='$roimagecancel' name='goback' alt='" . _APCAL_RO_BTN_BACK . "' title='" . _APCAL_RO_BTN_BACK . "' height='32px'/>
@@ -1120,7 +1122,7 @@ if (isset($_REQUEST['list'])) {
                     <td class='listeheader'>" . _APCAL_RO_TITLE4 . "</td>
                 </tr>
             </table>
-            <form method='post' action='ro_regonlinehandler.php' name='roformsendmail' accept-charset='UTF-8'>
+            <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformsendmail' accept-charset='UTF-8'>
             <table border='1' width='100%'>
                 <tr>
                     <td class='even' width='100px'>" . _APCAL_RO_MAIL_SENDER . ":</td>
@@ -1175,7 +1177,7 @@ if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
         <table border='0' width='100%'>
             <tr><td width='100%' class='itemHead'><span class='itemTitle'>" . _APCAL_RO_TITLE5 . "</span></td></tr>
             <tr><td width='100%'>
-            <form method='post' action='ro_regonlinehandler.php' name='roformeditmember' style='margin:0px;'>
+            <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformeditmember' style='margin:0px;'>
                 <input type='hidden' name='url' value='$url' />
                 <input type='hidden' name='rom_id' value='$rom_id' />
 

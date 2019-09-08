@@ -196,20 +196,20 @@ $xoopsGTicket->clear();
 echo '
 <h4>' . _AM_APCAL_ICALENDAR_IMPORT . "</h4>
 <p><style='color: blue; '>" . (isset($_GET['mes']) ? htmlspecialchars($_GET['mes'], ENT_QUOTES) : '') . "</style></p>
-<form action='?tz=$tz&amp;num=$num' method='post'>
+<form class='apcalForm' action='?tz=$tz&amp;num=$num' method='post'>
   " . _AM_APCAL_LABEL_IMPORTFROMWEB . "<br>
   <input type='text' name='import_uri' size='80'>
   <input type='submit' name='http_import' value='" . _APCAL_BTN_IMPORT . "'>
   " . $xoopsGTicket->getTicketHtml(__LINE__) . "
 </form>
-<form action='?tz=$tz&amp;num=$num' method='post' enctype='multipart/form-data'>
+<form class='apcalForm' action='?tz=$tz&amp;num=$num' method='post' enctype='multipart/form-data'>
   " . _AM_APCAL_LABEL_UPLOADFROMFILE . "<br>
   <input type='hidden' name='MAX_FILE_SIZE' value='65536'>
   <input type='file' name='user_ics' size='72'>
   <input type='submit' name='local_import' value='" . _APCAL_BTN_UPLOAD . "'>
   " . $xoopsGTicket->getTicketHtml(__LINE__) . "
 </form>
-<form action='' method='get' style='margin-bottom:0px;text-align:left'>
+<form class='apcalForm' action='' method='get' style='margin-bottom:0px;text-align:left'>
   <select name='tz' onChange='submit();'>$tzoptions</select>
   <input type='hidden' name='num' value='$num' />
 </form>
@@ -219,7 +219,7 @@ echo '
       $nav_num_info
     </td>
     <td>
-      <form action='' method='get' style='margin-bottom:0px;text-align:right'>
+      <form class='apcalForm' action='' method='get' style='margin-bottom:0px;text-align:right'>
         $nav_html &nbsp;
         <input type='hidden' name='num' value='$num' />
         <input type='hidden' name='tz' value='$tz' />
@@ -227,7 +227,7 @@ echo '
     </td>
   </tr>
 </table>
-<form name='MainForm' action='?tz=$tz&amp;num=$num' method='post' style='margin-top:0px;'>
+<form class='apcalForm' id='MainForm' name='MainForm' action='?tz=$tz&amp;num=$num' method='post' style='margin-top:0px;'>
 " . $xoopsGTicket->getTicketHtml(__LINE__) . "
 <table width='100%' class='outer' cellpadding='4' cellspacing='1'>
   <tr valign='middle'>
@@ -254,8 +254,8 @@ while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
         $newer_style = '';
     }
     if ($event->allday) {
-        $start_desc = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->start) . '<br>(' . _APCAL_MB_APCALALLDAY_EVENT . ')';
-        $end_desc   = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->end - 300) . '<br>(' . _APCAL_MB_APCALALLDAY_EVENT . ')';
+        $start_desc = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->start) . '<br>(' . _APCAL_MB_ALLDAY_EVENT . ')';
+        $end_desc   = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->end - 300) . '<br>(' . _APCAL_MB_ALLDAY_EVENT . ')';
     } else {
         $start_desc = date(_AM_APCAL_DTFMT_LIST_NORMAL, $event->start + $tzoffset);
         $end_desc   = date(_AM_APCAL_DTFMT_LIST_NORMAL, $event->end + $tzoffset);

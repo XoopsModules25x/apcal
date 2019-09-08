@@ -9,6 +9,9 @@ up to v2.1.0:  English, French, German
 up to v2.0.4:  English, French, German, Spanish
 before v1.0.0: English, French, German, Spanish, Japanese, Dutch, Russian, Tchinese, Swedish, Portuguese, BrasilPortuguese
 
+Version 2.22
+
+
 
 Version 2.1.0
 - modinfo.php

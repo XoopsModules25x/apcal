@@ -18,9 +18,9 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
  *}>
-
+<i id='today_schedule'></i>
 <{if $block.num_rows == 0}>
-    <{$block.lang_APCAL_MB_APCALNOEVENT}>
+    <{$block.lang_APCAL_MB_NOEVENT}>
 <{/if}>
 
 <dl>
@@ -34,7 +34,7 @@
                         - <{$event.end_desc}></span>
                 <{else}>
                     <span style='font-size: x-small; '><img border='0'
-                                        src='<{$block.images_url}>/<{$event.dot_gif}>'/>&nbsp;&nbsp;<{$block.lang_APCAL_MB_APCALCONTINUING}>
+                                        src='<{$block.images_url}>/<{$event.dot_gif}>'/>&nbsp;&nbsp;<{$block.lang_APCAL_MB_CONTINUING}>
                         - <{$event.end_desc}></span>
                 <{/if}>
             </dt>
@@ -46,7 +46,7 @@
         <{else}>
             <dt>
                 <span style='font-size: x-small; '><img border='0'
-                                    src='<{$block.images_url}>/<{$event.dot_gif}>'/>&nbsp;&nbsp;<{$block.lang_APCAL_MB_APCALALLDAY_EVENT}>
+                                    src='<{$block.images_url}>/<{$event.dot_gif}>'/>&nbsp;&nbsp;<{$block.lang_APCAL_MB_ALLDAY_EVENT}>
                 </span>
             </dt>
             <dd style='margin-left:20px;'>
@@ -65,7 +65,7 @@
             &nbsp; <span style='font-size: x-small; '><a
                         href='<{$block.get_target}>?smode=Daily&amp;action=Edit&amp;caldate=<{$block.caldate}>'><img
                             src='<{$block.images_url}>/addevent.gif' border='0' width='14'
-                            height='12'/><{$block.lang_APCAL_MB_APCALADDEVENT}></a></span>
+                            height='12'/><{$block.lang_APCAL_MB_ADDEVENT}></a></span>
         </dt>
     </dl>
 <{/if}>
