@@ -93,7 +93,7 @@
                                 <tr>
 
                                     <{* CATEGORY SELECT FORM *}>
-                                    <td width="290" align='center' valign='middle' style='vertical-align:middle;'
+                                    <td align='center' valign='middle' style='vertical-align:middle;'
                                         class='apcal-categoryform'>
                                         <{$categories_selform}>
                                     </td>
@@ -106,7 +106,7 @@
                                     <td width='350' align='center' valign='middle' nowrap='nowrap'
                                         style='vertical-align:middle;'>
                                         <img src='<{$images_url}>/spacer.gif' alt='' width='350' height='4'/><br>
-                                        <form action='<{$get_target}>?smode=List&amp;num=<{$num}>&amp;cid=<{$now_cid}>&amp;order=<{$order}>'
+                                        <form class='apcalForm' action='<{$get_target}>?smode=List&amp;num=<{$num}>&amp;cid=<{$now_cid}>&amp;order=<{$order}>'
                                               method='POST' style='margin:0;'>
                                             <span style="font-size: medium; color: <{$calhead_color}>; "><span
                                                         class='calhead'><{$ymdo_selects}><input type='submit'
@@ -198,7 +198,7 @@
             </td>
         </tr>
     </table>
-    <form name='MainForm' action='<{$mod_url}>/index.php' target='_blank' method='post' style='margin:0;'>
+    <form class='apcalForm' id='MainForm' name='MainForm' action='<{$mod_url}>/index.php' target='_blank' method='post' style='margin:0;'>
         <table width="100%" cellspacing="0" cellpadding="10" border="0">
             <tr>
                 <td width="100%" align="center" valign="top">
@@ -210,7 +210,7 @@
                             </td>
                         </tr>
                     </table>
-                    <table width='100%' class='outer' cellpadding='4' cellspacing='1'>
+                    <table class='apcalEventlist' width='100%' class='outer' cellpadding='4' cellspacing='1'>
                         <tr valign='middle'>
                             <th class='head'></th>
                             <{if $isAdmin || $showSubmitter}>

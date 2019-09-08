@@ -28,5 +28,5 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MB_APCAL_BL_LOADED')) {
 
     define('_MB_APCAL_SHOWPICTURES', 'Show pictures');
     define('_MB_APCAL_YES', 'Yes');
-    define('_MB_APCAL_NO', 'No');
+    define('_MB_APCAL_NO', 'No');    
 }

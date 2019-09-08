@@ -271,7 +271,7 @@ if (!empty($limit_file)) {
 
 // select forms for extracting
 echo "
-    <form name='extraction' action='' method='get' style='margin:0px;'>
+    <form class='apcalForm' name='extraction' action='' method='get' style='margin:0px;'>
         <select name='limit_type'>" . make_selected($type_options, $limit_type) . "</select>
         <select name='limit_dirname'>" . make_selected($dirname_options, $limit_dirname) . "</select>
         <select name='limit_file'>" . make_selected($file_options, $limit_file) . "</select>
@@ -284,7 +284,7 @@ $prs = $GLOBALS['xoopsDB']->query("SELECT * FROM $cal->plugin_table WHERE ($whr_
 
 // TH Part
 echo "
-    <form name='MainForm' action='?limit_type=$limit_type&amp;limit_dirname=$limit_dirname&amp;limit_file=$limit_file' method='post' style='margin:0px;'>
+    <form class='apcalForm' id='MainForm' name='MainForm' action='?limit_type=$limit_type&amp;limit_dirname=$limit_dirname&amp;limit_file=$limit_file' method='post' style='margin:0px;'>
     " . $xoopsGTicket->getTicketHtml(__LINE__) . "
     <table width='100%' class='outer' cellpadding='4' cellspacing='1'>
       <tr valign='middle'>

@@ -33,58 +33,58 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED')) {
     define('_APCAL_ICON_MONTHLY', 'Monthly View');
     define('_APCAL_ICON_YEARLY', 'Yearly View');
 
-    define('_APCAL_MB_APCALSHOWALLCAT', 'All Categories');
+    define('_APCAL_MB_SHOWALLCAT', 'All Categories');
 
-    define('_APCAL_MB_APCALLINKTODAY', 'Today');
-    define('_APCAL_MB_APCALNOSUBJECT', '(No Subject)');
+    define('_APCAL_MB_LINKTODAY', 'Today');
+    define('_APCAL_MB_NOSUBJECT', '(No Subject)');
 
-    define('_APCAL_MB_APCALPREV_DATE', 'Yesterday');
-    define('_APCAL_MB_APCALNEXT_DATE', 'Tomorrow');
-    define('_APCAL_MB_APCALPREV_WEEK', 'Last Week');
-    define('_APCAL_MB_APCALNEXT_WEEK', 'Next Week');
-    define('_APCAL_MB_APCALPREV_MONTH', 'Last Month');
-    define('_APCAL_MB_APCALNEXT_MONTH', 'Next Month');
-    define('_APCAL_MB_APCALPREV_YEAR', 'Last Year');
-    define('_APCAL_MB_APCALNEXT_YEAR', 'Next Year');
+    define('_APCAL_MB_PREV_DATE', 'Yesterday');
+    define('_APCAL_MB_NEXT_DATE', 'Tomorrow');
+    define('_APCAL_MB_PREV_WEEK', 'Last Week');
+    define('_APCAL_MB_NEXT_WEEK', 'Next Week');
+    define('_APCAL_MB_PREV_MONTH', 'Last Month');
+    define('_APCAL_MB_NEXT_MONTH', 'Next Month');
+    define('_APCAL_MB_PREV_YEAR', 'Last Year');
+    define('_APCAL_MB_NEXT_YEAR', 'Next Year');
 
-    define('_APCAL_MB_APCALNOEVENT', 'No Events');
-    define('_APCAL_MB_APCALADDEVENT', 'Add an Event');
-    define('_APCAL_MB_APCALCONTINUING', '(continuing)');
-    define('_APCAL_MB_APCALRESTEVENT_PRE', '');
-    define('_APCAL_MB_APCALRESTEVENT_SUF', 'more item(s)');
-    define('_APCAL_MB_APCALTIMESEPARATOR', '--');
+    define('_APCAL_MB_NOEVENT', 'No Events');
+    define('_APCAL_MB_ADDEVENT', 'Add an Event');
+    define('_APCAL_MB_CONTINUING', '(continuing)');
+    define('_APCAL_MB_RESTEVENT_PRE', '');
+    define('_APCAL_MB_RESTEVENT_SUF', 'more item(s)');
+    define('_APCAL_MB_TIMESEPARATOR', '--');
 
-    define('_APCAL_MB_APCALALLDAY_EVENT', 'Allday Event');
-    define('_APCAL_MB_APCALLONG_EVENT', 'Show as Bar');
-    define('_APCAL_MB_APCALLONG_SPECIALDAY', 'Anniversary etc.');
+    define('_APCAL_MB_ALLDAY_EVENT', 'Allday Event');
+    define('_APCAL_MB_LONG_EVENT', 'Show as Bar');
+    define('_APCAL_MB_LONG_SPECIALDAY', 'Anniversary etc.');
 
-    define('_APCAL_MB_APCALPUBLIC', 'Public');
-    define('_APCAL_MB_APCALPRIVATE', 'Private');
-    define('_APCAL_MB_APCALPRIVATETARGET', ' among %s');
+    define('_APCAL_MB_PUBLIC', 'Public');
+    define('_APCAL_MB_PRIVATE', 'Private');
+    define('_APCAL_MB_PRIVATETARGET', ' among %s');
 
-    define('_APCAL_MB_APCALLINK_TO_RRULE1ST', 'Jump to the 1st Event ');
-    define('_APCAL_MB_APCALRRULE1ST', 'This is the 1st Event');
+    define('_APCAL_MB_LINK_TO_RRULE1ST', 'Jump to the 1st Event ');
+    define('_APCAL_MB_RRULE1ST', 'This is the 1st Event');
 
-    define('_APCAL_MB_APCALEVENT_NOTREGISTER', 'Not Registered');
-    define('_APCAL_MB_APCALEVENT_ADMITTED', 'Admitted');
-    define('_APCAL_MB_APCALEVENT_NEEDADMIT', 'Waiting for Admission');
+    define('_APCAL_MB_EVENT_NOTREGISTER', 'Not Registered');
+    define('_APCAL_MB_EVENT_ADMITTED', 'Admitted');
+    define('_APCAL_MB_EVENT_NEEDADMIT', 'Waiting for Admission');
 
-    define('_APCAL_MB_APCALTITLE_EVENTINFO', 'Scheduler');
-    define('_APCAL_MB_APCALSUBTITLE_EVENTDETAIL', 'Detail View');
-    define('_APCAL_MB_APCALSUBTITLE_EVENTEDIT', 'Editing View');
+    define('_APCAL_MB_TITLE_EVENTINFO', 'Scheduler');
+    define('_APCAL_MB_SUBTITLE_EVENTDETAIL', 'Detail View');
+    define('_APCAL_MB_SUBTITLE_EVENTEDIT', 'Editing View');
 
-    define('_APCAL_MB_APCALHOUR_SUF', ':');
-    define('_APCAL_MB_APCALMINUTE_SUF', '');
+    define('_APCAL_MB_HOUR_SUF', ':');
+    define('_APCAL_MB_MINUTE_SUF', '');
 
-    define('_APCAL_MB_APCALORDER_ASC', 'Ascending');
-    define('_APCAL_MB_APCALORDER_DESC', 'Descending');
-    define('_APCAL_MB_APCALSORTBY', 'Sort by:');
-    define('_APCAL_MB_APCALCURSORTEDBY', 'Events currently sorted by:');
+    define('_APCAL_MB_ORDER_ASC', 'Ascending');
+    define('_APCAL_MB_ORDER_DESC', 'Descending');
+    define('_APCAL_MB_SORTBY', 'Sort by:');
+    define('_APCAL_MB_CURSORTEDBY', 'Events currently sorted by:');
 
-    define('_APCAL_MB_APCALLABEL_CHECKEDITEMS', 'Checked events are:');
-    define('_APCAL_MB_APCALLABEL_OUTPUTICS', 'to be exported in iCalendar');
+    define('_APCAL_MB_LABEL_CHECKEDITEMS', 'Checked events are:');
+    define('_APCAL_MB_LABEL_OUTPUTICS', 'to be exported in iCalendar');
 
-    define('_APCAL_MB_APCALICALSELECTPLATFORM', 'Select platform');
+    define('_APCAL_MB_ICALSELECTPLATFORM', 'Select platform');
 
     define('_APCAL_TH_SUMMARY', 'Event title');
     define('_APCAL_TH_TIMEZONE', 'Time Zone');
@@ -109,10 +109,10 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED')) {
     define('_APCAL_OPT_PRIVATEGROUP', 'group %s');
     define('_APCAL_OPT_PRIVATEINVALID', '(invalid group)');
 
-    define('_APCAL_MB_APCALOP_AFTER', 'After');
-    define('_APCAL_MB_APCALOP_BEFORE', 'Before');
-    define('_APCAL_MB_APCALOP_ON', 'On');
-    define('_APCAL_MB_APCALOP_ALL', 'All');
+    define('_APCAL_MB_OP_AFTER', 'After');
+    define('_APCAL_MB_OP_BEFORE', 'Before');
+    define('_APCAL_MB_OP_ON', 'On');
+    define('_APCAL_MB_OP_ALL', 'All');
 
     define('_APCAL_CNFM_SAVEAS_YN', 'Are you OK saving this as another record ?');
     define('_APCAL_CNFM_DELETE_YN', 'Are you OK deleting this record ?');

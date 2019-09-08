@@ -18,7 +18,7 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
  *}>
-
+<i id='minical'></i>
 <{strip}>
     <table border="0" cellspacing="0" cellpadding="0" width="150" style="width:150px;line-height:normal;margin:0;">
         <tr>

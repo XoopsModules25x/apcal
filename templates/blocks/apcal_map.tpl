@@ -18,5 +18,5 @@
  * @author      Antiques Promotion (http://www.antiquespromotion.ca)
  */
  *}>
-
+<i id='map'></i>
 <{$block.map}>

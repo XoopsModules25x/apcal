@@ -186,7 +186,7 @@ class MyXoopsGroupPermForm extends XoopsForm
         $this->addElement($tray);
 
         $ret      = '<h4>' . $this->getTitle() . '</h4>' . $this->_permDesc . '<br>';
-        $ret      .= "<form name='"
+        $ret      .= "<form class='apcalForm' name='"
                      . $this->getName()
                      . "' id='"
                      . $this->getName()

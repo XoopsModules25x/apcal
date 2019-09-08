@@ -9,15 +9,17 @@
 
     function GMinit() {
         var address = window.opener.document.MainForm.location.value;
-        var latitude = window.opener.document.MainForm.gmlatitude.value;
-        var longitude = window.opener.document.MainForm.gmlongitude.value;
-        var zoom = parseInt(window.opener.document.MainForm.gmzoomlevel.value);
+        var latitude = window.opener.document.MainForm.gmlat.value;
+        var longitude = window.opener.document.MainForm.gmlong.value;
+        var zoom = parseInt(window.opener.document.MainForm.gmzoom.value);
+        if (zoom == 0) {zoom = 10;}
         var myLatlng = new google.maps.LatLng(latitude, longitude);
         var myOptions = {
             zoom: zoom,
             center: myLatlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
+        var bounds = new google.maps.LatLngBounds();
 
         map = new google.maps.Map(document.getElementById("googlemap"), myOptions);
         geocoder = new google.maps.Geocoder();
@@ -56,14 +58,13 @@
                 map.setCenter(results[0].geometry.location);
                 marker.setPosition(results[0].geometry.location);
             }
-            else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
-                map.setZoom(4);
-                alert('Address not found');
-            }
+            
+            
         });
     }
 
     function sendCoords() {
+        self.opener.document.MainForm.location.value =  document.getCoords.address.value;
         self.opener.document.MainForm.gmlat.value = marker.getPosition().lat();
         self.opener.document.MainForm.gmlong.value = marker.getPosition().lng();
         self.opener.document.MainForm.gmzoom.value = map.getZoom();
@@ -72,10 +73,11 @@
 
     window.onload = GMinit;
 </script>
-<form name="getCoords" action="" method="post">
-    <input type="text" name="address"/>
-    <input type="button" name="search" value="Search" onclick="moveMap(document.getCoords.address.value);"/>
-    <input type="button" name="getLatLngZoom" value="Get latitude/longitude/zoom" onclick="sendCoords();"/>
+<form id="getCoords" class='apcalForm' name="getCoords" action="" method="post">
+    <input type="text" id="address" name="address"/>
+    <input type="button" name="search" value="<{$smarty.const._APCAL_TH_GETCOORDS}>" onclick="moveMap(document.getCoords.address.value);"/>
+    <input type="button" name="getLatLngZoom" value="<{$smarty.const._MD_APCAL_MAP_APPLY}>" onclick="sendCoords();"/>
+    <input type="button" name="getLatLngZoom" value="<{$smarty.const._CANCEL}>" onclick="javascript:window.close();"/>
 </form>
 <div id="googlemap" style="width: 100%; height: 70%;"></div>
 latitude:<span id="lat"></span><br>

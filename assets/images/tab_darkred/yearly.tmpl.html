@@ -1,0 +1,113 @@
+<pattemplate:tmpl name="WholeBoard">
+  <div class="clear">&nbsp;</div>
+  <table border='0' cellspacing='0' cellpadding='0' width='100%'>
+    <tr>
+      <td width='100%' class='calframe'>
+        <!-- header -->
+        <!-- header  Zeile Kategorie-->
+			<table class='apcalTabsTable' >
+				<tr background='{SKINPATH}/bg_table.gif' >
+				   <td align='center' valign='middle' style='vertical-align:middle;text-align=center' class='apcal-categoryform'>{CATEGORIES_SELFORM}</td>
+				   <td width='10'></td>				   
+				   <td width='20'></td>
+				   <td width='20' align='center' valign='middle' style='vertical-align:middle;text-align=center'><a href='{GET_TARGET}?cid={CID}&amp;smode=Yearly&amp;caldate={PREV_YEAR}'><img src='{SKINPATH}/arrowleft.gif' width='14' height='12' border='0' alt='{MB_PREV_YEAR}' title='{MB_PREV_YEAR}' /></a></td>
+				   <td width='210' align='center' valign='middle' nowrap='nowrap' style='vertical-align:middle;text-align=center'><img src='{SKINPATH}/spacer.gif' alt='' width='200' height='4' /><br /><font size='4' color='{CALHEAD_COLOR}'><b><span class='calhead'>{DISP_YEAR}</span></b></font><br /><img src='{SKINPATH}/spacer.gif' alt='' width='200' height='4' /></td>
+				   <td width='20' align='center' valign='middle' style='vertical-align:middle;text-align=center'><a href='{GET_TARGET}?cid={CID}&amp;smode=Yearly&amp;caldate={NEXT_YEAR}'><img src='{SKINPATH}/arrowright.gif' width='14' height='12' border='0' alt='{MB_NEXT_YEAR}' title='{MB_NEXT_YEAR}' /></a></td>
+				   <td width='20'></td>
+				   <td width='300' align='center' valign='middle' style='vertical-align:middle;text-align=center'></td>
+				</tr>
+			</table>
+			<!-- header Tab-Leiste-->
+			<table class='apcalTabsTable' >
+				<tr>
+					<td class='apcalTabsLeft' width='20px' height='30px' background='{SKINPATH}/tab0.gif'></td>	
+					<td class='apcalTabs' background='{SKINPATH}/tab1.gif'><a class="apcalTabsActive" href='{GET_TARGET}?cid={CID}&amp;smode=Yearly&amp;caldate={CALDATE}'>Jahr</a></td>
+					<td class='apcalTabs' background='{SKINPATH}/tab2.gif'><a href='{GET_TARGET}?cid={CID}&amp;smode=Monthly&amp;caldate={CALDATE}'>Monat</a></td>
+					<td class='apcalTabs' background='{SKINPATH}/tab2.gif'><a href='{GET_TARGET}?cid={CID}&amp;smode=Weekly&amp;caldate={CALDATE}'>Woche</a></td>
+					<td class='apcalTabs' background='{SKINPATH}/tab2.gif'><a href='{GET_TARGET}?cid={CID}&amp;smode=Daily&amp;caldate={CALDATE}'>Tag</a></td>
+					<td class='apcalTabs' background='{SKINPATH}/tab2.gif'><a href='{GET_TARGET}?cid={CID}&amp;smode=List&amp;caldate={CALDATE}'>Liste</a></td>
+					<td class='apcalTabsRight' background='{SKINPATH}/tab0.gif'></td>
+				</tr>    
+			</table> 
+			<!-- body -->
+			<table class='apcalTabsTable' >
+				<tr>
+				  <td width='770' class='calframe'>
+					 
+					<table border='0' cellspacing='0' cellpadding='0' width='100%' style='border-collapse:collapse;'>
+
+					 <tr>
+					   <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10' /></td>
+					 </tr>
+
+					 <tr>
+					   <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30' /></td>
+					   <td align='center' valign='top'>{MINICAL1}</td>
+					   <td align='center' valign='top'>{MINICAL2}</td>
+					   <td align='center' valign='top'>{MINICAL3}</td>
+					 </tr>
+
+					 <tr>
+					   <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10' /></td>
+					 </tr>
+
+					 <tr>
+					   <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30' /></td>
+					   <td align='center' valign='top'>{MINICAL4}</td>
+					   <td align='center' valign='top'>{MINICAL5}</td>
+					   <td align='center' valign='top'>{MINICAL6}</td>
+					 </tr>
+
+					 <tr>
+					   <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10' /></td>
+					 </tr>
+
+					 <tr>
+					   <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30' /></td>
+					   <td align='center' valign='top'>{MINICAL7}</td>
+					   <td align='center' valign='top'>{MINICAL8}</td>
+					   <td align='center' valign='top'>{MINICAL9}</td>
+					 </tr>
+
+					 <tr>
+					   <td colspan='4'><img src='{SKINPATH}/spacer.gif' alt='' width='4' height='10' /></td>
+					 </tr>
+
+					 <tr>
+					   <td><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='30' /></td>
+					   <td align='center' valign='top'>{MINICAL10}</td>
+					   <td align='center' valign='top'>{MINICAL11}</td>
+					   <td align='center' valign='top'>{MINICAL12}</td>
+					 </tr>
+					</table>
+				  </td>
+				</tr>
+			</table>
+
+        
+        
+      </td>
+    </tr>
+  </table>
+  <br />
+  <!-- Controller -->
+  <table border='0' cellspacing='0' cellpadding='0' width='100%'>
+    <tr>
+      <td width='10'><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='10' /></td>
+      <td width='100%' align='center'>
+        <form class='apcalForm' action='{GET_TARGET}?cid={CID}&amp;smode=Yearly&amp;{QUERY_STRING}' method='post'>
+          <select name='apcal_year'>{YEAR_OPTIONS}</select> &nbsp; 
+          <input type='submit' name='apcal_jumpcaldate' value='{LANG_JUMP}'>
+          &nbsp; 
+          <a href='{TODAYLINK}'>{MB_LINKTODAY}</a>
+        </form>
+      </td>
+    </tr>
+  </table>
+  <table border='0' cellspacing='0' cellpadding='0' width='100%'>
+    <tr>
+      <td width='10'><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='10' /></td>
+      <td width='100%' align='right'>{COPYRIGHT}</td>
+    </tr>
+  </table>
+</pattemplate:tmpl>

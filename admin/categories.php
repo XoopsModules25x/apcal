@@ -375,7 +375,7 @@ if ($disp === 'edit' && $cid > 0) {
 
     // TH Part
     echo "
-    <form name='MainForm' action='' method='post' style='margin:10px;'>
+    <form class='apcalForm' id='MainForm' name='MainForm' action='' method='post' style='margin:10px;'>
     " . $xoopsGTicket->getTicketHtml(__LINE__) . "
     <input type='hidden' name='delcat' value='' />
     <table width='75%' class='outer' cellpadding='4' cellspacing='1'>

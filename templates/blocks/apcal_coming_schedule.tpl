@@ -43,9 +43,9 @@
         }
     });
 </script>
-
+<i id='coming_schedule'></i>
 <{if $block.num_rows == 0}>
-    <{$block.lang_APCAL_MB_APCALNOEVENT}>
+    <{$block.lang_APCAL_MB_NOEVENT}>
 <{/if}>
 
 <dl>
@@ -58,14 +58,14 @@
                     <img src="<{$xoops_upload_url}>/apcal/thumbs/<{$event.picture}>" alt="<{$event.summary}>"
                          title="<{$event.summary}>" style='max-width: 18px; max-height: 20px;'/>
                 </a>
-                <{else}>
+            <{else}>
                 <span style='font-size: x-small; '>
                     <img src="<{$block.images_url}>/<{$event.dot_gif}>" alt="<{$event.summary}>"
                          title="<{$event.summary}>" style='max-width: 18px; max-height: 20px;'/>&nbsp;
-                    <{/if}>
+            <{/if}>
 
                     <{if $event.distance == 0}>
-                        <{$block.lang_APCAL_MB_APCALCONTINUING}> - <{$event.end_desc}>
+                        <{$block.lang_APCAL_MB_CONTINUING}> - <{$event.end_desc}>
                     <{elseif $event.distance == 1}>
                         <{$event.start_desc}> - <{$event.end_desc}>
                     <{elseif $event.distance == 2}>
@@ -76,10 +76,12 @@
                 </span>
         </dt>
         <dd style='margin-left:20px;'>
-            <span style='font-size: x-small; '><a
-                        href='<{$block.get_target}>?smode=Daily&amp;action=View&amp;event_id=<{$event.id}>&amp;caldate=<{$block.caldate}>'
-                        class='calsummary'
-                        title='<{$event.mainCat}> - <{$event.location}>'><{$event.summary}></a></span>
+            <span style='font-size: x-small; '>
+                <a href='<{$block.get_target}>?smode=Daily&amp;action=View&amp;event_id=<{$event.id}>&amp;caldate=<{$block.caldate}>'
+                        class='calsummary' title='<{$event.mainCat}> - <{$event.location}>'><{$event.summary}>
+                </a>
+                <{$event.description}>
+            </span>
         </dd>
     <{/foreach}>
 </dl>
@@ -89,7 +91,7 @@
         <tr>
             <td>
                 <small>
-                    <a href="<{$xoops_url}>/modules/APCal"><{$block.lang_APCAL_MB_APCALRESTEVENT_PRE}> <{$block.num_rows_rest}> <{$block.lang_APCAL_MB_APCALRESTEVENT_SUF}></a>
+                    <a href="<{$xoops_url}>/modules/apcal"><{$block.lang_APCAL_MB_RESTEVENT_PRE}> <{$block.num_rows_rest}> <{$block.lang_APCAL_MB_RESTEVENT_SUF}></a>
                 </small>
             </td>
         </tr>
@@ -103,7 +105,7 @@
                 <span style='font-size: x-small; '>
                     <small><a href='<{$block.get_target}>?smode=Daily&amp;action=Edit&amp;caldate=<{$block.caldate}>'>
                             <img src='<{$block.images_url}>/addevent.gif' border='0' width='14'
-                                 height='12'/><{$block.lang_APCAL_MB_APCALADDEVENT}>
+                                 height='12'/><{$block.lang_APCAL_MB_ADDEVENT}>
                         </a></small>
                 </span>
             </td>

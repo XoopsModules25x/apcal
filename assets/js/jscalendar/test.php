@@ -59,7 +59,7 @@ setcookie('lang', $lang);
 
     <h1>Calendar.php test</h1>
 
-    <form action="test.php" method="get">
+    <form class='apcalForm' action="test.php" method="get">
         Select language: <select name="lang" onchange="this.form.submit()">
             <?php
             $cwd = getcwd();
@@ -86,7 +86,7 @@ setcookie('lang', $lang);
         </blockquote>
     </form>
 
-    <form action="test.php" method="get">
+    <form class='apcalForm' action="test.php" method="get">
         <input type="hidden" name="submitted" value="1"/>
 
         <table>

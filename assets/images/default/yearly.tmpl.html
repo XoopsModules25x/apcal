@@ -6,7 +6,7 @@
                 <table border='0' cellspacing='0' cellpadding='0' style='width:100%;border-collapse:collapse;'>
                     <tr>
                         <td nowrap='nowrap' colspan='8' align='center' bgcolor='{CALHEAD_BGCOLOR}'>
-                            <table border='0' cellspacing='0' cellpadding='0' width='560' class='apcal-categoryform'>
+                            <table border='0' cellspacing='0' cellpadding='0' class='apcal-categoryform'>
                                 <tr>
                                     <td align='center' valign='middle' style='vertical-align:middle;' class='apcal-categoryform'>{CATEGORIES_SELFORM}</td>
                                     <td width='8'><img src='{SKINPATH}/spacer.gif' alt='' width='8' height='4'/></td>
@@ -82,7 +82,7 @@
         <tr>
             <td width='10'><img src='{SKINPATH}/spacer.gif' alt='' width='10' height='10'/></td>
             <td width='100%' align='center'>
-                <form action='{GET_TARGET}?cid={CID}&amp;smode=Yearly&amp;{QUERY_STRING}' method='post'>
+                <form class='apcalForm' action='{GET_TARGET}?cid={CID}&amp;smode=Yearly&amp;{QUERY_STRING}' method='post'>
                     <select name='apcal_year'>{YEAR_OPTIONS}</select> &nbsp;
                     <input type='submit' name='apcal_jumpcaldate' value='{LANG_JUMP}'>
                     &nbsp;

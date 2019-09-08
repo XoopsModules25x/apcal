@@ -188,7 +188,7 @@ xoops_cp_header();
 $adminObject->displayNavigation(basename(__FILE__));
 echo '<h4 xmlns="http://www.w3.org/1999/html">' . _AM_APCAL_ADMISSION . "</h4>
 <p><style='color: blue; '>" . (isset($_GET['mes']) ? htmlspecialchars($_GET['mes'], ENT_QUOTES) : '') . "</style></p>
-<form action='' method='get' style='margin-bottom:0px;text-align:left'>
+<form class='apcalForm' action='' method='get' style='margin-bottom:0px;text-align:left'>
   <select name='tz' onChange='submit();'>$tzoptions</select>
   <input type='hidden' name='cid' value='$cid' />
   <input type='hidden' name='num' value='$num' />
@@ -200,7 +200,7 @@ echo '<h4 xmlns="http://www.w3.org/1999/html">' . _AM_APCAL_ADMISSION . "</h4>
       $nav_num_info
     </td>
     <td align='left'>
-      <form action='' method='get' style='margin-bottom:0px;text-align:right'>
+      <form class='apcalForm' action='' method='get' style='margin-bottom:0px;text-align:right'>
         $cat_selbox4extract
         <input type='text' name='txt' value='" . htmlspecialchars($txt, ENT_QUOTES) . "' />
         <input type='submit' value='" . _AM_APCAL_BUTTON_EXTRACT . "' /> &nbsp;
@@ -211,7 +211,7 @@ echo '<h4 xmlns="http://www.w3.org/1999/html">' . _AM_APCAL_ADMISSION . "</h4>
     </td>
   </tr>
 </table>
-<form name='MainForm' action='?tz=$tz&amp;num=$num&amp;cid=$cid' method='post' style='margin-top:0px;'>
+<form class='apcalForm' id='MainForm' name='MainForm' action='?tz=$tz&amp;num=$num&amp;cid=$cid' method='post' style='margin-top:0px;'>
 <table width='100%' class='outer' cellpadding='4' cellspacing='1'>
   <tr valign='middle'>
     <th>" . _AM_APCAL_ADMIT_TH0 . '</th>
@@ -230,8 +230,8 @@ $oddeven = 'odd';
 while ($event = $GLOBALS['xoopsDB']->fetchObject($rs)) {
     $oddeven = ($oddeven === 'odd' ? 'even' : 'odd');
     if ($event->allday) {
-        $start_desc = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->start) . '<br>(' . _APCAL_MB_APCALALLDAY_EVENT . ')';
-        $end_desc   = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->end - 300) . '<br>(' . _APCAL_MB_APCALALLDAY_EVENT . ')';
+        $start_desc = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->start) . '<br>(' . _APCAL_MB_ALLDAY_EVENT . ')';
+        $end_desc   = date(_AM_APCAL_DTFMT_LIST_ALLDAY, $event->end - 300) . '<br>(' . _APCAL_MB_ALLDAY_EVENT . ')';
     } else {
         $start_desc = date(_AM_APCAL_DTFMT_LIST_NORMAL, $event->start + $tzoffset);
         $end_desc   = date(_AM_APCAL_DTFMT_LIST_NORMAL, $event->end + $tzoffset);

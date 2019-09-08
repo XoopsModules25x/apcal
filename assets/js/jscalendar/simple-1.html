@@ -55,7 +55,7 @@
     is updated so that the difference between them remains one week. The
     property useful here is "onUpdate".</p>
 
-<form action="#" method="get">
+<form class='apcalForm' action="#" method="get">
     <input type="text" name="date" id="f_date_a"/>
     <input type="text" name="date" id="f_calcdate"/>
 </form>
@@ -100,7 +100,7 @@
     introduced in 0.9.6 (show all years in drop-down boxes, instead of every
     other year as default).</p>
 
-<form action="#" method="get">
+<form class='apcalForm' action="#" method="get">
     <input type="text" name="date" id="f_date_b"/>
     <button type="reset" id="f_trigger_b">...</button>
 </form>
@@ -124,7 +124,7 @@
     Also in this example we setup a different alignment, just to show how it's
     done. The input field is read-only (that is set from HTML).</p>
 
-<form action="#" method="get">
+<form class='apcalForm' action="#" method="get">
     <table cellspacing="0" cellpadding="0" style="border-collapse: collapse;">
         <tr>
             <td><input type="text" name="date" id="f_date_c" readonly="1"/></td>
@@ -156,7 +156,7 @@
     we need to store one format in the database (thus pass it in the input
     field) but we wanna show a friendlier format to the end-user.</p>
 
-<form action="#" method="get" style="visibility: hidden;">
+<form class='apcalForm' action="#" method="get" style="visibility: hidden;">
     <input type="hidden" name="date" id="f_date_d"/>
 </form>
 
@@ -184,7 +184,7 @@
 <p><b>Hidden field, display area, trigger image.</b> Very similar to the
     previous example. The difference is that we also have a trigger image.</p>
 
-<form action="#" method="get" style="visibility: hidden;">
+<form class='apcalForm' action="#" method="get" style="visibility: hidden;">
     <input type="hidden" name="date" id="f_date_e"/>
 </form>
 
@@ -212,7 +212,7 @@ red;" title="Date selector" onmouseover="this.style.background='red';"
     but we now disable some dates (all weekends, that is, Saturdays and
     Sundays).</p>
 
-<form action="#" method="get" style="visibility: hidden;">
+<form class='apcalForm' action="#" method="get" style="visibility: hidden;">
     <input type="hidden" name="date" id="f_date_f"/>
 </form>
 

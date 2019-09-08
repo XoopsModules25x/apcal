@@ -18,9 +18,9 @@
  * @author       GIJ=CHECKMATE (PEAK Corp. http://www.peak.ne.jp/)
  */
  *}>
-
+<i id='new_event'></i>
 <{if $block.num_rows == 0}>
-    <{$block.lang_APCAL_MB_APCALNOEVENT}>
+    <{$block.lang_APCAL_MB_NOEVENT}>
 <{/if}>
 
 <dl>
@@ -40,7 +40,7 @@
     <table border='0' cellspacing='0' cellpadding='0' width='100%'>
         <tr>
             <td align='right'>
-                <small><{$block.lang_APCAL_MB_APCALRESTEVENT_PRE}> <{$block.num_rows_rest}> <{$block.lang_APCAL_MB_APCALRESTEVENT_SUF}></small>
+                <small><{$block.lang_APCAL_MB_RESTEVENT_PRE}> <{$block.num_rows_rest}> <{$block.lang_APCAL_MB_RESTEVENT_SUF}></small>
             </td>
         </tr>
     </table>
@@ -52,7 +52,7 @@
             &nbsp; <span style='font-size: x-small; '><a
                         href='<{$block.get_target}>?smode=Daily&amp;action=Edit&amp;caldate=<{$block.caldate}>'><img
                             src='<{$block.images_url}>/addevent.gif' border='0' width='14'
-                            height='12'/><{$block.lang_APCAL_MB_APCALADDEVENT}></a></span>
+                            height='12'/><{$block.lang_APCAL_MB_ADDEVENT}></a></span>
         </dt>
     </dl>
 <{/if}>
