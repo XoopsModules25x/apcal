@@ -35,7 +35,6 @@ if (!isset($GLOBALS['xoopsTpl']) || !($GLOBALS['xoopsTpl'] instanceof XoopsTpl))
 }
 
 $xoopsTpl = new XoopsTpl();
-// $xoopsTpl->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
-$xoopsTpl->assign('api_key', 'AIzaSyCklIni2Jw-tZbCL-j8HGvypjSqAIjfKpE');
+$xoopsTpl->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
 
 $xoopsTpl->display('db:apcal_getCoords.tpl');
