@@ -2,7 +2,7 @@
 
 if( defined( 'FOR_XOOPS_LANG_CHECKER' ) || ! defined( '_AM_APCAL_AM_LOADED' ) ) {
     define('_AM_APCAL_AM_LOADED' , 1 ) ;
-    define('_AM_APCAL_COPYRIGHT' , "<a href='http://xoops.antiquespromotion.ca' title='Calendar for Xoops' target='_blank'>APCal</a> by <a href='http://www.antiquespromotion.ca' title='Antiques Promotion Canada' target='_blank'>AP</a>");
+    define('_AM_APCAL_COPYRIGHT' , "");
 
     // Index
     define('_AM_APCAL_TIMEZONE', 'Zeitzonen');

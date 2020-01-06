@@ -5,12 +5,12 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined( 'APCAL_MB_APCALLOADED' ) ) {
 
     // index.php
     define('_MB_APCAL_ERR_NOPERMTOUPDATE',"Keine Berechtigung vorhanden, um Termine zu ändern");
-    define('_APCAL_APURL', 'http://xoops.antiquespromotion.ca');
-    define('_APCAL_APURL2', 'http://www.antiquespromotion.ca');
-    define('_MD_APCAL_COPYRIGHT' , '<a href="http://xoops.antiquespromotion.ca" title="Calendar for Xoops" target="_blank">APCal</a> by <a href="http://www.antiquespromotion.ca" title="Antiques Promotion Canada" target="_blank">AP</a>');
-    define('_MB_APCAL_ERR_NOPERMTOINSERT',"Keine Berechtigung vorhanden, um Termine hinzuzufügen");
-    define('_MB_APCAL_ERR_NOPERMTODELETE',"Keine Berechtigung vorhanden, um Termine zu löschen");
-    define('_MB_APCAL_ALT_PRINTTHISEVENT',"Diesen Termin drucken");
+    define('_APCAL_APURL', '');
+    define('_APCAL_APURL2', '');
+    define('_MD_APCAL_COPYRIGHT' , '');
+    define('_MD_APCAL_ERR_NOPERMTOINSERT',"Keine Berechtigung vorhanden, um Termine hinzuzufügen");
+    define('_MD_APCAL_ERR_NOPERMTODELETE',"Keine Berechtigung vorhanden, um Termine zu löschen");
+    define('_MD_APCAL_ALT_PRINTTHISEVENT',"Diesen Termin drucken");
     define('_APCAL_CALENDAR', 'Kalender');
 
     // print.php
@@ -34,7 +34,7 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined( 'APCAL_MB_APCALLOADED' ) ) {
     // API texts
     define('_APCAL_PROVIDEDBY', 'Ergebnis zur Verfügung gestellt von');
     define('_APCAL_X', 'by');
-    define('_APCAL_AP', 'Antiques Promotion Canada');
+    define('_APCAL_AP', '');
     define('_APCAL_CALENDAROF', 'Kalender von');
 
     // Share admin

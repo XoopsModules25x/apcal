@@ -121,6 +121,8 @@ function xoops_module_update_apcal(XoopsModule $module)
             roe_eventid mediumint(8) unsigned zerofill NOT NULL DEFAULT '00000000',
             roe_number int(10) NOT NULL DEFAULT '0',
             roe_datelimit int(10) NOT NULL DEFAULT '0',
+            roe_needconfirm INT(10) NOT NULL DEFAULT '0',
+            roe_waitinglist INT(10) NOT NULL DEFAULT '0',
             roe_submitter int(10) NOT NULL DEFAULT '0',
             roe_date_created int(10) NOT NULL DEFAULT '0',
             PRIMARY KEY (roe_id),
@@ -139,6 +141,8 @@ function xoops_module_update_apcal(XoopsModule $module)
             rom_extrainfo3 varchar(200) DEFAULT NULL,
             rom_extrainfo4 varchar(200) DEFAULT NULL,
             rom_extrainfo5 varchar(200) DEFAULT NULL,
+            rom_poster_ip  varchar(200) DEFAULT NULL,
+            rom_status int(10) NOT NULL DEFAULT '0',
             rom_submitter int(10) NOT NULL DEFAULT '0',
             rom_date_created int(10) NOT NULL DEFAULT '0',
             PRIMARY KEY (rom_id),
@@ -160,6 +164,21 @@ function xoops_module_update_apcal(XoopsModule $module)
 
     $GLOBALS['xoopsDB']->queryF("UPDATE {$GLOBALS['xoopsDB']->prefix('apcal_event')} SET start_date=NULL,end_date=NULL");
     $GLOBALS['xoopsDB']->queryF("UPDATE {$GLOBALS['xoopsDB']->prefix('apcal_event')} t, (SELECT id, shortsummary FROM {$GLOBALS['xoopsDB']->prefix('apcal_event')} x WHERE x.rrule_pid>0 GROUP BY x.shortsummary ORDER BY start) AS e SET t.rrule_pid=e.id WHERE t.shortsummary=e.shortsummary;");
+
+    //    fix problem from removed poster_ip
+    $sql = "ALTER TABLE {$GLOBALS['xoopsDB']->prefix('apcal_ro_members')} ADD `rom_status` INT(1) NOT NULL DEFAULT '0' AFTER `rom_extrainfo5`;";
+    $GLOBALS['xoopsDB']->queryF($sql);
+    //    fix problem from removed poster_ip
+    $sql = "ALTER TABLE {$GLOBALS['xoopsDB']->prefix('apcal_ro_members')} ADD `rom_poster_ip` VARCHAR(200) NULL DEFAULT '' AFTER `rom_extrainfo5`;";
+    $GLOBALS['xoopsDB']->queryF($sql);
+
+    //    fix problem from removed roe_waitinglist
+    $sql = "ALTER TABLE {$GLOBALS['xoopsDB']->prefix('apcal_ro_events')} ADD `roe_waitinglist` INT(10) NOT NULL DEFAULT '0' AFTER `roe_datelimit`;";
+    $GLOBALS['xoopsDB']->queryF($sql);
+
+    //    fix problem from removed roe_waitinglist
+    $sql = "ALTER TABLE {$GLOBALS['xoopsDB']->prefix('apcal_ro_events')} ADD `roe_needconfirm` INT(10) NOT NULL DEFAULT '0' AFTER `roe_datelimit`;";
+    $GLOBALS['xoopsDB']->queryF($sql);
 
     //    if (!is_dir(XOOPS_UPLOAD_PATH . '/apcal/')) {
     //        mkdir(XOOPS_UPLOAD_PATH . '/apcal/', 0755);

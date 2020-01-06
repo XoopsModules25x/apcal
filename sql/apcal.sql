@@ -186,6 +186,8 @@ CREATE TABLE `apcal_ro_events` (
   `roe_eventid`      MEDIUMINT(8) UNSIGNED ZEROFILL NOT NULL DEFAULT '00000000',
   `roe_number`       INT(10)                        NOT NULL DEFAULT '0',
   `roe_datelimit`    INT(10)                        NOT NULL DEFAULT '0',
+  `roe_needconfirm`  INT(10)                        NOT NULL DEFAULT '0',
+  `roe_waitinglist`  INT(10)                        NOT NULL DEFAULT '0',
   `roe_submitter`    INT(10)                        NOT NULL DEFAULT '0',
   `roe_date_created` INT(10)                        NOT NULL DEFAULT '0',
   PRIMARY KEY (`roe_id`),
@@ -207,10 +209,11 @@ CREATE TABLE `apcal_ro_members` (
   `rom_extrainfo3`   VARCHAR(200)                            DEFAULT NULL,
   `rom_extrainfo4`   VARCHAR(200)                            DEFAULT NULL,
   `rom_extrainfo5`   VARCHAR(200)                            DEFAULT NULL,
+  `rom_poster_ip`    VARCHAR(200)                            DEFAULT NULL,
+  `rom_status`       INT(1 )                        NOT NULL DEFAULT '0',
   `rom_submitter`    INT(10)                        NOT NULL DEFAULT '0',
   `rom_date_created` INT(10)                        NOT NULL DEFAULT '0',
   PRIMARY KEY (`rom_id`),
-  UNIQUE KEY `UNQ_EMAIL` (`rom_eventid`, `rom_email`),
   KEY `event` (`rom_eventid`)
 )
   ENGINE = MyISAM

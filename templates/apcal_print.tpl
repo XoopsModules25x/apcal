@@ -62,10 +62,10 @@
 <table border="0" style="font: 12px;">
     <tr>
         <td>
-            <table border="0" width="640" cellpadding="0" cellspacing="1" bgcolor="#000000">
+            <table border="0" width="100%" cellpadding="0" cellspacing="1" bgcolor="#000000">
                 <tr>
                     <td>
-                        <table border="0" width="640" cellpadding="20" cellspacing="1" bgcolor="#ffffff">
+                        <table border="0" width="100%" cellpadding="20" cellspacing="1" bgcolor="#ffffff">
                             <tr valign="top">
                                 <td>
                                     <{if $for_event_list == true}>

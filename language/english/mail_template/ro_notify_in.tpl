@@ -4,4 +4,6 @@ Location: {LOCATION}
 Date: {DATE}
 Link to event: {URL}
 
+{WAITINGLIST}
+
 {SIGNATURE}

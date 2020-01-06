@@ -7,7 +7,7 @@ table.apcal-categoryform { table-layout:fixed; }
 td.apcal-categoryform { margin: 4px 0; }
 
 table.apcalTabsTable {
-	width: 800px;
+	width: 100%;
 	margin: 0px 0px 0px 0px;
 	border-top: 1px solid #BBBBBB;
 	border-right: 1px solid #666666;
@@ -27,16 +27,19 @@ td.apcalTabs {
 	margin: 0px 0px 0px 0px;
 }
 td.apcalTabs  a {
-	color: #ffffff;
+	color: #fff;
     font-weight: normal;
 }
 td.apcalTabs  a.apcalTabsActive {
-	color: #ffffff;
+	color: #fff;
     font-weight: bold;
 }
 td.apcalTabs  a:hover {
-	color: #ffffff;
+	color: #fff;
     font-weight: bold;
+}
+.apcal-cat-link {
+    color:#000;
 }
 /* Kalenderkopf */
 .calhead {

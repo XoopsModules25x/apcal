@@ -112,7 +112,7 @@ define('_MI_APCAL_COMMENTSNOT', 'Commentaires et Notifications');
 define("_MI_APCAL_EDITBYGUESTDSC", "Autoriser les invit&eacute;s &agrave; ajouter des &eacute;v&egrave;nements");
 define("_MI_APCAL_LOCALEDESC", "N.B.: Les f&ecirc;tes sont perp&eacute;tuelles uniquement pour les USA, le Canada, le Canada-fr et la France. Pour tous autre pays, vous devez effectuer les modifications manuellement.");
 define("_MI_APCAL_DESCNAMEORUNAME" , "S&eacute;lectionner quel 'nom' sera affich&eacute;" ) ;
-define("_MI_APCAL_DESCUSEURLREWRITE" , "<b>Afin que cette option fonctionne, copiez /modules/APCal/doc/.htaccess vers /modules/APCal/.</b><br /><br />N.B.: Si vous n'avez pas le module apache \"mod_rewrite\" sur votre serveur, il est possible que cette option ne fonctionne pas. Veuillez contacter votre administrateur syst&egrave;me pour plus de d&eacute;tails." ) ;
+define("_MI_APCAL_DESCUSEURLREWRITE" , "<b>Afin que cette option fonctionne, copiez /modules/apcal/doc/.htaccess vers /modules/apcal/.</b><br /><br />N.B.: Si vous n'avez pas le module apache \"mod_rewrite\" sur votre serveur, il est possible que cette option ne fonctionne pas. Veuillez contacter votre administrateur syst&egrave;me pour plus de d&eacute;tails." ) ;
 define("_MI_APCAL_WIDERWEEKENDDESC" , "Maintenez enfonc&eacute; la touche \"Ctrl\" lorsque vous cliquez sur un jour pour en s&eacute;lectionner plus d'un." ) ;
 define('_MI_APCAL_THMORDEFAULTDESC', 'Th&egrave;me: Entrez le nom de votre fichier css dans le champ suivant. (Recommand&eacute;)<br />Personnalisation: Remplissez les 13 champs suivants.<br />D&eacute;faut: Utiliser les couleurs par d&eacute;faut.');
 

@@ -52,6 +52,9 @@ class Thumb
             case IMAGETYPE_JPEG:
             default:
                 $img = imagecreatefromjpeg($imgPath);
+                if (!$img) {
+                    $img = imagecreatefromstring(file_get_contents($imgPath));
+                }
                 break;
             case IMAGETYPE_GIF:
                 $img = imagecreatefromgif($imgPath);

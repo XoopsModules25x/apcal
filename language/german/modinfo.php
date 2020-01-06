@@ -125,7 +125,7 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED' ) ) {
     define('_MI_APCAL_EDITBYGUESTDSC', 'Berechtigungen für Gäste, um Termine hinzuzufügen');
     define('_MI_APCAL_LOCALEDESC', 'Die Feiertage sind standardmäßig nur für USA, Canada, Canada-fr und Frankreich verfügbar. Bei anderen Ländern bitte überprüfen und erforderlichenfalls selbst erstellen.');
     define('_MI_APCAL_DESCNAMEORUNAME' , 'Auswahl, welcher Name angezeigt wird' );
-    define('_MI_APCAL_DESCUSEURLREWRITE' , '<b>Damit Url-Rewriting richtig funktioniert, kopieren sie bitte /modules/APCal/doc/.htaccess in das Verzeichnis /modules/APCal/.</b><br /><br />Url-Rewriting funktioniert nur, wenn \'mod_rewrite\' auf dem Server installiert ist. Für Details kontaktieren Sie bitte Ihren System-Administrator.' ) ;
+    define('_MI_APCAL_DESCUSEURLREWRITE' , '<b>Damit Url-Rewriting richtig funktioniert, kopieren sie bitte /modules/apcal/doc/.htaccess in das Verzeichnis /modules/apcal/.</b><br /><br />Url-Rewriting funktioniert nur, wenn \'mod_rewrite\' auf dem Server installiert ist. Für Details kontaktieren Sie bitte Ihren System-Administrator.' ) ;
     define('_MI_APCAL_WIDERWEEKENDDESC' , 'Für Mehrfachauswahl bitte die \'Strg\'-Taste gedrückt halten.' );
     define('_MI_APCAL_THMORDEFAULTDESC', 'Theme verwenden: Hier den Namen der CSS-Datei angeben (die Verwendung einer CSS wird empfohlen)<br />Individuell anpassen: Bitte die nächsten 13 Felder ausfüllen.<br />Standard: Verwendung der Standardfarben.');
 
@@ -210,5 +210,18 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED' ) ) {
     define('_MI_APCAL_GMAPS_API', 'Fügen Sie Ihren Google Maps API Schlüssel für http://www.yoursite.com/ hier ein.');
     define('_MI_APCAL_GMAPS_API_DESC', 'Ihren Schlüssel erhalten Sie von <a href="https://developers.google.com/maps/documentation/javascript/get-api-key/">https://developers.google.com/maps/documentation/javascript/get-api-key/</a>
                                        <br>necessary APIs: Geocoding API, Maps JavaScript API, Places API');
-    
+
+    // version 2.23
+    define('_MI_APCAL_REGONLINE', 'Online-Registrierung');
+    define('_MI_APCAL_RO_EXTRA1', 'Extra Info 1, die bei der Anmeldung eingeben werden soll');
+    define('_MI_APCAL_RO_EXTRA2', 'Extra Info 2');
+    define('_MI_APCAL_RO_EXTRA3', 'Extra Info 3');
+    define('_MI_APCAL_RO_EXTRA4', 'Extra Info 4');
+    define('_MI_APCAL_RO_EXTRA5', 'Extra Info 5');
+    define('_MI_APCAL_RO_EXTRA1_OBL', 'Extra Info 1 ist verpflichtet anzugeben');
+    define('_MI_APCAL_RO_EXTRA2_OBL', 'Extra Info 2 ist verpflichtet anzugeben');
+    define('_MI_APCAL_RO_EXTRA3_OBL', 'Extra Info 3 ist verpflichtet anzugeben');
+    define('_MI_APCAL_RO_EXTRA4_OBL', 'Extra Info 4 ist verpflichtet anzugeben');
+    define('_MI_APCAL_RO_EXTRA5_OBL', 'Extra Info 5 ist verpflichtet anzugeben');
+    define('_MI_APCAL_ENABLE_PRINT', 'Druck von Veranstaltungen erlauben');
 }

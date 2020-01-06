@@ -1,15 +1,20 @@
 CHANGELOG: APCal
 Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
 
-<h5>2.22 Beta 3  NOT RELEASED</h5>  [2019/../..]
-<hr>
+<h5>2.23 Beta 1  NOT RELEASED</h5>  [2019/../..]
 - added skin folders tab_blue, tab_darkred, tab, gray, tab_orange, tab_red (goffy)
 - fixed different defines in apcal_constants (replaced _APCAL_MB_ by _APCAL_MB_, as it is used in all other lang files) (goffy)
 - added ids to apcal forms (goffy)
 - added ids to block templates (goffy)
 - fixed problem with missing vars (goffy)
 - fixed problems with invalid array key names for 'attributes' (goffy)
-- fixed problems with google maps (goffy)
+- fixed problems with google maps (goffy)- re-added possibilities for waiting list in regonline (goffy)
+- re-added possibilities for need confirmantion in regonline (goffy)
+- fixed problems removed fields (goffy)
+- changed 'array('' into '[' in xoops_version (goffy)
+- moved extra info to module preferences (goffy)
+- seperated option for print from social links (goffy)
+- implemented superedit right (edit/delete all events) - was only available in permissions but not used (goffy)
 
 <h5>2.22 Beta 2  NOT RELEASED</h5>  [2019/../..]
 <hr>

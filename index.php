@@ -216,6 +216,7 @@ if ($action === 'Edit') {
     $xoopsTpl->assign('print_link', "$mod_url/print.php?event_id={$_GET['event_id']}&amp;action=View");
     $xoopsTpl->assign('skinpath', "$cal->images_url");
     $xoopsTpl->assign('lang_print', _MD_APCAL_ALT_PRINTTHISEVENT);
+    $xoopsTpl->assign('showPrint', $cal->enableprint);
     $HTTP_GET_VARS['event_id'] = $_GET['event_id'] = $cal->original_id;
     include XOOPS_ROOT_PATH . '/include/comment_view.php';
     // patch for commentAny
@@ -248,6 +249,7 @@ if ($action === 'Edit') {
 }
 
 $xoopsTpl->assign('showSocial', $cal->enablesocial);
+$xoopsTpl->assign('showPrint', $cal->enableprint);
 $xoopsTpl->assign('showTellaFriend', $cal->enabletellafriend);
 
 if ($action === 'View') {
@@ -286,6 +288,7 @@ if ($action === 'View') {
     $xoopsTpl->assign('xoops_pagetitle', $title);
 
     $xoopsTpl->assign('showMap', $cal->enableeventmap);
+    $xoopsTpl->assign('api_key', $moduleHelper->getConfig('apcal_mapsapi'));
 } elseif ($action === '') {
     $cid          = isset($_GET['cid']) && $_GET['cid'] > 0 ? $_GET['cid'] : 0;
     $cat          = $GLOBALS['xoopsDB']->fetchArray($GLOBALS['xoopsDB']->queryF("SELECT cat_title, cat_desc FROM {$GLOBALS['xoopsDB']->prefix('apcal_cat')} WHERE cid={$cid} LIMIT 0,1"));
@@ -347,19 +350,19 @@ if ($action === 'View') {
                 </span>
                 <span class="googleplus">
                     <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{lang: \'' . _APCAL_GPLUS_LNG . '\'}</script>
-                    <g:plusone size="medium" count="false" href="' . XOOPS_URL . '/modules/APCal"></g:plusone>
+                    <g:plusone size="medium" count="false" href="' . XOOPS_URL . '/modules/apcal"></g:plusone>
                 </span>
                 <span class="linkedIn">
                     <script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>
-                    <script type="IN/Share" data-url="' . XOOPS_URL . '/modules/APCal"></script>
+                    <script type="IN/Share" data-url="' . XOOPS_URL . '/modules/apcal"></script>
                 </span>
                 <span class="twitter">
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="' . XOOPS_URL . '/modules/APCal" data-count="none">Tweet</a>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="' . XOOPS_URL . '/modules/apcal" data-count="none">Tweet</a>
                     <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
                 </span>
                 <span class="facebook">
                     <script type="text/javascript" src="http://connect.facebook.net/' . _APCAL_FB_LNG . '/all.js#xfbml=1"></script>
-                    <div class="fb-like" data-href="' . XOOPS_URL . '/modules/APCal" data-send="false" data-layout="button_count" data-action="recommend" data-show-faces="false"></div>
+                    <div class="fb-like" data-href="' . XOOPS_URL . '/modules/apcal" data-send="false" data-layout="button_count" data-action="recommend" data-show-faces="false"></div>
                 </span>
             </div>';
         //<a name="fb_share" type="button" share_url="http://www.example.com/page.html"></a>
