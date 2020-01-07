@@ -613,6 +613,7 @@ if (!class_exists('APCal_xoops')) {
                     'distance'    => $distance,
                     'multiday'    => $multiday,
                     'picture'     => $pic ? $pic->picture : '',
+                    'mainCat_id'  => $event->mainCategory,
                     'mainCat'     => $cat ? htmlentities($cat->cat_title, ENT_QUOTES, 'UTF-8') : ''
                 );
             }
@@ -828,12 +829,12 @@ if (!class_exists('APCal_xoops')) {
             $num_rows = $GLOBALS['xoopsDB']->getRowsNum($yrs);
 
             // �ܥ�����
-            $yrs = $GLOBALS['xoopsDB']->query("SELECT *,UNIX_TIMESTAMP(dtstamp) AS udtstamp , start, end, allday, start_date, end_date, extkey0 FROM $this->table WHERE $whr ORDER BY $order LIMIT $pos,$num");
+            $yrs = $GLOBALS['xoopsDB']->query("SELECT *,UNIX_TIMESTAMP(dtstamp) AS udtstamp , start, end, allday, start_date, end_date, mainCategory, extkey0 FROM $this->table WHERE $whr ORDER BY $order LIMIT $pos,$num");
 
             // �ڡ���ʬ�����
             require_once XOOPS_ROOT_PATH . '/class/pagenav.php';
             $nav      = new XoopsPageNav($num_rows, $num, $pos, 'pos', "smode=List&amp;cid=$this->now_cid&amp;num=$num&amp;order=$order&amp;op=$op&amp;caldate=$this->caldate");
-            $nav_html = $nav->renderNav(10);
+            $nav_html = $nav->renderNav(5);
             if ($num_rows <= 0) {
                 $nav_num_info = _NONE;
             } elseif ($pos + $num > $num_rows) {
@@ -961,7 +962,10 @@ if (!class_exists('APCal_xoops')) {
                 // Get picture
                 $pic     = $GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->query("SELECT picture FROM {$this->pic_table} WHERE event_id={$event->id} AND main_pic=1 LIMIT 0,1"));
                 $picture = $pic && $this->showPicList ? "<img src='" . XOOPS_UPLOAD_URL . "/apcal/{$pic->picture}' alt='{$summary}' height='50' style='vertical-align: middle;' />" : '';
-
+                // Get maincat
+                $cat = $GLOBALS['xoopsDB']->fetchObject($GLOBALS['xoopsDB']->query("SELECT cat_title FROM {$this->cat_table} WHERE cid={$event->mainCategory} LIMIT 0,1")); //added by goffy
+                $maincat = $cat ? htmlentities($cat->cat_title, ENT_QUOTES, 'UTF-8') : ''; //added by goffy
+                
                 $events[] = array(
                     'count'           => $count,
                     'oddeven'         => $count & 1 == 1 ? 'odd' : 'even',
@@ -986,6 +990,7 @@ if (!class_exists('APCal_xoops')) {
                     'submitter_info'  => $this->get_submitter_info($event->uid),
                     'id'              => $event->id,
                     'target_id'       => ($event->rrule_pid > 0) ? $event->rrule_pid : $event->id,
+                    'maincat'         => $maincat, //added by goffy
                     'regonline'       => $event->extkey0 //added by goffy
                 );
             }

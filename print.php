@@ -65,7 +65,13 @@ if (file_exists(XOOPS_ROOT_PATH . '/modules/' . $xoopsModule->dirname() . '/lang
 
 $myts = MyTextSanitizer::getInstance();
 
-header('Content-Type:text/html; charset=' . _CHARSET);
+if ($_GET['op'] == 'exportxls') {
+    header("Content-type: application/vnd-ms-excel; charset=' . _CHARSET");
+    // Defines the name of the export file "codelution-export.xls"
+    header("Content-Disposition: attachment; filename=download.xls");
+} else {
+    header('Content-Type:text/html; charset=' . _CHARSET);
+}
 $tpl = new XoopsTpl();
 $tpl->xoops_setTemplateDir(XOOPS_ROOT_PATH . '/themes');
 $tpl->xoops_setCaching(2);
@@ -84,6 +90,123 @@ if (!empty($_GET['event_id'])) {
     $tpl->assign('contents', $cal->get_schedule_view_html(true));
 } else {
     switch ($_GET['smode']) {
+        case 'ro_list':
+            $tpl->assign('for_event_list', false);
+            if (!empty($_REQUEST['eventid'])) {
+                $eventid   = \Xmf\Request::getInt('eventid');
+                $summary   = \Xmf\Request::getString('summary', '');
+                $date      = \Xmf\Request::getInt('date');
+                $location  = \Xmf\Request::getString('location', '');
+                $classname = '';
+
+                $title = $summary . ' (' . $date . ' ' . $location . ')';
+                $query = 'SELECT '
+                    . $GLOBALS['xoopsDB']->prefix('users')
+                    . '.uname, '
+                    . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                    . '.* FROM '
+                    . $GLOBALS['xoopsDB']->prefix('users')
+                    . ' INNER JOIN '
+                    . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                    . ' ON '
+                    . $GLOBALS['xoopsDB']->prefix('users')
+                    . '.uid = '
+                    . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                    . '.rom_submitter WHERE ((('
+                    . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                    . ".rom_eventid)=$eventid)) ORDER BY "
+                    . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
+                    . '.rom_date_created';
+
+                $res      = $GLOBALS['xoopsDB']->query($query);
+                $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
+
+                if ($num_rows == 0) {
+                    $ret = _APCAL_RO_NOMEMBERS;
+                } else {
+                    $ret .= "<h3>$title</h3>
+                        <table class='ro_table-'>
+                            <tr>
+                                <th width='100px' class='listeheader'>" . _APCAL_RO_UNAME . "</th>
+                                <th width='100px' class='listeheader'>" . _APCAL_RO_FIRSTNAME . "</th>
+                                <th width='100px' class='listeheader'>" . _APCAL_RO_LASTNAME . "</th>
+                                <th class='listeheader'>" . _APCAL_RO_EMAIL . '</th>';
+                                if ($cal->ro_extrainfo1 !== '') {
+                                    $ret .= "<th class='listeheader'>" . $cal->ro_extrainfo1 . '</th>';
+                                }
+                                if ($cal->ro_extrainfo2 !== '') {
+                                    $ret .= "<th class='listeheader'>" . $cal->ro_extrainfo2 . '</th>';
+                                }
+                                if ($cal->ro_extrainfo3 !== '') {
+                                    $ret .= "<th class='listeheader'>" . $cal->ro_extrainfo3 . '</th>';
+                                }
+                                if ($cal->ro_extrainfo4 !== '') {
+                                    $ret .= "<th class='listeheader'>" . $cal->ro_extrainfo4 . '</th>';
+                                }
+                                if ($cal->ro_extrainfo5 !== '') {
+                                    $ret .= "<th class='listeheader'>" . $cal->ro_extrainfo5 . '</th>';
+                                }
+                                $ret .= "<th class='listeheader'>" . _APCAL_RO_STATUS . "</th>";
+                    $ret .= '</tr>';
+                    $line = 0;
+                    while ($member = $GLOBALS['xoopsDB']->fetchObject($res)) {
+                        $rom_id = $member->rom_id;
+                        $uname = $member->uname;
+                        $firstname = $member->rom_firstname;
+                        $lastname = $member->rom_lastname;
+                        $email = $member->rom_email;
+                        $extrainfo1 = $member->rom_extrainfo1;
+                        $extrainfo2 = $member->rom_extrainfo2;
+                        $extrainfo3 = $member->rom_extrainfo3;
+                        $extrainfo4 = $member->rom_extrainfo4;
+                        $extrainfo5 = $member->rom_extrainfo5;
+                        $status = (int)$member->rom_status;
+                        if ($line == 0) {
+                            $classname = 'odd';
+                            $line = 1;
+                        } else {
+                            $classname = 'even';
+                            $line = 0;
+                        }
+                        $ret .= "<tr>
+                    <td class='$classname'>$uname</td>
+                    <td class='$classname'>$firstname</td>
+                    <td class='$classname'>$lastname</td>
+                    <td class='$classname'>$email</td>";
+                        if ($cal->ro_extrainfo1 !== '') {
+                            $ret .= "<td class='$classname'>$extrainfo1</td>";
+                        }
+                        if ($cal->ro_extrainfo2 !== '') {
+                            $ret .= "<td class='$classname'>$extrainfo2</td>";
+                        }
+                        if ($cal->ro_extrainfo3 !== '') {
+                            $ret .= "<td class='$classname'>$extrainfo3</td>";
+                        }
+                        if ($cal->ro_extrainfo4 !== '') {
+                            $ret .= "<td class='$classname'>$extrainfo4</td>";
+                        }
+                        if ($cal->ro_extrainfo5 !== '') {
+                            $ret .= "<td class='$classname'>$extrainfo5</td>";
+                        }
+                        $ret .= "<td class='$classname' style='text-align:center'>";
+                        $unique_id = uniqid(mt_rand());
+                        $ret .= "<div style='display:inline;'>";
+                        if ($status == 1) {
+                            $ret .= _APCAL_RO_STATUS_PENDING;
+                        } else if ($status == 2) {
+                            $ret .= _APCAL_RO_STATUS_LIST;
+                        } else {
+                            $ret .= _APCAL_RO_STATUS_OK;
+                        }
+                        $ret .= "</div>";
+                        $ret .= '</td></tr>';
+                    }
+                    $ret .= "</table>\n<br>";
+                }
+            }
+
+            $tpl->assign('contents', $ret);
+            break;
         case 'Yearly':
             $tpl->assign('for_event_list', false);
             $tpl->assign('contents', $cal->get_yearly('', '', true));

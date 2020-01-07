@@ -91,8 +91,9 @@ if (!class_exists('APCal')) {
         public $enablesharing     = 1;
         public $eventNavEnabled   = 1;
         public $displayCatTitle   = 1;
-        public $enablesocial      = true;
-        public $enabletellafriend = true;
+        public $enablesocial      = false;
+        public $enabletellafriend = false;
+        public $enableprint       = false;
 
         public $default_view = 'Monthly';
 
@@ -105,6 +106,7 @@ if (!class_exists('APCal')) {
         // AUTHORITIES
         public $insertable = true;        // can insert a new event
         public $editable   = true;            // can update an event he posted
+        public $superedit  = false;            // can update all event
         public $deletable  = true;            // can delete an event he posted
         public $user_id    = -1;                // User's ID
         public $isadmin    = false;            // Is admin or not
@@ -155,17 +157,37 @@ if (!class_exists('APCal')) {
         public $original_id;    // $_GET['event_id']ï¿½ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½Ë»ï¿½ï¿½È²ï¿½Ç½
 
         // added by goffy: vars for online registration
-        public $table_ro_members = '_apcal_ro_members';    // table for eventmembers
-        public $table_ro_events  = '_apcal_ro_events';      // table for events, where online registration is possible (max registration, email notify in case off add/remove eventmembers
-        public $table_ro_notify  = '_apcal_ro_notify';      // table for persons, which should be informed about registrations by email
-        public $redirecturl      = '';                            // variable für redirect
-        public $registered       = 0;                              // var whether user is already regristrated for this event or not
-        public $regonline        = 0;                               // var, whether online registration is activated or not
-        public $roimage          = 0;                                 // var for image to mark events with online registration
-        public $eventmembers     = '';                           // first var for show additional info
-        public $eventmembersall  = '';                        // second var for show additional info
-        // end goffy
+        public $table_ro_members = '_apcal_ro_members'; // table for eventmembers
+        public $table_ro_events  = '_apcal_ro_events';  // table for events, where online registration is possible (max registration, email notify in case off add/remove eventmembers
+        public $table_ro_notify  = '_apcal_ro_notify';  // table for persons, which should be informed about registrations by email
+        public $redirecturl      = '';                  // variable für redirect
+        public $registered       = 0;                   // var whether user is already regristrated for this event or not
+        public $regonline        = 0;                   // var, whether online registration is activated or not
+        public $roimage          = 0;                   // var for image to mark events with online registration
+        public $eventmembers     = '';                  // first var for show additional info
+        public $eventmembersall  = '';                  // second var for show additional info
         public $enableregistration = 1;
+        var $enablecontact = 0;                         // use contacthandler
+        var $ro_showtip = 0;                            // show tip for online registration
+        var $ro_mail_sender = "webmaster@apcal.tld";    // e-mail of sender for notify registered person
+        var $ro_mail_sendername = "Calendar of APCal";  // name of sender for notify registered person
+        var $ro_mail_signature = "Your Team of APCal";  // signature for notify registered person
+        var $ro_showlist = 0;                           // show list of registered persons
+        // var $ro_superedit = 0;                          // user can edit/delete registration of other persons
+        // var $ro_image_available = "";                   // path to image showing availability of the event
+        // var $ro_use_waiting_list = "";                  // a waiting list will be used for an event
+        // var $ro_need_confirm = "";                      // each online registration must be confirm by event owner
+        var $ro_extrainfo1 = '';                 // define extrainfo1
+        var $ro_extrainfo2 = '';                 // define extrainfo2
+        var $ro_extrainfo3 = '';                 // define extrainfo3
+        var $ro_extrainfo4 = '';                 // define extrainfo4
+        var $ro_extrainfo5 = '';                 // define extrainfo5
+        var $ro_extrainfo1_obl = 0;              // define whether extrainfo1 is obligatory or on voluntary base
+        var $ro_extrainfo2_obl = 0;              // define whether extrainfo1 is obligatory or on voluntary base
+        var $ro_extrainfo3_obl = 0;              // define whether extrainfo1 is obligatory or on voluntary base
+        var $ro_extrainfo4_obl = 0;              // define whether extrainfo1 is obligatory or on voluntary base
+        var $ro_extrainfo5_obl = 0;              // define whether extrainfo1 is obligatory or on voluntary base
+        // end goffy
 
         /*******************************************************************/
         /*        CONSTRUCTOR etc.                                         */
@@ -367,6 +389,13 @@ if (!class_exists('APCal')) {
         public function makeShort($str)
         {
             $replacements = array(
+                'Ä' => 'Ae',
+                'Ü' => 'Ue',
+                'Ö' => 'Oe',
+                'ä' => 'ae',
+                'ö' => 'oe',
+                'ü' => 'ue',
+                'ß' => 'sz',
                 'Å ' => 'S',
                 'Å¡' => 's',
                 'Å½' => 'Z',
@@ -434,7 +463,7 @@ if (!class_exists('APCal')) {
                 'Ã¿' => 'y'
             );
 
-            $str = strtr($str, $replacements);
+            $str = utf8_encode(strtr($str, $replacements));
             $str = strip_tags($str);
 
             return str_replace(array(' ', '-', '/', "\\", "'", '"', "\r", "\n", '&', '?', '!', '%', ',', '.'), '', $str);
@@ -1530,7 +1559,7 @@ if (!class_exists('APCal')) {
                     if ($event->admission) {
                         // Put markers on map
                         if ($event->gmlat > 0 || $event->gmlong > 0) {
-                            $this->gmPoints[$event->id.startDay] = array(
+                            $this->gmPoints[$event->id] = array(
                                 'summary'   => $event->summary,
                                 'gmlat'     => $event->gmlat,
                                 'gmlong'    => $event->gmlong,
@@ -2199,7 +2228,7 @@ if (!class_exists('APCal')) {
         public function savepictures($event_id)
         {
             xoops_load('xoopsmediauploader');
-            $uploader = new XoopsMediaUploader(XOOPS_UPLOAD_PATH . '/APCal', array(
+            $uploader = new XoopsMediaUploader(XOOPS_UPLOAD_PATH . '/apcal', array(
                 'image/gif',
                 'image/jpeg',
                 'image/pjpeg',
@@ -2244,6 +2273,7 @@ if (!class_exists('APCal')) {
 
             $smode     = empty($_GET['smode']) ? 'Monthly' : preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['smode']);
             $editable  = $this->editable;
+            $superedit = $this->superedit;
             $deletable = $this->deletable;
 
             $whr_categories = $this->get_where_about_categories();
@@ -2280,10 +2310,15 @@ if (!class_exists('APCal')) {
                 $rrule = '';
             }
 
-            // Admin
-            if ($event->uid != $this->user_id && !$this->isadmin) {
+            // submitter of event
+            if ($event->uid != $this->user_id) {
                 $editable  = false;
                 $deletable = false;
+            }
+            // user is admin or has right to edit/delete all events
+            if ($this->isadmin || $superedit) {
+                $editable  = true;
+                $deletable = true;
             }
 
             // editable
@@ -2477,7 +2512,7 @@ if (!class_exists('APCal')) {
                     $eventmembers    = '';
                 } else {
                     $eventmembersall .= _APCAL_RO_ONLINE . ': ' . $itemstotal;
-                    if (!$this->user_id == 0) {
+                    if (!$this->user_id == 0 && $editable) {
                         $eventmembers .= '<br>' . _APCAL_RO_UNAME . ':';
                     } else {
                         $eventmembers = '';
@@ -2485,44 +2520,46 @@ if (!class_exists('APCal')) {
                 }
 
                 if (!$this->user_id == 0) {
-                    $result_ro = $GLOBALS['xoopsDB']->query('SELECT '
-                                                            . XOOPS_DB_PREFIX
-                                                            . '_users.uname,
+                    if ($editable) {
+                        $result_ro = $GLOBALS['xoopsDB']->query('SELECT '
+                            . XOOPS_DB_PREFIX
+                            . '_users.uname,
                     '
-                                                            . XOOPS_DB_PREFIX
-                                                            . '_users.uid, count(rom_id) as counter
+                            . XOOPS_DB_PREFIX
+                            . '_users.uid, count(rom_id) as counter
                     FROM '
-                                                            . XOOPS_DB_PREFIX
-                                                            . $this->table_ro_members
-                                                            . ' INNER JOIN '
-                                                            . XOOPS_DB_PREFIX
-                                                            . '_users ON '
-                                                            . XOOPS_DB_PREFIX
-                                                            . $this->table_ro_members
-                                                            . '.rom_submitter = '
-                                                            . XOOPS_DB_PREFIX
-                                                            . '_users.uid
+                            . XOOPS_DB_PREFIX
+                            . $this->table_ro_members
+                            . ' INNER JOIN '
+                            . XOOPS_DB_PREFIX
+                            . '_users ON '
+                            . XOOPS_DB_PREFIX
+                            . $this->table_ro_members
+                            . '.rom_submitter = '
+                            . XOOPS_DB_PREFIX
+                            . '_users.uid
                     WHERE ((('
-                                                            . XOOPS_DB_PREFIX
-                                                            . $this->table_ro_members
-                                                            . '.rom_eventid)='
-                                                            . $event->id
-                                                            . ')) GROUP BY 1,2');
-                    $num_rows  = $GLOBALS['xoopsDB']->getRowsNum($result_ro);
-                    $baseurl   = XOOPS_URL;
+                            . XOOPS_DB_PREFIX
+                            . $this->table_ro_members
+                            . '.rom_eventid)='
+                            . $event->id
+                            . ')) GROUP BY 1,2');
+                        $num_rows = $GLOBALS['xoopsDB']->getRowsNum($result_ro);
+                        $baseurl = XOOPS_URL;
 
-                    while ($row = $GLOBALS['xoopsDB']->fetchRow($result_ro)) {
-                        $uname        = $row[0];
-                        $uid          = $row[1];
-                        $counter      = $row[2];
-                        $eventmembers = (substr($eventmembers, strlen($eventmembers) - 1, 1) === ':') ? $eventmembers .= ' ' : $eventmembers .= ', ';
-                        $eventmembers .= "<a href='" . XOOPS_URL . '/userinfo.php?uid=' . $uid . "' title=" . $uname . '>' . $uname . '</a>';
+                        while ($row = $GLOBALS['xoopsDB']->fetchRow($result_ro)) {
+                            $uname = $row[0];
+                            $uid = $row[1];
+                            $counter = $row[2];
+                            $eventmembers = (substr($eventmembers, strlen($eventmembers) - 1, 1) === ':') ? $eventmembers .= ' ' : $eventmembers .= ', ';
+                            $eventmembers .= "<a href='" . XOOPS_URL . '/userinfo.php?uid=' . $uid . "' title=" . $uname . '>' . $uname . '</a>';
 
-                        if ($this->user_id == $uid) {
-                            $registered = 1;
-                        }
-                        if ($counter > 1) {
-                            $eventmembers .= ' (' . $counter . ')';
+                            if ($this->user_id == $uid) {
+                                $registered = 1;
+                            }
+                            if ($counter > 1) {
+                                $eventmembers .= ' (' . $counter . ')';
+                            }
                         }
                     }
 
@@ -2531,34 +2568,46 @@ if (!class_exists('APCal')) {
                     } else {
                         $this->redirecturl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     }
-
-                    $eventmembers_form = "
-        <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformmembers1' style='margin:0px;'>
-            <input type='hidden' name='eventid' value='$event->id' />
-            <input type='hidden' name='uid' value='$this->user_id' />
-            <input type='hidden' name='eventurl' value='$this->redirecturl' />
-            <input type='hidden' name='summary' value='$summary' />
-            <input type='hidden' name='date' value='$start_date_str' />
-            <input type='hidden' name='location' value='$location' />
-            <div style='float:right;'>";
-                    if ($registered == 1) {
-                        $eventmembers_form .= "<input type='submit' name='form_add' value='" . _APCAL_RO_BTN_ADDMORE . "' />";
-                    } else {
-                        $eventmembers_form .= "<input type='submit' name='form_add' value='" . _APCAL_RO_BTN_ADD . "' />&nbsp;";
+                    
+                    $eventmembers_only = '';
+                    $eventmembers_form = '';
+                    if ($editable && !$for_print) {
+                        $eventmembers_form = "
+                            <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformmembers1' style='margin:0px;'>
+                                <input type='hidden' name='eventid' value='$event->id' />
+                                <input type='hidden' name='uid' value='$this->user_id' />
+                                <input type='hidden' name='eventurl' value='$this->redirecturl' />
+                                <input type='hidden' name='summary' value='$summary' />
+                                <input type='hidden' name='date' value='$start_date_str' />
+                                <input type='hidden' name='eventdate' value='$event->start' />
+                                <input type='hidden' name='location' value='$location' />
+                                <div style='float:right;'>";
+                        if ($registered == 1) {
+                            $eventmembers_form .= "<input type='submit' name='form_add' value='" . _APCAL_RO_BTN_ADDMORE . "' />";
+                        } else {
+                            $eventmembers_form .= "<input type='submit' name='form_add' value='" . _APCAL_RO_BTN_ADD . "' />&nbsp;";
+                        }
+                        if ($editable && !$for_print && $itemstotal > 0) {
+                            $eventmembers_form .= "<input type='submit' name='list' value='" . _APCAL_RO_BTN_LISTMEMBERS . "' />";
+                        }
+                        $eventmembers_form .= "</div></form>\n";
                     }
-                    if ($editable && !$for_print && $itemstotal > 0) {
-                        $eventmembers_form .= "<input type='submit' name='list' value='" . _APCAL_RO_BTN_LISTMEMBERS . "' />";
-                    }
-                    $eventmembers_form .= "</div></form>\n";
                 } else {
-                    $eventmembers_form = '<br>' . _APCAL_RO_ONLY_MEMBERS;
+                    $eventmembers_only = '<p>' . _APCAL_RO_ONLY_MEMBERS . '</p>';
+                    $eventmembers_only .= "<a class='btn btn-primary' href='" . XOOPS_URL . "/modules/profile/user.php?xoops_redirect=" . XOOPS_URL . "/modules/apcal/?event_id=$event->id&action=View' title=''>Einloggen</a>";
+                    $eventmembers_only .= "<br>Sie sind noch nicht als User registriert? Dann bitte zuerst <a class='btn btn-info cal-btn' href='" . XOOPS_URL . "/modules/profile/register.php' title=''>Registrieren</a>";
+
                 }
 
                 $eventmembertable = "
         <tr>
             <td class='head'>" . _APCAL_RO_ONLINE . "</td>
             <td class='even'>
-                <div style='float:left; margin: 2px;'>$eventmembersall$eventmembers</div>
+                <div style='float:left; margin: 2px;'>$eventmembersall$eventmembers";
+                if ('' !== $eventmembers_only) {
+                    $eventmembertable .= $eventmembers_only;
+                }
+                $eventmembertable .= "</div>
                 <div style='float:left; margin: 2px;'>$eventmembers_form</div>
             </td>
         </tr>";
@@ -2622,6 +2671,7 @@ if (!class_exists('APCal')) {
                 $xoopsTpl->assign('picsWidth', $pictures !== '' ? ($this->picWidth + 10) . 'px' : 0);
                 $xoopsTpl->assign('picsMargin', $pictures !== '' ? ($this->picWidth + 20) . 'px' : 0);
                 $xoopsTpl->assign('pictures', $pictures);
+                $xoopsTpl->assign('showPrint', $this->enableprint);
             }
 
             $ret = "
@@ -2670,7 +2720,7 @@ if (!class_exists('APCal')) {
         <td class='head'>" . _APCAL_TH_CATEGORIES . "</td>
         <td class='even'>$cat_titles4show</td>
     </tr>" : '';
-            $ret .= ($this->isadmin ? "
+            $ret .= ($this->superedit ? "
     <tr>
         <td class='head'>" . _APCAL_TH_SUBMITTER . "</td>
         <td class='even'>$submitter_info</td>
@@ -2720,6 +2770,7 @@ if (!class_exists('APCal')) {
         public function get_schedule_edit_html()
         {
             $editable  = $this->editable;
+            $superedit = $this->superedit;
             $deletable = $this->deletable;
             $smode     = empty($_GET['smode']) ? 'Monthly' : preg_replace('/[^a-zA-Z0-9_-]/', '', $_GET['smode']);
 
@@ -2735,9 +2786,15 @@ if (!class_exists('APCal')) {
                 }
                 $event = $GLOBALS['xoopsDB']->fetchObject($yrs);
 
-                if ($event->uid != $this->user_id && !$this->isadmin) {
+                // submitter of event
+                if ($event->uid != $this->user_id) {
                     $editable  = false;
                     $deletable = false;
+                }
+                // user is admin or has right to edit/delete all events
+                if ($this->isadmin || $superedit) {
+                    $editable  = true;
+                    $deletable = true;
                 }
 
                 $description  = $this->textarea_sanitizer_for_edit($event->description);

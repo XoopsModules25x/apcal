@@ -95,50 +95,54 @@
         <div class="eventTitle">
             <h2><{$title}></h2>
         </div>
-        <{if $showSocial}>
+        <{if $showSocial || $showPrint || $showTellaFriend}>
             <div class="socialNetworks" style="float: right; text-align: right;">
-        <span class="print">
-            <a href="<{$print_link}>" target="_blank">
-                <img src="<{$skinpath}>/print.gif" alt="<{$lang_print}>" title="<{$lang_print}>" border="0"/>
-            </a>
-        </span>
+                <{if $showPrint}>
+                    <span class="print">
+                        <a href="<{$print_link}>" target="_blank">
+                            <img src="<{$skinpath}>/print.gif" alt="<{$lang_print}>" title="<{$lang_print}>" border="0"/>
+                        </a>
+                    </span>
+                <{/if}>
                 <{if $showTellaFriend}>
                     <span class="tellafriend">
-            <a href="" title="<{$smarty.const._APCAL_TELLAFRIEND}>"
-               onclick="window.open('<{$xoops_url}>/modules/apcal/tellafriend.php?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), '<{$smarty.const._APCAL_TELLAFRIEND}>', 'toolbar=no, width=550, height=550'); return false;">
-                <img src="<{$xoops_url}>/modules/apcal/assets/images/tellafriend.png" height="20" width="20"
-                     alt="<{$smarty.const._APCAL_TELLAFRIEND}>" title="<{$smarty.const._APCAL_TELLAFRIEND}>"/>
-            </a>
-        </span>
+                        <a href="" title="<{$smarty.const._APCAL_TELLAFRIEND}>"
+                           onclick="window.open('<{$xoops_url}>/modules/apcal/tellafriend.php?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), '<{$smarty.const._APCAL_TELLAFRIEND}>', 'toolbar=no, width=550, height=550'); return false;">
+                            <img src="<{$xoops_url}>/modules/apcal/assets/images/tellafriend.png" height="20" width="20"
+                                 alt="<{$smarty.const._APCAL_TELLAFRIEND}>" title="<{$smarty.const._APCAL_TELLAFRIEND}>"/>
+                        </a>
+                    </span>
                 <{/if}>
-                <span class="delicious">
-            <a href="http://www.delicious.com/save" title="Delicious"
-               onclick="window.open('http://www.delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;">
-                <img src="<{$xoops_url}>/modules/apcal/assets/images/delicious.png" height="20" width="20"
-                     alt="Delicious" title="Delicious"/>
-            </a>
-        </span>
-                <span class="googleplus">
-            <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{
-                    lang: '<{$smarty.const._APCAL_GPLUS_LNG}>'
-                }</script>
-            <g:plusone size="medium" count="false" href="<{$xoops_url}>/modules/APCal"></g:plusone>
-        </span>
-                <span class="linkedIn">
-            <script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>
-            <script type="IN/Share" data-url="<{$xoops_url}>/modules/APCal"></script>
-        </span>
-                <span class="twitter">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-url="<{$xoops_url}>/modules/APCal"
-               data-count="none">Tweet</a>
-            <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-        </span>
-                <span class="facebook">
-            <script type="text/javascript"
-                    src="http://connect.facebook.net/<{$smarty.const._APCAL_FB_LNG}>/all.js#xfbml=1"></script>
-            <div class="fb-like" data-href="<{$xoops_url}>/modules/APCal" data-send="false" data-layout="button_count"
-                 data-action="recommend" data-show-faces="false"></div>
-        </span>
+                <{if $showSocial}>
+                    <span class="delicious">
+                        <a href="http://www.delicious.com/save" title="Delicious"
+                           onclick="window.open('http://www.delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;">
+                            <img src="<{$xoops_url}>/modules/apcal/assets/images/delicious.png" height="20" width="20"
+                                 alt="Delicious" title="Delicious"/>
+                        </a>
+                    </span>
+                    <span class="googleplus">
+                        <script type="text/javascript" src="https://apis.google.com/js/plusone.js">{
+                                lang: '<{$smarty.const._APCAL_GPLUS_LNG}>'
+                            }</script>
+                        <g:plusone size="medium" count="false" href="<{$xoops_url}>/modules/apcal"></g:plusone>
+                    </span>
+                    <span class="linkedIn">
+                        <script src="http://platform.linkedin.com/in.js" type="text/javascript"></script>
+                        <script type="IN/Share" data-url="<{$xoops_url}>/modules/apcal"></script>
+                    </span>
+                    <span class="twitter">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-url="<{$xoops_url}>/modules/apcal"
+                           data-count="none">Tweet</a>
+                        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+                    </span>
+                    <span class="facebook">
+                        <script type="text/javascript"
+                                src="http://connect.facebook.net/<{$smarty.const._APCAL_FB_LNG}>/all.js#xfbml=1"></script>
+                        <div class="fb-like" data-href="<{$xoops_url}>/modules/apcal" data-send="false" data-layout="button_count"
+                             data-action="recommend" data-show-faces="false"></div>
+                    </span>
+                <{/if}>
             </div>
         <{/if}>
     </div>

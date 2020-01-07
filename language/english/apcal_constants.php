@@ -198,11 +198,12 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED')) {
     define('_APCAL_RO_FIRSTNAME', 'first name');
     define('_APCAL_RO_LASTNAME', 'last name');
     define('_APCAL_RO_EMAIL', 'E-mail-address');
-    define('_APCAL_RO_EXTRAINFO1', 'Telephone'); //use it as you want; if you keep it blank, it will be invisible; if you change later, it has no effect on the data himself
-    define('_APCAL_RO_EXTRAINFO2', 'Remarks'); //use it as you want, if you keep it blank, it will be invisible
-    define('_APCAL_RO_EXTRAINFO3', ''); //use it as you want, if you keep it blank, it will be invisible
-    define('_APCAL_RO_EXTRAINFO4', ''); //use it as you want, if you keep it blank, it will be invisible
-    define('_APCAL_RO_EXTRAINFO5', ''); //use it as you want, if you keep it blank, it will be invisible
+    //    extra infos have moved to preferences
+    //    define('_APCAL_RO_EXTRAINFO1', 'Telephone'); //use it as you want; if you keep it blank, it will be invisible; if you change later, it has no effect on the data himself
+    //    define('_APCAL_RO_EXTRAINFO2', 'Remarks'); //use it as you want, if you keep it blank, it will be invisible
+    //    define('_APCAL_RO_EXTRAINFO3', ''); //use it as you want, if you keep it blank, it will be invisible
+    //    define('_APCAL_RO_EXTRAINFO4', ''); //use it as you want, if you keep it blank, it will be invisible
+    //    define('_APCAL_RO_EXTRAINFO5', ''); //use it as you want, if you keep it blank, it will be invisible
 
     define('_APCAL_RO_BTN_CONF_ADD', 'Confirm registration');
     define('_APCAL_RO_BTN_CONF_ADD_MORE', 'Confirm registration and register more people');
@@ -266,4 +267,26 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED')) {
     define('_APCAL_RO_SUCCESS_DELETE_EVENT', 'Event successfully deleted');
     define('_APCAL_RO_SUCCESS_UPDATE_EVENT', 'Event successfully changed');
     define('_APCAL_RO_SUCCESS_COPY_EVENT', 'Event successfully copied');
+    
+    define('_APCAL_RO_MISSING_ITEM','Error when saving online registration: Please edit %s ');
+
+    //version 2.23
+    define('_APCAL_RO_NO_RIGHT','You do not have permissions for online registration. ');
+    define('_APCAL_RO_GUEST','Guest');
+    define('_APCAL_RO_AVAILABLE','Availability');
+    define('_APCAL_RO_LIST_ACT','Put registered person on waiting list if number of max person is reached');
+    define('_APCAL_RO_STATUS_ACT','Each participation must be confirmed');
+    define('_APCAL_RO_STATUS','State');
+    define('_APCAL_RO_STATUS_PENDING','Participation is still not confirmed');
+    define('_APCAL_RO_STATUS_OK','Participation is confirmed');
+    define('_APCAL_RO_STATUS_LIST','Online registration was put on waiting list');
+    define('_APCAL_RO_ERROR_STATUS_CONF','Error at confirmation of participation');
+    define('_APCAL_RO_STATUS_SUCCESS_CHANGE_PENDING',"State have been change to 'not confirmed'");
+    define('_APCAL_RO_STATUS_SUCCESS_CHANGE_OK',"State have been change to 'confirmed'");
+    define('_APCAL_RO_MAIL_SUBJ_STATUS','Info state change');
+    define('_APCAL_RO_MAIL_RECEPIENT','Recipient');
+    define('_APCAL_RO_PUT_ON_WAITINGLIST','For this event are no more places available! Your registration have been put on a waiting list! If your participation will be confirmed late you will get an email notification.');
+    define('_APCAL_RO_PUT_ON_WAITINGLIST2','The registration have been put on a waiting list and must be confirmed manually!');
+    define('_APCAL_RO_PRINT_LIST','Print list of participants');
+
 }

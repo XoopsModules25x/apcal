@@ -185,7 +185,7 @@
             <{foreach item=cat from=$categories}>
                 <{assign var=id value=$cat->cid}>
                 <span style="background: <{$cats_color[$id]}>; border: 1px solid;">&nbsp;&nbsp;</span>
-                <a href="<{$cat->link}>"><{$cat->cat_title}></a>
+                <a class="apcal-cat-link" href="<{$cat->link}>"><{$cat->cat_title}></a>
             <{/foreach}>
             <span style="background: <{$cats_color.00000}>; border: 1px solid;">&nbsp;&nbsp;</span>
             <a href="<{$cal->make_cal_link('', 'Monthly', 0, '')}>"><{$smarty.const._APCAL_MB_SHOWALLCAT}></a>

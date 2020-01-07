@@ -110,7 +110,7 @@ define('_MI_APCAL_COMMENTSNOT', 'Comentarios y & Notificaciones');
 define("_MI_APCAL_EDITBYGUESTDSC", "Permisos de a&ntilde;adir eventos por los Invitados");
 define("_MI_APCAL_LOCALEDESC", "Nota: Las vacaciones est&aacute;n a&ntilde;adidas para USA, Canada, Canada-fr y France exclusivamente. Para otros pa&iacute;ses, debes crearlas t&uacute; mismo.");
 define("_MI_APCAL_DESCNAMEORUNAME" , "Selecciona qu&eacute; 'nombre' se muestra" );
-define("_MI_APCAL_DESCUSEURLREWRITE" , "<b>Para hacerlo funcionar, copia  /modules/APCal/doc/.htaccess a /modules/APCal/.</b><br /><br />Nota: Si no tienes el apache \"mod_rewrite\" instalado en tu Servidor, es posible que no funcione. Por favor, contacta con tu administrador de sistemas para m&aacute;s detalles." ) ;
+define("_MI_APCAL_DESCUSEURLREWRITE" , "<b>Para hacerlo funcionar, copia  /modules/apcal/doc/.htaccess a /modules/apcal/.</b><br /><br />Nota: Si no tienes el apache \"mod_rewrite\" instalado en tu Servidor, es posible que no funcione. Por favor, contacta con tu administrador de sistemas para m&aacute;s detalles." ) ;
 define("_MI_APCAL_WIDERWEEKENDDESC" , "Presiona la Tecla \"Ctrl\" de tu teclado mientras seleccionas m&aacute;s de un d&iacute;a." );
 define('_MI_APCAL_THMORDEFAULTDESC', 'Tema: A&ntilde;ade a tu archivo css principal las siguientes l&iacute;neas. (Recomendado)<br />Personalizar:  Rellena los siguientes 13 campos.<br />Por Defecto: Usa los colores por defecto.');
 

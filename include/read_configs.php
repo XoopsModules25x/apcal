@@ -89,6 +89,7 @@ if (is_object($xoopsUser)) {
         // ����Ԥθ��¡ʴ���Ԥ��ѹ������鼫ưŪ�˾�ǧ�Ȥ����
         $insertable           = true;
         $editable             = true;
+        $superedit            = true;
         $deletable            = true;
         $admission_insert_sql = ',admission=1';
         $admission_update_sql = ',admission=1';
@@ -145,20 +146,22 @@ if (is_object($xoopsUser)) {
             } else {
                 $admission_insert_sql = ',admission=0';
             }
-
             // �Խ�����
-            $editable = $gpermHandler->checkRight('apcal_global', 4, $my_group_ids, $mid);
-            if ($editable && $gpermHandler->checkRight('apcal_global', 8, $my_group_ids, $mid)) {
-                $admission_update_sql = ',admission=1';
-            } else {
-                $admission_update_sql = ',admission=0';
-            }
-
+            $editable  = $gpermHandler->checkRight('apcal_global', 4, $my_group_ids, $mid);
             // ���¡ʺ��ǧ�λ��Ȥ��ޤ��ʤΤǡ�̵�����Τߡ�
             $deletable = $gpermHandler->checkRight('apcal_global', 32, $my_group_ids, $mid);
 
             // �Ȥꤢ������¾�ͤΥ쥳���ɤϤ����餻�ʤ�
-            $whr_sql_append = "AND uid=$user_id ";
+            $superedit = $gpermHandler->checkRight('apcal_global', 8, $my_group_ids, $mid);
+            if ($superedit) {
+                $admission_update_sql = ',admission=1';
+                $admission_insert_sql = ',admission=1';
+                $whr_sql_append = '';
+            } else {
+                $admission_update_sql = ',admission=0';
+                $admission_insert_sql = ',admission=0';
+                $whr_sql_append = "AND uid=$user_id ";
+            }
         } elseif ($users_authority & 1) {
             // ��Ͽ�Ĥʤ��Խ���ġʤ�����user_id�����פ���ɬ�פ������
             $insertable     = true;
@@ -221,6 +224,7 @@ if (is_object($xoopsUser)) {
 // �Ƽ︢�¤�APCal���֥������Ȥؤ���Ͽ
 $cal->insertable = $insertable;
 $cal->editable   = $editable;
+$cal->superedit  = $superedit;
 $cal->deletable  = $deletable;
 $cal->user_id    = $user_id;
 $cal->isadmin    = $isadmin;

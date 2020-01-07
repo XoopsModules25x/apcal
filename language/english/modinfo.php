@@ -198,4 +198,17 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
     define('_MI_APCAL_GMAPS_API', 'Paste your Google Maps API key for http://www.yoursite.com/ here.');
     define('_MI_APCAL_GMAPS_API_DESC', 'Get keys from <a href="https://developers.google.com/maps/documentation/javascript/get-api-key/">https://developers.google.com/maps/documentation/javascript/get-api-key/</a>
                                         <br>necessary APIs: Geocoding API, Maps JavaScript API, Places API');
+    // version 2.23
+    define('_MI_APCAL_REGONLINE', 'Online registration');
+    define('_MI_APCAL_RO_EXTRA1', 'Extra Info 1, which should be entered during registration');
+    define('_MI_APCAL_RO_EXTRA2', 'Extra Info 2');
+    define('_MI_APCAL_RO_EXTRA3', 'Extra Info 3');
+    define('_MI_APCAL_RO_EXTRA4', 'Extra Info 4');
+    define('_MI_APCAL_RO_EXTRA5', 'Extra Info 5');
+    define('_MI_APCAL_RO_EXTRA1_OBL', 'Extra Info 1 is obligatory');
+    define('_MI_APCAL_RO_EXTRA2_OBL', 'Extra Info 2 is obligatory');
+    define('_MI_APCAL_RO_EXTRA3_OBL', 'Extra Info 3 is obligatory');
+    define('_MI_APCAL_RO_EXTRA4_OBL', 'Extra Info 4 is obligatory');
+    define('_MI_APCAL_RO_EXTRA5_OBL', 'Extra Info 5 is obligatory');
+    define('_MI_APCAL_ENABLE_PRINT', 'Enable print of events');
 }

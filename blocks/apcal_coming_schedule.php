@@ -63,7 +63,7 @@ if (!defined('APCAL_BLOCK_COMING_SCHEDULE_INCLUDED')) {
 
         $block                 = $cal->get_blockarray_coming_event("$mod_url/index.php", $maxitem, true, $untildays);
         $block['showPictures'] = $showPictures;
-        // var_dump($block);
+
         return $block;
     }
 

@@ -13,7 +13,8 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED') ) {
     define('_APCAL_DTFMT_MINUTE','i');
 
     // definition of orders     Y:year  M:month  W:week  D:day  N:dayname  O:operand
-    define('_APCAL_FMT_MD','%1$s %2$s') ;
+    // define('_APCAL_FMT_MD','%1$s %2$s') ;
+    define('_APCAL_FMT_MD','%2$s %1$s') ;
     define('_APCAL_FMT_YMD','%3$s %2$s %1$s') ;
     define('_APCAL_FMT_YMDN','%3$s %2$s %1$s %4$s');
     define('_APCAL_FMT_YMDO','%4$s%3$s%2$s%1$s') ;
@@ -198,11 +199,12 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED') ) {
     define('_APCAL_RO_FIRSTNAME','Vorname');
     define('_APCAL_RO_LASTNAME','Familienname');
     define('_APCAL_RO_EMAIL','E-Mail-Adresse');
-    define('_APCAL_RO_EXTRAINFO1','Telefon'); //use it as you want; if you keep it blank, it will be invisible; if you change later, it has no effect on the data himself
-    define('_APCAL_RO_EXTRAINFO2','Geb. Jahr'); //use it as you want, if you keep it blank, it will be invisible
-    define('_APCAL_RO_EXTRAINFO3','Mitglied<br /> (JA / NEIN)'); //use it as you want, if you keep it blank, it will be invisible
-    define('_APCAL_RO_EXTRAINFO4','Zustieg<br />(SCHARDENBERG / SCHÄRDING)'); //use it as you want, if you keep it blank, it will be invisible
-    define('_APCAL_RO_EXTRAINFO5',''); //use it as you want, if you keep it blank, it will be invisible
+    //    extra infos have moved to preferences
+    //    define('_APCAL_RO_EXTRAINFO1','Telefon'); //use it as you want; if you keep it blank, it will be invisible; if you change later, it has no effect on the data himself
+    //    define('_APCAL_RO_EXTRAINFO2','Geb. Jahr'); //use it as you want, if you keep it blank, it will be invisible
+    //    define('_APCAL_RO_EXTRAINFO3','Mitglied (JA / NEIN)'); //use it as you want, if you keep it blank, it will be invisible
+    //    define('_APCAL_RO_EXTRAINFO4','Sonstige Anmerkungen'); //use it as you want, if you keep it blank, it will be invisible
+    //    define('_APCAL_RO_EXTRAINFO5',''); //use it as you want, if you keep it blank, it will be invisible
 
     define('_APCAL_RO_BTN_CONF_ADD','Anmeldung bestätigen');
     define('_APCAL_RO_BTN_CONF_ADD_MORE','Anmeldung bestätigen und weitere Personen anmelden');
@@ -267,7 +269,7 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED') ) {
     define('_APCAL_RO_SUCCESS_UPDATE_EVENT','Änderungen Termin wurden erfolgreich durchgeführt');
     define('_APCAL_RO_SUCCESS_COPY_EVENT','Termin wurde erfolgreich kopiert');
 
-    //added by goffy2
+    //version 2.23
     define('_APCAL_RO_NO_RIGHT','Sie besitzen nicht die Berechtigung für eine Onlineanmeldung. ');
     define('_APCAL_RO_MISSING_ITEM','Fehler beim Speichern der Onlineanmeldung: Bitte %s ergänzen');
     define('_APCAL_RO_GUEST','Gast');
@@ -282,9 +284,9 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED') ) {
     define('_APCAL_RO_STATUS_SUCCESS_CHANGE_PENDING','Der Status Teilnahme wurde auf \'noch nicht bestätigt\' geändert');
     define('_APCAL_RO_STATUS_SUCCESS_CHANGE_OK','Der Status Teilnahme wurde auf \'bestätigt\' geändert');
     define('_APCAL_RO_MAIL_SUBJ_STATUS','Info Statusänderung');
-
-    define('_APCAL_RO_PUT_ON_WAITINGLIST','Für diese Veranstaltung sind derzeit keine Plätze mehr frei! Deine Anmeldung wurde auf einer Warteliste vorgemerkt! Sollte Deine Teilnahme zu einem späteren Zeitpunkt bestätigt werden, senden wir Dir eine e-Mail-Verständigung.');
-
     define('_APCAL_RO_MAIL_RECEPIENT','Empfänger');
+    define('_APCAL_RO_PUT_ON_WAITINGLIST','Für diese Veranstaltung sind derzeit keine Plätze mehr frei! Deine Anmeldung wurde auf einer Warteliste vorgemerkt! Sollte Deine Teilnahme zu einem späteren Zeitpunkt bestätigt werden, senden wir Dir eine e-Mail-Verständigung.');
+    define('_APCAL_RO_PUT_ON_WAITINGLIST2','Die Anmeldung wurde auf einer Warteliste vorgemerkt und muss manuell übernommen werden!');
+    define('_APCAL_RO_PRINT_LIST','Teilnehmerliste drucken');
 
 }
