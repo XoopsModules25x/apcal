@@ -445,6 +445,7 @@ if (isset($_REQUEST['form_add'])) {
         $extrainfo3 = Request::getString('extrainfo3', '');
         $extrainfo4 = Request::getString('extrainfo4', '');
         $extrainfo5 = Request::getString('extrainfo5', '');
+        $dataprotect = Request::getInt('dataprotect');
 
         $eventdate = date('d.m.Y H:i:s', $eventdate);
 
@@ -477,8 +478,8 @@ if (isset($_REQUEST['form_add'])) {
         }
 
         $ret = "
-        <div class='row'>
-            <div><span class='itemTitle'>" . _APCAL_RO_TITLE1 . "</span></div>
+        <h3 class='row'>
+            <h3>" . _APCAL_RO_TITLE1 . "</h3>
             <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformaddmember' style='margin:0px;'>
                 <input type='hidden' name='eventid' value='$eventid' />
                 <input type='hidden' name='uid' value='$uid' />
@@ -560,6 +561,19 @@ if (isset($_REQUEST['form_add'])) {
         } else {
             $ret .= "<input type='hidden' name='status' value='-1' size='100' />";
         }
+        $ret .= "
+                <div class='even col-xs-12 col-sm-4'>" . _APCAL_RO_DATAPROTECT . "*:</div>
+                <div class='odd col-xs-12 col-sm-8'>
+                    <input id='dataprotect' type='checkbox' ";
+        if ($dataprotect == 1) {
+            $ret .= "value='0' checked='checked'";
+        } else {
+            $ret .= "value='0' ";
+        }
+
+        $ret .= "title=" . _APCAL_RO_DATAPROTECT . " name='dataprotect' />
+                    <span>" . _APCAL_RO_DATAPROTECT_DETAIL . "</span>
+                </div>";
         $ret .= '
                 </div>
                 * ' . _APCAL_RO_OBLIGATORY . "
@@ -727,25 +741,26 @@ if (isset($_REQUEST['form_add'])) {
 
 if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
     if (!empty($_POST['eventid'])) {
-        $uid        = Request::getInt('uid');
-        $url        = Request::getString('url', '');
-        $eventurl   = Request::getString('eventurl', '');
-        $uname      = Request::getString('uname', '');
-        $eventid    = Request::getInt('eventid');
-        $firstname  = Request::getString('firstname', '');
-        $lastname   = Request::getString('lastname', '');
-        $email      = Request::getString('email', '');
-        $extrainfo1 = Request::getString('extrainfo1', '-');
-        $extrainfo2 = Request::getString('extrainfo2', '-');
-        $extrainfo3 = Request::getString('extrainfo3', '-');
-        $extrainfo4 = Request::getString('extrainfo4', '-');
-        $extrainfo5 = Request::getString('extrainfo5', '-');
-        $summary    = Request::getString('summary', '');
-        $date       = Request::getString('date');
-        $location   = Request::getString('location', '');
-        $sendconf   = Request::getString('sendconf', '');
-        $status     = Request::getInt('status');
-        $eventdate  = Request::getString('eventdate', '');
+        $uid         = Request::getInt('uid');
+        $url         = Request::getString('url', '');
+        $eventurl    = Request::getString('eventurl', '');
+        $uname       = Request::getString('uname', '');
+        $eventid     = Request::getInt('eventid');
+        $firstname   = Request::getString('firstname', '');
+        $lastname    = Request::getString('lastname', '');
+        $email       = Request::getString('email', '');
+        $extrainfo1  = Request::getString('extrainfo1', '-');
+        $extrainfo2  = Request::getString('extrainfo2', '-');
+        $extrainfo3  = Request::getString('extrainfo3', '-');
+        $extrainfo4  = Request::getString('extrainfo4', '-');
+        $extrainfo5  = Request::getString('extrainfo5', '-');
+        $summary     = Request::getString('summary', '');
+        $date        = Request::getString('date');
+        $location    = Request::getString('location', '');
+        $sendconf    = Request::getString('sendconf', '');
+        $status      = Request::getInt('status');
+        $eventdate   = Request::getString('eventdate', '');
+        $dataprotect = Request::hasVar('dataprotect');
 
         $url_redirect = "&firstname=".$firstname;
         $url_redirect .= "&lastname=".$lastname;
@@ -755,7 +770,11 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
         $url_redirect .= "&extrainfo3=".$extrainfo3;
         $url_redirect .= "&extrainfo4=".$extrainfo4;
         $url_redirect .= "&extrainfo5=".$extrainfo5;
-        
+        $url_redirect .= "&dataprotect=".$dataprotect;
+
+        if ($dataprotect == 0) {
+            redirect_header($url.$url_redirect, 3, str_replace('%s', _APCAL_RO_DATAPROTECT, _APCAL_RO_MISSING_ITEM));
+        }
         if ($firstname=='') {
             redirect_header($url.$url_redirect, 3, str_replace('%s', _APCAL_RO_FIRSTNAME, _APCAL_RO_MISSING_ITEM));
         }

@@ -15,6 +15,7 @@ Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
 - moved extra info to module preferences (goffy)
 - seperated option for print from social links (goffy)
 - implemented superedit right (edit/delete all events) - was only available in permissions but not used (goffy)
+- implemented data protection info (goffy)
 
 <h5>2.22 Beta 2  NOT RELEASED</h5>  [2019/../..]
 <hr>

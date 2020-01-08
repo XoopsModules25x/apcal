@@ -96,5 +96,5 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined( 'APCAL_MB_APCALLOADED' ) ) {
     define('_MD_APCAL_PERMADDOK', 'Die Berechtigung %s für %s zur Gruppe %s hinzugefügt');
     define('_MD_APCAL_PERMRESETNG', 'Konnte Gruppenberechtigungen für Modul %s nicht zurücksetzen');
     
-    define('_MD_APCAL_MAP_APPLY', 'Ausgewählten Ort anwenden'); 
+    define('_MD_APCAL_MAP_APPLY', 'Ausgewählten Ort anwenden');
 }
