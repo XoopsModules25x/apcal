@@ -88,34 +88,16 @@ class ApcalUtility extends XoopsObject
     public static function checkVerXoops(XoopsModule $module)
     {
         xoops_loadLanguage('admin', $module->dirname());
-        //check for minimum XOOPS version
-        $currentVer  = substr(XOOPS_VERSION, 6); // get the numeric part of string
-        $currArray   = explode('.', $currentVer);
-        $requiredVer = '' . $module->getInfo('min_xoops'); //making sure it's a string
-        $reqArray    = explode('.', $requiredVer);
-        $success     = true;
-        foreach ($reqArray as $k => $v) {
-            if (isset($currArray[$k])) {
-                if ($currArray[$k] > $v) {
-                    break;
-                } elseif ($currArray[$k] == $v) {
-                    continue;
-                } else {
-                    $success = false;
-                    break;
-                }
-            } else {
-                if ((int)$v > 0) { // handles things like x.x.x.0_RC2
-                    $success = false;
-                    break;
-                }
+        // check for minimum PHP version
+        $success = true;
+        $verNum  = PHP_VERSION;
+        $reqVer  = $module->getInfo('min_php');
+        if ((false !== $reqVer) && ('' !== $reqVer)) {
+            if (version_compare($verNum, (string)$reqVer, '<')) {
+                $module->setErrors(sprintf(_AM_XOOPSFAQ_ERROR_BAD_PHP, $reqVer, $verNum));
+                $success = false;
             }
         }
-
-        if (!$success) {
-            $module->setErrors(sprintf(_AM_APCAL_ERROR_BAD_XOOPS, $requiredVer, $currentVer));
-        }
-
         return $success;
     }
 
