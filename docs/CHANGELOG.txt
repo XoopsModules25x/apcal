@@ -1,176 +1,174 @@
-CHANGELOG: APCal
-Module developer : Antiques Promotion <http://xoops.antiquespromotion.ca>
-
 <h5>2.23 Beta 1  NOT RELEASED</h5>  [2019/../..]
-- added skin folders tab_blue, tab_darkred, tab, gray, tab_orange, tab_red (goffy)
-- fixed different defines in apcal_constants (replaced _APCAL_MB_ by _APCAL_MB_, as it is used in all other lang files) (goffy)
-- added ids to apcal forms (goffy)
-- added ids to block templates (goffy)
-- fixed problem with missing vars (goffy)
-- fixed problems with invalid array key names for 'attributes' (goffy)
-- fixed problems with google maps (goffy)- re-added possibilities for waiting list in regonline (goffy)
-- re-added possibilities for need confirmantion in regonline (goffy)
-- fixed problems removed fields (goffy)
-- changed 'array('' into '[' in xoops_version (goffy)
-- moved extra info to module preferences (goffy)
-- seperated option for print from social links (goffy)
-- implemented superedit right (edit/delete all events) - was only available in permissions but not used (goffy)
-- implemented data protection info (goffy)
+ - added skin folders tab_blue, tab_darkred, tab, gray, tab_orange, tab_red (goffy)
+ - fixed different defines in apcal_constants (replaced _APCAL_MB_ by _APCAL_MB_, as it is used in all other lang files) (goffy)
+ - added ids to apcal forms (goffy)
+ - added ids to block templates (goffy)
+ - fixed problem with missing vars (goffy)
+ - fixed problems with invalid array key names for 'attributes' (goffy)
+ - fixed problems with google maps (goffy)
+ - re-added possibilities for waiting list in regonline (goffy)
+ - re-added possibilities for need confirmantion in regonline (goffy)
+ - fixed problems removed fields (goffy)
+ - changed 'array('' into '[' in xoops_version (goffy)
+ - moved extra info to module preferences (goffy)
+ - seperated option for print from social links (goffy)
+ - implemented superedit right (edit/delete all events) - was only available in permissions but not used (goffy)
+ - implemented data privacy info (mamba/goffy)
 
 <h5>2.22 Beta 2  NOT RELEASED</h5>  [2019/../..]
 <hr>
-- XOOPS 2.5.9, PHP 7.1 (mamba)
-- removed @version (mamba)
-- PSR-2 code cosmetics (mamba)
-- addNavigation(basename(__FILE__))  (mamba)
-- dirname(__FILE__) to __DIR__ (mamba)
-- replaced < br /> with < br > (mamba)
-- Unnecessary double quotes (mamba)
-- reference mismatch (mamba)
-- Hardening to type safe (mamba)
-- changed _handler to Handler (mamba)
-- update Help (mamba)
-- removed '/' from void HTML elements (&lt;br&gt;, &lt;img&gt;, etc) (mamba)
-- HTML 5: removed 'selected' and 'checked' (mamba)
-- updated file headers for consistency (mamba)
-- CSS3 and HTML5 updates (mamba)
-- renamed several $indexAdmin with $adminObject for consistency (mamba)
-- MySQL commands conversion to $xoopsDB (mamba)
-- key_exists to array_key_exists (mamba)
-- Short syntax for applied operation (mamba)
-- improved 'salt' in gticket.php (mamba)
-- changed while(list) to foreach (mamba)
-- changed $k < count($matches[0]) to $kMax = count($matches[0]); $k < $kMax; (mamba)
-- updated 'require' and 'include_once' to 'require_once' (mamba)
-- updated PHP4 constructors (mamba)
-- added PhpDocs headers (mamba)
-- started conversion to XMF (mamba)
+ - XOOPS 2.5.9, PHP 7.1 (mamba)
+ - removed @version (mamba)
+ - PSR-2 code cosmetics (mamba)
+ - addNavigation(basename(__FILE__))  (mamba)
+ - dirname(__FILE__) to __DIR__ (mamba)
+ - replaced < br /> with < br > (mamba)
+ - Unnecessary double quotes (mamba)
+ - reference mismatch (mamba)
+ - Hardening to type safe (mamba)
+ - changed _handler to Handler (mamba)
+ - update Help (mamba)
+ - removed '/' from void HTML elements (&lt;br&gt;, &lt;img&gt;, etc) (mamba)
+ - HTML 5: removed 'selected' and 'checked' (mamba)
+ - updated file headers for consistency (mamba)
+ - CSS3 and HTML5 updates (mamba)
+ - renamed several $indexAdmin with $adminObject for consistency (mamba)
+ - MySQL commands conversion to $xoopsDB (mamba)
+ - key_exists to array_key_exists (mamba)
+ - Short syntax for applied operation (mamba)
+ - improved 'salt' in gticket.php (mamba)
+ - changed while(list) to foreach (mamba)
+ - changed $k < count($matches[0]) to $kMax = count($matches[0]); $k < $kMax; (mamba)
+ - updated 'require' and 'include_once' to 'require_once' (mamba)
+ - updated PHP4 constructors (mamba)
+ - added PhpDocs headers (mamba)
+ - started conversion to XMF (mamba)
     - updated addInfoBoxLine entries (mamba)
     - displayNavigation(basename(__FILE__))  (mamba)
     - changed to ->displayButton('left') (mamba)
-- mysqli_ conversion to XOOPS (mamba)
-- Issues in bootstrap themes (cesagonchu/geekwright)
-- fix English (mamba)
-- added Google Maps API Key field (mamba)
+ - mysqli_ conversion to XOOPS (mamba)
+ - Issues in bootstrap themes (cesagonchu/geekwright)
+ - fix English (mamba)
+ - added Google Maps API Key field (mamba)
 
 
 <h5>2.22 Beta 1  NOT RELEASED</h5>  [2016/03/30]
 <hr>
-- XOOPS 2.5.8, PHP 7 (mamba)
-- moved images, js, to /assets (mamba)
-- templates extension to .tpl (mamba)
-- upgraded phpThumb (mamba)
-- PSR-2 cosmetics (mamba)
-- removed @version (mamba)
-- intval to (int) (mamba)
-- mysql_result fixes (geekwright)
+ - XOOPS 2.5.8, PHP 7 (mamba)
+ - moved images, js, to /assets (mamba)
+ - templates extension to .tpl (mamba)
+ - upgraded phpThumb (mamba)
+ - PSR-2 cosmetics (mamba)
+ - removed @version (mamba)
+ - intval to (int) (mamba)
+ - mysql_result fixes (geekwright)
 
 <h5>Version 2.2.0</h5>
 <hr>
-- Fixed   Timezones issue which was adding or removing days to an event.
-- Fixed   All day events set on the first day of a month don't appear on everyday of the previous month.
-- Updated All language files and variables to make the module clonable with SmartClone.
+ - Fixed   Timezones issue which was adding or removing days to an event.
+ - Fixed   All day events set on the first day of a month don't appear on everyday of the previous month.
+ - Updated All language files and variables to make the module clonable with SmartClone.
 
 <h5>Version 2.1.3</h5>
 <hr>
-- Fixed   Events which need to be admitted don't create doubles of active events and an error message when clicked..
-- Fixed   All day events set on the first day of a month don't appear on everyday of the previous month.
+ - Fixed   Events which need to be admitted don't create doubles of active events and an error message when clicked..
+ - Fixed   All day events set on the first day of a month don't appear on everyday of the previous month.
 
 <h5>Version 2.1.2</h5>
 <hr>
-- Fixed   When inserting a new event, pictures are saved.
-- Fixed   The module now comes with its own datepicker because of some Xoops version bug.
-- Fixed   The map displays correclty when the contact is a user from the website.
+ - Fixed   When inserting a new event, pictures are saved.
+ - Fixed   The module now comes with its own datepicker because of some Xoops version bug.
+ - Fixed   The map displays correclty when the contact is a user from the website.
 
 <h5>Version 2.1.1</h5>
 <hr>
-- Fixed   When inserting a new event, pictures are saved.
-- Updated Empty fields doesn't show in the event view.
+ - Fixed   When inserting a new event, pictures are saved.
+ - Updated Empty fields doesn't show in the event view.
 
 <h5>Version 2.1.0</h5>
 <hr>
-- Added   Online registration feature with option to turn it on/off. (Uers can subscribe to an event and receive notifications for it) (Thanks to Goffy)
-- Updated New way to make thumbs for better support on every servers. (Needs GD library)
-- Updated When you save an event, the redirection is where you were before (Instead of current month)
-- Fixed   Links on events in the map for Yearly view and List view
-- Fixed   Some minor bug fixes
-- New features are translated in English, French and German.
+ - Added   Online registration feature with option to turn it on/off. (Uers can subscribe to an event and receive notifications for it) (Thanks to Goffy)
+ - Updated New way to make thumbs for better support on every servers. (Needs GD library)
+ - Updated When you save an event, the redirection is where you were before (Instead of current month)
+ - Fixed   Links on events in the map for Yearly view and List view
+ - Fixed   Some minor bug fixes
+ - New features are translated in English, French and German.
 
 <h5>Version 2.0.4</h5>
 <hr>
-- Updated Spanish and German translation.
-- Fixed   The link to add an event from the monthly view.
+ - Updated Spanish and German translation.
+ - Fixed   The link to add an event from the monthly view.
 
 <h5>Version 2.0.3</h5>
 <hr>
-- Minor bug fix on events insertion.
-- The box in monthly view will not expand more than the screen width and height.
+ - Minor bug fix on events insertion.
+ - The box in monthly view will not expand more than the screen width and height.
 
 <h5>Version 2.0.2</h5>
 <hr>
-- Fixed Shift for events in the first week of the month.
-- Updated Language of social networks buttons in module language files.
-- Updated Full event summary show in monthly view to take all available space.
-- Updated In event view, event summary as title.
+ - Fixed Shift for events in the first week of the month.
+ - Updated Language of social networks buttons in module language files.
+ - Updated Full event summary show in monthly view to take all available space.
+ - Updated In event view, event summary as title.
 
 <h5>Version 2.0.0</h5>
 <hr>
-- Updated Monthly view with linear view for one event (instead of repeating over and over)
-- Added   Possibility to Add Pictures to an event including a separate main picture.
-- Added   Thumbnail pictures with viewer in event view.
-- Added   Seperate field for website and e-mail.
-- Added   Optional main picture display in Monthly View (on mouse over), List View, Daily View and Weekly View.
-- Added   Each category have its own color.
-- Added   Legend of categories with categories colors.
-- Added   Possibility to choose which category to be used for an event (as we keep multi-category feature).
-- Added   Possibility to choose different hours for the same event (if multiple days are selected).
-- Updated More neutral theme colors for images, should be a better fit with most website.
-- Updated Reorganisation of admin preferences.
-- Added   Tell a friend feature.
-- Added   New sharing button (LindedIn and Delicious).
-- Some minor bug fixes.
+ - Updated Monthly view with linear view for one event (instead of repeating over and over)
+ - Added   Possibility to Add Pictures to an event including a separate main picture.
+ - Added   Thumbnail pictures with viewer in event view.
+ - Added   Seperate field for website and e-mail.
+ - Added   Optional main picture display in Monthly View (on mouse over), List View, Daily View and Weekly View.
+ - Added   Each category have its own color.
+ - Added   Legend of categories with categories colors.
+ - Added   Possibility to choose which category to be used for an event (as we keep multi-category feature).
+ - Added   Possibility to choose different hours for the same event (if multiple days are selected).
+ - Updated More neutral theme colors for images, should be a better fit with most website.
+ - Updated Reorganisation of admin preferences.
+ - Added   Tell a friend feature.
+ - Added   New sharing button (LindedIn and Delicious).
+ - Some minor bug fixes.
 
 <h5>Version 1.0.6</h5>
 <hr>
-- Added   links to social networks (Facebook, Twitter, Google+)
+ - Added   links to social networks (Facebook, Twitter, Google+)
 
 <h5>Version 1.0.5</h5>
 <hr>
-- Updated Admin menu to fit XOOPS 2.4 and 2.5.
-- Some functions updates to fit php 5.3.
+ - Updated Admin menu to fit XOOPS 2.4 and 2.5.
+ - Some functions updates to fit php 5.3.
 
 <h5>Version 1.0.4</h5>
 <hr>
-- Updated admin menu.
-- Fixed   the bug caused by the .htaccess file generating an "Internal server error".
-- Some minor bug fixes.
+ - Updated admin menu.
+ - Fixed   the bug caused by the .htaccess file generating an "Internal server error".
+ - Some minor bug fixes.
 
 <h5>Version 1.0.3</h5>
 <hr>
-- Some minor bug fixes.
+ - Some minor bug fixes.
 
 <h5>Version 1.0.2</h5>
 <hr>
-- Updated Google Optimization.
-- Added   onUpdate action to add the new DB fields.
-- Updated onInstall action.
-- Added   navigation menu in event view and option to enable/disable it.
-- Updated option to have bigger columns for every day (Select the ones bigger).
-- Updated the "share this calendar" example to fit with Internet Explorer (IE7+)
+ - Updated Google Optimization.
+ - Added   onUpdate action to add the new DB fields.
+ - Updated onInstall action.
+ - Added   navigation menu in event view and option to enable/disable it.
+ - Updated option to have bigger columns for every day (Select the ones bigger).
+ - Updated the "share this calendar" example to fit with Internet Explorer (IE7+)
 
 <h5>Version 1.0.1</h5>
 <hr>
-- Updated URLRewriting.
-- Updated Google Optimization.
+ - Updated URLRewriting.
+ - Updated Google Optimization.
 
 <h5>Version 1.0.0</h5>
 <hr>
-- Added   a map showing all events location.
-- Added   markers with number representing the date of event with next event first.
-- Added   individual map showing event location.
-- Added   optimization for Google.
-- Added   possibility to add a description in HTML for each categories.
-- Added   an API that allows webmasters to show easily your calendar on their website (linking back to your site).
-- Updated customizable theme.
-- Added   option for bigger columns for week-ends.
-- Updated calendar of holidays for United States, Canada and France.
+ - Added   a map showing all events location.
+ - Added   markers with number representing the date of event with next event first.
+ - Added   individual map showing event location.
+ - Added   optimization for Google.
+ - Added   possibility to add a description in HTML for each categories.
+ - Added   an API that allows webmasters to show easily your calendar on their website (linking back to your site).
+ - Updated customizable theme.
+ - Added   option for bigger columns for week-ends.
+ - Updated calendar of holidays for United States, Canada and France.

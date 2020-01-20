@@ -445,7 +445,7 @@ if (isset($_REQUEST['form_add'])) {
         $extrainfo3 = Request::getString('extrainfo3', '');
         $extrainfo4 = Request::getString('extrainfo4', '');
         $extrainfo5 = Request::getString('extrainfo5', '');
-        $dataprotect = Request::getInt('dataprotect');
+        $dataprivacy = Request::getInt('dataprivacy');
 
         $eventdate = date('d.m.Y H:i:s', $eventdate);
 
@@ -562,17 +562,17 @@ if (isset($_REQUEST['form_add'])) {
             $ret .= "<input type='hidden' name='status' value='-1' size='100' />";
         }
         $ret .= "
-                <div class='even col-xs-12 col-sm-4'>" . _APCAL_RO_DATAPROTECT . "*:</div>
+                <div class='even col-xs-12 col-sm-4'>" . _APCAL_RO_DATAPRIVACY . "*:</div>
                 <div class='odd col-xs-12 col-sm-8'>
-                    <input id='dataprotect' type='checkbox' ";
-        if ($dataprotect == 1) {
+                    <input id='dataprivacy' type='checkbox' ";
+        if ($dataprivacy == 1) {
             $ret .= "value='0' checked='checked'";
         } else {
             $ret .= "value='0' ";
         }
 
-        $ret .= "title=" . _APCAL_RO_DATAPROTECT . " name='dataprotect' />
-                    <span>" . _APCAL_RO_DATAPROTECT_DETAIL . "</span>
+        $ret .= "title=" . _APCAL_RO_DATAPRIVACY . " name='dataprivacy' />
+                    <span>" . _APCAL_RO_DATAPRIVACY_DETAIL . "</span>
                 </div>";
         $ret .= '
                 </div>
@@ -760,7 +760,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
         $sendconf    = Request::getString('sendconf', '');
         $status      = Request::getInt('status');
         $eventdate   = Request::getString('eventdate', '');
-        $dataprotect = Request::hasVar('dataprotect');
+        $dataprivacy = Request::hasVar('dataprivacy');
 
         $url_redirect = "&firstname=".$firstname;
         $url_redirect .= "&lastname=".$lastname;
@@ -770,10 +770,10 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
         $url_redirect .= "&extrainfo3=".$extrainfo3;
         $url_redirect .= "&extrainfo4=".$extrainfo4;
         $url_redirect .= "&extrainfo5=".$extrainfo5;
-        $url_redirect .= "&dataprotect=".$dataprotect;
+        $url_redirect .= "&dataprivacy=".$dataprivacy;
 
-        if ($dataprotect == 0) {
-            redirect_header($url.$url_redirect, 3, str_replace('%s', _APCAL_RO_DATAPROTECT, _APCAL_RO_MISSING_ITEM));
+        if ($dataprivacy == 0) {
+            redirect_header($url.$url_redirect, 3, str_replace('%s', _APCAL_RO_DATAPRIVACY, _APCAL_RO_MISSING_ITEM));
         }
         if ($firstname=='') {
             redirect_header($url.$url_redirect, 3, str_replace('%s', _APCAL_RO_FIRSTNAME, _APCAL_RO_MISSING_ITEM));

@@ -288,8 +288,8 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED')) {
     define('_APCAL_RO_PUT_ON_WAITINGLIST','For this event are no more places available! Your registration have been put on a waiting list! If your participation will be confirmed late you will get an email notification.');
     define('_APCAL_RO_PUT_ON_WAITINGLIST2','The registration have been put on a waiting list and must be confirmed manually!');
     define('_APCAL_RO_PRINT_LIST','Print list of participants');
-    define('_APCAL_RO_DATAPROTECT', 'Data protection');
-    define('_APCAL_RO_DATAPROTECT_DETAIL', 'The data of the participants will only be stored for the duration of the event and not forwarded to third person.<br />
+    define('_APCAL_RO_DATAPRIVACY', 'Data protection');
+    define('_APCAL_RO_DATAPRIVACY_DETAIL', 'The data of the participants will only be stored for the duration of the event and not forwarded to third person.<br />
 During the event pictures will be taken and maybe used for internal purposes (e.g. showing on our website). If you are not agreeing that you have to contact the organizer.<br />
 With your registration you agree with this procedure.');
 

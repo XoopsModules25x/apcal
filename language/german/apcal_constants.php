@@ -288,8 +288,8 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED') ) {
     define('_APCAL_RO_PUT_ON_WAITINGLIST','Für diese Veranstaltung sind derzeit keine Plätze mehr frei! Deine Anmeldung wurde auf einer Warteliste vorgemerkt! Sollte Deine Teilnahme zu einem späteren Zeitpunkt bestätigt werden, senden wir Dir eine e-Mail-Verständigung.');
     define('_APCAL_RO_PUT_ON_WAITINGLIST2','Die Anmeldung wurde auf einer Warteliste vorgemerkt und muss manuell übernommen werden!');
     define('_APCAL_RO_PRINT_LIST','Teilnehmerliste drucken');
-    define('_APCAL_RO_DATAPROTECT', 'Datenschutz');
-    define('_APCAL_RO_DATAPROTECT_DETAIL', 'Die Daten der Teilnehmer werden nur für die Dauer der Durchführung der Veranstaltung gespeichert und keinesfalls an Dritte weitergeben.<br />
+    define('_APCAL_RO_DATAPRIVACY', 'Datenschutz');
+    define('_APCAL_RO_DATAPRIVACY_DETAIL', 'Die Daten der Teilnehmer werden nur für die Dauer der Durchführung der Veranstaltung gespeichert und keinesfalls an Dritte weitergeben.<br />
 Während der Veranstaltung wird fotografiert und die Bilder werden eventuell für interne Zwecke (z.B. Veröffentlichung auf der Vereinswebseite) verwendet. Sollten Sie dies nicht wünschen, dann kontaktieren Sie den Veranstalter.<br />
 Mit der Anmeldung wird seitens des Teilnehmers das Einverständnis mit dieser Vorgangsweise erklärt.');
 
