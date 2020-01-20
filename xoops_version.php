@@ -967,23 +967,18 @@ $modversion['comments']['callback']['update']  = 'apcal_comments_update';
 // ------------------- Templates ------------------- //
 
 $modversion['templates'] = [
+    // Admin
+    ['file' => "apcal{$mydirnumber}_admin_index.tpl", 'description' => '', 'type' => 'admin'],
     // User
     ['file' => "apcal{$mydirnumber}_event_detail.tpl", 'description' => ''],
-    ['file' => "apcal{$mydirnumber}_print.tpl", 'description' => ''],
     ['file' => "apcal{$mydirnumber}_event_list.tpl", 'description' => ''],
-
     ['file' => "apcal{$mydirnumber}_getCoords.tpl", 'description' => ''],
-    ['file' => 'apcal_getCoords.tpl', 'description' => '']
-//    ['file' => "apcal{$mydirnumber}_shareCalendar.tpl", 'description' => ''],
-//    ['file' => "apcal{$mydirnumber}_googlemap.tpl", 'description' => '']
+    ['file' => "apcal{$mydirnumber}_googlemap.tpl", 'description' => ''],
+    ['file' => "apcal{$mydirnumber}_monthly.tpl", 'description' => ''],
+    ['file' => "apcal{$mydirnumber}_print.tpl", 'description' => ''],
+    ['file' => "apcal{$mydirnumber}_shareCalendar.tpl", 'description' => ''],
+    ['file' => "apcal{$mydirnumber}_tellafriend.tpl", 'description' => '']
 ];
-
-//$modversion['templates'][1]['file']        = "apcal{$mydirnumber}_event_detail.tpl";
-//$modversion['templates'][1]['description'] = '';
-//$modversion['templates'][2]['file']        = "apcal{$mydirnumber}_print.tpl";
-//$modversion['templates'][2]['description'] = '';
-//$modversion['templates'][3]['file']        = "apcal{$mydirnumber}_event_list.tpl";
-//$modversion['templates'][3]['description'] = '';
 
 // Notification
 $modversion['hasNotification']             = 1;
