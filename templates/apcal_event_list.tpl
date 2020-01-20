@@ -291,7 +291,14 @@
                             </tr>
                         <{/if}>
                     </table>
-
+                    <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                            <td style='text-align:left;vertical-align:middle;width=33%;'><{$page_nav_info}></td>
+                            <td style='text-align:center;vertical-align:middle;width:33%;'><{$page_nav}></td>
+                            <td style='text-align:right;vertical-align:middle;width:34%;'>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         </table>

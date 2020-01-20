@@ -2571,7 +2571,8 @@ if (!class_exists('APCal')) {
                     
                     $eventmembers_only = '';
                     $eventmembers_form = '';
-                    if ($editable && !$for_print) {
+                    //if ($editable && !$for_print) {
+                    if (!$for_print) {
                         $eventmembers_form = "
                             <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformmembers1' style='margin:0px;'>
                                 <input type='hidden' name='eventid' value='$event->id' />
@@ -2594,7 +2595,7 @@ if (!class_exists('APCal')) {
                     }
                 } else {
                     $eventmembers_only = '<p>' . _APCAL_RO_ONLY_MEMBERS . '</p>';
-                    $eventmembers_only .= "<a class='btn btn-primary' href='" . XOOPS_URL . "/modules/profile/user.php?xoops_redirect=" . XOOPS_URL . "/modules/apcal/?event_id=$event->id&action=View' title=''>Einloggen</a>";
+                    $eventmembers_only .= "<a class='btn btn-primary' href='" . XOOPS_URL . "/modules/profile/user.php?xoops_redirect=/modules/apcal/?event_id=$event->id&action=View' title=''>Einloggen</a>";
                     $eventmembers_only .= "<br>Sie sind noch nicht als User registriert? Dann bitte zuerst <a class='btn btn-info cal-btn' href='" . XOOPS_URL . "/modules/profile/register.php' title=''>Registrieren</a>";
 
                 }

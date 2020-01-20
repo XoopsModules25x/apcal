@@ -505,7 +505,7 @@ if (!class_exists('APCal_xoops')) {
             if (false !== $resultRow && isset($resultRow[0])) {
                 $num_rows = $resultRow[0];
             }
-            $yrs = $GLOBALS['xoopsDB']->query("SELECT start,end,summary,id,uid,allday,location,contact,description,mainCategory FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start LIMIT $num");
+            $yrs = $GLOBALS['xoopsDB']->query("SELECT start,end,summary,id,uid,allday,location,contact,description,mainCategory,extkey0 FROM $this->table WHERE admission>0 AND ($whr_term) AND ($whr_categories) AND ($whr_class) ORDER BY start LIMIT $num");
 
             $block = array(
                 'insertable'                       => $this->insertable,
@@ -613,6 +613,7 @@ if (!class_exists('APCal_xoops')) {
                     'distance'    => $distance,
                     'multiday'    => $multiday,
                     'picture'     => $pic ? $pic->picture : '',
+                    'extkey0'     => $event->extkey0,
                     'mainCat_id'  => $event->mainCategory,
                     'mainCat'     => $cat ? htmlentities($cat->cat_title, ENT_QUOTES, 'UTF-8') : ''
                 );

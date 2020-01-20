@@ -77,6 +77,9 @@
         </dt>
         <dd style='margin-left:20px;'>
             <span style='font-size: x-small; '>
+                <{if $event.extkey0 == 1}>
+                    <img class='ro-flag' style='height:35px' src='<{$xoops_url}>/modules/apcal/assets/images/regonline/regonline.png' alt='<{$smarty.const._APCAL_RO_ONLINE_POSS}>' title='<{$smarty.const._APCAL_RO_ONLINE_POSS}>'/>
+                <{/if}>
                 <a href='<{$block.get_target}>?smode=Daily&amp;action=View&amp;event_id=<{$event.id}>&amp;caldate=<{$block.caldate}>'
                         class='calsummary' title='<{$event.mainCat}> - <{$event.location}>'><{$event.summary}>
                 </a>
