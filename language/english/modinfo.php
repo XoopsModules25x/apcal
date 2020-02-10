@@ -211,4 +211,14 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_MI_APCAL_APCALLOADED')) {
     define('_MI_APCAL_RO_EXTRA4_OBL', 'Extra Info 4 is obligatory');
     define('_MI_APCAL_RO_EXTRA5_OBL', 'Extra Info 5 is obligatory');
     define('_MI_APCAL_ENABLE_PRINT', 'Enable print of events');
+    define('_MI_APCAL_RO_SETTINGS', 'Settings for online registration');
+    define('_MI_APCAL_RO_ENABLE', 'Enable online registration');
+    define('_MI_APCAL_RO_MAIL_SENDER','Sender for confirmation mail');
+    define('_MI_APCAL_RO_MAIL_SENDERNAME','Sendername for confirmation mail');
+    define('_MI_APCAL_RO_MAIL_SIGNATURE','Signature for confirmation mail');
+    define('_MI_APCAL_RO_SHOW_TIP','Show tip for online registration below the calendar');
+
+    define('_MI_APCAL_ROC_SETTINGS', 'Settings for convert contact information');
+    define('_MI_APCAL_ROC_ENABLE', 'Convert the contact name in field contact into a link to the member account, if member name and contact name is the equal.');
+
 }
