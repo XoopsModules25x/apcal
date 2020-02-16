@@ -101,7 +101,7 @@ if (!class_exists('APCal')) {
         public $server_TZ       = 9;            // Server's  Timezone Offset (hour)
         public $user_TZ         = 9;                // User's Timezone Offset (hour)
         public $use_server_TZ   = false;    // if 'caldate' is generated in Server's time
-        public $displayTimezone = 0;
+        public $displayTimezone = 1;
 
         // AUTHORITIES
         public $insertable = true;        // can insert a new event
@@ -2576,6 +2576,7 @@ if (!class_exists('APCal')) {
                         $eventmembers_form = "
                             <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformmembers1' style='margin:0px;'>
                                 <input type='hidden' name='eventid' value='$event->id' />
+                                <input type='hidden' name='event_uid' value='$event->uid' />
                                 <input type='hidden' name='uid' value='$this->user_id' />
                                 <input type='hidden' name='eventurl' value='$this->redirecturl' />
                                 <input type='hidden' name='summary' value='$summary' />
@@ -5479,7 +5480,7 @@ END:VEVENT\r\n";
                         if ($gmstart > $until) {
                             break;
                         }
-                        $sqls[] = $base_sql . ",start=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmstart) . "'),end=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmend) . "')";
+                        $sqls[] = $base_sql . ",start=$gmstart ,end=$gmend ";
                     }
                     break;
 
@@ -5531,7 +5532,7 @@ END:VEVENT\r\n";
                             if (++$c > $count) {
                                 break 2;
                             }
-                            $sqls[] = $base_sql . ",start=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmstart) . "'),end=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmend) . "')";
+                            $sqls[] = $base_sql . ",start=$gmstart ,end=$gmend ";
                         }
                         $week_top += $INTERVAL * 86400 * 7;
                     }
@@ -5577,7 +5578,7 @@ END:VEVENT\r\n";
                                 if (++$c > $count) {
                                     break;
                                 }
-                                $sqls[] = $base_sql . ",start=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmstart) . "'),end=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmend) . "')";
+                                $sqls[] = $base_sql . ",start=$gmstart ,end=$gmend ";
                             }
                         } else {
                             // ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¾ï¿½ï¿½Î¥ë¡¼ï¿½ï¿½
@@ -5605,7 +5606,7 @@ END:VEVENT\r\n";
                                 if (++$c > $count) {
                                     break;
                                 }
-                                $sqls[] = $base_sql . ",start=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmstart) . "'),end=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmend) . "')";
+                                $sqls[] = $base_sql . ",start=$gmstart ,end=$gmend ";
                             }
                         }
                     } elseif (isset($BYMONTHDAY)) {
@@ -5643,7 +5644,7 @@ END:VEVENT\r\n";
                                 if (++$c > $count) {
                                     break 2;
                                 }
-                                $sqls[] = $base_sql . ",start=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmstart) . "'),end=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmend) . "')";
+                                $sqls[] = $base_sql . ",start=$gmstart ,end=$gmend ";
                             }
                             for ($i = 0; $i < $INTERVAL; ++$i) {
                                 $monthday_top += gmdate('t', $monthday_top) * 86400;
@@ -5712,7 +5713,7 @@ END:VEVENT\r\n";
                                     if (++$c > $count) {
                                         break 2;
                                     }
-                                    $sqls[] = $base_sql . ",start=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmstart) . "'),end=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmend) . "')";
+                                    $sqls[] = $base_sql . ",start=$gmstart ,end=$gmend ";
                                 }
                                 $year += $INTERVAL;
                                 if ($year >= 2038) {
@@ -5742,7 +5743,7 @@ END:VEVENT\r\n";
                                     if (++$c > $count) {
                                         break 2;
                                     }
-                                    $sqls[] = $base_sql . ",start=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmstart) . "'),end=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmend) . "')";
+                                    $sqls[] = $base_sql . ",start=$gmstart ,end=$gmend ";
                                 }
                                 $year += $INTERVAL;
                                 if ($year >= 2038) {
@@ -5774,7 +5775,7 @@ END:VEVENT\r\n";
                                 if (++$c > $count) {
                                     break 2;
                                 }
-                                $sqls[] = $base_sql . ",start=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmstart) . "'),end=UNIX_TIMESTAMP('" . gmdate('Y-m-d H:i:s', $gmend) . "')";
+                                $sqls[] = $base_sql . ",start=$gmstart ,end=$gmend ";
                             }
                             $year += $INTERVAL;
                             if ($year >= 2038) {
