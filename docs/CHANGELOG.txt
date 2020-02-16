@@ -16,6 +16,9 @@
  - implemented data privacy info (mamba/goffy)
  - fixed bug from version compare (cesagonchu/geekwright/goffy)
  - fixed bug template list (goffy)
+ - fixed bug duplicating entries in ro_events (goffy)
+ - fixed bug with event start time/end time for recurring events (goffy)
+ - changed right for handling waitinglist (goffy)
 
 <h5>2.22 Beta 2  NOT RELEASED</h5>  [2019/../..]
 <hr>

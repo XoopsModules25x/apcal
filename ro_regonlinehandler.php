@@ -152,6 +152,7 @@ if ($show_form_activate) {
         <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformactivate' style='margin:0px;'>
             <input type='hidden' name='eventid' value='$eventid' />
             <input type='hidden' name='uid' value='$uid' />
+            <input type='hidden' name='event_uid' value='$event_uid' />
             <input type='hidden' name='eventurl' value='$eventurl' />
             <input type='hidden' name='url' value='$url' />
             <input type='hidden' name='typeedit' value='$typeedit' />
@@ -288,11 +289,6 @@ if (isset($_POST['activate_x'])) {
             $query .= $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . '.roe_date_created = ' . time() . ' ';
             $query .= 'WHERE (((' . $GLOBALS['xoopsDB']->prefix('apcal_ro_events') . ".roe_eventid)=$eventid))";
         }
-        $res = $GLOBALS['xoopsDB']->query($query);
-        if (!$res) {
-            redirect_header($eventurl, 3, _APCAL_RO_ERROR_RO_ACTIVATE);
-        }
-        
         $res = $GLOBALS['xoopsDB']->query($query);
         if (!$res) {
             redirect_header($eventurl, 3, _APCAL_RO_ERROR_RO_ACTIVATE);
@@ -459,11 +455,30 @@ if (isset($_REQUEST['form_add'])) {
 
         $url .= '?form_add=1';
         $url .= "&eventid=$eventid";
+        $url .= "&event_uid=$event_uid";
         $url .= "&eventurl=$eventurl";
         $url .= "&summary=$summary";
         $url .= "&date=$date";
         $url .= "&eventdate=$eventdate";
         $url .= "&location=$location";
+
+        //read data from apcal_ro_events
+        $query    = 'SELECT '
+            . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+            . '.roe_number, roe_datelimit, roe_needconfirm, roe_waitinglist FROM '
+            . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+            . ' WHERE (('
+            . $GLOBALS['xoopsDB']->prefix('apcal_ro_events')
+            . ".roe_eventid)=$eventid)";
+        $res      = $GLOBALS['xoopsDB']->query($query);
+        $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
+        if ($num_rows == 0) {
+            $datelimit      = 0;
+        } else {
+            while ($ro_result = $GLOBALS['xoopsDB']->fetchObject($res)) {
+                $datelimit      = $ro_result->roe_datelimit;
+            }
+        }
 
         //get username and email
         global $xoopsUser;
@@ -481,9 +496,10 @@ if (isset($_REQUEST['form_add'])) {
         <h3 class='row'>
             <h3>" . _APCAL_RO_TITLE1 . "</h3>
             <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformaddmember' style='margin:0px;'>
-                <input type='hidden' name='eventid' value='$eventid' />
                 <input type='hidden' name='uid' value='$uid' />
                 <input type='hidden' name='uname' value='$uname' />
+                <input type='hidden' name='eventid' value='$eventid' />
+                <input type='hidden' name='event_uid' value='$event_uid' />
                 <input type='hidden' name='url' value='$url' />
                 <input type='hidden' name='eventurl' value='$eventurl' />
                 <input type='hidden' name='title' value='$title' />
@@ -492,14 +508,19 @@ if (isset($_REQUEST['form_add'])) {
                 <input type='hidden' name='location' value='$location' />
                         <div class='col-xs-12 col-sm-4'>" . _APCAL_RO_EVENT . ":</div>
                         <div class='col-xs-12 col-sm-8'><input type='text' name='title' disabled='disabled' value='$summary' style='width:100%' /></div>
+                        <div class='clear'></div>
                         <div class='col-xs-12 col-sm-4'>" . _APCAL_RO_DATE . ":</div>
                         <div class='col-xs-12 col-sm-8'><input type='text' name='date' disabled='disabled' value='$date' style='width:100%' /></div>
+                        <div class='clear'></div>
                         <div class='col-xs-12 col-sm-4'>" . _APCAL_RO_LOCATION . ":</div>
                         <div class='col-xs-12 col-sm-8'><input type='text' name='location' disabled='disabled' value='$location' style='width:100%' /></div>
+                        <div class='clear'></div>
                         <div class='even col-xs-12 col-sm-4'>" . _APCAL_RO_FIRSTNAME . "*:</div>
                         <div class='odd col-xs-12 col-sm-8'><input type='text' name='firstname' value='$firstname' style='width:100%' /></div>
+                        <div class='clear'></div>
                         <div class='even col-xs-12 col-sm-4'>" . _APCAL_RO_LASTNAME . "*:</div>
                         <div class='odd col-xs-12 col-sm-8'><input type='text' name='lastname' value='$lastname' style='width:100%' /></div>
+                        <div class='clear'></div>
                         <div class='even col-xs-12 col-sm-4'>" . _APCAL_RO_EMAIL . ":</div>
                         <div class='odd col-xs-12 col-sm-8'>
                             <input type='text' name='email' value='$email' style='width:100%' />
@@ -507,12 +528,14 @@ if (isset($_REQUEST['form_add'])) {
                             <input type='radio' name='sendconf' value='yes' checked> " . _APCAL_RO_RADIO_YES . "
                             <input type='radio' name='sendconf' value='no'> " . _APCAL_RO_RADIO_NO . '
                         </div>
+                        <div class="clear"></div>
                     ';
         if ($cal->ro_extrainfo1 !== '') {
             $extrainfo1_obligatory = ($cal->ro_extrainfo1_obl > 0) ? '*' : '';
             $ret .= "
                         <div class='even col-xs-12 col-sm-4'>" . $cal->ro_extrainfo1 . "$extrainfo1_obligatory:</div>
                         <div class='odd col-xs-12 col-sm-8'><input type='text' name='extrainfo1' value='$extrainfo1' style='width:100%' /></div>
+                        <div class='clear'></div>
                     ";
         }
         if ($cal->ro_extrainfo2 !== '') {
@@ -520,6 +543,7 @@ if (isset($_REQUEST['form_add'])) {
             $ret .= "
                         <div class='even col-xs-12 col-sm-4'>" . $cal->ro_extrainfo2 . "$extrainfo2_obligatory:</div>
                         <div class='odd col-xs-12 col-sm-8'><input type='text' name='extrainfo2' value='$extrainfo2' style='width:100%' /></div>
+                        <div class='clear'></div>
                     ";
         }
         if ($cal->ro_extrainfo3 !== '') {
@@ -527,6 +551,7 @@ if (isset($_REQUEST['form_add'])) {
             $ret .= "
                         <div class='even col-xs-12 col-sm-4'>" . $cal->ro_extrainfo3 . "$extrainfo3_obligatory:</div>
                         <div class='odd col-xs-12 col-sm-8'><input type='text' name='extrainfo3' value='$extrainfo3' style='width:100%' /></div>
+                        <div class='clear'></div>
                     ";
         }
         if ($cal->ro_extrainfo4 !== '') {
@@ -534,6 +559,7 @@ if (isset($_REQUEST['form_add'])) {
             $ret .= "
                         <div class='even col-xs-12 col-sm-4'>" . $cal->ro_extrainfo4 . "$extrainfo4_obligatory:</div>
                         <div class='odd col-xs-12 col-sm-8'><input type='text' name='extrainfo4' value='$extrainfo4' style='width:100%' /></div>
+                        <div class='clear'></div>
                     ";
         }
         if ($cal->ro_extrainfo5 !== '') {
@@ -541,6 +567,7 @@ if (isset($_REQUEST['form_add'])) {
             $ret .= "
                         <div class='even col-xs-12 col-sm-4'>" . $cal->ro_extrainfo5 . "$extrainfo5_obligatory:</div>
                         <div class='odd col-xs-12 col-sm-8'><input type='text' name='extrainfo5' value='$extrainfo5' style='width:100%' /></div>
+                        <div class='clear'></div>
                     ";
         }
         
@@ -655,6 +682,7 @@ if (isset($_REQUEST['form_add'])) {
                 $retList .= "
                     <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformeditremovemember_" . $unique_id . "' style='margin:0px;'>
                         <input type='hidden' name='eventid' value='$eventid' />
+                        <input type='hidden' name='event_uid' value='$event_uid' />
                         <input type='hidden' name='uid' value='$uid' />
                         <input type='hidden' name='uname' value='$uname' />
                         <input type='hidden' name='url' value='$url' />
@@ -716,13 +744,19 @@ if (isset($_REQUEST['form_add'])) {
                     }
                 }
                 $retList .= '</td>';
-                $retList .= "
+                //check limit date expired
+                $datenow = strtotime(date('d.m.Y H:i:s'));
+                if ($datelimit > 0 && $datelimit < $datenow) {
+                    $retList .= "<td class='$classname'>" ._APCAL_RO_ERROR_TIMEOUT . "</td>";
+                } else {
+                    $retList .= "
                             <td class='$classname'>
                                 <input type='image' src='$roimageedit' name='form_edit' alt='" . _APCAL_RO_BTN_EDIT . "' title='" . _APCAL_RO_BTN_EDIT . "'  height='24px' />
                                 <input type='image' src='$roimagedelete' name='remove_member' alt='" . _APCAL_RO_BTN_REMOVE . "' title='" . _APCAL_RO_BTN_REMOVE . "'  height='24px' />
-                            </td>
-                        </tr>";
+                            </td>";
+                }
             }
+            $retList .= "</tr>";
             $retList .= '</form></table></td></tr></table>';
             $retList .= "<p style='text-align:center;align:center;'>
         <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformgoback' style='margin:0px;'>
@@ -735,7 +769,22 @@ if (isset($_REQUEST['form_add'])) {
         }
         
 
-        echo $retList . $ret;
+        echo $retList;
+        //check limit date expired
+        $datenow = strtotime(date('d.m.Y H:i:s'));
+        if ($datelimit > 0 && $datelimit < $datenow) {
+            if (($event_uid == $uid && $uid > 0) || //current user is event owner
+                ($cal->isadmin == 1) || //current user is admin
+                ($cal->ro_superedit == 1)) //current user can edit/delete registrations of other persons
+            {
+                echo $ret;
+            } else {
+                echo "<h2>" ._APCAL_RO_ERROR_TIMEOUT . "</h2>";
+            }
+        } else {
+            echo $ret;
+        }
+
     }
 }
 
@@ -888,7 +937,7 @@ if (isset($_POST['add_member_x']) || isset($_POST['add_member_more_x'])) {
         if ($poster_ip=='') $poster_ip='-';
 
         if ($status == -1) {
-            if ($number_total >= $number_allowed) {
+            if ($number_total >= $number_allowed && $number_allowed > 0) {
                 $status = 2;
             } else if ($needconfirm > 0) {
                 $status = 1;
@@ -1203,7 +1252,6 @@ if (isset($_POST['remove_member']) || isset($_POST['remove_member_x'])) {
 
 if (isset($_REQUEST['list'])) {
     if (!empty($_REQUEST['eventid'])) {
-        $uid       = Request::getInt('uid');
         $eventid   = Request::getInt('eventid');
         $summary   = Request::getString('summary', '');
         $date      = Request::getInt('date');
@@ -1227,8 +1275,9 @@ if (isset($_REQUEST['list'])) {
         }
 
         $url .= '?list=1';
-        $url .= "&uid=$uid";
+        $url .= "&uid=$event_uid";
         $url .= "&eventid=$eventid";
+        $url .= "&event_uid=$event_uid";
         $url .= "&summary=$summary";
         $url .= "&date=$date";
         $url .= "&location=$location";
@@ -1241,7 +1290,7 @@ if (isset($_REQUEST['list'])) {
                  . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
                  . '.* FROM '
                  . $GLOBALS['xoopsDB']->prefix('users')
-                 . ' INNER JOIN '
+                 . ' right JOIN '
                  . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
                  . ' ON '
                  . $GLOBALS['xoopsDB']->prefix('users')
@@ -1259,9 +1308,11 @@ if (isset($_REQUEST['list'])) {
         if ($num_rows == 0) {
             $ret = _APCAL_RO_NOMEMBERS;
         } else {
+            $counter = 0;
             $ret .= "
            <table class='ro_table'>
              <tr>
+               <th class='listeheader'>&nbsp;</th>
                <th width='100px' class='listeheader'>" . _APCAL_RO_UNAME . "</th>
                <th width='100px' class='listeheader'>" . _APCAL_RO_FIRSTNAME . "</th>
                <th width='100px' class='listeheader'>" . _APCAL_RO_LASTNAME . "</th>
@@ -1304,7 +1355,9 @@ if (isset($_REQUEST['list'])) {
                     $classname = 'even';
                     $line      = 0;
                 }
+                $counter++;
                 $ret .= "<tr>
+                    <td class='$classname'>" . $counter . "</td>
                     <td class='$classname'>$uname</td>
                     <td class='$classname'>$firstname</td>
                     <td class='$classname'>$lastname</td>
@@ -1335,7 +1388,8 @@ if (isset($_REQUEST['list'])) {
                       <input type='hidden' name='summary' value='$summary' />
                       <input type='hidden' name='date' value='$date' />
                       <input type='hidden' name='location' value='$location' />
-                      <input type='hidden' name='uid' value='$uid' />  
+                      <input type='hidden' name='uid' value='$uid' />
+                      <input type='hidden' name='event_uid' value='$event_uid' /> 
                       <input type='hidden' name='firstname' value='$firstname' />
                       <input type='hidden' name='lastname' value='$lastname' />
                       <input type='hidden' name='email' value='$email' />
@@ -1389,6 +1443,7 @@ if (isset($_REQUEST['list'])) {
                             <input type='hidden' name='eventid' value='$eventid' />
                             <input type='hidden' name='url' value='$url' />
                             <input type='hidden' name='eventurl' value='$eventurl' />
+                            <input type='hidden' name='event_uid' value='$event_uid' />
                             <input type='hidden' name='rom_id' value='$rom_id' />
                             <input type='hidden' name='firstname' value='$firstname' />
                             <input type='hidden' name='lastname' value='$lastname' />
@@ -1397,7 +1452,8 @@ if (isset($_REQUEST['list'])) {
                             <input type='hidden' name='date' value='$date' />
                             <input type='hidden' name='location' value='$location' />
                             <input type='hidden' name='uname' value='$uname' />  
-                            <input type='hidden' name='uid' value='$uid' />              
+                            <input type='hidden' name='uid' value='$uid' />
+                            <input type='hidden' name='event_uid' value='$event_uid' />           
                             <input type='hidden' name='extrainfo1' value='$extrainfo1' />
                             <input type='hidden' name='extrainfo2' value='$extrainfo2' />
                             <input type='hidden' name='extrainfo3' value='$extrainfo3' />
@@ -1406,11 +1462,13 @@ if (isset($_REQUEST['list'])) {
                             <input type='hidden' name='status' value='$status' />
                             <input type='hidden' name='current_uname' value='$current_uname' />
                             <input type='hidden' name='num_members' value='$num_rows' />
-                            <div style='display:inline;'>
-                                <input type='image' src='$roimageedit' name='form_edit' alt='" . _APCAL_RO_BTN_EDIT . "' title='" . _APCAL_RO_BTN_EDIT . "'  height='22px' />
-                                <input type='image' src='$roimagedelete' name='remove_member' alt='" . _APCAL_RO_BTN_REMOVE . "' title='" . _APCAL_RO_BTN_REMOVE . "'  height='22px' />
-                            </div>
+                            <div style='display:inline;'>                            
+                                    <input type='image' src='$roimageedit' name='form_edit' alt='" . _APCAL_RO_BTN_EDIT . "' title='" . _APCAL_RO_BTN_EDIT . "'  height='22px' />
+                                    <input type='image' src='$roimagedelete' name='remove_member' alt='" . _APCAL_RO_BTN_REMOVE . "' title='" . _APCAL_RO_BTN_REMOVE . "'  height='22px' />
+                             </div>
                         </form>";
+
+
                     }
                     $ret .= '
                     </td>
@@ -1433,7 +1491,7 @@ if (isset($_REQUEST['list'])) {
             {
                 $query = 'SELECT ' . $GLOBALS['xoopsDB']->prefix('users') . '.email ';
                 $query .= 'FROM ' . $GLOBALS['xoopsDB']->prefix('users');
-                $query .= ' WHERE (((' . $GLOBALS['xoopsDB']->prefix('users') . ".uid)=$uid))";
+                $query .= ' WHERE (((' . $GLOBALS['xoopsDB']->prefix('users') . ".uid)=$event_uid))";
 
                 $res = $GLOBALS['xoopsDB']->query($query);
                 $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
@@ -1499,8 +1557,9 @@ if (isset($_POST['sendmail_member']) || isset($_POST['sendmail_member_x'])) {
         }
 
         $url .= "?list=1";
-        $url .= "&uid=$uid";
+        $url .= "&uid=$event_uid";
         $url .= "&eventid=$eventid";
+        $url .= "&event_uid=$event_uid";
         $url .= "&summary=$summary";
         $url .= "&date=$date";
         $url .= "&location=$location";
@@ -1511,7 +1570,7 @@ if (isset($_POST['sendmail_member']) || isset($_POST['sendmail_member_x'])) {
 
         $query = "SELECT ".$GLOBALS['xoopsDB']->prefix("users").".email ";
         $query .= "FROM ".$GLOBALS['xoopsDB']->prefix("users");
-        $query .= " WHERE (((".$GLOBALS['xoopsDB']->prefix("users").".uid)=$uid))";
+        $query .= " WHERE (((".$GLOBALS['xoopsDB']->prefix("users").".uid)=$event_uid))";
 
         $res = $GLOBALS['xoopsDB']->query($query);
         $num_rows = $GLOBALS['xoopsDB']->getRowsNum($res);
@@ -1567,8 +1626,8 @@ if (isset($_POST['sendmail_member']) || isset($_POST['sendmail_member_x'])) {
 if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
     if (!empty($_POST['rom_id'])) {
         $rom_id     = Request::getInt('rom_id');
-        $uid        = Request::getInt('uid');
         $url        = Request::getString('url', '');
+        $event_uid  = Request::getInt('event_uid');
         $eventurl   = Request::getString('eventurl', '');
         $uname      = Request::getString('uname', '');
         $eventid    = Request::getInt('eventid');
@@ -1586,6 +1645,18 @@ if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
         $sendconf   = Request::getInt('sendconf');
         $status     = Request::getInt('status');
 
+        //get username and email
+        global $xoopsUser;
+        if (!isset($xoopsUser) || !is_object($xoopsUser)) {
+            $uname = '';
+            $email = '';
+            $uid   = 0;
+        } else {
+            $uname = $xoopsUser->getVar('uname');
+            $email = $xoopsUser->getVar('email');
+            $uid   = $xoopsUser->getVar('uid');
+        }
+
         $ret  = '';
         $retList = '';
 
@@ -1596,7 +1667,6 @@ if (isset($_POST['form_edit']) || isset($_POST['form_edit_x'])) {
             <form class='apcalForm' method='post' id='RegOnlineForm' action='ro_regonlinehandler.php' name='roformeditmember' style='margin:0px;'>
                 <input type='hidden' name='url' value='$url' />
                 <input type='hidden' name='rom_id' value='$rom_id' />
-
                 <table>
                     <tr>
                         <td class='even' width='120px'>" . _APCAL_RO_FIRSTNAME . "*:</td>
