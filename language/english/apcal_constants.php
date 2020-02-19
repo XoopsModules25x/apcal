@@ -292,5 +292,6 @@ if (defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED')) {
     define('_APCAL_RO_DATAPRIVACY_DETAIL', 'The data of the participants will only be stored for the duration of the event and not forwarded to third person.<br />
 During the event pictures will be taken and maybe used for internal purposes (e.g. showing on our website). If you are not agreeing that you have to contact the organizer.<br />
 With your registration you agree with this procedure.');
+    define('_APCAL_RO_DOWNLOAD','Download');
 
 }

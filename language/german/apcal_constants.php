@@ -292,5 +292,5 @@ if( defined('FOR_XOOPS_LANG_CHECKER') || !defined('_APCAL_CNST_LOADED') ) {
     define('_APCAL_RO_DATAPRIVACY_DETAIL', 'Die Daten der Teilnehmer werden nur für die Dauer der Durchführung der Veranstaltung gespeichert und keinesfalls an Dritte weitergeben.<br />
 Während der Veranstaltung wird fotografiert und die Bilder werden eventuell für interne Zwecke (z.B. Veröffentlichung auf der Vereinswebseite) verwendet. Sollten Sie dies nicht wünschen, dann kontaktieren Sie den Veranstalter.<br />
 Mit der Anmeldung wird seitens des Teilnehmers das Einverständnis mit dieser Vorgangsweise erklärt.');
-
+    define('_APCAL_RO_DOWNLOAD','Download');
 }
