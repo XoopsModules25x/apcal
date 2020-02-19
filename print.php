@@ -95,18 +95,17 @@ if (!empty($_GET['event_id'])) {
             if (!empty($_REQUEST['eventid'])) {
                 $eventid   = \Xmf\Request::getInt('eventid');
                 $summary   = \Xmf\Request::getString('summary', '');
-                $date      = \Xmf\Request::getInt('date');
+                $date      = \Xmf\Request::getString('date');
                 $location  = \Xmf\Request::getString('location', '');
                 $classname = '';
 
-                $title = $summary . ' (' . $date . ' ' . $location . ')';
                 $query = 'SELECT '
                     . $GLOBALS['xoopsDB']->prefix('users')
                     . '.uname, '
                     . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
                     . '.* FROM '
                     . $GLOBALS['xoopsDB']->prefix('users')
-                    . ' INNER JOIN '
+                    . ' RIGHT JOIN '
                     . $GLOBALS['xoopsDB']->prefix('apcal_ro_members')
                     . ' ON '
                     . $GLOBALS['xoopsDB']->prefix('users')
@@ -124,9 +123,11 @@ if (!empty($_GET['event_id'])) {
                 if ($num_rows == 0) {
                     $ret = _APCAL_RO_NOMEMBERS;
                 } else {
-                    $ret .= "<h3>$title</h3>
+                    $ret .= "<table><tr><td colspan='5'>$summary</td></tr><tr><td colspan='5'>$date</td></tr><tr><td colspan='5'>$location</td></tr></table>";
+                    $ret .= "
                         <table class='ro_table-'>
                             <tr>
+                                <th width='100px' class='listeheader'>&nbsp;</th>
                                 <th width='100px' class='listeheader'>" . _APCAL_RO_UNAME . "</th>
                                 <th width='100px' class='listeheader'>" . _APCAL_RO_FIRSTNAME . "</th>
                                 <th width='100px' class='listeheader'>" . _APCAL_RO_LASTNAME . "</th>
@@ -148,7 +149,8 @@ if (!empty($_GET['event_id'])) {
                                 }
                                 $ret .= "<th class='listeheader'>" . _APCAL_RO_STATUS . "</th>";
                     $ret .= '</tr>';
-                    $line = 0;
+                    $counter = 0;
+                    $line    = 0;
                     while ($member = $GLOBALS['xoopsDB']->fetchObject($res)) {
                         $rom_id = $member->rom_id;
                         $uname = $member->uname;
@@ -168,7 +170,9 @@ if (!empty($_GET['event_id'])) {
                             $classname = 'even';
                             $line = 0;
                         }
+                        $counter++;
                         $ret .= "<tr>
+                    <td class='$classname'>$counter</td>
                     <td class='$classname'>$uname</td>
                     <td class='$classname'>$firstname</td>
                     <td class='$classname'>$lastname</td>

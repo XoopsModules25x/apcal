@@ -57,7 +57,7 @@ if (isset($_GET['op'])) {
         if (isset($_GET['eventdate'])) {
             $eventdate = $_GET['eventdate'];
         }
-
+        $caldate = $_GET['caldate'];
         $show_form_activate = true;
     }
 }
@@ -502,15 +502,17 @@ if (isset($_REQUEST['form_add'])) {
                 <input type='hidden' name='event_uid' value='$event_uid' />
                 <input type='hidden' name='url' value='$url' />
                 <input type='hidden' name='eventurl' value='$eventurl' />
+                <input type='hidden' name='eventdate' value='$eventdate' />
                 <input type='hidden' name='title' value='$title' />
                 <input type='hidden' name='summary' value='$summary' />
                 <input type='hidden' name='date' value='$date' />
+                <input type='hidden' name='eventdate' value='$eventdate' />
                 <input type='hidden' name='location' value='$location' />
                         <div class='col-xs-12 col-sm-4'>" . _APCAL_RO_EVENT . ":</div>
                         <div class='col-xs-12 col-sm-8'><input type='text' name='title' disabled='disabled' value='$summary' style='width:100%' /></div>
                         <div class='clear'></div>
                         <div class='col-xs-12 col-sm-4'>" . _APCAL_RO_DATE . ":</div>
-                        <div class='col-xs-12 col-sm-8'><input type='text' name='date' disabled='disabled' value='$date' style='width:100%' /></div>
+                        <div class='col-xs-12 col-sm-8'><input type='text' name='eventdate' disabled='disabled' value='$eventdate' style='width:100%' /></div>
                         <div class='clear'></div>
                         <div class='col-xs-12 col-sm-4'>" . _APCAL_RO_LOCATION . ":</div>
                         <div class='col-xs-12 col-sm-8'><input type='text' name='location' disabled='disabled' value='$location' style='width:100%' /></div>
@@ -1254,7 +1256,8 @@ if (isset($_REQUEST['list'])) {
     if (!empty($_REQUEST['eventid'])) {
         $eventid   = Request::getInt('eventid');
         $summary   = Request::getString('summary', '');
-        $date      = Request::getInt('date');
+        $date      = Request::getString('date');
+        $eventdate = Request::getInt('eventdate');
         $location  = Request::getString('location', '');
         $eventurl  = Request::getString('eventurl', '');
         $event_uid = Request::getInt('event_uid');
@@ -1280,6 +1283,7 @@ if (isset($_REQUEST['list'])) {
         $url .= "&event_uid=$event_uid";
         $url .= "&summary=$summary";
         $url .= "&date=$date";
+        $url .= "&eventdate=$eventdate";
         $url .= "&location=$location";
         $url .= "&eventurl=$eventurl";
 
@@ -1309,6 +1313,9 @@ if (isset($_REQUEST['list'])) {
             $ret = _APCAL_RO_NOMEMBERS;
         } else {
             $counter = 0;
+            $ret .= '<h3>' . _APCAL_RO_EVENT . ": $summary</h3>";
+            $ret .= '<p>' . _APCAL_RO_DATE . ": $date</p>";
+            $ret .= '<p>' . _APCAL_RO_LOCATION . ": $location</p>";
             $ret .= "
            <table class='ro_table'>
              <tr>
@@ -1479,7 +1486,7 @@ if (isset($_REQUEST['list'])) {
             $ret .= "<div align='center'><a href='$eventurl' target='_self'><img src='$roimagecancel' name='goback' alt='" . _APCAL_RO_BTN_BACK . "' title='" . _APCAL_RO_BTN_BACK . "' style='height:24px;margin:0 10px;'/></a>";
             if ($cal->enableprint) {
                 $ret .= "<a href='print.php?smode=ro_list&eventid=$eventid&summary=$summary&date=$date&location=$location' target='_blank'><img src='$roimageprint' name='print' alt='" . _APCAL_RO_PRINT_LIST . "' title='" . _APCAL_RO_PRINT_LIST . "' style='height:24px;margin:0 10px;'/></a>";
-                $ret .= "<a href='print.php?smode=ro_list&op=exportxls&eventid=$eventid&summary=$summary&date=$date&location=$location' target='_blank'><img src='$roimagedownload' name='download' alt='" . _DOWNLOAD . "' title='" . _DOWNLOAD . "' style='height:24px;margin:0 10px;'/></a>";
+                $ret .= "<a href='print.php?smode=ro_list&op=exportxls&eventid=$eventid&summary=$summary&date=$date&location=$location' target='_blank'><img src='$roimagedownload' name='download' alt='" . _APCAL_RO_DOWNLOAD . "' title='" . _APCAL_RO_DOWNLOAD . "' style='height:24px;margin:0 10px;'/></a>";
             }
             $ret .= "</div>\n";
 
